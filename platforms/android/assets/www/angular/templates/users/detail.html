@@ -1,0 +1,98 @@
+<div>
+    <div class="modal-header text-center">
+        <strong><h3 class="modal-title">Detalles del Usuario</h3></strong>
+    </div>
+    <div class="modal-body">
+        <div class="form-horizontal form-bordered">
+            <div class="form-body">
+                <div class="form-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group form-group-sm">
+                                <label class="col-md-6 control-label"><strong>Nombres</strong></label>
+                                <div class="col-md-6">
+                                    <p class="form-control-static">{{item.forename}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group form-group-sm">
+                                <label class="col-md-6 control-label"><strong>Apellidos</strong></label>
+                                <div class="col-md-6">
+                                    <p class="form-control-static">{{item.surname}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group form-group-sm">
+                                <label class="col-md-6 control-label"><strong>Tipo de Documento</strong></label>
+                                <div class="col-md-6">
+                                    <p class="form-control-static">{{item.document_type}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group form-group-sm">
+                                <label class="col-md-6 control-label"><strong>Número</strong></label>
+                                <div class="col-md-6">
+                                    <p class="form-control-static">{{item.document_number}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group form-group-sm">
+                                <label class="col-md-6 control-label"><strong>Fecha de Nacimiento</strong></label>
+                                <div class="col-md-6">
+                                    <p class="form-control-static">{{item.date_of_birth}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group form-group-sm">
+                                <label class="col-md-6 control-label"><strong>Dirección</strong></label>
+                                <div class="col-md-6">
+                                    <p class="form-control-static">{{item.address}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group form-group-sm">
+                                <label class="col-md-6 control-label"><strong>Número telefónico</strong></label>
+                                <div class="col-md-6">
+                                    <p class="form-control-static">{{item.phone_number}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group form-group-sm">
+                                <label class="col-md-6 control-label"><strong>Correo electrónico</strong></label>
+                                <div class="col-md-6">
+                                    <p class="form-control-static">{{item.email}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group form-group-sm">
+                                <label class="col-md-6 control-label"><strong>¿Activo?</strong></label>
+                                <div class="col-md-6">
+                                    <p class="form-control-static">{{item.active}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn green-haze" ng-click="cancel()">Cerrar</button>
+    </div>
+</div>

@@ -1,0 +1,56 @@
+form .ng-invalid.ng-dirty {
+    border-color: #a94442;
+}
+form .ng-valid.ng-dirty {
+    border-color: #d6e9c6;
+}
+span.summary.ng-invalid {
+    color: red;
+    font-weight: bold;
+}
+span.summary.ng-valid {
+    color: green;
+}
+.mensajeError {
+    color: #a94442;
+}
+.toLeft {
+    float: left;
+}
+.cursorPointer {
+    cursor: pointer;
+}
+.oculto {
+    display: none !important;
+}
+.visible {
+    display: block !important;
+    top: 2px !important;
+    right: -1px !important;
+}
+
+.panelAux {
+    position: fixed !important;
+    top: 55px !important;
+    right: -1px !important;
+}
+
+.panelAuxButtonClose{
+    position: fixed !important;
+    top: 60px !important;
+    right: 15px !important;
+}
+
+.fileDuplicate{
+    background-color:  #CD3F3F !important; 
+}
+
+.buttonOpenModal{
+    top: -7px !important; 
+    right: -30px !important;
+
+}
+
+.borderD{
+    border-bottom:  1px solid #CCC;
+}

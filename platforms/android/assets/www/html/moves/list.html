@@ -1,0 +1,48 @@
+<h1>Movimientos del Día</h1>
+<!--
+<form action="" class="form-inline">
+    <div class="form-group col-xs-6">
+        <label for="list-all">Ver Todos</label>
+        <input class="form-control" name="filter" id="list-all" ng-model="listAllCollectionDay" value="any" type="radio">
+    </div>
+
+    <div class="form-group col-xs-6">
+        <label for="list-missing">Ver Faltantes </label>
+        <input class="form-control" name="filter" id="list-missing" ng-model="listAllCollectionDay" value="false" type="radio" >
+    </div>
+</form>
+-->
+<div class="col-xs-12 form-group">
+    <label>Filtrar:</label>
+    <Select class="col-xs-12 form-control" ng-model="list.filter" ng-options="value.id as value.name for value in lists.subTypeMove">
+        <option value="">Seleccione filtro</option>
+    </Select>
+</div>
+
+<table class="table table-striped col-xs-12">
+    <thead>
+    <tr>
+        <th>Hora</th>
+        <th>Tipo</th>
+        <th>Valor</th>
+    </tr>
+    </thead>
+    <tr ng-repeat=" (key,info) in lists.moves | orderBy :'id' | filterTable:list.filter" >
+        <td id="{{ info.id }}_hour_move" ng-click="showDetailsMove($event)">{{ info.hour | showHour }}</td>
+        <td id="{{ info.id }}_type_move" ng-click="showDetailsMove($event)">
+            {{ getStringType(info.type) }}
+            <i class="fa fa-minus-circle text-danger pull-right" ng-if="info.type == 2 "></i>
+            <i class="fa fa-plus-circle  text-success pull-right" ng-if="info.type == 1 "></i>
+        </td>
+        <td id="{{ info.id }}_value_move" ng-click="showDetailsMove($event)">{{ info.value | currency:"$":0}}</td>
+    </tr>
+
+    <tr style="border-top: 2px solid #bdc3c7">
+        <th colspan="2" class="text-center">Total</th>
+        <th>{{ balance(lists.moves,list.filter) | currency:"$":0 }}</th>
+    </tr>
+
+</table>
+<div class="btn btn-success col-xs-12" ui-sref="home.movesAdd"  style="margin-top: 1rem">
+    Regresar
+</div>

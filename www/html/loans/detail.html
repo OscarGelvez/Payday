@@ -1,0 +1,39 @@
+<h1>Detalles Prestamo</h1>
+
+<div class="container">
+        <div class="form-group col-xs-12" style="padding-left: 0; padding-right: 0">
+
+            <label>Valor Ultimo Pago:</label>
+            <input readonly="" ng-model="views.detail.loan.lastPaidValue" ng-currency currency-symbol="$"  class="form-control" type="text"/>
+
+            <label style="margin-top:1rem">Fecha Ultimo Pago:</label>
+            <input readonly="" ng-model="views.detail.loan.lastPaidDate" class="form-control" type="text"/>
+        </div>
+
+        <div class="form-group col-xs 12"  style="margin-top: 1rem">
+            <label>Saldo: </label>
+            <input class="form-control" readonly="" ng-currency currency-symbol="$" ng-model="views.detail.loan.balance" type="text"/>
+        </div>
+
+        <div class="form-group col-xs 12" style="margin-top: 1rem">
+            <label class="col-xs-12">Número de Cuotas Pagas: </label>
+            <input class="form-control" ng-model="views.detail.loan.numberFeesPaid" style="width: 30% !important;display: inline; vertical-align: top; text-align: center" readonly="" type="text"/>
+            <input type="text" class="form-control"  readonly style="border: 0; background: inherit; width: 37% !important;display: inline;vertical-align: top;text-align: center" value="De"/>
+            <input class="form-control" ng-model="views.detail.loan.numberFees" style="width: 30% !important;display: inline; vertical-align: top;float: right; text-align: center" readonly="" type="text"/>
+        </div>
+
+        <div class="form-group col-xs-12" style="margin-top:1rem;padding-left: 0 !important; padding-right: 0 !important;">
+            <label>Fecha Finalización: </label>
+            <input readonly=""  ng-model="views.detail.loan.dateEnd" class="form-control" type="text"/>
+            <label style="margin-top: 1rem" >Fecha Creación: </label>
+            <input readonly="" ng-model="views.detail.loan.dateCreated" class="form-control" type="text"/>
+            <label style="margin-top: 1rem">Fecha Inicio Cobro: </label>
+            <input readonly="" ng-model="views.detail.loan.dateStarted" class="form-control" type="text"/>
+            <label style="margin-top: 1rem">Tasa de Interes: </label>
+            <input readonly="" ng-model="views.detail.loan.interest" class="form-control" type="text"/>
+        </div>
+</div>
+
+<div class="btn btn-success col-xs-12" ui-sref="home.addPayment"  style="margin-top: 1rem">
+    Regresar
+</div>

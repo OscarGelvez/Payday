@@ -1,0 +1,48 @@
+
+<ion-view view-title="{{'Settings.AdminRubros.Title' | translate}}">
+      <ion-floating-button click="addCategory()" has-footer="false" button-color="#8BC34A" icon="ion-plus" icon-color="#fff">
+      </ion-floating-button>
+      <ion-content class="bg-home" scroll="true" overflow-scroll="false">
+                 
+       
+              <div class="divAdminRubros">
+         
+                        <div class="listCategory">
+                          <div class="list" scroll="true" overflow-scroll="false">
+                                                    
+                              
+                                 <ion-scroll zooming="false" direction="y"  style="height:550px;" >  
+                           
+                              <div class="item item-divider">
+                                {{'Settings.AdminRubros.BasicRubros' | translate}}
+                              </div>
+
+                              <a ng-repeat="c in categories" class="item" href="#/app/admin_categories" ng-if="c.collector_id==-1">
+
+                                {{c.name}}
+                              </a>                               
+
+
+                              <div class="item item-divider">
+                                {{'Settings.AdminRubros.CustomRubros' | translate}}
+                              </div>
+                              <a ng-repeat="c in categories" class="item item-icon-right" href="#/app/detail_category/{{c.id}}:{{c.name}}:{{c.type_movement}}:{{c.description}}:{{c.collector_id}}" ng-if="c.collector_id!=-1">
+                                 <i class="icon ion-more"></i>
+                                {{c.name}}
+                              </a> 
+                             
+                            
+                        
+                             </ion-scroll> 
+
+                            </div>                            
+                      </div>                 
+              </div>
+       
+      </ion-content>
+
+</ion-view>
+</div>
+ 
+
+

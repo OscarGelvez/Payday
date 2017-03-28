@@ -1,0 +1,50 @@
+<div class="container-fluid">
+    <div class="row">
+        <h1>Estado De Las Cuotas</h1>
+
+		
+		<div class="col-xs-12" style="margin-top:1rem">
+
+			<table class="table table-striped col-xs-12" style="padding:0">
+			    <thead>
+			        <tr>
+			            <th>Estado</th>
+			            <th>Valor <small>Cuota</small></th>
+			            <th>Saldo</th>
+			            <th>Pagos <small>Asociados</small></th>
+
+			        </tr>
+
+			    </thead>
+			    			    
+			    	<tr ng-repeat="(key,fee) in lists.fees">
+			    		<td class="col-xs-1">
+			    			<button ng-click="showStateFee($event)" data-state="{{ fee.state }}" class="btn {{ fee.state | classStateFee }} cWhite" >
+			    				{{ fee.state | stateFee }}
+			    			</button>
+			    		</td>
+
+			    		<td class="col-xs-5">
+			    			{{ fee.value | currency:"$":0 }}
+			    		</td>
+			    		<td class="col-xs-5">
+			    			{{ fee.balance | currency:"$":0 }}
+			    		</td>
+			    		<td class="col-xs-1">
+			    			<button ng-repeat=" payment in fee.payments" class="btn btn-success" ng-click="showValuePay($event)" data-paymentvalue="{{payment.value}}" style="width:95% !important;margin-top:0.3rem">
+			    				{{ key+1 }}
+			    			</button>
+			    		</td>
+			    	</tr>
+
+			</table>
+
+		</div>
+
+		<div style="margin-top:1rem;width:100%" class="col-xs-12">
+			<button ui-sref="home.addPayment" class="btn btn-success text-center col-xs-12" >
+				Regresar
+			</button>
+		</div>
+    </div>
+</div>

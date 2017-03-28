@@ -1,0 +1,84 @@
+
+<ion-view view-title="{{'Settings.AdminRubros.DetailTitle' | translate}} de {{nombreVista}}">
+     
+      <ion-content class="bg-home" scroll="true" overflow-scroll="false">
+                 
+       
+              <div class="divAdminRubros">
+         
+                        <div class="listCategory2">
+                          <div class="list" scroll="true" overflow-scroll="false">
+                                                    
+                              
+                              <center>
+                    <h2 style="color:white">{{'Settings.AdminRubros.DetailEditTitle' | translate}}</h2>
+                  
+                        <div class="modalAddRubros">
+                               <label class="item item-input item-stacked-label labelsFormInicioRegistro" ng-disabled="!boolEditar">
+                                    <span class="input-label" style="color:white; text-align:center" translate-cloak>{{'Settings.AdminRubros.NewRubroName' | translate}}</span>
+                                    <br>
+                                  
+                                    <input type="text" style="width:100%; float:left;  text-align:center;" ng-required="true" ng-model="editCategory.nombre" ng-disabled="!boolEditar" >
+                                    
+                                </label> 
+
+
+                                <!--  <label class="item item-input item-stacked-label labelsFormInicioRegistro" >
+                                     <span class="input-label" style="color:white;" translate-cloak >{{'Settings.AdminRubros.NewRubroTipo' | translate}}</span>
+                                               
+
+                                     <ion-toggle ng-model="editCategory.tipo" style=" border-color:transparent;  color:white" toggle-class="toggle-balanced " ng-required="true" ng-disabled="!boolEditar || tieneMovimientos" >{{valToggle }}</ion-toggle>
+                        <br>
+                                </label> -->
+                      
+                                <label class="item item-input item-stacked-label labelsFormInicioRegistro" >
+                                      <span class="input-label" style="color:white" translate-cloak>{{'Settings.AdminRubros.NewRubroDescripcion' | translate}}</span>
+                                       <textarea ng-model="editCategory.descripcion" translate-cloak placeholder="{{'Settings.AdminRubros.NewRubroDescripcionPH' | translate}}" style=" background-color:transparent; padding:5px; color:white; padding-left:10%;" ng-disabled="!boolEditar"></textarea>
+                                </label>
+                         
+                        </div>
+                      <button style="float:right"  type="button" class="button button-balanced btnInicio icon ion-save " ng-click="submitEditRubro(editCategory)" ng-hide="!boolEditar">
+                          {{'Settings.AdminRubros.NewRubroButtonSave' | translate}}
+                      </button>
+                  </center>
+
+                           
+                          <div class="row">
+                            
+
+                            <div class="col">
+                                  <button   type="button" class="button button-calm  btnInicio2 icon ion-edit " ng-click="hacerVisible()">
+                                  {{textBtnEditar}}
+                                  </button>
+                            </div>
+
+                            <div class="col">
+                                  <button   type="button" class="button button-assertive  btnInicio2 icon ion-trash-b " ng-click="submitDeleteRubro()">
+                                   {{'Settings.AdminRubros.btnDelete' | translate}} 
+                                  </button>                          
+                            </div>
+
+                            <div class="col">                              
+                                <button   type="button" class="button button-energized b btnInicio2 icon ion-arrow-swap " ng-click="openModalMove()">
+                                    {{'Settings.AdminRubros.btnTransmit' | translate}} 
+                                </button>
+                            </div>
+
+                          </div>
+                     
+                        
+                          
+
+
+
+                            </div>                            
+                      </div>                 
+              </div>
+       
+      </ion-content>
+
+</ion-view>
+</div>
+ 
+
+

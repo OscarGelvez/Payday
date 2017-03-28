@@ -1,0 +1,150 @@
+<div class="row" style="padding: 1rem;width: 80%; background-color: #ce9c7b;color: #FFF;display: inline-block;vertical-align: top; margin: 1rem 3% 0 0">
+    <span style="font-size:18px">   <b>Id: </b>?    </span>    <br/>
+    <span style="font-size:18px">   <b>Nombre: </b>?2    </span>    <br/>
+    <span style="font-size:18px">   <b>Descripción: </b>?3    </span>
+</div>
+
+<div id="?_fee_id" class="row" style="font-size: 18px ;padding: 1rem;width: 80%; background-color: #8E44AD;color: #FFF;display: inline-block;vertical-align: top; margin: 1rem 3% 0 0">
+
+    <span> <b>Id: </b>  ?2</span><br>id
+    <span> <b>Id Cliente: </b>  ?3</span><br>customer_id
+    <span> <b>Nombre Cliente: </b>  ?4</span><br>customer_name
+    <span> <b>Creado: </b>  ?5<br> </span>created
+    <span> <b>Fecha Inicio Cobro: </b>  ?6</span><br>start_date
+    <span> <b>Fecha Fin Prestamo: </b>  ?7</span><br>date_end
+    <span> <b>Interes Producido: </b>  ?8</span><br>interest_produced
+    <span> <b>Frecuencía de pago: </b>  ?10</span><br>pay_period
+
+    <span> <b>Saldo: </b>  ?11</span><br>balance
+    <span> <b>Tasa de Interes: </b>  ?12</span><br>interest_rate
+    <span> <b>Valor Prestado: </b>  ?13</span><br>value_loaned
+    <span> <b>Tipo de Abono: </b>  ?14</span><br>type_paid_id
+    <span> <b>Estado: </b>  ?15</span><br>state
+    <span> <b>Retención: </b>  ?16</span><br>retention
+    <span> <b>id Fiador: </b>  ?17</span><br>guarantor_id
+    <span> <b>Nombre Fiador: </b>  ?18</span><br>guarantor_name
+    <span> <b>Numero de cuotas: </b>  ?19</span><br>numbers_of_fee
+</div>
+
+'address'
+'document'
+'email'
+'id'
+'is_evil'
+'is_new'
+'is_updated'
+'my_client'
+'name'
+'neighbourhood_id'
+'phone_numbers'
+'route_position'
+
+l.balance as "l_balance",
+l.created as "l_created",
+l.date_end as "l_date_end",
+l.guarantor_id as "l_guarantor_id",
+l.id as "l_id",
+l.interest_produced as "l_interest_produced",
+l.interest_rate as "l_interest_rate",
+l.is_new as "l_is_new",
+l.is_updated as "l_is_updated",
+l.numbers_of_fee as "l_numbers_of_fee",
+l.pay_period as "l_pay_period",
+l.retention as "l_retention",
+l.start_date as "l_start_date",
+l.state as "l_state",
+l.type_paid_id as "l_type_paid_id",
+l.value_loaned as "l_value_loaned",
+
+
+f.id as "f_id",
+f.interest_arrears as "f_interest_arrears",
+f.is_new as "f_is_new",
+f.is_updated as "f_is_updated",
+f.payment_date as "f_payment_date",
+f.state as "f_state",
+f.value as "f_value",
+
+
+'f_id'
+'f_interest_arrears'
+'f_is_new'
+'f_is_updated'
+'f_loan_id'
+'f_payment_date'
+'f_state'
+'f_value'
+
+m.created as 'm_created',
+m.description as 'm_description',
+m.hour as 'm_hour',
+m.id as 'm_id',
+m.is_move_business as 'm_is_move_business',
+m.loan_id as 'm_loan_id',
+m.payment_id as 'm_payment_id',
+m.type as 'm_type',
+m.value as 'm_value'
+
+
+p.created as "p_created",
+p.description as "p_description",
+p.fee_id as "p_fee_id",
+p.id as "p_id",
+p.is_updated as "p_is_updated",
+p.type_of_fee as "p_type_of_fee",
+p.value as "p_value"
+
+
+'created'
+'description'
+'fee_id'
+'id'
+'is_updated'
+'type_of_fee'
+'value'
+
+
+'interest_produced',
+'interest_rate',
+'is_new',
+'is_updated',
+'numbers_of_fee',
+'pay_period',
+'retention',
+'start_date',
+'state',
+'type_paid_id',
+'value_loaned'
+
+
+'id',
+'interest_arrears',
+'is_new',
+'is_updated',
+'loan_id',
+'payment_date',
+'state',
+'value'
+
+alter table people alter column name drop not null;
+alter table people alter column email drop not null;
+alter table people drop column name;
+alter table people drop column email;
+alter table customers add column name;
+alter table customers add column email;
+
+
+delete from moves;
+delete from payments;
+delete from fees;
+delete from loans;
+delete from customers;
+delete from people;
+
+
+ALTER TABLE moves auto_increment = 1;
+ALTER TABLE payments auto_increment = 1;
+ALTER TABLE fees auto_increment = 1;
+ALTER TABLE loans auto_increment = 1;
+ALTER TABLE customers auto_increment = 1;
+ALTER TABLE people auto_increment = 1;

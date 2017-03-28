@@ -1,0 +1,44 @@
+<h1 ng-click="testList()">Asignar Posición Ruta</h1>
+
+<div>
+	<div class="form-group">
+		<label>Nombre Cliente</label>
+		<input type="text" ng-keyup="findClientPositionRoute();" ng-model="views.asignRoutePosition.name" class="form-control" />
+	</div>
+</div>
+
+<table class="table table-striped col-xs-12" >
+	<thead>
+		<tr>
+			<th>N° Ruta</th>
+			<th>Dirección</th>
+			<th>Cliente</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		
+		<tr id="{{ key }}_trButton" ng-repeat-start="(key,client) in lists.clients">
+			<td colspan="3">
+				<button class="btn btn-info col-xs-12" id="{{key}}_positionRoute" ng-click="catchPositionRoute($event)">
+					Ingrese Aquí
+				</button>
+			</td>
+		</tr>
+		
+		<tr id="{{ key }}_trInfo" ng-repeat-end>
+			<td> {{ client.routePosition }} </td>
+			<td> {{ client.address }} </td>
+			<td> {{ client.name }} </td>
+		</tr>
+
+		<tr>
+			<td colspan="3">
+				<button class="btn btn-info col-xs-12 lastOption" id="{{lists.clients.length+'_positionRoute'}}" ng-click="catchPositionRoute($event)">Insertar Aquí</button>
+			</td>
+		</tr>
+	</tbody>
+
+
+
+</table>

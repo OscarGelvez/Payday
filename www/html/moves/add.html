@@ -1,0 +1,48 @@
+<h1>Registro Movimientos</h1>
+<div class="container-fluid">
+    <div class="row">
+        <form class="form-group" ng-submit="addMove()">
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label for="typeMove">Tipo Movimiento:</label>
+                    <select ng-model="new.type" required="" ng-options="value as value.name for value in lists.typeMoves track by value.id" id="typeMove" class="form-control">
+                        <option value="">Entrada o Salida</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label >Movimiento: </label>
+                    <select class="form-control" required="" ng-model="new.subTypeMove" ng-options="value.id as value.name for value in lists.subTypeMove">
+                        <option value="">Seleccione un SubTipo</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="inputValorConsignado">Valor:</label>
+                    <input type="number" ng-model="new.value" id="inputValorConsignado" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label for="description">Descripción</label>
+                    <textarea name="" ng-model="new.description" id="description" cols="30" rows="10" class="form-control"></textarea>
+                </div>
+            </div>
+            
+
+            <div class="col-xs-6">
+                <button class="btn btn-primary">Registrar</button>
+            </div>
+
+            <div class="col-xs-6">
+                <div class="btn btn-danger" ui-sref="home" style="float:right">Cancelar</div>
+            </div>
+
+            <div class="col-xs-12">
+                <div class="btn btn-success col-xs-12" ui-sref="home.movesList" style="margin-top: 1rem">
+                    Listar Movimientos del Día
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+

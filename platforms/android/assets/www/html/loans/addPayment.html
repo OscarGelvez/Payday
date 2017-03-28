@@ -1,0 +1,88 @@
+<div class="container-fluid">
+    <div class="row">
+        <h1>Agregar Pago</h1>
+        <div style="margin: 1rem 0;font-size: 14px;" class=" panel panel-primary">
+            <div class="panel-heading">Información Prestamo</div>
+            <div class="panel-body" style="padding: 1rem 0">
+
+                <div class="form-group">
+                    <label class="col-xs-6" >Cliente:</label>
+                    <label class="col-xs-6" style="padding: 0"> {{ views.collectionDay.infoLoan.name }}</label>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-xs-6">Documento: </label>
+                    <label class="col-xs-6" style="padding: 0">{{ views.collectionDay.infoLoan.document }}</label>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-xs-6">Valor Prestado:</label>
+                    <label class="col-xs-6" style="padding: 0"> {{ views.collectionDay.infoLoan.valueLoaned | currency: "$":0 }} </label>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-xs-6">Valor Intereses:</label>
+                    <label class="col-xs-6" style="padding: 0"> {{ views.collectionDay.infoLoan.valueInterest | currency: "$":0 }} </label>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-xs-6">Total:</label>
+                    <label class="col-xs-6" style="padding: 0">{{ views.collectionDay.infoLoan.totalValue | currency:"$":0 }}</label>
+                </div>
+                
+                <hr class="col-xs-12" style="padding:0;border-color:#3595bd">
+                <div class="form-group">
+                    <label class="col-xs-6">Saldo:</label>
+                    <label class="col-xs-6" style="padding: 0">{{ views.collectionDay.infoLoan.balance | currency:"$":0 }}</label>
+                </div>
+
+            </div>
+        </div>
+        <hr class="col-xs-12" style="padding: 0" />
+
+        <form class="form-group" ng-submit="createPayment()">
+            <input type="hidden" id="feePaymentId" name="feePaymentId" value="{{ views.collectionDay.infoLoan.id }}" ng-model="views.collectionDay.infoLoan.id"/>
+            <input type="hidden" id="loanPaymentId" name="loanPaymentId" value="{{ views.collectionDay.infoLoan.loan.id }}" ng-model="views.collectionDay.infoLoan.loan.id"/>
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label for="inputValorMinimo">Valor Minimo:</label>
+                    <input type="text" required="" ng-model="views.collectionDay.infoLoan.value" id="inputValorMinimo" class="form-control" readonly="readonly" />
+                </div>
+
+                <div class="form-group">
+                    <label for="inputValorConsignado">Valor Consignado:</label>
+                    <input type="number" required="" id="inputValorConsignado" ng-model="views.collectionDay.infoLoan.payment" ng-click="copyValuePayment()" class="form-control" />
+                </div>
+            </div>
+
+            <div class="col-xs-12" style="margin-top:1rem;margin-bottom: 1rem" ng-show="views.collectionDay.infoLoan.typePaid2 == 2">
+                <label>Realizar Abono a Capital</label>
+                <input class="form-control" ng-model="views.collectionDay.infoLoan.addPaidBalance" type="text"/>
+            </div>
+
+            <div class="col-xs-6">
+                <input type="submit" class="btn btn-primary" value="Registrar" />
+            </div>
+
+            <div class="col-xs-6">
+                <button class="btn btn-danger" style="float:right" ui-sref="home.collectionDay">Cancelar</button>
+            </div>
+
+            <div class="col-xs-12" style="margin-top: 1rem">
+                <div class="btn btn-success" style="width: 100%" ui-sref="home.listPaymentsLoan">
+                    Ver Historíal de Pagos
+                </div>
+
+                <div class="btn btn-success" style="width: 100%;margin-top: 1rem" ui-sref="home.detailLoan">
+                    Ver Detalles Prestamo
+                </div>
+
+                <div class="btn btn-success" style="width: 100%;margin-top: 1rem" ui-sref="home.stateFeesLoan({loan_id : views.collectionDay.infoLoan.loan.id})">
+                    Ver Estado Cuotas
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+

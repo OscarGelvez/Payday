@@ -1,0 +1,48 @@
+
+<ion-view view-title="{{'Settings.AdminRubros.Title' | translate}}">
+
+      <ion-content class="bg-home" scroll="true" overflow-scroll="false">
+                 
+       
+              <div class="divAdminRubros">
+         
+                      <div class="list" scroll="true" overflow-scroll="false">
+                             <ion-scroll zooming="false" direction="y"  style="height:550px;">  
+                           
+                              <div class="item item-divider">
+                                {{'Settings.AdminRubros.BasicRubros' | translate}}
+                              </div>
+
+                              <a ng-repeat="c in categories" class="item" href="#">
+                                {{c.name}}
+                              </a> 
+                              
+
+                              <div class="item item-divider">
+                                {{'Settings.AdminRubros.CustomRubros' | translate}}
+                              </div>
+                            
+                        
+                             </ion-scroll> 
+                      </div>
+
+                 
+              </div>
+            
+    
+       
+
+            
+       
+      </ion-content>
+
+</ion-view>
+
+
+
+
+
+    </div>
+ 
+
+

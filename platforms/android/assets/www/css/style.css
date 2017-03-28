@@ -1,0 +1,679 @@
+/* 
+Formulario Registro
+
+*/
+  @media screen and (orientation: portrait) {
+  .formRegistro{
+        width: 80%;
+    }
+  .img-responsive {
+      margin-top: 30%;
+      margin-bottom: 28%;
+      width: 100%;
+      height: auto;
+    }
+
+    /* Spinner de carga */
+
+.spinner svg {
+  margin-top: 70%;
+  vertical-align: middle !important;  width: 60px;
+  height: 60px;
+  stroke: #444;
+  fill: #009ce5;
+}
+/*Fondo negro del spinner de carga*/
+.loading{
+ background-color: rgba(50,50,50,0.5)!important;
+  height: 100%;
+}
+  }
+  
+@media screen and (orientation: landscape) {
+  .formRegistro{
+        width: 80%;
+        height: 50%;
+
+    }
+    .img-responsive {
+      margin-top: 2%;
+      margin-bottom: 28%;
+      width: 100%;
+      height: auto;
+    }
+
+    /* Spinner de carga */
+
+.spinner svg {
+  margin-top: 20%;
+  vertical-align: middle !important;
+    width: 80px;
+  height: 80px;
+  stroke: #444;
+  fill: #009ce5;
+}
+/*Fondo negro del spinner de carga*/
+.loading{
+ background-color: rgba(50,50,50,0.5)!important;
+  height: 100%;
+}
+
+  }
+
+
+
+/* 
+Formulario Inicio sesión
+
+*/
+  @media screen and (orientation: portrait) {
+  .formInicio{
+        margin-top: 20%;
+        margin-bottom:20%;
+        width: 80%;
+    }
+  .img-responsive {
+      margin-top: 20%;
+      width: 100%;
+      height: auto;
+    }
+
+    .btnInicio{
+      margin-top: 10%;
+      margin-bottom:10%;
+    }
+
+  }
+  
+@media screen and (orientation: landscape) {
+  .formInicio{
+        width: 80%;
+        height: 50%;
+
+    }
+    .img-responsive {
+      margin-top: 2%;
+
+      width: 100%;
+      height: auto;
+    }
+
+    .btnInicio{
+      margin-top: 10%;
+      margin-bottom:10%;
+    }
+
+  }
+
+
+/*Arreglos generales para los inputs de form inicio y form registro*/
+.formInicio input[type="text"], input[type="password"]{
+color: white !important;  /* change [input cursor color] by this*/
+  font-weight:500 !important;
+  text-shadow: 0px 0px 0px white; /* change [input font] by this*/
+  -webkit-text-fill-color: transparent;
+  border-color: #009688 !important;
+  font-size: 16px !important;
+  text-align: center;
+  padding: 0px;
+
+}
+
+.formRegistro input[type="text"], input[type="password"], input[type="email"], input[type="date"]{
+color: white !important;  /* change [input cursor color] by this*/
+  font-weight:500 !important;
+  text-shadow: 0px 0px 0px #fff; /* change [input font] by this*/
+  -webkit-text-fill-color: transparent;
+  border-color: #009688 !important;
+  font-size: 16px !important;
+  text-align: center;
+
+  padding: 0px;
+  margin: 0px;
+  background-color: transparent;
+
+}
+
+
+
+.formRegistro select{
+background-color: #285f9b;
+color: white;
+}
+
+.labelSelect{
+  color:white;
+  float: left;
+  margin-left: 3%;
+  padding-top: 5px;
+  height: 62px;
+  font-size: 16px;
+
+}
+.selectElement{
+  float: right;
+  padding-top: 5px !important;
+  width: 60% !important;
+  height: 70px !important;
+  margin-right: 15px;
+
+  font-size: 16px !important;
+}
+
+
+.titleFormInicioRegistro{
+  color:white;
+}
+
+.labelsFormInicioRegistro{
+  background-color:#285f9b;
+  color:white;
+  text-align: center;
+ padding: 0px;
+ margin-right: 0px;
+}
+
+.labelsFormRegistroSelect{
+  background-color:#285f9b;
+  color:white;
+  text-align: center;
+ padding: 0px;
+ margin-right: 1px; /* al parecer lo arregla o.O*/
+}
+/*fin arreglos generales*/
+
+
+
+/* logo de login y singup*/
+.logoLoginSingup{
+  width: 120px;
+  margin: 0 auto;
+}
+
+
+
+
+/* 
+Home pantalla principal
+
+*/
+  @media screen and (orientation: portrait) {
+  .homeEnlaces{       
+        width: 95%;
+        height: 100%;      
+        margin:10%;
+        margin-top: 0%;
+    }
+  .link-responsive {
+      margin-top: 10%;
+      margin-bottom: 0%;    
+      width: 70%;
+      height: auto;
+    }
+
+ /* Links externos verticalmente*/
+
+  .textLink{
+  margin-left: 15%;
+    font-size: 100%;
+    font-weight:600;
+    color: white
+   } 
+
+   .textInfoHome{
+    border:3px;
+    border-style: solid;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 5%;
+    border-color: rgba(255, 255, 1255,0.6);
+    border-radius: 50px !important;
+   
+    box-shadow: 2px 2px 20px rgb(34, 150, 181);
+    height: 110px;
+    color: white;
+    font-weight:700;
+    width: 70%;
+    background-color: rgba(37,145,198,0.5);
+
+   }
+  }
+  
+@media screen and (orientation: landscape) {
+  .homeEnlaces{
+        margin-left: 10%;
+        width: 80%;
+        height: 100%;
+        
+    }
+  .link-responsive {
+      margin: 33%;
+      margin-bottom: 0%;
+      width: 50%;
+      height: auto;
+    }
+
+    .textLink{
+    margin-left: 30%;
+    font-size: 150%;
+    font-weight:600;
+    color: white
+   } 
+   /*Para el exto de ingresos, egresos y total*/
+   .textInfoHome{
+    border:3px;
+    border-style: solid;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 5%;
+    border-color: rgba(255, 255, 1255,0.6);
+    border-radius: 50px !important;
+   
+    box-shadow: 2px 2px 20px rgb(34, 150, 181);
+
+    color: white;
+    font-weight:700;
+    width: 70%;
+     background-color: rgba(37,145,198,0.5);
+    }
+
+    .btnIniciarDia{
+
+      border-radius: 50% !important;
+    }
+  }
+
+
+/*Fin Home pantalla principal*/
+.bg-home {
+  background: url(../img/Splash.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+
+/*Arreglos para formulario de movimientos de caja*/
+
+/*Toggle de formulario*/
+
+.toggleCustom{
+  background-color: transparent;
+}
+
+  @media screen and (orientation: portrait) {
+    
+    .divMoveBox{
+        margin-top: 5%;
+        margin-bottom:20%;
+        width: 80%;
+        margin-left: 10%;
+    }
+
+    
+    .divMoveBox input[type="text"], input[type="date"], input[type="number"]{
+    color: white !important;  /* change [input cursor color] by this*/
+      font-weight:500 !important;
+      text-shadow: 0px 0px 0px #fff; /* change [input font] by this*/
+      -webkit-text-fill-color: transparent;
+      border-color: #009688 !important;
+      font-size: 16px !important;
+      text-align: center;
+      padding: 0px;
+      background-color: transparent;
+      border-color: 
+
+    }
+  }
+  
+@media screen and (orientation: landscape) {
+  
+   .divMoveBox{
+        margin-top: 5%;
+        margin-bottom:20%;
+        width: 80%;
+        margin-left: 10%;
+    }
+
+    
+    .divMoveBox input[type="text"], input[type="date"], input[type="number"]{
+    color: white !important;  /* change [input cursor color] by this*/
+      font-weight:500 !important;
+      text-shadow: 0px 0px 0px #fff; /* change [input font] by this*/
+      -webkit-text-fill-color: transparent;
+      border-color: #009688 !important;
+      font-size: 16px !important;
+      text-align: center;
+      padding: 0px;
+      background-color: transparent;
+      border-color: 
+
+    }
+  }
+
+
+
+/*Arreglos para vista Configuraciones/administrar Rubros (Categorias)*/
+ @media screen and (orientation: portrait) {
+    .divAdminRubros{
+        margin-top: 5%;
+        margin-bottom:20%;
+        width: 80%;
+        margin-left: 10%;
+        height: 40% !important;
+    }
+  }
+  
+@media screen and (orientation: landscape) {
+  
+   
+  }
+
+
+
+
+/*Fin css */
+.bg-intro {
+  background: url(../img/Splash.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.logo {
+  width: 140px;
+}
+
+.slogan {
+  color: #fff;
+  text-align: center;
+}
+.password {
+  margin: 10px 0;
+}
+.password span {
+  display: block;
+  width: 10px;
+  height: 10px;
+  background: #202c4f;
+  float: left;
+  margin: 0 5px;
+  border-radius: 50%;
+}
+.password span.active {
+  background-color: #fff;
+}
+.keyboard-login {
+  margin: 10px 0;
+}
+.keyboard-login ul {
+  overflow: hidden;
+  width: 240px;
+  margin: 0 auto;
+}
+.keyboard-login ul li {
+  float: left;
+  padding: 10px;
+  width: 80px;
+  height: 80px;
+}
+.keyboard-login ul li .number-key {
+  padding: 10px;
+  background-color: #285f9b;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  text-align: center;
+  line-height: 40px;
+  font-size: 20px;
+  color: #fff;
+}
+.keyboard-login ul li .number-key.activated {
+  background-color: #678AB1;
+}
+.visible-hidden {
+  visibility: hidden;
+}
+.bar-positive {
+  border-color: #1067a8 !important;
+  background-color: #1067a8 !important;
+  background-image: linear-gradient(0deg, #1067a8, #1067a8 50%, transparent 50%) !important;
+  color: #fff;
+}
+.list-footer {
+  padding: 0;
+}
+.list-footer ul {
+  width: 100%;
+}
+.list-footer ul li {
+  float: left;
+  width: 20%;
+  text-align: center;
+  color: #153957;
+  padding: 5px;
+}
+.list-footer ul li i {
+  font-size: 24px;
+}
+.list-footer ul li .text-tab {
+  font-size: 11px;
+  height: 13px;
+  line-height: 12px;
+}
+.list-footer ul li .icon-tab {
+  height: 20px;
+}
+.list-footer ul li.active {
+  color: #fff;
+}
+.list-footer .plus-transaction {
+  border: 1px solid #12aaeb;
+  background-color: #12aaeb;
+  color: #fff;
+  border-radius: 2px;
+  height: 32px;
+}
+.bg-content {
+  background-color: #163255;
+}
+.days {
+  padding: 10px 0;
+  background-color: #14283e;
+}
+.days .th {
+  color: #7b91a3;
+}
+.days .day {
+  color: #5391cf;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  margin: 0 auto;
+  line-height: 25px;
+  text-align: center;
+}
+.days .day-active .day {
+  color: #fff;
+}
+.days .active .day {
+  background-color: #12aaeb;
+}
+.total-calendar {
+  background-color: #fff;
+  margin: 10px;
+  border-radius: 4px;
+  padding: 10px 10px 7px 10px;
+}
+.padding-b-5 {
+  padding-bottom: 1px;
+}
+.color-gray-blue {
+  color: #6d93bc;
+}
+.color-black-blue {
+  color: #274259;
+}
+.color-wallet {
+  color: #a3b7c5;
+}
+.bold {
+  font-weight: bold;
+}
+.list-report {
+  margin: 10px;
+  background-color: #fff;
+  border-radius: 4px;
+}
+.icon-report-calendar {
+  width: 36px;
+  height: 36px;
+  margin: 10px;
+  font-size: 18px;
+  color: #fff;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 36px;
+}
+.m-r-10 {
+  margin-right: 10px;
+}
+.b-b-gray {
+  border-bottom: 1px solid #dbe0e6;
+  padding: 10px 0;
+}
+.bold-md {
+  font-weight: 500;
+}
+.font-size-md {
+  font-size: 12px;
+}
+.header-budget {
+  background-color: #f1f5f8;
+  margin: 10px 10px 0 10px;
+  border-radius: 4px 4px 0 0;
+  padding: 10px 0;
+}
+.uppercase {
+  text-transform: uppercase;
+}
+.color-budget {
+  color: #bac9d4;
+}
+.center-border {
+  border-left: 1px solid #dbe0e6;
+  border-right: 1px solid #dbe0e6;
+}
+#line {
+  background-color: #fff;
+  padding: 10px;
+}
+.label-budget {
+  margin: 10px;
+  background-color: #fff;
+  border-radius: 4px;
+}
+.icon-chart-report {
+  width: 60px;
+  height: 60px;
+  margin: 10px;
+  font-size: 13px;
+  color: #fff;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 60px;
+}
+.switch-report {
+  width: 200px;
+  margin: 0 auto;
+  border: 1px solid #95acbc;
+  border-radius: 4px;
+}
+.switch-report .tab-report {
+  padding: 5px;
+}
+.switch-report .tab-report.active {
+  background-color: #95acbc;
+  color: #fff;
+}
+.report-chart {
+  margin: 10px;
+  background-color: #fff;
+  border-radius: 4px;
+}
+.category-chart-report span {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  line-height: 25px;
+  font-size: 12px;
+  color: #fff;
+  text-align: center;
+}
+.table-report {
+  margin-top: 10px;
+}
+.table-report tr td {
+  padding: 10px;
+  height: 35px;
+}
+.header-table-report {
+  background-color: #f1f5f8;
+}
+.header-table-report td {
+  height: auto !important;
+}
+.avatar img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+}
+.name-user {
+  color: #fff;
+}
+.header-calculator {
+  padding: 20px;
+}
+.account .icon-report-calendar {
+  color: #5391cf;
+}
+.account .b-b-gray {
+  height: 61px;
+}
+.header-account {
+  padding: 10px 10px 10px 20px;
+  background-color: #0e2237;
+  color: #fff;
+  border-radius: 4px 4px 0 0;
+}
+.setting .icon-report-calendar {
+  color: #5391cf;
+  margin: 0 10px 0 10px;
+}
+.switch-report-transaction {
+  width: 260px;
+}
+.icon-dolar {
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+  border-radius: 50%;
+  color: #fff;
+}
+.add-transaction-list li {
+  padding-right: 25px;
+}
+.add-transaction-list textarea {
+  padding: 10px;
+}
+.no-margin {
+  margin: 0 !important;
+}
+.add-number {
+  padding: 20px;
+}

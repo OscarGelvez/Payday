@@ -1,0 +1,89 @@
+
+<ion-view view-title="{{'MoveBox.Title' | translate}}">
+
+      <ion-content class="bg-home" scroll="true" overflow-scroll="false">
+                 
+       
+            
+              <form>               
+                <div class="divMoveBox" >
+
+                      <label class="item item-input item-stacked-label labelsFormInicioRegistro">
+                          <span class="input-label" style="color:white; text-align:center" translate-cloak>{{'MoveBox.Value' | translate}}</span>
+                          <br>
+                          <b class="input-label" style="color:white; text-align:right; float:left; width:40%">$</b>
+                          <input type="text" style="width:60%; float:left;  text-align:left; padding-left:5px;" ng-required="true" ng-model="contentMove.value" min="1" max="4294967295" ui-number-mask="0" >
+                          
+                      </label> 
+
+                    
+                        <label class="item item-input item-stacked-label labelsFormInicioRegistro"  >
+                           <span class="input-label" style="color:white" translate-cloak ng-disabled="desabilitarCampos">{{'MoveBox.Date' | translate}}</span>
+                           <input type="date"  ng-model="contentMove.fecha" style="color:white" date-format max="{{CurrentDate | date:'yyyy-MM-dd'}}" min="1916-01-01" ng-required="true" ng-disabled="desabilitarCampos"> 
+                      </label>
+               
+
+               <label class="item item-input item-stacked-label labelsFormInicioRegistro" >
+              <span class="input-label" style="color:white;" translate-cloak ng-disabled="desabilitarCampos">{{'MoveBox.TypeMovementTitle' | translate}}</span>
+                                   
+
+                  <ion-toggle ng-model="contentMove.tipo" style="background-color:rgb(40,95,155); border-color:transparent;  color:white" toggle-class="toggle-balanced " ng-required="true" ng-disabled="desabilitarCampos" >{{valToggle }}</ion-toggle>
+                      </label>
+                 
+
+                      <div class="item item-input item-select item-stacked-label labelsFormRegistroSelect">
+                      <label class="labelSelect" ng-disabled="desabilitarCampos" >{{'MoveBox.Category' | translate}}</label>
+                          
+                       
+                        <select class="selectElement" ng-model="contentMove.categoria" ng-required="true" style="background-color: #285f9b;color:white;" ng-disabled="desabilitarCampos">
+                          <option value="">--{{'MoveBox.TextSelectCategory' | translate}}--</option> 
+                          <option value="{{c.id}}" ng-repeat="c in categories">{{c.name}}</option>                          
+                        </select>
+                      </div>
+
+                     
+                      <input type="number"  ng-model="contentMove.baseCaja" min="0" max="1" ng-hide="true">
+
+                      
+                    
+
+                       <label class="item item-input item-stacked-label labelsFormInicioRegistro" ng-disabled="desabilitarCampos" >
+                           <span class="input-label" style="color:white" translate-cloak>{{'MoveBox.Observations' | translate}}</span>
+                            <textarea ng-model="contentMove.observaciones" translate-cloak placeholder="{{'MoveBox.ObservationsPlaceholder' | translate}}" style=" background-color:transparent; padding:5px;" ng-disabled="desabilitarCampos"></textarea>
+                      </label>
+               
+               
+
+                                          
+               <button style="float:left"  type="button" class="button button-balanced btnInicio icon ion-save " ng-click="submitForm(contentMove)">
+                      {{'MoveBox.Save' | translate}} 
+                  </button>
+                  <button  style="float:right" type="button" class="button button-stable btnInicio icon ion-save " ng-click="cancelForm()">
+                      {{'MoveBox.Cancel' | translate}} 
+                  </button>
+
+
+                    
+
+                  
+                         
+                    </div>
+                                         
+                    
+                 </form> 
+    
+        
+            
+       
+      </ion-content>
+
+</ion-view>
+
+
+
+
+
+    </div>
+ 
+
+

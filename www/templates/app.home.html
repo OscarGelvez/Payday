@@ -1,0 +1,86 @@
+
+<ion-view view-title="{{'Home.LatInicio' | translate}}">
+
+<ion-content class="bg-home" scroll="true" overflow-scroll="false">
+
+ 
+   <div class="textInfoHome" ng-show="false">
+      <div class="row row">
+       
+            <div class="col col-50 col-offset-20">
+                 <h4 class="icon ion-arrow-down-c"> {{'Home.TextInfoIncomes' | translate}}</h4>
+                  <h4 class="icon ion-arrow-up-c"> {{'Home.TextInfoExpenses' | translate}}</h4>
+                   <h4 class="icon ion-social-usd"> {{'Home.TextInfoBalance' | translate}}</h4>
+            </div>
+                         
+
+    </div>
+   </div>
+
+ <center>
+    
+        <br><br>
+            <div>
+                 <button  class="button button-balanced icon ion-flash  " style="width:40%" ui-sref="app.moves_box"> {{'Home.TextInfoStartDay' | translate}}</button>
+            </div>
+                         
+
+
+ </center>
+     
+   
+
+
+
+<div class="homeEnlaces" >
+<div class="row row-top">
+  <div class="col col-33"> <img class="link-responsive" src="img/payday_64.png" alt=""><sub class="textLink">{{'Home.LatCashReceive' | translate}}</sub></div>
+  <div class="col col-33"> <img class="link-responsive" src="img/payday_64.png" alt=""><sub class="textLink">{{'Home.LatLoans' | translate}}</sub></div>
+  <div class="col col-33"> <img class="link-responsive" src="img/payday_64.png" alt=""><sub class="textLink">{{'Home.LatClients' | translate}}</sub></div>
+
+</div>
+<div class="row row-center">
+  <div class="col col-33"> <img class="link-responsive" src="img/payday_64.png" alt=""><sub class="textLink">{{'Home.LatSimulator' | translate}}</sub></div>
+  <div class="col col-33"> <img class="link-responsive" src="img/payday_64.png" alt=""><sub class="textLink">{{'Home.LatBoxMoney' | translate}}</sub></div>
+  <div class="col col-33"> <img class="link-responsive" src="img/payday_64.png" alt=""><sub class="textLink">{{'Home.LatBalance' | translate}}</sub></div>
+
+</div>
+<div class="row row-bottom">
+  <div class="col col-33"> <img class="link-responsive" src="img/payday_64.png" alt=""><sub class="textLink">{{'Home.LatSettings' | translate}}</sub></div>
+  <div class="col col-33"> <img class="link-responsive" src="img/payday_64.png" alt=""><sub class="textLink">reemplazar</sub></div>
+  <div class="col col-33"> <img class="link-responsive" src="img/payday_64.png" alt=""><sub class="textLink">reemplazar</sub></div>
+
+</div> 
+
+    </div>
+ 
+</ion-content>
+
+<script>
+    jQuery(document).ready(function () {
+        Metronic.init(); // init metronic core componets
+        Layout.init(); // init layout
+        Index.init();
+        QuickSidebar.init() // init quick sidebar
+        
+        Index.initDashboardDaterange();
+        //Index.initJQVMAP(); // init index page's custom scripts
+        Index.initCalendar(); // init index page's custom scripts
+        //Index.initCharts(); // init index page's custom scripts
+        //Index.initChat();
+        //Index.initMiniCharts();
+        Index.initIntro();
+        Tasks.initDashboardWidget();
+        TableEditable.init();
+        ComponentsPickers.init();
+        Demo.init();
+
+    });
+</script>
+
+  </ion-view>
+
+
+
+
+

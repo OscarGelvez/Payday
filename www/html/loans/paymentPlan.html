@@ -1,0 +1,30 @@
+<h1>Plan de Cobro</h1>
+<table class="table table-striped col-xs-12" style="background-color: #FFF">
+	<thead >
+		<tr>
+			<th>Fecha
+				<br/>
+				dd-mm-aaaa
+			</th>
+			<th>Capital</th>
+			<th>Interes</th>
+			<!--<th>Total</th>-->
+			<th>Total Pagado</th>
+		</tr>
+	</thead>
+
+	<tbody >
+
+	<tr ng-repeat="paid in tablePaymentPlan">
+		<td>{{ calcDate.parseDateToString(paid.date,'dd-mm-yyyy','-') }}</td>
+		<td>{{ paid.balance | currency : "$":0 }}</td>
+		<td>{{ paid.interest | currency : "$":0 }}</td>
+		<!-- <td>{{ paid.total }}</td>-->
+		<td>{{ paid.paid | currency : "$":0 }}</td>
+	</tr>
+	</tbody>
+</table>
+
+<button class="btn btn-success col-xs-12" ng-click="goBackSimulate()">
+	Volver
+</button>

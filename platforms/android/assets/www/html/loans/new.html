@@ -1,0 +1,283 @@
+<h1>
+	Crear Prestamo
+</h1>
+
+<div class="container-fluid">
+    <div class="row">
+        <form  ng-submit="createLoan()">
+            <div class="form-group col-xs-12" >
+                <label for="client_document" ng-show="views.new.client.document.length > 0 ">Documento Cliente</label>
+                <input id="client_document" type="text" class="form-control" name="client_document" required  ng-keyup="findClient('client');" ng-model="views.new.client.document" placeholder="Cedula">
+            </div>
+
+            <div class="form-group col-xs-12" >
+                <label for="client_name" ng-show="views.new.client.name.length > 0">Nombre Cliente</label>
+                <input id="client_name" type="text" class="form-control" name="client_name" required ng-readonly="views.new.client.notFind == false" ng-model="views.new.client.name" placeholder="Nombre">
+            </div>
+
+            <input type="hidden" ng-model="views.new.client.id" />
+
+            <div ng-show="views.new.client.notFind || views.new.client.showDetail">
+                <div class="form-group col-xs-12">
+                    <label for="document_address" ng-show="views.new.client.address.length > 0">Dirección</label>
+                    <input id="document_address" name="document_address" type="text" class="form-control" required ng-model="views.new.client.address" placeholder="Dirección">
+                </div>
+
+                <div class="form-group col-xs-12">
+                    <label for="client_phone_numbers" ng-show="views.new.client.phone_numbers.length > 0">Números De Telefonos</label>
+                    <input id="client_phone_numbers" name="client_phone_numbers" type="text" class="form-control" required ng-model="views.new.client.phone_numbers" placeholder="Telefono">
+                    <sup class="text-info">Si es más de uno puedes separarlos con ','</sup>
+                </div>
+
+                <div class="form-group col-xs-12">
+                    <label for="client_email" ng-show="views.new.client.email.length > 0" >Correo Electronico</label>
+                    <input id="client_email" name="client_email" type="email" class="form-control" required ng-model="views.new.client.email" placeholder="Email">
+                </div>
+
+                <div class="form-group col-xs-12">
+                    <label for="client_neighbourhoood" ng-show="views.new.client.neighbourhood_id > 0">Barrio</label>
+                    <select id="client_neighbourhoood" class="form-control" required
+                            ng-model="views.new.client.neighbourhood_id"
+                            ng-options="value.id as value.name for value in optionsNeighbourhoods">
+                        <option value="" >Seleccione Barrio</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group col-xs-12">
+                <span ng-class="views.new.client.showDetailCurrentClass" style="float: right" ng-click="showDetail('client')"></span>
+            </div>
+
+            <div class="form-inline" >
+
+                <div class="form-group col-xs-6">
+                    <label for="loan_value" ng-show="views.new.loan.value > 0">Valor Prestamo</label>
+                    <input id="loan_value" type="number" class="form-control" required ng-model="views.new.loan.value" placeholder="Monto">
+                </div>
+
+                <div class="form-group col-xs-6" style="margin-bottom: 1rem">
+                    <label for="loan_rate_interest" ng-show="views.new.loan.interest_rate.length > 0">Intereses %</label>
+                    <input id="loan_rate_interest" type="number" isNumber class="form-control" required ng-model="views.new.loan.interest_rate" placeholder="Intereses">
+                </div>
+            </div>
+
+            <div class="form-inline"  >
+                <label class="col-xs-12" ng-show="views.new.loan.selectPayPeriod.length > 0">Frecuencía de Cobro</label>
+
+                <div class="form-group col-xs-12" >
+                    <select class="form-control" ng-model="views.new.loan.selectPayPeriod" ng-change="updateSelectDate()" style="width: 100%;">
+                        <option value="">Frecuencía Cobro</option>
+                        <option value="+,*,*">Cada Día</option>
+                        <option value=",*,*,*">Cada Semana</option>
+                        <option value=",+,*">Cada Mes</option>
+                        <option value="c*,*,*">Personalizar Día</option>
+                        <option value="*,c*,*">Personalizar Mes</option>
+                    </select>
+                </div>
+
+                <input class="form-control col-xs-12" ng-model="views.new.loan.pay_period_text"  type="hidden"/>
+            </div>
+
+
+                <div class="col-xs-12 form-group" ng-show="views.new.loan.selectPayPeriod == ',+,*' || views.new.loan.selectPayPeriod == '*,c*,*' " >
+                    <label for="dayOfMonth">Cobrar el Día:</label>
+                    <select ng-change="updateSelectDate()" ng-required="views.new.loan.selectPayPeriod == ',+,*' || views.new.loan.selectPayPeriod == '*,c*,*' " class="form-control" name="" id="dayOfMonth" ng-model="views.new.loan.monthlyPayment">
+                        <option value="" ng-show="views.new.loan.monthlyPayment.length == 0">Seleccione Día</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                        <option value="16">16</option>
+                        <option value="17">17</option>
+                        <option value="18">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option>
+                        <option value="21">21</option>
+                        <option value="22">22</option>
+                        <option value="23">23</option>
+                        <option value="24">24</option>
+                        <option value="25">25</option>
+                        <option value="26">26</option>
+                        <option value="27">27</option>
+                        <option value="28">28</option>
+                        <option value="29">29</option>
+                        <option value="30">30</option>
+                    </select>
+                </div>
+
+                <div class="col-xs-12 form-group" ng-show="views.new.loan.selectPayPeriod == ',*,*,*'" >
+                    <label for="dayOfWeek">Cobrar los :</label>
+                    <select ng-change="updateSelectDate()" ng-required="views.new.loan.selectPayPeriod == ',*,*,*'" class="form-control" name=""
+                            id="dayOfWeek"
+                            ng-model="views.new.loan.weeklyPayment "
+                            ng-options="value.id as value.name for value in lists.days">
+                        
+                    </select>
+                </div>
+
+                <div class="col-xs-12 form-group" ng-show="views.new.loan.selectPayPeriod == 'c*,*,*'" >
+                    <label class="" for="personalizeDays">Cada:</label>
+                    <select name="" ng-change="updateSelectDate()" ng-required="views.new.loan.selectPayPeriod == 'c*,*,*'" class="form-control" id="personalizeDays" ng-model="views.new.loan.dailyPayment">
+                        <option value="" ng-show="views.new.loan.dailyPayment.length == 0">Seleccione Día</option>
+                        <option value="+2">2 Días</option>
+                        <option value="+3">3 Días</option>
+                        <option value="+4">4 Días</option>
+                        <option value="+5">5 Días</option>
+                        <option value="+6">6 Días</option>
+                        <option value="+8">8 Días</option>
+                        <option value="+9">9 Días</option>
+                        <option value="+10">10 Días</option>
+                        <option value="+11">11 Días</option>
+                        <option value="+12">12 Días</option>
+                        <option value="+13">13 Días</option>
+                        <option value="+14">14 Días</option>
+                        <option value="+15">15 Días</option>
+                        <option value="+16">16 Días</option>
+                        <option value="+17">17 Días</option>
+                        <option value="+18">18 Días</option>
+                        <option value="+19">19 Días</option>
+                        <option value="+20">20 Días</option>
+                        <option value="+21">21 Días</option>
+                        <option value="+22">22 Días</option>
+                        <option value="+23">23 Días</option>
+                        <option value="+24">24 Días</option>
+                        <option value="+25">25 Días</option>
+                        <option value="+26">26 Días</option>
+                        <option value="+27">27 Días</option>
+                        <option value="+28">28 Días</option>
+                        <option value="+29">29 Días</option>
+                    </select>
+                </div>
+
+                <div class="col-xs-12 form-group" ng-show="views.new.loan.selectPayPeriod == '*,c*,*'">
+                    <label class="" for="personalizeMounth">Cada: </label>
+                    <select ng-change="updateSelectDate()" ng-required="views.new.loan.selectPayPeriod == '*,c*,*'" class="form-control" name="" id="personalizeMounth" ng-model="views.new.loan.customMonthlyPayment">
+                        <option value="" ng-show="views.new.loan.customMonthlyPayment.length == 0">Seleccione Mes</option>
+                        <option value="+2">2 Meses</option>
+                        <option value="+3">3 Meses</option>
+                        <option value="+4">4 Meses</option>
+                        <option value="+5">5 Meses</option>
+                        <option value="+6">6 Meses</option>
+                        <option value="+7">7 Meses</option>
+                        <option value="+8">8 Meses</option>
+                        <option value="+9">9 Meses</option>
+                        <option value="+10">10 Meses</option>
+                        <option value="+11">11 Meses</option>
+                        <option value="+12">12 Meses</option>
+                    </select>
+                </div>
+
+            <!--
+            <div class="form-group col-xs-12" >
+                <input type="number" class="form-control" readonly required ng-model="views.new.loan.numbers_of_fee" placeholder="N° Cuotas">
+            </div>
+            -->
+
+            <div class="form-group col-xs-12" style="margin-top: 1rem">
+                <label for="startDate" ng-show="views.new.loan.start_date.length > 0">Fecha Inicio Cobros</label>
+                <input  type="text" class="form-control datePicker" readonly="" required ng-model="views.new.loan.start_date" id="startDate" placeholder="Fecha Inicio">
+            </div>
+
+            <div class="form-group col-xs-12" style="margin-top: 1rem">
+                <label for="loan_duration" ng-show="views.new.loan.date_end.length > 0">Fecha Finalización Prestamo</label>
+                <input  type="text" class="form-control datePicker" readonly="" required ng-model="views.new.loan.date_end"  id="loan_duration" placeholder="Fecha Finalización Prestamo">
+            </div>
+
+            <div class="form-group col-xs-12" >
+                <label for="type_paid" ng-show="views.new.loan.type_paid_id > 0">Tipo de Abono</label>
+                <select id="type_paid" class="form-control " required ng-model="views.new.loan.type_paid_id" ng-options="value.id as value.name for value in typesPaid">
+                    <option value="">Tipo De Abono</option>
+                </select>
+            </div>
+
+            <div class="form-group col-xs-12" >
+                <label for="loan_retention" ng-show="views.new.loan.retention != null">Seguro / Rifa</label>
+                <input id="loan_retention" type="number" class="form-control"  ng-model="views.new.loan.retention" placeholder="Retención"/>
+            </div>
+
+
+
+            <div class="form-group col-xs-12" >
+                <label for="guarantor_check">Incluir Fiador</label>
+                    <input id="guarantor_check" type="checkbox" class="form-control"  ng-model="views.new.loan.guarantorCheck" placeholder="Retención"/>
+            </div>
+
+            <!-- INFORMACIÓN DEL FIADOR -->
+            <div class="form-group col-xs-12" ng-show="views.new.loan.guarantorCheck">
+                <div class="form-group col-xs-12" style="padding:  0 !important">
+                    <label ng-show="views.new.guarantor.document.length > 0 " >Documento Fiador.</label>
+                    <input type="text" class="form-control"  name="views.new.guarantor.document"   ng-keyup="findClient('guarantor');" ng-model="views.new.guarantor.document" placeholder="Cedula">
+                </div>
+
+                <div class="form-group col-xs-12" style="padding:  0 !important" >
+                    <label for="guarantor_name" ng-show="views.new.guarantor.name.length > 0">Nombre Fiador.</label>
+                    <input id="guarantor_name" type="text" class="form-control" name="views.new.guarantor.name"  ng-readonly="views.new.guarantor.notFind == false" ng-model="views.new.guarantor.name" placeholder="Nombre">
+                </div>
+
+                <input type="hidden" ng-model="views.new.guarantor.id" />
+
+                <div ng-show="views.new.guarantor.notFind || views.new.guarantor.showDetail" >
+                    <div class="form-group col-xs-12" style="padding:  0 !important">
+                        <label for="guarantor_address" ng-show="views.new.guarantor.address.length > 0">Dirección</label>
+                        <input id="guarantor_address" name="guarantor_address" type="text" class="form-control"  ng-model="views.new.guarantor.address" placeholder="Dirección">
+                    </div>
+
+                    <div class="form-group col-xs-12" style="padding:  0 !important">
+                        <label for="phone_numbers" ng-show="views.new.guarantor.phone_numbers.length > 0">Números De Telefonos</label>
+                        <input id="phone_numbers" name="views.new.guarantor.phone_numbers" type="text" class="form-control"  ng-model="views.new.guarantor.phone_numbers" placeholder="Telefono">
+                        <sup class="text-info">Si es más de uno puedes separarlos con ','</sup>
+                    </div>
+
+                    <div class="form-group col-xs-12" style="padding:  0 !important">
+                        <label for="guarantor_email" ng-show="views.new.guarantor.email.length > 0" >Correo Electronico</label>
+                        <input id="guarantor_email" name="views.new.guarantor.email" type="text" class="form-control"  ng-model="views.new.guarantor.email" placeholder="Email">
+                    </div>
+
+                    <div class="form-group col-xs-12" style="padding:  0 !important">
+                        <label for="views.new.guarantor.neighbourhoood" ng-show="views.new.guarantor.neighbourhood_id > 0">Barrio</label>
+                        <select id="views.new.guarantor.neighbourhoood" class="form-control"
+                                ng-model="views.new.guarantor.neighbourhood_id"
+                                ng-options="value.id as value.name for value in optionsNeighbourhoods">
+                            <option value="" >Seleccione Barrio</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group col-xs-12" style="padding:  0 !important">
+                    <span ng-class="views.new.guarantor.showDetailCurrentClass" style="float: right" ng-click="showDetail('guarantor')"></span>
+                </div>
+
+            </div>
+
+
+            <div class="form-group col-xs-12">
+                    <div class="btn btn-success col-xs-12" ng-click="showPaymentPlan()">Ver Plan de Pago</div>
+            </div>
+
+
+
+            <div class="form-inline" >
+                <div class="form-group col-xs-6">
+                    <input type="submit" value="Guardar" class="btn btn-primary">
+                </div>
+
+                <div class="form-group col-xs-6">
+                    <button class="btn btn-danger" ui-sref="home" style="float:right">Cancelar</button>
+                </div>
+
+            </div>
+
+        </form>
+    </div>
+</div>

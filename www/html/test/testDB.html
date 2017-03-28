@@ -1,0 +1,29 @@
+<div class="container-fluid">
+    <div class="row">
+        <button class="btn btn-primary" ng-click="createDataBase()">Crear</button>
+        <button class="btn btn-primary" ng-click="createTable()">Crear Tabla Zonas</button>
+        <button class="btn btn-primary" ng-click="showSchema()">Verificar Creación</button>
+        <button class="btn btn-danger" ng-click="delete()">Eliminar Todo</button>
+        <button class="btn btn-primary" onclick="cleanContent();">Limpiar Consola</button>
+        
+    </div>
+</div>
+<input type="text" style="width: 100%;margin-top: 1rem" ng-model="testLoader" />
+<input type="text" style="width: 100%;margin-top: 1rem" ng-model="query" />
+<button class="btn btn-success" style="width: 100%;margin-top: 1rem" ng-click="executeQuery()">Execute Query</button>
+<button class="btn btn-success" style="width: 100%;margin-top: 1rem" ng-click="listNeighbourhoods()">List Neighbourhoods</button>
+<button class="btn btn-success" style="width: 100%;margin-top: 1rem" ng-click="findZone()">Find Zone</button>
+<button class="btn btn-success" style="width: 100%;margin-top: 1rem" ng-click="upDatabase()">register</button>
+<button class="btn btn-success" style="width: 100%;margin-top: 1rem" ng-click="listDates()">Test Date</button>
+<form action="">
+    <input ng-model="date.start" class="form-control col-xs-12 datePicker" placeholder="ingrese fecha Inicio" type="text"/>
+    <input ng-model="date.end" class="form-control col-xs-12 datePicker" placeholder="ingrese fecha fin" style="margin-top: 1rem" type="text"/>
+</form>
+
+<button class="btn btn-success" style="width: 100%;margin-top: 1rem" ng-click="listNews()">List News</button>
+<button ng-click="alert()" >algo</button>
+<!--
+<div style="height: 100%;width: 100%;margin: 0;padding: 0; position: fixed;background: rgba(52, 73, 94,1.0)" ng-show="testLoader">
+    
+</div>
+-->

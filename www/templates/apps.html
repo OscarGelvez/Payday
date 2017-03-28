@@ -1,0 +1,78 @@
+
+
+   <ion-side-menus enable-menu-with-back-views="false">
+        <ion-side-menu-content >
+                      
+                    <ion-nav-bar class="bar-positive" >
+                            
+                         <!--  <ion-nav-back-button></ion-nav-back-button>  -->
+
+                          <ion-nav-buttons side="left" >
+                            <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+                            </button>
+                          </ion-nav-buttons>
+                    </ion-nav-bar>
+
+            <ion-nav-view name="menuContent" >
+                
+           
+            </ion-nav-view>
+
+        </ion-side-menu-content>
+                  <ion-side-menu side="left">
+                    <ion-header-bar class="bar-positive"> <h1 class="title"> {{'Home.Title' | translate}}</h1> </ion-header-bar>
+                            <ion-content>
+                              <ion-list>
+                                    <ion-item menu-close  ui-sref="app.home">
+                                      <i class="ion ion-home"></i>
+                                      {{'Home.LatInicio' | translate}}
+                                    </ion-item>
+                                    <ion-item menu-close  >
+                                      <i class="ion ion-cash"></i>
+                                      {{'Home.LatCashReceive' | translate}}
+                                    </ion-item>
+                                    <ion-item menu-close >
+                                    <i class="ion ion-stats-bars"></i>
+                                      {{'Home.LatLoans' | translate}}
+                                    </ion-item>
+                                    <ion-item menu-close >
+                                    <i class="ion ion-person"></i>
+                                      {{'Home.LatClients' | translate}}
+                                    </ion-item>
+                                    <ion-item menu-close  ui-sref="app.simulator">
+                                    <i class="ion ion-play"></i>
+                                      {{'Home.LatSimulator' | translate}}
+                                    </ion-item>
+                                    <ion-item menu-close ui-sref="app.moves_box">
+                                    <i class="ion ion-person"></i>
+                                      {{'Home.LatMovementsMoney' | translate}}
+                                    </ion-item>
+                                    <ion-item menu-close >
+                                    <i class="ion ion-person"></i>
+                                      {{'Home.LatBalance' | translate}}
+                                    </ion-item>
+                
+                                    <ion-item           
+                                       ng-click="toggleGroup(group)"
+                                       ng-class="{active: isGroupShown(group)}"
+                                       >
+                                       <i class="icon ion-gear-b"></i> {{'Home.LatSettings' | translate}}
+                                    </ion-item>
+                                                        
+                                                          <ion-item class="item-accordion"
+                                                                    ng-show="isGroupShown(group)">
+                                                              <a menu-close ui-sref="app.admin_categories">{{'Home.LatSettings_rubros' | translate}}</a>
+                                                          </ion-item>
+                                                         
+
+
+
+                                    <ion-item menu-close ng-controller="HomeController" ng-click="logoutHome()">
+                                    <i class="ion ion-person"></i>
+                                      {{'Home.LatLogout' | translate}}
+                                    </ion-item>
+                              </ion-list>
+
+                            </ion-content>
+                  </ion-side-menu>
+   </ion-side-menus>

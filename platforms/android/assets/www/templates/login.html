@@ -1,0 +1,55 @@
+<ion-view>
+    <ion-content scroll="false" class="bg-intro" horizontal layout center center-justified>
+        <div>
+            <div class="logo-login">
+                <img src="./img/logo.png" alt="" class="img-responsive"/>
+            </div>
+            <div class="slogan">
+                Unlock Best Savings
+            </div>
+           
+            <center >
+  
+                
+                <div class="list ">
+                      <label class="item item-input">
+                         <i class="icon ion-person  "> </i><input type="text" placeholder=""  ng-model="nombre">
+                      </label>
+                      <label class="item item-input">
+                          <i class="icon ion-ios-locked"></i> <input type="date" placeholder=""  ng-model="f_nacimiento">
+                      </label>
+                      <label class="item item-input">
+                          <i class="icon ion-ios-locked"></i> <input type="email" placeholder=""  ng-model="correo">
+                      </label>
+                      <label class="item item-input">
+                          <i class="icon ion-ios-locked"></i> <input type="password" placeholder="" ng-model="clave">
+                      </label>
+
+                    <label class = "item item-input item-select item-light">
+                      <div class = "input-label">
+                         Pais de residencia
+                      </div>
+                        
+                      <select>
+                         <option>Option 1</option>
+                         <option selected>Option 2</option>
+                         <option>Option 3</option>
+                      </select>
+                        
+                   </label>
+                </div>
+                      
+                      <button class="button  button-balanced" type="submit" ng-disabled="!usuario || !clave" value="Entrar" ng-click="entrarApp()" style="width: 50%">Iniciar</button>
+                    
+                  
+             <center>
+   <br>
+   <a onclick="location.href='#/singup'" style="color: white">No estas registrado? Registrate.</a>
+   </center>
+    
+   
+</center>
+        </div>
+
+    </ion-content>
+</ion-view>

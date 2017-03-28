@@ -1,0 +1,21 @@
+<button class="btn btn-primary col-xs-5" style="" ng-click="createDBTables()">Crear Base de Datos</button>
+<button class="btn btn-primary col-xs-5" style=" float: right" ng-click="showSchemaVisual()">Listar Tablas BD</button>
+
+<button class="btn btn-danger col-xs-5" style="margin-top: 1rem" ng-click="dropTablesTestUser()">Eliminar Tablas BD</button>
+<button class="btn btn-primary col-xs-5" style="margin-top:1rem; float: right" ng-click="cleanContent();">Limpiar Contenido</button>
+
+<button class="btn btn-primary col-xs-5" style="margin-top: 1rem" ng-click="upDatabase()">Realizar Inserciones Basicas</button>
+<div class="col-xs-5" style="float:right;margin-top: 1rem">
+    <select ng-model="testUser.selectTable" class="form-control" style="width: 45%; display: inline;vertical-align: top">
+        <option value="customers">Personas</option>
+        <option value="neighbourhoods">Barrios</option>
+        <option value="zones">Zonas</option>
+        <option value="type_paids">Tipo De Abono</option>
+        <option value="moves">Movimientos</option>
+    </select>
+    <button class="btn btn-primary" ng-click="listItemsOfTable()" style="width: 45%; display: inline;vertical-align: top">Listar</button>
+</div>
+
+<div class="col-xs-12 container" id="myContent" ng-bind-html="testUser.response | unsafe" style="margin: 2rem 0;padding-left: 0; padding-right: 0">
+
+</div>

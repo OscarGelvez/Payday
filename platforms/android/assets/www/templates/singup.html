@@ -1,0 +1,83 @@
+<ion-view class="bg-intro">
+    <ion-content   scroll="true" overflow-scroll="false" > <!-- horizontal center center-justified-->
+        <div>
+          
+            <div class="logoLoginSingup">
+                <img src="./img/logo.png" alt="" class="img-responsive"/>
+            </div>
+           
+                    <br>  
+                <center>
+                  <h1 class="titleFormInicioRegistro">{{'SingUp.Title' | translate}}</h1>
+                  <form name="formRegistro">
+                    <div class="list formRegistro" >
+                      <label class="item item-input item-stacked-label labelsFormInicioRegistro">
+                         <span class="input-label" style="color:white; text-align:center">{{'SingUp.Username' | translate}}</span>
+                         <input type="text"  ng-required="true" name="nombre"  ng-model="formData.nombre" ng-pattern="/^[a-zA-Z][.a-zA-Z_-]{2,20}$/" autocomplete="off">
+
+                      
+                      </label>
+                      <label class="item item-input item-stacked-label labelsFormInicioRegistro">
+                        <span class="" style="color:white; text-align:center">{{'SingUp.Birthdate' | translate}}</span>
+                          <input type="date"   ng-required="true"name="fecha"  ng-model="formData.f_nacimiento" date-format max="{{CurrentDate | date:'yyyy-MM-dd'}}" min="1916-01-01" >
+                      </label>
+
+                      <label class="item item-input item-stacked-label labelsFormInicioRegistro">
+                          <span class="input-label" style="color:white; text-align:center">{{'SingUp.Email' | translate}}</span><input type="email"  ng-required="true" name="correo"  ng-model="formData.correo" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" autocomplete="off">
+                          
+                      </label>
+
+                      <label class="item item-input item-stacked-label labelsFormInicioRegistro">
+                          <span class="input-label" style="color:white; text-align:center">{{'SingUp.Password' | translate}}</span>
+                           <input type="password" ng-required="true"  name="clave" ng-model="formData.clave" ng-pattern="/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$/" autocomplete="off">
+                      </label>
+
+                    <div class="item item-input item-select item-stacked-label labelsFormRegistroSelect">
+                      <label class="labelSelect">{{'SingUp.Country' | translate}}</label>
+                          
+                       
+                        <select class="selectElement" ng-model="select.pais" ng-required="true">
+                          <option value="">--{{'SingUp.TextSelectCountryDepartment' | translate}}--</option> 
+                          <option value="{{c.id}}" ng-repeat="c in countries">{{c.name}}</option>                          
+                        </select>
+                      </div>
+
+                      <div class="item item-input item-select item-stacked-label labelsFormRegistroSelect" ng-show="isColombia" >
+                        <label class="labelSelect">{{'SingUp.Department' | translate}}</label>
+
+                        <select class="selectElement" ng-model="select.dpto">
+                          <option value="">--{{'SingUp.TextSelectCountryDepartment' | translate}}--</option> 
+                          <option value="{{d.id}}" ng-repeat="d in departments">{{d.name}}</option>
+                          
+                        </select>
+                      </div>
+                     
+                      <div class="item item-input item-select item-stacked-label labelsFormRegistroSelect"   ng-show="isDepartmentDefined">
+                        <label class="labelSelect">{{'SingUp.City' | translate}}</label>
+
+                        <select class="selectElement" ng-model="select.ciudad">
+                          <option value="">--{{'SingUp.TextSelectCountryDepartment' | translate}}--</option> 
+                          <option value="{{c.id}}" ng-repeat="c in cities">{{c.name}}</option>
+                          
+                        </select>
+                      </div>
+                      <br>
+                   <button type="button" class="button  button-balanced" ng-click="submitForm(formData)">{{'SingUp.ButtonSend' | translate}}</button>
+                </div>
+
+              </form>
+                     
+                   <br>
+                   <a onclick="location.href='#/login'" style="color: white">{{'SingUp.HaveAccount' | translate}}</a>
+                   
+    
+                </center>
+               
+                      
+                   
+   
+
+        </div>
+
+    </ion-content>
+</ion-view>

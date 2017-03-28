@@ -1,0 +1,78 @@
+    <ion-view class="bg-intro">
+    <ion-content scroll="true" overflow-scroll="false">
+    <div class="logoLoginSingup">
+                <img src="./img/logo.png" alt="" class="img-responsive"/>
+            </div>
+                       
+     
+            <center >
+            
+          <h1 class="titleFormInicioRegistro" translate-cloak >{{'Login.Title' | translate}}</h1>
+          
+                <form>
+                <div class="list formInicio">
+
+
+
+                      <label class="item item-input item-stacked-label labelsFormInicioRegistro">
+                          <span class="input-label" style="color:white; text-align:center">{{'Login.Email' | translate}}</span><input type="email"  ng-required="true" name="correo"  ng-model="credentials.email" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" autocomplete="off">
+                          
+                      </label> 
+
+                      <!--<label class="item item-input item-floating-label labelsFormInicioRegistro" >
+                          <span class="input-label" style="color:white; text-align:center" translate-cloak>{{'Login.Username' | translate}}</span>
+                          <input type="text" placeholder="{{'Login.Username' | translate}}"  ng-model="credentials.usernames" style="color:white" ng-pattern="/^[a-zA-Z][.a-zA-Z_-]{2,20}$/">
+                      </label> -->
+                        <label class="item item-input item-stacked-label labelsFormInicioRegistro" >
+                           <span class="input-label" style="color:white" translate-cloak>{{'Login.Password' | translate}}</span>
+                           <input type="password"  ng-model="credentials.password" style="color:white" id="password"> <!--ng-pattern="/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$/" -->
+                      </label>
+                     
+              <!-- CAMPOS INNECESARIOS PARA INICIAR SESIÓN
+                          <label class="item item-input item-floating-label labelsFormInicioRegistro" >
+                          <span class="input-label" style="color:white">{{'Login.CompaniesCode' | translate}}</span>
+                         <input type="text" placeholder="{{'Login.CompaniesCode' | translate}}"  ng-model="credentials.company_id" style="color:white">
+                      </label>
+                      <label class="item item-input item-floating-label labelsFormInicioRegistro" >
+                           <span class="input-label" style="color:white">UUID</span>
+                          <input type="text" placeholder="UUID"  ng-model="credentials.uuid" style="color:white">
+                      </label>
+-->
+                                      
+                       <button type="button" class="button button-balanced btnInicio icon ion-log-in " ng-click="login(credentials)">
+                            {{'Login.ButtonSend' | translate}} 
+                        </button>
+                  <br>
+                         <a  onclick="location.href='#/singup'" style="color: white">{{'Login.NoHaveAccount' | translate}}</a>
+                         <br><br>
+                          <a  onclick="location.href='#/forgot_password'" style="color: white">{{'Login.ForgotPassword' | translate}}</a>
+                         <br>
+                         
+                    </div>
+                                         
+                    
+                 </form> 
+            
+ <br><br>
+    <button class="button button-calm button-small" ng-click="changeLanguage('es')">Español</button>
+  <button class="button button-calm button-small" ng-click="changeLanguage('en')">Ingles</button>
+    
+<br><br><br>
+</center>
+
+
+    </ion-content>
+</ion-view>
+   
+
+    <!-- END PAGE LEVEL SCRIPTS -->
+    <script>
+        jQuery(document).ready(function () {
+            Metronic.init(); // init metronic core components
+            Layout.init(); // init current layout
+            QuickSidebar.init() // init quick sidebar
+            //Login.init();
+        });
+    </script>
+    <!-- END JAVASCRIPTS -->
+

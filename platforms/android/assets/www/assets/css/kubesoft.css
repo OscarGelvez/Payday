@@ -1,0 +1,24 @@
+.gallery-img{
+    height:200px;
+    max-width:100%;
+}
+.casilla-img{
+    
+    
+}
+.remove-img{
+    
+    background-color: gray;
+    height: 30px;
+    
+
+}
+.remove-img a{
+    color:white;
+    font-size: 16px;
+    cursor: pointer;
+}
+.col-bottom-1
+{
+    padding-bottom: 20px; 
+}

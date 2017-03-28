@@ -1,0 +1,27 @@
+<h1>Historial de Pagos</h1>
+
+
+<table class="table table-striped col-xs-12">
+    <thead>
+        <tr>
+            <th>Fecha</th>
+            <th>Valor</th>
+        </tr>
+
+    </thead>
+    <tr ng-repeat="info in lists.payments" >
+        <td>{{ info.created | limitTo: 10 }}</td>
+        <td>{{ info.value  | currency:"$":0 }}</td>
+    </tr>
+
+    <tr style="border-top: 2px solid #bdc3c7">
+        <th class="text-center">Total</th>
+        <th>{{ valuePaid(lists.payments) | currency:"$":0 }}</th>
+    </tr>
+
+</table>
+
+
+<div class="btn btn-success col-xs-12" ui-sref="home.addPayment"  style="margin-top: 1rem">
+    Regresar
+</div>

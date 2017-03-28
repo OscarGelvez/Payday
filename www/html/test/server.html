@@ -1,0 +1,35 @@
+
+<button class="btn btn-primary col-xs-12" ng-click="updateCustomersV2()" style="margin-top: 1rem">Actualizar Clientes v2</button>
+<button class="btn btn-primary col-xs-12" ng-click="updateLoansV2()" style="margin-top:1rem">Actualizar Prestamos v2</button>
+<button class="btn btn-primary col-xs-12" ng-click="updateFeesLoan()" style="margin-top:1rem">Actualizar cuotas</button>
+<button class="btn btn-primary col-xs-12" ng-click="updateMoves()" style="margin-top:1rem">Actualizar Movimientos</button>
+<button class="btn btn-primary col-xs-12" ng-click="test()" style="margin-top:1rem;margin-bottom: 1rem">imprimir</button>
+<button class="btn btn-primary col-xs-12" ng-click="uploadData()" style="margin-top:1rem;margin-bottom: 3rem">Subir</button>
+
+
+
+	<select ng-model="server.selectOption" class="form-control col-xs-6" style="max-width: 50% !important;">
+		<option value="zones">Zonas</option>
+		<option value="neigh">Barrio</option>
+        <option value="typePaids">Tipos de Pagos</option>
+		<option value="customers">Clientes</option>
+		<option value="loans">Prestamos</option>
+		<option value="fees">Cuotas</option>
+		<option value="payments">Pagos</option>
+		<option value="all">TODO</option>
+	</select>
+	<button class="btn btn-primary col-xs-6" ng-click="pull()">Descargar</button>
+
+<form ng-submit="loginCollector()">
+	<input ng-model="server.username" placeholder="username"  class="form-control col-xs-12" style="margin-top: 5rem" type="text"/>
+	<input ng-model="server.keyCompany" placeholder="keyCompany" class="form-control col-xs-12" style="margin-top: 1rem" type="text"/>
+	<input ng-model="server.password" placeholder="password" class="form-control col-xs-12"  style="margin-top: 1rem" type="password"/>
+	<button class="btn btn-primary" style="margin-top: 3rem">iniciar sesión</button>
+</form>
+
+
+
+
+<h1 style="margin-top:1rem">
+	{{ server.response }}
+</h1>
