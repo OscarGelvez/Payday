@@ -18,6 +18,22 @@ var kubeApp = angular.module('kubeApp');
 
      })
 
+//#######################################################################################################
+//#######################################################################################################
+// Servicio que verifica si abrio caja para el dia actual
+
+   kubeApp.service('isOpenBox', function($http, APP, loadingService){
+      this.isOpen = function (data) {
+         loadingService.show();
+            return $http({
+                method: 'POST',
+                url: APP.BASE_URL + 'isOpenBox',
+                data: data
+            })
+        };
+
+   })
+
 
 
 
@@ -28,12 +44,12 @@ var kubeApp = angular.module('kubeApp');
 
 // Servicio que se encarga de registrar un movimiento
     kubeApp.service('Box_Movement', function($http, APP, loadingService){
-      this.doMovement = function (infoUser) {
+      this.doMovement = function (data) {
             loadingService.show();
             return $http({
                 method: 'POST',
-                url: APP.BASE_URL + '',
-                data: infoUser
+                url: APP.BASE_URL + 'move',
+                data: data
             })
         };
 

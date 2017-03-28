@@ -178,7 +178,7 @@ color: white;
   color:white;
   text-align: center;
  padding: 0px;
- margin-right: 1px; /* al parecer lo arregla o.O*/
+/* margin-right: 1px; /* al parecer lo arregla o.O*/
 }
 /*fin arreglos generales*/
 
@@ -239,7 +239,7 @@ Home pantalla principal
 
    .textInfoHome{
     border:3px;
-    border-style: solid;
+    
     margin-left: 15%;
     margin-right: 15%;
     margin-top: 5%;
@@ -247,7 +247,7 @@ Home pantalla principal
     border-radius: 50px !important;
    
     box-shadow: 2px 2px 20px rgb(34, 150, 181);
-    height: 110px;
+   
     color: white;
     font-weight:700;
     width: 70%;
@@ -279,7 +279,7 @@ Home pantalla principal
    /*Para el exto de ingresos, egresos y total*/
    .textInfoHome{
     border:3px;
-    border-style: solid;
+  
     margin-left: 15%;
     margin-right: 15%;
     margin-top: 5%;
@@ -329,7 +329,7 @@ Home pantalla principal
     }
 
     
-    .divMoveBox input[type="text"], input[type="date"], input[type="number"]{
+    .divMoveBox input[type="text"], input[type="date"], input[type="number"] {
     color: white !important;  /* change [input cursor color] by this*/
       font-weight:500 !important;
       text-shadow: 0px 0px 0px #fff; /* change [input font] by this*/

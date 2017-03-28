@@ -4,13 +4,13 @@
 <ion-content class="bg-home" scroll="true" overflow-scroll="false">
 
  
-   <div class="textInfoHome" ng-show="false">
+   <div class="textInfoHome" ng-show="isOpen">
       <div class="row row">
        
             <div class="col col-50 col-offset-20">
-                 <h4 class="icon ion-arrow-down-c"> {{'Home.TextInfoIncomes' | translate}}</h4>
-                  <h4 class="icon ion-arrow-up-c"> {{'Home.TextInfoExpenses' | translate}}</h4>
-                   <h4 class="icon ion-social-usd"> {{'Home.TextInfoBalance' | translate}}</h4>
+                 <h4  class="icon ion-arrow-down-c  balanced" style="font-weight:700; font-size:18px;"> {{'Home.TextInfoIncomes' | translate}}</h4>
+                  <h4  class="icon ion-arrow-up-c  assertive" style="font-weight:700; font-size:18px;"> {{'Home.TextInfoExpenses' | translate}}</h4>
+                   <h4  class="icon ion-social-usd  energized" style="font-weight:700; font-size:18px;"> {{'Home.TextInfoBalance' | translate}}</h4>
             </div>
                          
 
@@ -19,8 +19,7 @@
 
  <center>
     
-        <br><br>
-            <div>
+            <div ng-show="!isOpen">
                  <button  class="button button-balanced icon ion-flash  " style="width:40%" ui-sref="app.moves_box"> {{'Home.TextInfoStartDay' | translate}}</button>
             </div>
                          

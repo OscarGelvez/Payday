@@ -18,6 +18,8 @@ angular.module('kubeApp')
           //Establezco variables para abrir caja
 
           $scope.contentMove.baseCaja= 1; // 1 para abrir caja (True)
+          $scope.contentMove.categoria=1; // indica Categoria Base del dia
+          $scope.contentMove.tipo=true;
    
           $scope.valToggle = $translate.instant('MoveBox.TypeMovementIncomes');
           $scope.desabilitarCampos=true;
@@ -82,39 +84,67 @@ $scope.load_categories();
                    title: 'Error',
                    template: "{{'MoveBox.ErrorValue' | translate}}"
                  });
+                console.log("if 1")
           }
            else if(contentMove.fecha==undefined || contentMove.fecha==""){
                 var alertPopup = $ionicPopup.alert({
                    title: 'Error',
                    template: '{{"MoveBox.ErrorDate" | translate}}'
                  });
+                 console.log("if 2")
           }
            else if(contentMove.categoria==undefined || contentMove.categoria==""){
                 var alertPopup = $ionicPopup.alert({
                    title: 'Error',
                    template: '{{"MoveBox.ErrorCategory" | translate}}'
                  });
+                 console.log("if 3")
           } else{
             $scope.registrarMovimiento(contentMove);
+             console.log("else ")
           }       
     }
 
 
     $scope.registrarMovimiento=function(datos){
-          if(datos.tipo==undefined){
-            datos.tipo=false;
+
+     
+          var dataLista = {};
+          if(datos.observaciones==undefined){
+            datos.observaciones="";
           }
-        Box_Movement.doMovement(datos)
+          if(datos.tipo==undefined){
+            datos.tipo=false; // o falso
+            dataLista.type=0;
+          }else{
+            dataLista.type=1
+          }
+
+          
+          dataLista.description=datos.observaciones;
+          dataLista.value=datos.value;
+          dataLista.date=datos.fecha;
+          dataLista.category=parseInt(datos.categoria);
+          dataLista.collector_id=info.value;
+          dataLista.base_box=datos.baseCaja;
+          console.log(dataLista);
+               
+
+        Box_Movement.doMovement(dataLista)
               .success(function(response){
-                       
+                       loadingService.hide();
                           var alertPopup = $ionicPopup.alert({
                              title: 'OK',
                              template: '{{"MoveBox.SuccessReg" | translate}}'
                            });
 
-                        $scope.contentMove = {};
-                        $state.go('app.home');
-                        loadingService.hide();
+                           alertPopup.then(function(res) {
+                          $scope.contentMove = {};
+                          $state.go('app.home');
+                         });
+
+                        
+                        
                                
                   }).error(function(err){
                   loadingService.hide();
