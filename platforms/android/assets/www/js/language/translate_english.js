@@ -48,7 +48,6 @@
 				"ErrorCity": "Field empty City",
 				"SuccessReg": "Successful",
 				"ErrorReg": "Error, Try again!"
-
 				
 			},
 
@@ -70,9 +69,16 @@
 				"LatLoans": "Loans",
 				"LatClients": "Clients",
 				"LatSimulator": "Simulator",
-				"LatBoxMoney": "Box-Money movement",
+				"LatMovementsMoney": "Box-Money movement",
 				"LatBalance": "Balance",
 				"LatSettings": "Settings",
+				"LatSettings_rubros": "Manage Categories",
+				"LatSettings_changeLanguage": "Change Language",
+				"ModalChangeLanguageTitle": "Select Language",
+				"ChangeLanguageSpanish": "Spanish",
+				"ChangeLanguageEnglish": "English",
+				"ModalChangeLanguageSave": "Save Language",
+
 				"LatLogout": "Logout",
 				"TextInfoIncomes": "Incomes:",
 				"TextInfoExpenses": "Expenses:",
@@ -100,13 +106,15 @@
 				"ErrorDate": "Date of movement empty or undefined",
 				"ErrorTypeMovement": "Type of movement, empty or undefined",
 				"ErrorCategory": "Empty or undefined movement category",
-				"CancelFormTitle": "Cancelar Movimiento",
-				"CancelFormText": "¿Seguro de cancelar el movimiento?",
-				"CancelFormOk": "Si, cancelar",
+				"CancelFormTitle": "Cancel Movement",
+				"CancelFormText": "Are you sure to cancel the movement?",
+				"CancelFormOk": "Yes, cancel",
 				"CancelFormNot": "No",
-				"SuccessReg": "El movimiento se registro de forma satisfactoria",
-				"ErrorReg": "Movimiento fallido",
-				"CloseBoxObservations": "Apertura de caja del día"
+				"SuccessReg": "The movement was recorded successfully",
+				"ErrorReg": "Could not save movement",
+				"CloseBoxObservations": "Opening Day Box",
+				"ErrorLoadCategory1": "Las categorías no se pudieron cargar",
+				"ErrorLoadCategory2": "Las categorías no se pudieron cargar, verifica tu conexión"
 
 
 
@@ -114,7 +122,7 @@
 			},
 
 			"Settings":{
-				"Title": "Account Settings",
+				"Title": "Settings",
 				"ChangePassword": {
 					"Title": "Change Password",
 					"CurrentPassword": "Current Password",
@@ -127,9 +135,58 @@
 					"Zone": "Zone",
 					"ButtonSend": "Add",
 					"ButtonCancel": "Cancel"
+				},
+				"AdminRubros":{
+					"Title": "Manage Cateories",
+					"BasicRubros": "Basic categories System",
+					"CustomRubros": "Custom categories",
+					"NewRubroTitle": "New Category",
+					"NewRubroName": "Name",
+					"NewRubroDescripcion": "Description",
+					"NewRubroDescripcionPH": "Description",
+					"NewRubroTipo": "Type of Movement",
+					"ErrorLoadRubros1": "Error loading categories",
+					"ErrorLoadRubros2": "Error loading categories, Check your connection",
+
+					"ErrorUpdateRubros1": "The categorie could not be updated",
+					"ErrorUpdateRubros2": "The categorie could not be updated, Check your connection",
+
+
+					"NewRubroButtonSave": "Save",
+					"NewRubroButtonCancel": "Cancel",
+					"SuccessReg": "Category successfully registered",
+					"ErrorReg1": "Category creation failed",
+					"ErrorReg2": "Category creation failed, Check your connection",
+					"ErrorName": "Empty or undefined category name",
+					"ErrorDescripcion": "Empty Description",
+					"DetailTitle": "Details",
+					"DetailEditTitle": "Edit Category",
+					"btnEdit": "Edit",
+					"btnCancelEdit": "Back",
+					"btnDelete": "Delete",
+					"btnTransmit": "Move",
+					
+					"SuccessUpdate": "The category was successfully updated",
+					"WarningNotChanges": "No changes in information",
+
+					"DeleteTitle": "Delete Category",
+					"DeleteMsg": "There are money movements registered for that category, if you delete them, they will be lost. Do you want to continue?",
+					"DeleteMsg2": "This category has no associated movements. Do you want to continue?",					
+					"DeleteNo": "No",
+					"DeleteSi": "Yes, delete",
+					"ErrorDelete1": "The category could not be deleted",
+					"ErrorDelete2": "The category could not be deleted, Check your connection",
+					"SuccessDelete": "El Rubro se eliminó correctamente",
+
+					"MoveCategoryTitle": "Move Categories",
+					"MoveBalanceReg": "Total Records",
+					"MoveBalanceValue": "Total Value",
+					"MoveDestinationCategory": " Destination category"
+
 				}
 
 			},
+				
 
 			"Simulator":{		
 					"Title": "Loan Simulator",

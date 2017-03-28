@@ -39,6 +39,7 @@ var kubeApp = angular.module('kubeApp');
 
   // Servicio que se encarga de cargar las categorias cargadas por los usuarios.
          this.loadCategories = function (id_collector) {
+          console.log(id_collector);
             loadingService.show();
             return $http({
                 method: 'GET',

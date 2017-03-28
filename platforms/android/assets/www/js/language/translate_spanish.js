@@ -13,7 +13,10 @@
 			    "NoHaveAccount": "¿No tienes cuenta? Crear ahora",
 			    "ForgotPassword": "¿Olvidó contraseña?",
 			    "ButtonSend": "Entrar",
-			    "MsgErrorLogin": "No se pudo acceder, intente de nuevo",
+			    "MsgErrorLoginNoExist": "No se pudo acceder, Usuario no encontrado en el Sistema",
+			    "MsgErrorLoginDisabled": "No se pudo acceder, Usuario desabilitado",
+			    "MsgErrorLoginBadPass": "No se pudo acceder, Usuario y/o contraseña no coinciden",
+
 			    "errorUsername": "Usuario digitado no válido",
 			    "errorEmail": "Correo digitado no válido",
 				"errorPassword": "Contraseña digitada no válida"
@@ -73,6 +76,13 @@
 				"LatBalance": "Saldos",
 				"LatSettings": "Configuración",
 				"LatSettings_rubros": "Administrar Rubros",
+				"LatSettings_changeLanguage": "Cambiar idioma",
+				"ModalChangeLanguageTitle": "Selecciona el idioma",
+				"ChangeLanguageSpanish": "Español",
+				"ChangeLanguageEnglish": "Ingles",
+				"ModalChangeLanguageSave": "Guardar Idioma",
+
+
 				"LatLogout": "Cerrar Sesión",
 				"TextInfoIncomes": "Ingresos:",
 				"TextInfoExpenses": "Egresos:",
@@ -106,7 +116,7 @@
 				"CancelFormOk": "Si, cancelar",
 				"CancelFormNot": "No",
 				"SuccessReg": "El movimiento se registro de forma satisfactoria",
-				"ErrorReg": "Movimiento fallido",
+				"ErrorReg": "No se pudo guardar el movimiento",
 				"CloseBoxObservations": "Apertura de caja del día",
 				"ErrorLoadCategory1": "Las categorías no se pudieron cargar",
 				"ErrorLoadCategory2": "Las categorías no se pudieron cargar, verifica tu conexión"

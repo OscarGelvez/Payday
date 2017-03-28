@@ -34,7 +34,7 @@ angular.module('kubeApp')
 
 //Funcion que carga las categorias para los movimientos en el sistema
         $scope.load_categories=function(){
-          Box_Movement.loadCategories(info)
+          Box_Movement.loadCategories(info.value)
               .success(function(response){
                 if(response.status){
                     console.log(response);

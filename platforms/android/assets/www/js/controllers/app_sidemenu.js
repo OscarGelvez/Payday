@@ -2,7 +2,7 @@
   var kubeApp = angular.module('kubeApp');
 
 
-  kubeApp.controller('SideMenuController', function ($scope, $state, $rootScope, $ionicModal, $ionicSlideBoxDelegate) {
+  kubeApp.controller('SideMenuController', function ($scope, $state, $rootScope, $ionicModal, $ionicSlideBoxDelegate, $translate) {
 
 
   $scope.toggleGroup = function(group) {
@@ -19,13 +19,51 @@
   $scope.group = 'deals';
 
 
+// ##########CODIGO MODAL PARA CAMBIAR IDIOMA DE LA APP ######################
+
+$scope.idiomaSelect= {};
+
+$ionicModal.fromTemplateUrl('templates/modals/change_language.html', {
+        scope: $scope,
+        animation: 'fade-in-scale',
+        backdropClickToClose: false,
+        hardwareBackButtonClose: false
+      }).then(function(modal) {
+        $scope.changeLanguage = modal;
+      });
+      $scope.openModal = function() {
+        $scope.changeLanguage.show();
+
+      };
+      $scope.closeModal = function() {
+        $scope.changeLanguage.hide();
+       
+
+      };
+      
+      $scope.openModalChange=function(){
+         $scope.openModal();
+      }
+
+
+      $scope.elige=function(val){
+        $scope.idiomaSelect.value=val;
+        console.log($scope.idiomaSelect.value);
+      }
+
+    $scope.change=function () {
+            if($scope.idiomaSelect.value==1){
+                $translate.use('es');
+            }else{
+                $translate.use('en');
+            }
+              $scope.closeModal();
+    };
 
 
 
-
-
-
-
+// ng-click="changeLanguage('es')
+// ng-click="changeLanguage('en')
 
 
 

@@ -86,7 +86,28 @@ console.log("llego aqui a SesionController")
              AuthService.login($scope.credentials)
                 .success(function (data) {
                     console.log(data);
-                    //SessionService.create(data.data);
+                    if(data.status==0){
+                        
+                        var alertPopup = $ionicPopup.alert({
+                             title: 'Error',
+                             template: '{{"Login.MsgErrorLoginNoExist" | translate}}'
+                           });
+                      
+                    }else if(data.status==1){
+                        var alertPopup = $ionicPopup.alert({
+                             title: 'Error',
+                             template: '{{"Login.MsgErrorLoginDisabled" | translate}}'
+                           });
+                       
+               
+                    }else if(data.status==3){
+                        var alertPopup = $ionicPopup.alert({
+                             title: 'Error',
+                             template: '{{"Login.MsgErrorLoginBadPass" | translate}}'
+                           });
+                        
+                    }else{
+                        //SessionService.create(data.data);
                     if(data.error != true){
                         toastr.success(data.name, "BIENVENIDO");
                         var configFolder = SaveData.getOrCreate("config");
@@ -99,13 +120,9 @@ console.log("llego aqui a SesionController")
 
                         $state.go('app.home');
 
-                    }else{
-                        var alertPopup = $ionicPopup.alert({
-                             title: 'Error',
-                             template: '{{"Login.MsgErrorLogin" | translate}}'
-                           });
-                        //toastr.error(data.msg,"ERROR");
+                        } 
                     }
+                 
                 })
                 .error(function (data) {
                     toastr.error(data.msg, "ERROR");
@@ -129,12 +146,6 @@ console.log("llego aqui a SesionController")
     };
 
    //init();
-
-    $scope.changeLanguage = function (langKey) {
-              
-                $translate.use(langKey);
-              };
-
 
 
 

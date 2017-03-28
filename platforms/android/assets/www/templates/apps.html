@@ -61,7 +61,12 @@
                                                         
                                                           <ion-item class="item-accordion"
                                                                     ng-show="isGroupShown(group)">
-                                                              <a menu-close ui-sref="app.admin_categories">{{'Home.LatSettings_rubros' | translate}}</a>
+                                                              <i class="icon ion-chevron-right" menu-close ui-sref="app.admin_categories"> {{'Home.LatSettings_rubros' | translate}}</i>
+                                                          </ion-item>
+
+                                                          <ion-item class="item-accordion"
+                                                                    ng-show="isGroupShown(group)">
+                                                              <i class="icon ion-chevron-right" menu-close ng-click="openModalChange()"> {{'Home.LatSettings_changeLanguage' | translate}}</i>
                                                           </ion-item>
                                                          
 

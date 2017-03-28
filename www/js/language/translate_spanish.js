@@ -13,7 +13,10 @@
 			    "NoHaveAccount": "¿No tienes cuenta? Crear ahora",
 			    "ForgotPassword": "¿Olvidó contraseña?",
 			    "ButtonSend": "Entrar",
-			    "MsgErrorLogin": "No se pudo acceder, intente de nuevo",
+			    "MsgErrorLoginNoExist": "No se pudo acceder, Usuario no encontrado en el Sistema",
+			    "MsgErrorLoginDisabled": "No se pudo acceder, Usuario desabilitado",
+			    "MsgErrorLoginBadPass": "No se pudo acceder, Usuario y/o contraseña no coinciden",
+
 			    "errorUsername": "Usuario digitado no válido",
 			    "errorEmail": "Correo digitado no válido",
 				"errorPassword": "Contraseña digitada no válida"

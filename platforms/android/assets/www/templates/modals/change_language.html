@@ -1,0 +1,40 @@
+<ion-modal-view class="ion-nifty-modal">
+  
+
+
+  <div class="ion-modal-content-custom">
+    <ion-content class="padding">
+				<center>
+					<h2 style="color:white">{{'Home.ModalChangeLanguageTitle' | translate}}</h2>
+				
+    	        <div class="modalAddRubros">
+    
+ 		           <div class="row">
+
+                      <div class="col" ng-style="myStyle1" ng-click="myStyle1={'background-color':'rgb(28, 216, 65,0.7)'}; myStyle2={'background-color':transparent}; elige(1)">
+                        <img src="./img/flag1.png" alt="" class="img-responsiveChangeLanguage"/>
+                        <br>
+                        <b style="color:white; font-size:16px;">{{'Home.ChangeLanguageSpanish' | translate}}</b>                     
+                      </div> 
+
+                      <div class="col"  ng-style="myStyle2" ng-click="myStyle2={'background-color':'rgb(28, 216, 65,0.7)'}; myStyle1={'background-color':transparent}; elige(2)">
+                        <img src="./img/flag2.png" alt="" class="img-responsiveChangeLanguage"/>
+                        <br>
+                        <b style="color:white; font-size:16px;">{{'Home.ChangeLanguageEnglish' | translate}}</b>
+                      </div>
+
+               </div>
+                
+    	        </div>
+    
+        </center>
+     
+
+             <button style="float:right"  type="button" class="button button-balanced button-full icon ion-save " ng-click="change()">
+                      {{'Home.ModalChangeLanguageSave' | translate}}
+                  </button>
+                
+     
+    </ion-content>
+  </div>
+</ion-modal-view>
