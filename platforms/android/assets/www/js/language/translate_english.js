@@ -13,10 +13,14 @@
 			    "NoHaveAccount": "You do not have an account? Sign up",
 			    "ForgotPassword": "Forgot password?",
 			    "ButtonSend": "log in",
-			    "MsgErrorLogin": "Could not access, try again",
+			    "MsgErrorLoginNoExist": "Could not access, User not found",
+			    "MsgErrorLoginDisabled": "Could not access, User disabled",
+			    "MsgErrorLoginBadPass": "Could not access, User and / or password did not match",
+
 			    "errorUsername": "Invalid Username",
 			    "errorEmail": "Invalid Email",
-				"errorPassword": "Invalid Password"
+				"errorPassword": "Invalid Password",
+				"LoginSuccess":"Welcome "
 		  	}, 
 
 		  	"Logout": {

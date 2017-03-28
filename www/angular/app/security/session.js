@@ -109,7 +109,8 @@ console.log("llego aqui a SesionController")
                     }else{ 
                         //SessionService.create(data.data);
                     if(data.error != true){
-                        toastr.success(data.name, "BIENVENIDO");
+                        var hello = $translate.instant('Login.LoginSuccess');
+                        toastr.success(data.name, hello);
                         var configFolder = SaveData.getOrCreate("config");
 
                         configFolder.addInfoOrUpdate("idCollector",data.id);

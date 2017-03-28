@@ -13,13 +13,14 @@
 			    "NoHaveAccount": "¿No tienes cuenta? Crear ahora",
 			    "ForgotPassword": "¿Olvidó contraseña?",
 			    "ButtonSend": "Entrar",
-			    "MsgErrorLoginNoExist": "No se pudo acceder, Usuario no encontrado en el Sistema",
+			    "MsgErrorLoginNoExist": "No se pudo acceder, Usuario no encontrado",
 			    "MsgErrorLoginDisabled": "No se pudo acceder, Usuario desabilitado",
 			    "MsgErrorLoginBadPass": "No se pudo acceder, Usuario y/o contraseña no coinciden",
 
 			    "errorUsername": "Usuario digitado no válido",
 			    "errorEmail": "Correo digitado no válido",
-				"errorPassword": "Contraseña digitada no válida"
+				"errorPassword": "Contraseña digitada no válida",
+				"LoginSuccess":"Bienvenido " 
 		  	}, 
 
 		  	"Logout": {
