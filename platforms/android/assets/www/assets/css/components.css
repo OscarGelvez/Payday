@@ -2716,9 +2716,9 @@ Customized Bootstrap Modal
   outline: none;
   z-index: 10049;
 }
-.modal-backdrop, .modal-backdrop.fade.in {
+/*.modal-backdrop, .modal-backdrop.fade.in {
   background-color: #333 !important;
-}
+}*/
 
 /* Full width modal */
 .modal-full.modal-dialog {

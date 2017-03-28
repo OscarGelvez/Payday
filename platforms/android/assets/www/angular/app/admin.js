@@ -7,7 +7,7 @@
  * @email bastosjavier@kubesoft.com
  * @version 1.1
  */
- var kubeApp = angular.module('kubeApp', ['ionic', 'scrollable-table', 'ng-currency', 'ngSanitize', 'ui.select', 'chart.js', 'ngRoute', 'angularFileUpload', 'ui.bootstrap', 'ui.router', 'ngTable', 'checklist-model', 'ngTagsInput', 'ngPasswordStrength', 'ui.utils.masks', 'pascalprecht.translate', 'ngCordova', 'ui.utils.masks' ]);
+ var kubeApp = angular.module('kubeApp', ['ionic', 'scrollable-table', 'ng-currency', 'ngSanitize', 'ui.select', 'chart.js', 'ngRoute', 'angularFileUpload', 'ui.bootstrap', 'ui.router', 'ngTable', 'checklist-model', 'ngTagsInput', 'ngPasswordStrength', 'ui.utils.masks', 'pascalprecht.translate', 'ngCordova', 'ui.utils.masks', 'ion-floating-menu' ]);
 
 
 
@@ -118,11 +118,23 @@ kubeApp.config(['$stateProvider', '$urlRouterProvider', '$translateProvider',
                 })
 
                  .state('app.admin_categories', {
+                   cache: false,
                   url: '/admin_categories',
                   views: {
                     'menuContent': {
                       templateUrl: 'templates/app.admin_categories.html',
                       controller: 'AdminCategoriesController'
+
+                    }
+                  }
+                })
+
+                 .state('app.detail_category', {
+                  url: '/detail_category/:category_id',
+                  views: {
+                    'menuContent': {
+                      templateUrl: 'templates/app.detail_category.html',
+                      controller: 'DetailCategoryController'
 
                     }
                   }

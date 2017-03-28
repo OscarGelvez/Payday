@@ -18,6 +18,14 @@ var kubeApp = angular.module('kubeApp');
 
      })
 
+
+
+
+//#######################################################################################################
+//#######################################################################################################
+// Servicios de movimientos de caja
+
+
 // Servicio que se encarga de registrar un movimiento
     kubeApp.service('Box_Movement', function($http, APP, loadingService){
       this.doMovement = function (infoUser) {
@@ -30,12 +38,46 @@ var kubeApp = angular.module('kubeApp');
         };
 
   // Servicio que se encarga de cargar las categorias cargadas por los usuarios.
-         this.loadCategories = function (idUser) {
+         this.loadCategories = function (id_collector) {
             loadingService.show();
             return $http({
                 method: 'GET',
-                url: APP.BASE_URL + 'categories',
-                data: idUser
+                url: APP.BASE_URL + 'categories/' +id_collector
+               
+            })
+        };
+
+
+
+    })
+//#######################################################################################################
+//#######################################################################################################
+// Servicios de configuraciones
+     kubeApp.service('Admin_Rubro', function($http, APP, loadingService){
+      this.saveRubro = function (info) {
+            loadingService.show();
+            return $http({
+                method: 'POST',
+                url: APP.BASE_URL + 'categories/add',
+                data: info
+            })
+        };
+
+
+        this.updateRubro = function (info) {
+            loadingService.show();
+            return $http({
+                method: 'PUT',
+                url: APP.BASE_URL + 'categories/update',
+                data: info
+            })
+        };
+
+        this.deleteRubro = function (id) {
+            loadingService.show();
+            return $http({
+                method: 'DELETE',
+                url: APP.BASE_URL + 'categories/' + id
             })
         };
 

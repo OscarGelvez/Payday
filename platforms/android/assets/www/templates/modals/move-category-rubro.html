@@ -1,0 +1,57 @@
+<ion-modal-view class="ion-nifty-modal2">
+  
+
+
+  <div class="ion-modal-content-custom">
+    <ion-content class="padding">
+				<center>
+					<h2 style="color:white">{{'Settings.AdminRubros.MoveCategoryTitle' | translate}}</h2>
+				
+    	        <div class="modalAddRubros">
+
+
+    	        	      <label class="item item-input item-stacked-label labelsModalMove">
+                        <span class="input-label" style="color:white; text-align:center" translate-cloak>{{'Settings.AdminRubros.MoveBalanceReg' | translate}}</span>
+                          
+                          <br>
+                          <span class="input-label" style="color:white; text-align:center" translate-cloak>23</span>
+                                                   
+                      </label> 
+
+
+                       <label class="item item-input item-stacked-label labelsModalMove">
+                          <span class="input-label" style="color:white; text-align:center" translate-cloak>{{'Settings.AdminRubros.MoveBalanceValue' | translate}}</span>
+                           <br>
+                          <span class="input-label" style="color:white; text-align:center" translate-cloak>23</span>                        
+                      </label> 
+
+
+
+                      <div class="item item-input item-select item-stacked-label labelsFormRegistroSelect">
+                      <label class="labelSelect" >{{'Settings.AdminRubros.MoveDestinationCategory' | translate}}</label>
+                          
+                       
+                        <select class="selectElement" ng-model="contentMove.categoria" ng-required="true" style="background-color: #285f9b;color:white;">
+                          <option value="">--{{'MoveBox.TextSelectCategory' | translate}}--</option> 
+                          <option value="{{c.id}}" ng-repeat="c in categoriesToMove" ng-if="c.collector_id!=-1" >{{c.name}}</option>                          
+                        </select>
+                      </div>
+
+
+                      
+             <button style="float:right"  type="button" class="button button-balanced btnInicio icon ion-save " ng-click="submitNewRubro(newCategory)">
+                      {{'Settings.AdminRubros.NewRubroButtonSave' | translate}}
+                  </button>
+                  <button  style="float:left" type="button" class="button button-stable btnInicio icon ion-save " ng-click="closeModal()">
+                      {{'Settings.AdminRubros.NewRubroButtonCancel' | translate}} 
+                  </button>
+						
+    	        </div>
+
+</center>
+     
+
+     
+    </ion-content>
+  </div>
+</ion-modal-view>

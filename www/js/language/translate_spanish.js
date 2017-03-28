@@ -73,6 +73,13 @@
 				"LatBalance": "Saldos",
 				"LatSettings": "Configuración",
 				"LatSettings_rubros": "Administrar Rubros",
+				"LatSettings_changeLanguage": "Cambiar idioma",
+				"ModalChangeLanguageTitle": "Selecciona el idioma",
+				"ChangeLanguageSpanish": "Español",
+				"ChangeLanguageEnglish": "Ingles",
+				"ModalChangeLanguageSave": "Guardar Idioma",
+
+
 				"LatLogout": "Cerrar Sesión",
 				"TextInfoIncomes": "Ingresos:",
 				"TextInfoExpenses": "Egresos:",
@@ -106,8 +113,10 @@
 				"CancelFormOk": "Si, cancelar",
 				"CancelFormNot": "No",
 				"SuccessReg": "El movimiento se registro de forma satisfactoria",
-				"ErrorReg": "Movimiento fallido",
-				"CloseBoxObservations": "Apertura de caja del día"
+				"ErrorReg": "No se pudo guardar el movimiento",
+				"CloseBoxObservations": "Apertura de caja del día",
+				"ErrorLoadCategory1": "Las categorías no se pudieron cargar",
+				"ErrorLoadCategory2": "Las categorías no se pudieron cargar, verifica tu conexión"
 
 
 
@@ -142,7 +151,7 @@
 					"ErrorLoadRubros2": "Error al cargar los rubros, verifica tu conexión",
 
 					"ErrorUpdateRubros1": "El Rubro no se pudo actualizar",
-					"ErrorUpdateRubros2": "El Rubro no se pudo actualiza, verifica tu conexión",
+					"ErrorUpdateRubros2": "El Rubro no se pudo actualizar, verifica tu conexión",
 
 
 					"NewRubroButtonSave": "Guardar",

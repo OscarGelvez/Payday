@@ -107,7 +107,9 @@
 				"CancelFormNot": "No",
 				"SuccessReg": "El movimiento se registro de forma satisfactoria",
 				"ErrorReg": "Movimiento fallido",
-				"CloseBoxObservations": "Apertura de caja del día"
+				"CloseBoxObservations": "Apertura de caja del día",
+				"ErrorLoadCategory1": "Las categorías no se pudieron cargar",
+				"ErrorLoadCategory2": "Las categorías no se pudieron cargar, verifica tu conexión"
 
 
 
@@ -133,9 +135,49 @@
 					"Title": "Administrar Rubros",
 					"BasicRubros": "Rubros Básicos del Sistema",
 					"CustomRubros": "Rubros Personalizados",
-					"Zone": "Zona",
-					"ButtonSend": "Adicionar",
-					"ButtonCancel": "Cancelar"
+					"NewRubroTitle": "Nuevo Rubro",
+					"NewRubroName": "Nombre",
+					"NewRubroDescripcion": "Descripción",
+					"NewRubroDescripcionPH": "Descripción",
+					"NewRubroTipo": "Tipo de Movimiento",
+					"ErrorLoadRubros1": "Error al cargar los rubros",
+					"ErrorLoadRubros2": "Error al cargar los rubros, verifica tu conexión",
+
+					"ErrorUpdateRubros1": "El Rubro no se pudo actualizar",
+					"ErrorUpdateRubros2": "El Rubro no se pudo actualizar, verifica tu conexión",
+
+
+					"NewRubroButtonSave": "Guardar",
+					"NewRubroButtonCancel": "Cancelar",
+					"SuccessReg": "El Rubro se registro de forma satisfactoria",
+					"ErrorReg1": "Creación de Rubro fallida",
+					"ErrorReg2": "Creación de Rubro fallida, verifica tu conexión",
+					"ErrorName": "Nombre del rubro vacio o no definido",
+					"ErrorDescripcion": "Descripción vacia",
+					"DetailTitle": "Detalles",
+					"DetailEditTitle": "Editar Rubro",
+					"btnEdit": "Editar",
+					"btnCancelEdit": "Atras",
+					"btnDelete": "Borrar",
+					"btnTransmit": "Mover",
+					
+					"SuccessUpdate": "El Rubro se actualizó correctamente",
+					"WarningNotChanges": "No hay cambios en la Información",
+
+					"DeleteTitle": "Eliminar Rubro",
+					"DeleteMsg": "Existen movimientos de dinero registrados para esa categoría, si la elimina estos registros se perderán.¿Desea continuar?",
+					"DeleteMsg2": "Esta categoría no tiene movimientos asociados.¿Desea continuar?",					
+					"DeleteNo": "No",
+					"DeleteSi": "Sí, Eliminar",
+					"ErrorDelete1": "El Rubro no se pudo eliminar",
+					"ErrorDelete2": "El Rubro no se pudo eliminar, verifica tu conexión",
+					"SuccessDelete": "El Rubro se eliminó correctamente",
+
+					"MoveCategoryTitle": "Mover Categorías",
+					"MoveBalanceReg": "Total Registros",
+					"MoveBalanceValue": "Valor Total",
+					"MoveDestinationCategory": " Categoría destino"
+
 				}
 
 			},

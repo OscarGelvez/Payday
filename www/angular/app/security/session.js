@@ -130,12 +130,6 @@ console.log("llego aqui a SesionController")
 
    //init();
 
-    $scope.changeLanguage = function (langKey) {
-              
-                $translate.use(langKey);
-              };
-
-
 
 
     });

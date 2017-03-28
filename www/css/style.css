@@ -197,6 +197,23 @@ color: white;
 Home pantalla principal
 
 */
+ @media screen and (orientation: portrait) {
+  .img-responsiveChangeLanguage {
+      margin-top: 10%;
+      margin-bottom: 10%;
+      width: 60%;
+      height: auto;
+    }
+}
+@media screen and (orientation: landscape) {
+      .img-responsiveChangeLanguage {
+      margin-top: 10%;
+      margin-bottom: 10%;
+      width: 50%;
+      height: auto;
+    }
+}
+/* ################*/
   @media screen and (orientation: portrait) {
   .homeEnlaces{       
         width: 95%;

@@ -82,6 +82,37 @@
 			},
 
 
+			"MoveBox":{
+				"Title": "Movement Box",
+				"Value": "Value",
+				"Date": "Date",
+				"TypeMovementTitle": "Type of Movement",
+				"TypeMovementIncomes": "Income",
+				"TypeMovementExpenses": "Expense",
+				"Category": "Rubros-Category",
+				"Observations": "Observations",
+				"ObservationsPlaceholder": "Observations, Optional field",
+				"BaseBox": "Box base",
+				"TextSelectCategory": "Select",
+				"Save": "Save",
+				"Cancel": "Cancel",
+				"ErrorValue": "Value of empty or undefined movement",
+				"ErrorDate": "Date of movement empty or undefined",
+				"ErrorTypeMovement": "Type of movement, empty or undefined",
+				"ErrorCategory": "Empty or undefined movement category",
+				"CancelFormTitle": "Cancelar Movimiento",
+				"CancelFormText": "¿Seguro de cancelar el movimiento?",
+				"CancelFormOk": "Si, cancelar",
+				"CancelFormNot": "No",
+				"SuccessReg": "El movimiento se registro de forma satisfactoria",
+				"ErrorReg": "Movimiento fallido",
+				"CloseBoxObservations": "Apertura de caja del día"
+
+
+
+				
+			},
+
 			"Settings":{
 				"Title": "Account Settings",
 				"ChangePassword": {

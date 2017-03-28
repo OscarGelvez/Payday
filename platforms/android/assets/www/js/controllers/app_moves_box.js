@@ -36,12 +36,24 @@ angular.module('kubeApp')
         $scope.load_categories=function(){
           Box_Movement.loadCategories(info)
               .success(function(response){
-                      console.log(response);
+                if(response.status){
+                    console.log(response);
                       loadingService.hide(); 
-                      $scope.categories=response;                         
+                      $scope.categories=response.data;  
+                    }else{
+                        var alertPopup = $ionicPopup.alert({
+                             title: 'Error',
+                             template: '{{"Settings.AdminRubros.ErrorLoadCategory1" | translate}}'
+                           });
+                    }
+                                           
                   }).error(function(err){
                   loadingService.hide();                  
-                    console.log(err);                    
+                    console.log(err); 
+                    var alertPopup = $ionicPopup.alert({
+                             title: 'Error',
+                             template: '{{"Settings.AdminRubros.ErrorLoadCategory2" | translate}}'
+                           });                      
               });
     }
 
