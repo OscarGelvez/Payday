@@ -2,7 +2,8 @@
     		 
 		 "Alerts": {
 			    "Succefully": "Succefully",
-			    "Error": "Error"
+			    "Error": "Error",
+			    "AlertNoConection": "You must have internet connection to interact in the application. Check your connection"
 		  	}, 
 
 		  "Login": {
@@ -87,7 +88,8 @@
 				"TextInfoIncomes": "Incomes:",
 				"TextInfoExpenses": "Expenses:",
 				"TextInfoBalance": "Balance:",
-				"TextInfoStartDay": "Start Day"
+				"TextInfoStartDay": "Start Day",
+				"WarningStatusBox": "Error retrieving the status of the money box. Retrying..."
 				
 			},
 
