@@ -31,7 +31,7 @@ kubeApp.run(function($ionicPlatform) {
 
 kubeApp.factory('valorCaja', function(){
 return{
-   estado:true // False: indica que la caja no ha sido abierta. True: ya se abrio caja
+   estado:false // False: indica que la caja no ha sido abierta. True: ya se abrio caja
 };
   
 })

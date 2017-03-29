@@ -7,9 +7,82 @@
  */
 var kubeApp = angular.module('kubeApp');
 
-kubeApp.controller("HomeController", function($scope,$state, ngTableParams, queries, $modal, APP, localDatabase, FacadeServer, SaveData, MovesDao, $ionicSlideBoxDelegate) {
-console.log("home ahora si")
+kubeApp.controller("HomeController", function($scope,$state, ngTableParams, queries, $modal, APP, localDatabase, FacadeServer, SaveData, MovesDao, $ionicSlideBoxDelegate, $translate, isOpenBox, $ionicPopup, valorCaja, $filter, loadingService) {
+
+    console.log("llego aHome");
+
+
+
     $scope.home = {};
+
+
+
+    // var folderConfig = SaveData.get("config");
+    //  var info = folderConfig.get("idCollector");
+   
+     var info=60;
+     $scope.CurrentDate = new Date();
+     $scope.dateToday=$filter('date')($scope.CurrentDate, "yyyy-MM-dd");
+     var dataLista = {};
+
+  
+    
+    dataLista.date=$scope.dateToday;
+    dataLista.collector_id=info;
+
+
+       $scope.checkBox=function(){
+  
+          isOpenBox.isOpen(dataLista)
+              .success(function(response){
+                loadingService.hide();
+                if(response.status){
+                    console.log(response);
+                     valorCaja.estado=true;
+                      
+                    }else{
+                       valorCaja.estado=false;
+                       
+                    }
+                    $scope.isOpen =response.status;               
+                  }).error(function(err){
+                    loadingService.hide();
+                     var sta = $translate.instant('Home.WarningStatusBox');
+                     toastr.success("", sta);            
+                    console.log(err); 
+                      
+                                         
+              });
+    }
+  
+$scope.checkBox(); 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     $scope.showInfoDevice = function(model,platform,uuid,version){

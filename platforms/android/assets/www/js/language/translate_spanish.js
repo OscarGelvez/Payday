@@ -88,7 +88,8 @@
 				"TextInfoIncomes": "Ingresos:",
 				"TextInfoExpenses": "Egresos:",
 				"TextInfoBalance": "Total:",
-				"TextInfoStartDay": "Iniciar Día"
+				"TextInfoStartDay": "Iniciar Día",
+				"WarningStatusBox": "Error al recuperar el estado de la caja. reintentando..."
 
 				
 			},

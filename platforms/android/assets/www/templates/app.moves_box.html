@@ -37,7 +37,7 @@
                        
                         <select class="selectElement" ng-model="contentMove.categoria" ng-required="true" style="background-color: #285f9b;color:white;" ng-disabled="desabilitarCampos">
                           <option value="">--{{'MoveBox.TextSelectCategory' | translate}}--</option> 
-                          <option value="{{c.id}}" ng-repeat="c in categories">{{c.name}}</option>                          
+                          <option value="{{c.id}}" ng-repeat="c in categories" ng-if="c.collector_id!=-1">{{c.name}}</option>                          
                         </select>
                       </div>
 
@@ -49,7 +49,7 @@
 
                        <label class="item item-input item-stacked-label labelsFormInicioRegistro" ng-disabled="desabilitarCampos" >
                            <span class="input-label" style="color:white" translate-cloak>{{'MoveBox.Observations' | translate}}</span>
-                            <textarea ng-model="contentMove.observaciones" translate-cloak placeholder="{{'MoveBox.ObservationsPlaceholder' | translate}}" style=" background-color:transparent; padding:5px;" ng-disabled="desabilitarCampos"></textarea>
+                            <textarea ng-model="contentMove.observaciones" translate-cloak placeholder="{{'MoveBox.ObservationsPlaceholder' | translate}}" style=" background-color:transparent; color:white; padding:5px;" ng-disabled="desabilitarCampos"></textarea>
                       </label>
                
                

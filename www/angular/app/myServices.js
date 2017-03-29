@@ -65,6 +65,19 @@ var kubeApp = angular.module('kubeApp');
         };
 
 
+        // Servicio que se encarga de cargar las categorias cargadas por los usuarios.
+         this.reloadMovesView = function (data) {
+          console.log(data);
+            loadingService.show();
+            return $http({
+                method: 'GET',
+                url: APP.BASE_URL + 'moves',
+                params: data
+               
+            })
+        };
+
+
 
     })
 //#######################################################################################################
