@@ -1,3 +1,46 @@
+/* Sidemenu en general*/
+
+
+
+ @media screen and (orientation: portrait) {
+  
+  .msgOfflineApp{
+
+    color:#efefef;      
+    margin-top:40% !important;
+    border:3px;  
+    margin-left: 15%;
+    margin-right: 15%;
+    border-color: rgba(255, 255, 1255,0.6);
+    box-shadow: 2px 2px 20px rgb(60, 60, 60);
+    color: white;
+    font-weight:400;
+    width: 70% !important;
+    height: 20% !important;
+    background-color: rgba(65,65,65,0.8);
+  }
+ 
+ }
+
+ @media screen and (orientation: landscape) {
+   .msgOfflineApp{
+
+    color:#efefef;      
+    margin-top:20% !important;
+    border:3px;  
+    margin-left: 15%;
+    margin-right: 15%;
+    border-color: rgba(255, 255, 1255,0.6);
+    box-shadow: 2px 2px 20px rgb(60, 60, 60);
+    color: white;
+    font-weight:400;
+    width: 70% !important;
+    height: 20% !important;
+    background-color: rgba(65,65,65,0.8);
+  }
+ }
+
+
 /* 
 Formulario Registro
 

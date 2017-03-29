@@ -2,7 +2,8 @@
     		 
 		 "Alerts": {
 			    "Succefully": "Exito",
-			    "Error": "Error"
+			    "Error": "Error",
+			    "AlertNoConection": "Debes tener conexión a internet para interactuar en la aplicación. Revisa tu conexión"
 		  	}, 
 
 		  "Login": {

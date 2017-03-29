@@ -7,7 +7,7 @@
  */
 var kubeApp = angular.module('kubeApp');
 
-kubeApp.controller("HomeController", function($scope,$state, ngTableParams, queries, $modal, APP, localDatabase, FacadeServer, SaveData, MovesDao, $ionicSlideBoxDelegate, $translate, isOpenBox, $ionicPopup, valorCaja, $filter, loadingService) {
+kubeApp.controller("HomeController", function($scope,$state, ngTableParams, queries, $modal, APP, localDatabase, FacadeServer, SaveData, MovesDao, $ionicSlideBoxDelegate, $translate, isOpenBox, $ionicPopup, valorCaja, $filter, loadingService, Box_Movement) {
 
     console.log("llego aHome");
 
@@ -15,31 +15,31 @@ kubeApp.controller("HomeController", function($scope,$state, ngTableParams, quer
 
     $scope.home = {};
 
+//##############################INICIO PARTE MIA ######################
 
 
-    // var folderConfig = SaveData.get("config");
-    //  var info = folderConfig.get("idCollector");
+     var folderConfig = SaveData.get("config");
+      var info = folderConfig.get("idCollector");
    
-     var info=60;
+     //var info=60;
      $scope.CurrentDate = new Date();
      $scope.dateToday=$filter('date')($scope.CurrentDate, "yyyy-MM-dd");
-     var dataLista = {};
-
   
-    
-    dataLista.date=$scope.dateToday;
-    dataLista.collector_id=info;
 
 
        $scope.checkBox=function(){
-  
+
+           var dataLista = {};
+                dataLista.date=$scope.dateToday;
+                dataLista.collector_id=info.value;
+                
           isOpenBox.isOpen(dataLista)
               .success(function(response){
                 loadingService.hide();
                 if(response.status){
                     console.log(response);
                      valorCaja.estado=true;
-                      
+                      $scope.reloadCountMoves();
                     }else{
                        valorCaja.estado=false;
                        
@@ -55,8 +55,67 @@ kubeApp.controller("HomeController", function($scope,$state, ngTableParams, quer
               });
     }
   
+  $scope.isOpen = valorCaja.estado;
 $scope.checkBox(); 
 
+    //################ Permite actualizar la vista con el conteo de los movimientos ###################
+$scope.incomes=0;
+$scope.expenses=0;
+$scope.total=0;
+        $scope.reloadCountMoves=function(){
+
+               var dataLista = {};
+                        dataLista.date=$scope.dateToday;
+                        dataLista.collector_id=info.value;
+
+
+            Box_Movement.reloadMovesView(dataLista)
+              .success(function(response){
+                loadingService.hide();
+                if(response.status){
+                    console.log(response);
+                     
+                      var currentMoves=response.data;
+                      $scope.calculate(currentMoves);
+                    }else{
+                       
+                       
+                    }
+                    $scope.isOpen =response.status;               
+                  }).error(function(err){
+                    loadingService.hide();
+                     var sta = $translate.instant('Home.WarningStatusBox');
+                     toastr.success("", sta);            
+                    console.log(err); 
+                      
+                                         
+              });
+        }
+
+
+        $scope.calculate=function(moves_array){
+
+            for (var i = 0; i < moves_array.length; i++) {
+
+                if( moves_array[i].type==1){
+
+                    $scope.incomes+=moves_array[i].value;
+
+
+                 }else if(moves_array[i].type==0){
+
+                        $scope.expenses+=moves_array[i].value;
+
+                         }
+               
+            };
+
+            $scope.total=($scope.incomes-$scope.expenses);
+            console.log($scope.incomes);
+             console.log($scope.expenses);
+              console.log($scope.total);
+
+        }
 
 
 
@@ -71,21 +130,11 @@ $scope.checkBox();
 
 
 
+    ///////#######################FIN PARTE MIA ##################################
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-    $scope.showInfoDevice = function(model,platform,uuid,version){
+ $scope.showInfoDevice = function(model,platform,uuid,version){
         alert("modelo: "+model+"\nPlataforma: "+platform+"\nUUID: "+uuid+"\nVersión: "+version);
     };
 
@@ -105,54 +154,8 @@ $scope.checkBox();
 
     }
 
-//##############################INICIO PARTE MIA ######################
 
-    $scope.openCashByCollector=function(){
-
-        var folderConfig = SaveData.get("config");
-        if(folderConfig ==  null){
-            $state.go('login');
-            return;
-        }
-        var idCollector = folderConfig.get("idCollector");
-        console.log(info);
-
-        FacadeServer.openCash(idCollector,value).then(function(result){
-            console.log(result);
-            if(result.error){
-                toastr.error(result.msg,'ERROR');
-            }else{
-
-                if(callback != null){
-                    callback(function(){
-                        console.log('llego al callback: '+result.transaction.total_value);
-                                           
-                    });
-                }
-                
-                
-            }
-        }).catch(function(error){
-            console.log(error);
-        });
-
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-    ///////#######################FIN PARTE MIA ##################################
-
-    $scope.sincronize = function(){
+       $scope.sincronize = function(){
         var select = confirm("Requiere conexión a internet para hacer esta operación," +
         "\nesta operación puede tomar algunos minutos desea continuar");
 

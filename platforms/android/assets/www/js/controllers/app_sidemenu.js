@@ -2,7 +2,7 @@
   var kubeApp = angular.module('kubeApp');
 
 
-  kubeApp.controller('SideMenuController', function ($scope, $state, $rootScope, $ionicModal, $ionicSlideBoxDelegate, $translate ) {
+  kubeApp.controller('SideMenuController', function ($scope, $state, $rootScope, $ionicModal, $ionicSlideBoxDelegate, $translate, $ionicLoading, $cordovaNetwork ) {
 
 
 
@@ -64,14 +64,58 @@ $ionicModal.fromTemplateUrl('templates/modals/change_language.html', {
 
 
 
-// ng-click="changeLanguage('es')
-// ng-click="changeLanguage('en')
+//######################################CODIGO PARA REVISAR EL ESTADO DE LA RED##################################################
+
+ function disableVista(){
+  var valAlert = $translate.instant('Alerts.AlertNoConection');
+    $ionicLoading.show({
+      template: '<div class="msgOfflineApp" > <br> <h4 style="margin-top:0px !important">'+valAlert +'</h4> </div>',
+      hideOnStateChange: true
+    });
 
 
+  }
+
+ if(ionic.Platform.isWebView()){
+    document.addEventListener("deviceready", function () {
+
+    var type = $cordovaNetwork.getNetwork()
+
+    var isOnline = $cordovaNetwork.isOnline()
+
+    var isOffline = $cordovaNetwork.isOffline()
 
 
+    // listen for Online event
+    $rootScope.$on('$cordovaNetwork:online', function(event, networkState){
+      var onlineState = networkState;
+      console.log(onlineState)
+      $ionicLoading.hide();
+    })
 
+    // listen for Offline event
+    $rootScope.$on('$cordovaNetwork:offline', function(event, networkState){
+      var offlineState = networkState;
+      console.log(offlineState)
+      disableVista();
+    })
 
+  }, false);
+}else{
+  
+    //Same as above but for when we are not running on a device
+      window.addEventListener("online", function(e) {
+      console.log("is online ahora");
+      $ionicLoading.hide();
+
+      }, false);    
+
+      window.addEventListener("offline", function(e) {
+        disableVista();
+          console.log("is offline ahora")
+
+      }, false); 
+}
 
 
 

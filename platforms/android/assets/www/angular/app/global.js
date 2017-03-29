@@ -8,7 +8,7 @@ var kubeApp = angular.module('kubeApp');
 
 kubeApp.constant('APP', {
     //'BASE_URL': "http://192.168.33.10/payday-all-in/laravel/public/",
-     'BASE_URL': "http://192.168.50.199/payday-all-in/laravel/public/",
+    'BASE_URL': "http://192.168.50.199/payday-all-in/laravel/public/",
     'FOLDER_URL': "http://localhost/casa_cambio/",
     'FILES_URL': "http://localhost/casa_cambio/files/",
     'TABLES' : {

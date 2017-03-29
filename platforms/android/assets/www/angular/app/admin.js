@@ -87,6 +87,7 @@ kubeApp.config(['$stateProvider', '$urlRouterProvider', '$translateProvider',
                 })
 
                  .state('app.home', {
+                  cache: false,
                   url: '/home',
                   views: {
                     'menuContent': {
@@ -206,7 +207,7 @@ kubeApp.config(['$stateProvider', '$urlRouterProvider', '$translateProvider',
                     url : '/home',
 					
                     templateUrl: 'home.html',
-                    controller: 'HomeController'
+                    controller: 'HomeController2'
                 })
                 .state('home.newLoan',{
                     url : '/loan/new',

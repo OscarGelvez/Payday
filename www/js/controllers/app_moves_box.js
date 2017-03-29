@@ -140,10 +140,7 @@ $scope.load_categories();
 
                            alertPopup.then(function(res) {
                           $scope.contentMove = {};
-                          $state.go('app.home');
-                         });
-
-                        
+                         });               
                         
                                
                   }).error(function(err){

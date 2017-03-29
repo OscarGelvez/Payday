@@ -18,10 +18,10 @@ kubeApp.controller("HomeController", function($scope,$state, ngTableParams, quer
 //##############################INICIO PARTE MIA ######################
 
 
-    // var folderConfig = SaveData.get("config");
-    //  var info = folderConfig.get("idCollector");
+     var folderConfig = SaveData.get("config");
+      var info = folderConfig.get("idCollector");
    
-     var info=60;
+     //var info=60;
      $scope.CurrentDate = new Date();
      $scope.dateToday=$filter('date')($scope.CurrentDate, "yyyy-MM-dd");
   
@@ -31,8 +31,8 @@ kubeApp.controller("HomeController", function($scope,$state, ngTableParams, quer
 
            var dataLista = {};
                 dataLista.date=$scope.dateToday;
-                dataLista.collector_id=info;
-  
+                dataLista.collector_id=info.value;
+                
           isOpenBox.isOpen(dataLista)
               .success(function(response){
                 loadingService.hide();
@@ -66,7 +66,7 @@ $scope.total=0;
 
                var dataLista = {};
                         dataLista.date=$scope.dateToday;
-                        dataLista.collector_id=info;
+                        dataLista.collector_id=info.value;
 
 
             Box_Movement.reloadMovesView(dataLista)
