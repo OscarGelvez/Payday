@@ -117,11 +117,12 @@ $scope.valToggle = $translate.instant('MoveBox.TypeMovementExpenses');
                
           }
           
-           else if(editCategory.descripcion==undefined || editCategory.descripcion==""){
-                 var error2 = $translate.instant('Settings.AdminRubros.ErrorDescripcion');
-                toastr.error(error2, "ERROR");
+          //  else if(editCategory.descripcion==undefined || editCategory.descripcion==""){
+          //        var error2 = $translate.instant('Settings.AdminRubros.ErrorDescripcion');
+          //       toastr.error(error2, "ERROR");
                
-          } else{
+          // }
+           else{
             $scope.registrarNuevoRubro(editCategory);
           }
 
@@ -198,6 +199,53 @@ $scope.valToggle = $translate.instant('MoveBox.TypeMovementExpenses');
 //  $scope.tieneMovimientos=true;
 //
 //}
+
+ $scope.consultaMovimientosRubro=function(){
+    var dataLista = {};
+                dataLista.collector_id=contenido[4];
+                dataLista.category_id=contenido[0];
+               
+                
+          Admin_Rubro.movesByRubro(dataLista)
+              .success(function(response){
+                loadingService.hide();
+                if(response.status){
+                    console.log(response);
+                    $scope.movesRubros=response.data;
+                    }else{
+                      
+                       
+                    }
+                          
+                  }).error(function(err){
+                    loadingService.hide();
+                     var sta = $translate.instant('Settings.AdminRubros.ErrorLoadMovesRubro');
+                     toastr.success("", sta);            
+                    console.log(err); 
+                      
+                                         
+              });
+ }
+
+      //Funcion que clona el objeto 
+        function clone( obj ) {
+            if ( obj === null || typeof obj  !== 'object' ) {
+                return obj;
+            }
+         
+            var temp = obj.constructor();
+            for ( var key in obj ) {
+                temp[ key ] = clone( obj[ key ] );
+            }
+            
+            return temp;
+        }
+$scope.categoriesToMove=clone(RubrosFactory.datos);
+
+ $scope.consultaMovimientosRubro();
+
+
+// ##############FIN Consulta Tiene Movimientos ############################
 
 
     $scope.editCategory = {};
@@ -417,11 +465,7 @@ $scope.submitDeleteRubro=function(){
    // ################ MOVER  RUBRO #######################
    // ####################### ####################### ####################### #######################
 
-     $scope.submitTransmitRubro=function(){
-
-
-
-      }
+   
 
       $ionicModal.fromTemplateUrl('templates/modals/move-category-rubro.html', {
         scope: $scope,
@@ -433,18 +477,91 @@ $scope.submitDeleteRubro=function(){
         $scope.modalMoveCategory.show();
 
       };
-      $scope.closeModal = function() {
+      $scope.closeModalMoves = function() {
         $scope.modalMoveCategory.hide();       
 
       };
 
-
+      $scope.moveMoves = {};
 
       $scope.openModalMove=function(){
          $scope.openModal();
-          console.log(RubrosFactory.datos);
-      $scope.categoriesToMove=RubrosFactory.datos;
+         console.log(RubrosFactory.datos);
+         $scope.categoriesToMove=RubrosFactory.datos;
+         $scope.loadInfoModal();
       }
 
+      $scope.loadInfoModal=function(){
+        $scope.cantMoves=0;
+        $scope.totalMoveIncomes=0;
+        $scope.totalMoveExpenses=0;
+
+        if($scope.movesRubros== undefined || $scope.movesRubros.length>0){
+
+        for (var i = 0; i < $scope.movesRubros.length; i++) {
+         
+          if($scope.movesRubros[i].type==1){
+              $scope.totalMoveIncomes+=$scope.movesRubros[i].value;
+          }else if($scope.movesRubros[i].type==0){ //Pregunto asi, ps epronto mas adelante hay otros tipos
+              $scope.totalMoveExpenses+=$scope.movesRubros[i].value
+          }
+
+           $scope.cantMoves++;
+
+        };
+        }
+       
+      }
+
+      $scope.submitMoveRubro=function(moveMoves){
+
+        if(moveMoves.categoria==undefined || moveMoves.categoria==""){
+               
+                var error1 = $translate.instant('Settings.AdminRubros.ErrorCategoryDestinity');
+                toastr.error(error1, "ERROR");      
+               
+          }else{
+            $scope.registrarTranspasoRubro(moveMoves);
+          }
+      }
+
+      $scope.registrarTranspasoRubro=function(moveMoves){
+
+        var dataLista = {};
+
+        dataLista.id_category_current=contenido[0]
+        dataLista.id_category_new=parseInt(moveMoves.categoria);
+        dataLista.id_collector=contenido[4]
+        $scope.closeModalMoves();
+
+        Admin_Rubro.doTransmitMove(dataLista)
+              .success(function(response){                       
+                        loadingService.hide();
+                        if(response.status){
+                           var alertPopup = $ionicPopup.alert({
+                             title: 'OK',
+                             template: '{{"Settings.AdminRubros.SuccessRegTrasmit" | translate}}'
+                           });
+                          alertPopup.then(function(res) {
+                            
+                         $scope.moveMoves = {};
+                       }); 
+                        }else{
+                              var alertPopup = $ionicPopup.alert({
+                             title: 'Error',
+                             template: '{{"Settings.AdminRubros.ErrorTransmit1" | translate}}'
+                           });
+                        }                                        
+                  }).error(function(err){
+                  loadingService.hide();
+                   var alertPopup = $ionicPopup.alert({
+                             title: 'Error',
+                             template: '{{"Settings.AdminRubros.ErrorTransmit2" | translate}}'
+                           });
+                          alertPopup.then(function(res) {                            
+                               console.log(err);
+                           });
+              });
+      }
      
 }])

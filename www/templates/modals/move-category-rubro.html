@@ -14,7 +14,7 @@
                         <span class="input-label" style="color:white; text-align:center" translate-cloak>{{'Settings.AdminRubros.MoveBalanceReg' | translate}}</span>
                           
                           <br>
-                          <span class="input-label" style="color:white; text-align:center" translate-cloak>23</span>
+                          <span class="input-label" style="color:white; text-align:center" ng-cloak>{{cantMoves}}</span>
                                                    
                       </label> 
 
@@ -22,7 +22,8 @@
                        <label class="item item-input item-stacked-label labelsModalMove">
                           <span class="input-label" style="color:white; text-align:center" translate-cloak>{{'Settings.AdminRubros.MoveBalanceValue' | translate}}</span>
                            <br>
-                          <span class="input-label" style="color:white; text-align:center" translate-cloak>23</span>                        
+                          <span class="input-label" style="color:#33cd5f; text-align:center" ui-number-mask="0" ng-cloak>{{'Settings.AdminRubros.ModalMoveIncomes' | translate}} {{totalMoveIncomes}}</span>   
+                          <span class="input-label" style="color:#bc1a0d; text-align:center" ui-number-mask="0" ng-cloak>{{'Settings.AdminRubros.ModalMoveExpenses' | translate}} {{totalMoveExpenses}}</span>                        
                       </label> 
 
 
@@ -31,7 +32,7 @@
                       <label class="labelSelect" >{{'Settings.AdminRubros.MoveDestinationCategory' | translate}}</label>
                           
                        
-                        <select class="selectElement" ng-model="contentMove.categoria" ng-required="true" style="background-color: #285f9b;color:white;">
+                        <select class="selectElement" ng-model="moveMoves.categoria" ng-required="true" style="background-color: #285f9b;color:white;">
                           <option value="">--{{'MoveBox.TextSelectCategory' | translate}}--</option> 
                           <option value="{{c.id}}" ng-repeat="c in categoriesToMove" ng-if="c.collector_id!=-1" >{{c.name}}</option>                          
                         </select>
@@ -39,10 +40,10 @@
 
 
                       
-             <button style="float:right"  type="button" class="button button-balanced btnInicio icon ion-save " ng-click="submitNewRubro(newCategory)">
+             <button style="float:right"  type="button" class="button button-balanced btnInicio icon ion-save " ng-click="submitMoveRubro(moveMoves)">
                       {{'Settings.AdminRubros.NewRubroButtonSave' | translate}}
                   </button>
-                  <button  style="float:left" type="button" class="button button-stable btnInicio icon ion-save " ng-click="closeModal()">
+                  <button  style="float:left" type="button" class="button button-stable btnInicio icon ion-save " ng-click="closeModalMoves()">
                       {{'Settings.AdminRubros.NewRubroButtonCancel' | translate}} 
                   </button>
 						

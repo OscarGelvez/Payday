@@ -5,7 +5,7 @@
                       
                     <ion-nav-bar class="bar-positive" >
                             
-                         <!--  <ion-nav-back-button></ion-nav-back-button>  -->
+                          <ion-nav-back-button></ion-nav-back-button> 
 
                           <ion-nav-buttons side="left" >
                             <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
@@ -35,7 +35,7 @@
                                     <i class="ion ion-stats-bars"></i>
                                       {{'Home.LatLoans' | translate}}
                                     </ion-item>
-                                    <ion-item menu-close >
+                                    <ion-item menu-close ui-sref="app.clients">
                                     <i class="ion ion-person"></i>
                                       {{'Home.LatClients' | translate}}
                                     </ion-item>
@@ -44,7 +44,7 @@
                                       {{'Home.LatSimulator' | translate}}
                                     </ion-item>
                                     <ion-item menu-close ui-sref="app.moves_box">
-                                    <i class="ion ion-person"></i>
+                                    <i class="ion ion-cube"></i>
                                       {{'Home.LatMovementsMoney' | translate}}
                                     </ion-item>
                                     <ion-item menu-close >
@@ -60,13 +60,13 @@
                                     </ion-item>
                                                         
                                                           <ion-item class="item-accordion"
-                                                                    ng-show="isGroupShown(group)">
-                                                              <i class="icon ion-chevron-right" menu-close ui-sref="app.admin_categories"> {{'Home.LatSettings_rubros' | translate}}</i>
+                                                                    ng-show="isGroupShown(group)" ui-sref="app.admin_categories">
+                                                              <i class="icon ion-chevron-right" menu-close > {{'Home.LatSettings_rubros' | translate}}</i>
                                                           </ion-item>
 
                                                           <ion-item class="item-accordion"
-                                                                    ng-show="isGroupShown(group)">
-                                                              <i class="icon ion-chevron-right" menu-close ng-click="openModalChange()"> {{'Home.LatSettings_changeLanguage' | translate}}</i>
+                                                                    ng-show="isGroupShown(group)" ng-click="openModalChange()">
+                                                              <i class="icon ion-chevron-right" menu-close > {{'Home.LatSettings_changeLanguage' | translate}}</i>
                                                           </ion-item>
                                                          
 

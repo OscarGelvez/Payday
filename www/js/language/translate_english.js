@@ -91,6 +91,7 @@
 				"TextInfoStartDay": "Start Day",
 				"WarningStatusBox": "Error retrieving the status of the money box. Retrying..."
 				
+				
 			},
 
 
@@ -187,7 +188,14 @@
 					"MoveCategoryTitle": "Move Categories",
 					"MoveBalanceReg": "Total Records",
 					"MoveBalanceValue": "Total Value",
-					"MoveDestinationCategory": " Destination category"
+					"MoveDestinationCategory": " Destination category",					
+					"ErrorCategoryDestinity": "Target category empty or not defined",
+					"ErrorLoadMovesRubro": "Movements for this item were not charged",
+					"SuccessRegTrasmit": "Successful transfer of movements",
+					"ErrorTransmit1": "Error, could not transfer the movements",
+					"ErrorTransmit2": "Error, could not transfer the movements, Check your connection",
+					"ModalMoveIncomes" : "Incomes: ",
+					"ModalMoveExpenses" : "Expenses"
 
 				}
 

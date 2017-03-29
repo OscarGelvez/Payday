@@ -141,6 +141,17 @@ kubeApp.config(['$stateProvider', '$urlRouterProvider', '$translateProvider',
                   }
                 })
 
+                 .state('app.clients', {
+                  url: '/clients',
+                  views: {
+                    'menuContent': {
+                      templateUrl: 'templates/app.clients.html',
+                      controller: 'ClientsController'
+
+                    }
+                  }
+                })
+
 
 
 

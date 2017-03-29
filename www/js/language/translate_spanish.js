@@ -84,7 +84,6 @@
 				"ChangeLanguageEnglish": "Ingles",
 				"ModalChangeLanguageSave": "Guardar Idioma",
 
-
 				"LatLogout": "Cerrar Sesión",
 				"TextInfoIncomes": "Ingresos:",
 				"TextInfoExpenses": "Egresos:",
@@ -189,8 +188,14 @@
 					"MoveCategoryTitle": "Mover Categorías",
 					"MoveBalanceReg": "Total Registros",
 					"MoveBalanceValue": "Valor Total",
-					"MoveDestinationCategory": " Categoría destino"
-
+					"MoveDestinationCategory": " Categoría destino",
+					"ErrorCategoryDestinity": "Categoría destino vacia o no definida",
+					"ErrorLoadMovesRubro": " Los movimientos para este rubro no se cargaron",
+					"SuccessRegTrasmit": "Transpaso de movimientos exitoso",
+					"ErrorTransmit1": "Error, no se pudieron transpasar los movimientos",
+					"ErrorTransmit2": "Error, no se pudieron transpasar los movimientos, verifica tu conexión",
+					"ModalMoveIncomes" : "Ingresos: ",
+					"ModalMoveExpenses" : "Egresos"
 				}
 
 			},

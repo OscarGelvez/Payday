@@ -112,6 +112,25 @@ var kubeApp = angular.module('kubeApp');
         };
 
 
+         this.movesByRubro = function (info) {
+            loadingService.show();
+            return $http({
+                method: 'GET',
+                url: APP.BASE_URL + 'moves',
+                params: info
+            })
+        };
+
+        this.doTransmitMove = function (info) {
+            loadingService.show();
+            return $http({
+                method: 'PUT',
+                url: APP.BASE_URL + 'moves/update',
+                params: info
+            })
+        };
+
+
 
     })
 
