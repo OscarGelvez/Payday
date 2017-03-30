@@ -212,9 +212,16 @@ $scope.valToggle = $translate.instant('MoveBox.TypeMovementExpenses');
                 if(response.status){
                     console.log(response);
                     $scope.movesRubros=response.data;
-                    }else{
-                      
-                       
+
+                    console.log($scope.movesRubros);
+                    console.log($scope.movesRubros.length);
+
+                            if($scope.movesRubros!=undefined && $scope.movesRubros.length>0){
+                              $scope.tieneMovimientos=true;
+                              console.log("tiene movesRubros >0");
+                            }
+
+
                     }
                           
                   }).error(function(err){

@@ -1,6 +1,6 @@
 angular.module('kubeApp')
 
-  .controller('MovesBoxController', ['$scope', '$state', '$ionicPopup', '$http', 'APP', 'loadingService', '$translate', 'Box_Movement', 'valorCaja', '$filter', 'SaveData', function ($scope, $state, $ionicPopup, $http, APP, loadingService, $translate, Box_Movement, valorCaja, $filter, SaveData) {
+  .controller('MovesBoxController', ['$scope', '$state', '$ionicPopup', '$http', 'APP', 'loadingService', '$translate', 'Box_Movement', 'valorCaja', '$filter', 'SaveData',  function ($scope, $state, $ionicPopup, $http, APP, loadingService, $translate, Box_Movement, valorCaja, $filter, SaveData) {
  
 
 
@@ -13,6 +13,14 @@ angular.module('kubeApp')
      var info = folderConfig.get("idCollector");
     console.log(info);
    
+      $scope.$watch('valorCaja.estado', function(newValue, oldValue) {        
+        console.log(newValue);
+      if (newValue==true) {            
+                $scope.$apply();
+                }else{
+                 
+            };
+      });
 
       if(!valorCaja.estado){
           //Establezco variables para abrir caja
@@ -139,6 +147,10 @@ $scope.load_categories();
                            });
 
                            alertPopup.then(function(res) {
+                            if(valorCaja.estado==false){ // --> quiere decir q la caja estaba cerrada y este movimiento fue el primero de apertura
+                              valorCaja.estado=true;
+                               
+                            }
                           $scope.contentMove = {};
                          });               
                         
@@ -172,7 +184,7 @@ $scope.load_categories();
      confirmPopup.then(function(res) {
            if(res) {
               $scope.contentMove = {};
-              $state.go('app.home');
+            //  $state.go('app.home');
            } else {
              
            }

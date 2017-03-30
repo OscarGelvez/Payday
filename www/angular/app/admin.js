@@ -108,6 +108,7 @@ kubeApp.config(['$stateProvider', '$urlRouterProvider', '$translateProvider',
                 })
 
                  .state('app.moves_box', {
+                  cache: false,
                   url: '/moves_box',
                   views: {
                     'menuContent': {
