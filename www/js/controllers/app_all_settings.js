@@ -503,7 +503,7 @@ $scope.submitDeleteRubro=function(){
         $scope.totalMoveIncomes=0;
         $scope.totalMoveExpenses=0;
 
-        if($scope.movesRubros== undefined || $scope.movesRubros.length>0){
+        if($scope.movesRubros!= undefined || $scope.movesRubros.length>0){
 
         for (var i = 0; i < $scope.movesRubros.length; i++) {
          
