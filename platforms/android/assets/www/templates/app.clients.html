@@ -1,0 +1,64 @@
+
+<ion-view view-title="{{'Settings.AdminRubros.Title' | translate}}">
+
+         <ion-floating-button click="openFormNewClient()" has-footer="false" button-color="#8BC34A" icon="ion-plus" icon-color="#fff">
+      </ion-floating-button>
+
+    
+      <ion-content class="bg-home" scroll="true" overflow-scroll="false">
+                 
+       
+     
+      <!-- The list directive is great, but be sure to also checkout the collection repeat directive when scrolling through large lists -->
+              <div class="listClientes">                  
+
+
+                  <ion-list show-delete="data.showDelete" scroll="true" overflow-scroll="false" >
+
+                    
+
+                          <ion-item ng-repeat="item in items" item="item" href="#/item/{{item.id}}" class="item-remove-animate item-avatar">
+                          <img src="img/user{{ item.img }}.png">
+                           <h2 style="color:white;"> Pepito Perez</h2>
+                               <p style="color:#222; height:60px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque iste accusantium veritatis asperiores.</p>
+
+                            <ion-delete-button class="ion-trash-b" ng-click="onItemDelete(item)">      </ion-delete-button>
+                           
+                          </ion-item>
+
+                           <ion-item  item="item" href="#/item/{{item.id}}" class="item-remove-animate item-avatar">
+                          <img src="img/user3.png">
+                               <h2 style="color:white;"> Oscar Gelvez</h2>
+                               <p style="color:#222;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque iste accusantium veritatis asperiores.</p>
+                            <ion-delete-button class="ion-trash-b" ng-click="onItemDelete(item)">      </ion-delete-button>
+                           
+                          </ion-item>
+                           <ion-item  item="item" href="#/item/{{item.id}}" class="item-remove-animate item-avatar">
+                          <img src="img/user.png">
+                               <h2 style="color:white;">Andres Molina</h2>
+                               <p style="color:#222;">loLorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque iste accusantium veritatis asperiores</p>
+                            <ion-delete-button class="ion-trash-b" ng-click="onItemDelete(item)">      </ion-delete-button>
+                           
+                          </ion-item>
+                           <ion-item  item="item" href="#/item/{{item.id}}" class="item-remove-animate item-avatar">
+                          <img src="img/user2.png">
+                               <h2 style="color:white;">Mario Nieto</h2>
+                               <p style="color:#222;">loLorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque iste accusantium veritatis asperiores</p>
+                            <ion-delete-button class="ion-trash-b" ng-click="onItemDelete(item)">      </ion-delete-button>
+                           
+                          </ion-item>
+                        
+
+                  </ion-list>
+
+              </div> 
+
+
+    
+      </ion-content>
+
+</ion-view>
+</div>
+ 
+
+

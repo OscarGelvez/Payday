@@ -1,0 +1,105 @@
+<ion-modal-view class="modal-new-client">
+  
+
+
+  <div class="ion-modal-content-custom">
+    <ion-content class="padding">
+				<center>
+					<h2 style="color:white">{{'Clients.ModalNewTitle' | translate}}</h2>
+				
+    	        <div class="modalNewClient">
+    	        	 
+
+                  <label class="item item-input item-stacked-label labelsFormInicioRegistro">
+                          <span class="input-label" style="color:white; text-align:center" translate-cloak>{{'Clients.ModalName' | translate}}</span>
+                          <br>
+                        
+                         <input type="text"  ng-required="true" ng-model="newClient.name" ng-pattern="/^[a-zA-Z][.a-zA-Z_-]{2,20}$/" autocomplete="off">
+                          
+                 </label> 
+
+                    <div class="item item-input item-select item-stacked-label labelsFormRegistroSelect">
+                         <label class="labelSelect">{{'SingUp.Country' | translate}}</label>
+                          
+                          <select class="selectElement" ng-model="select.pais" ng-required="true">
+                                   <option value="">--{{'SingUp.TextSelectCountryDepartment' | translate}}--</option> 
+                                   <option value="{{c.id}}" ng-repeat="c in countries">{{c.name}}</option>                          
+                          </select>
+                    </div>
+
+
+                    <div class="item item-input item-select item-stacked-label labelsFormRegistroSelect" ng-show="isColombia" >
+                        <label class="labelSelect">{{'SingUp.Department' | translate}}</label>
+
+                        <select class="selectElement" ng-model="select.dpto">
+                          <option value="">--{{'SingUp.TextSelectCountryDepartment' | translate}}--</option> 
+                          <option value="{{d.id}}" ng-repeat="d in departments">{{d.name}}</option>                          
+                        </select>
+
+                    </div>
+                     
+                      <div class="item item-input item-select item-stacked-label labelsFormRegistroSelect"   ng-show="isDepartmentDefined">
+                        <label class="labelSelect">{{'SingUp.City' | translate}}</label>
+
+                        <select class="selectElement" ng-model="select.ciudad">
+                          <option value="">--{{'SingUp.TextSelectCountryDepartment' | translate}}--</option> 
+                          <option value="{{c.id}}" ng-repeat="c in cities">{{c.name}}</option>
+                          
+                        </select>
+                      </div>
+
+                    
+
+
+                    <label class="item item-input item-stacked-label labelsFormInicioRegistro">
+                          <span class="input-label" style="color:white; text-align:center" translate-cloak>{{'Clients.ModalAddress' | translate}}</span>
+                          <br>
+                        
+                          <input type="text" style="width:100%; float:left;  text-align:center;"  ng-model="newClient.address"  >
+                          
+                     </label> 
+
+
+
+                        
+                    <label class="item item-input item-stacked-label labelsFormInicioRegistro">
+                          <span class="input-label" style="color:white; text-align:center" translate-cloak>{{'Clients.ModalPhone' | translate}}</span>
+                          <br>
+                        
+                          <input type="number" style="width:100%; float:left;  text-align:center;"  ng-model="newClient.phone"  >
+                          
+                     </label> 
+
+                        
+
+                       <label class="item item-input item-stacked-label labelsFormInicioRegistro">
+                          <span class="input-label" style="color:white; text-align:center">{{'SingUp.Email' | translate}}</span><input type="email"   name="correo"  ng-model="formData.correo" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" autocomplete="off">
+                          
+                      </label>
+
+
+
+
+
+ 					            <label class="item item-input item-stacked-label labelsFormInicioRegistro" >
+                           <span class="input-label" style="color:white" translate-cloak>{{'Clients.ModalObservations' | translate}}</span>
+                            <textarea ng-model="newClient.descripcion" translate-cloak placeholder="{{'Settings.AdminRubros.NewRubroDescripcionPH' | translate}}" style=" background-color:transparent; padding:5px; color:white; padding-left:10%;"></textarea>
+                      </label>
+               
+    	        </div>
+
+</center>
+     
+
+             <button style="float:right"  type="button" class="button button-balanced btnInicio icon ion-save " ng-click="submitNewClient(newClient)">
+                      {{'Clients.ModalSave' | translate}}
+                  </button>
+
+
+                  <button  style="float:left" type="button" class="button button-stable btnInicio icon ion-save " ng-click="closeModalNewClient()">
+                      {{'Clients.ModalBack' | translate}} 
+                  </button>
+     
+    </ion-content>
+  </div>
+</ion-modal-view>
