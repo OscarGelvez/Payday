@@ -9,9 +9,14 @@ angular.module('kubeApp')
     
     console.log(valorCaja.estado);
 
-     var folderConfig = SaveData.get("config");
-     var info = folderConfig.get("idCollector");
-    console.log(info);
+    //  var folderConfig = SaveData.get("config");
+    //  var info = folderConfig.get("idCollector");
+    // console.log(info);
+
+        var info = {};
+        info.value = localStorage['kubesoft.kubeApp.user_id'];
+       console.log(info);
+
    
       $scope.$watch('valorCaja.estado', function(newValue, oldValue) {        
         console.log(newValue);

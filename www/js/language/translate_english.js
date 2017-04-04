@@ -3,7 +3,14 @@
 		 "Alerts": {
 			    "Succefully": "Succefully",
 			    "Error": "Error",
-			    "AlertNoConection": "You must have internet connection to interact in the application. Check your connection"
+			    "AlertNoConection": "You must have internet connection to interact in the application. Check your connection",
+
+			    "AlertVerificationSuccess": "Code verified correctly",
+			    "AlertVerificationError1": "Error verifying the code, try later",
+			    "VerificationCodeTitle" :"Account Verification",
+			    "VerificationCodeMsg" : "Enter the code sent to your email",
+			    "VerificationCodeYes" :"Check...",
+			    "VerificationCodeNo" : "Skip"
 		  	}, 
 
 		  "Login": {
@@ -26,6 +33,9 @@
 
 		  	"Logout": {
 			    "Title": "Log out",
+			    "Msg": "Sign out of the application?",
+			    "Yes": "Yes, go out",
+			    "No": "No"
 			    
 		  	}, 
 
@@ -120,8 +130,8 @@
 				"SuccessReg": "The movement was recorded successfully",
 				"ErrorReg": "Could not save movement",
 				"CloseBoxObservations": "Opening Day Box",
-				"ErrorLoadCategory1": "Las categorías no se pudieron cargar",
-				"ErrorLoadCategory2": "Las categorías no se pudieron cargar, verifica tu conexión"
+				"ErrorLoadCategory1": "Categories could not be loaded",
+				"ErrorLoadCategory2": "Categories could not be loaded, Check your connection"
 
 
 
@@ -183,7 +193,7 @@
 					"DeleteSi": "Yes, delete",
 					"ErrorDelete1": "The category could not be deleted",
 					"ErrorDelete2": "The category could not be deleted, Check your connection",
-					"SuccessDelete": "El Rubro se eliminó correctamente",
+					"SuccessDelete": "Category deleted successfully",
 
 					"MoveCategoryTitle": "Move Categories",
 					"MoveBalanceReg": "Total Records",
@@ -196,11 +206,51 @@
 					"ErrorTransmit2": "Error, could not transfer the movements, Check your connection",
 					"ModalMoveIncomes" : "Incomes: ",
 					"ModalMoveExpenses" : "Expenses"
-
 				}
 
 			},
-				
+
+			"Clients":{	
+					"Title": "Clients",
+					"ModalNewTitle": "New Client",
+					"ModalDocument": "Document",
+					"ModalName": "Name",
+					"ModalAddress": "Address",
+					"ModalPhone": "Phone",
+					"ModalObservations": "Observations",
+					"ModalSave": "Save",
+					"ModalDelete": "Delete",
+					"ModalHistorial": "History Payments",
+					"ModalEdit": "Edit",
+					"ModalBack": "Back",					
+					"ErrorFieldName": "Empty or undefined name",
+					"ErrorFieldDocument": "Empty or undefined document",
+
+					"SuccessRegClient": "Successful customer registration",
+					"ErrorReg1": "Error, Client Log Failed",
+					"ErrorReg2": "Error, Client Log Failed, Check your connection",
+					"ErrorLoadClients2": "Error loading clients",
+					"ErrorLoadClients1": "No registered clients found",
+
+					"MsgCountry": "Country", 
+					"MsgDepartment": "Department",
+					"MsgCity": "City",					
+					"ModalDetailTitle": "Client detail",
+
+					"SuccessUpdateClient": "Customer successfully updated",
+					"ErrorUpdate1": "Client update failed",
+					"ErrorUpdate2": "Client update failed, Check your connection",
+
+					"SuccessDeleteClient": "Client successfully deleted",
+					"ErrorDelete1": "Customer Deletion Failed",
+					"ErrorDelete2": "Customer Deletion Failed, Check your connection",
+					"DeleteTitle": "Delete customer",
+					"DeleteYes": "Yes, delete",
+					"DeleteNo": "No",
+					"DeleteMsg": "Are you sure to delete this client?"
+					
+
+			},	
 
 			"Simulator":{		
 					"Title": "Loan Simulator",

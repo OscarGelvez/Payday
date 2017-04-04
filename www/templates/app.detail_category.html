@@ -40,10 +40,14 @@
                       <button style="float:right"  type="button" class="button button-balanced btnInicio icon ion-save " ng-click="submitEditRubro(editCategory)" ng-hide="!boolEditar">
                           {{'Settings.AdminRubros.NewRubroButtonSave' | translate}}
                       </button>
+
+                      <button  style="float:left"  type="button" class="button button-calm  btnInicio2 icon ion-edit " ng-click="hacerVisible()" ng-hide="!boolEditar">
+                                  {{textBtnEditar}}
+                                  </button>
                   </center>
 
                            
-                          <div class="row">
+                          <div class="row" ng-hide="boolEditar">
                             
 
                             <div class="col">

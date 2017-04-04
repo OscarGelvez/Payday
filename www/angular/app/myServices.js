@@ -18,6 +18,24 @@ var kubeApp = angular.module('kubeApp');
 
      })
 
+ //#######################################################################################################
+//#######################################################################################################
+// Servicio que verifica si ya verifico la cuenta
+
+   kubeApp.service('isVerificatedAccount', function($http, APP, loadingService){
+
+      this.check = function (data) {
+         loadingService.show();
+            return $http({
+                method: 'POST',
+                url: APP.BASE_URL + 'collector/verify',
+                data: data
+            })
+        };
+
+   })
+
+
 //#######################################################################################################
 //#######################################################################################################
 // Servicio que verifica si abrio caja para el dia actual
@@ -67,7 +85,7 @@ var kubeApp = angular.module('kubeApp');
 
         // Servicio que se encarga de cargar las categorias cargadas por los usuarios.
          this.reloadMovesView = function (data) {
-          console.log(data);
+       
             loadingService.show();
             return $http({
                 method: 'GET',
@@ -134,6 +152,65 @@ var kubeApp = angular.module('kubeApp');
 
     })
 
+
+
+//#######################################################################################################
+//#######################################################################################################
+// Servicios de CRUD de CLIENTES 
+
+
+// Servicio que se encarga de registrar un cliente
+    kubeApp.service('clientsService', function($http, APP, loadingService){
+      this.saveClient = function (data) {
+            loadingService.show();
+            return $http({
+                method: 'POST',
+                url: APP.BASE_URL + 'customers',
+                params: data
+            })
+        };
+
+  // Servicio que se encarga de cargar los clientes.
+         this.loadClients = function (id_collector) {
+          console.log(id_collector);
+            loadingService.show();
+            return $http({
+                method: 'GET',
+                url: APP.BASE_URL + 'customers',
+                params: id_collector
+               
+            })
+        };
+
+
+        // Servicio que se encarga de actualizar los clientes.
+         this.updateClients = function (data) {
+          console.log(data);
+            loadingService.show();
+            return $http({
+                method: 'PUT',
+                url: APP.BASE_URL + 'customers',
+                params: data
+               
+            })
+        };
+
+
+        // Servicio que se encarga de eliminar los clientes.
+         this.deleteClients = function (data) {
+          console.log(data);
+            loadingService.show();
+            return $http({
+                method: 'DELETE',
+                url: APP.BASE_URL + 'customers',
+                params: data
+               
+            })
+        };
+
+
+
+    })
 
 
  

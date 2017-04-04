@@ -1,5 +1,5 @@
 
-<ion-view view-title="{{'Settings.AdminRubros.Title' | translate}}">
+<ion-view view-title="{{'Clients.Title' | translate}}">
 
          <ion-floating-button click="openFormNewClient()" has-footer="false" button-color="#8BC34A" icon="ion-plus" icon-color="#fff">
       </ion-floating-button>
@@ -17,37 +17,66 @@
 
                     
 
-                          <ion-item ng-repeat="item in items" item="item" href="#/item/{{item.id}}" class="item-remove-animate item-avatar">
-                          <img src="img/user{{ item.img }}.png">
-                           <h2 style="color:white;"> Pepito Perez</h2>
+                        <ion-item ng-repeat="item in listClients" item="item" ng-click="openModalDetail(item.id)" class="item-remove-animate item-avatar">
+                          <img ng-src="img/user3.png">
+                           <h2 style="color:white;"> {{item.name}}</h2>
                                <p style="color:#222; height:60px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque iste accusantium veritatis asperiores.</p>
 
-                            <ion-delete-button class="ion-trash-b" ng-click="onItemDelete(item)">      </ion-delete-button>
+                      
                            
                           </ion-item>
 
                            <ion-item  item="item" href="#/item/{{item.id}}" class="item-remove-animate item-avatar">
-                          <img src="img/user3.png">
+                          <img ng-src="img/user3.png">
                                <h2 style="color:white;"> Oscar Gelvez</h2>
                                <p style="color:#222;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque iste accusantium veritatis asperiores.</p>
-                            <ion-delete-button class="ion-trash-b" ng-click="onItemDelete(item)">      </ion-delete-button>
+                    
                            
                           </ion-item>
-                           <ion-item  item="item" href="#/item/{{item.id}}" class="item-remove-animate item-avatar">
-                          <img src="img/user.png">
-                               <h2 style="color:white;">Andres Molina</h2>
-                               <p style="color:#222;">loLorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque iste accusantium veritatis asperiores</p>
-                            <ion-delete-button class="ion-trash-b" ng-click="onItemDelete(item)">      </ion-delete-button>
+                          <ion-item  item="item" href="#/item/{{item.id}}" class="item-remove-animate item-avatar">
+                          <img ng-src="img/user3.png">
+                               <h2 style="color:white;"> Oscar Gelvez</h2>
+                               <p style="color:#222;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque iste accusantium veritatis asperiores.</p>
+                    
                            
                           </ion-item>
-                           <ion-item  item="item" href="#/item/{{item.id}}" class="item-remove-animate item-avatar">
-                          <img src="img/user2.png">
-                               <h2 style="color:white;">Mario Nieto</h2>
-                               <p style="color:#222;">loLorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque iste accusantium veritatis asperiores</p>
-                            <ion-delete-button class="ion-trash-b" ng-click="onItemDelete(item)">      </ion-delete-button>
+                          <ion-item  item="item" href="#/item/{{item.id}}" class="item-remove-animate item-avatar">
+                          <img ng-src="img/user3.png">
+                               <h2 style="color:white;"> Oscar Gelvez</h2>
+                               <p style="color:#222;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque iste accusantium veritatis asperiores.</p>
+                    
                            
                           </ion-item>
-                        
+                          <ion-item  item="item" href="#/item/{{item.id}}" class="item-remove-animate item-avatar">
+                          <img ng-src="img/user3.png">
+                               <h2 style="color:white;"> Oscar Gelvez</h2>
+                               <p style="color:#222;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque iste accusantium veritatis asperiores.</p>
+                    
+                           
+                          </ion-item>
+                          <ion-item  item="item" href="#/item/{{item.id}}" class="item-remove-animate item-avatar">
+                          <img ng-src="img/user3.png">
+                               <h2 style="color:white;"> Oscar Gelvez</h2>
+                               <p style="color:#222;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque iste accusantium veritatis asperiores.</p>
+                    
+                           
+                          </ion-item>
+                          <ion-item  item="item" href="#/item/{{item.id}}" class="item-remove-animate item-avatar">
+                          <img ng-src="img/user3.png">
+                               <h2 style="color:white;"> Oscar Gelvez</h2>
+                               <p style="color:#222;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque iste accusantium veritatis asperiores.</p>
+                    
+                           
+                          </ion-item>
+                          <ion-item  item="item" href="#/item/{{item.id}}" class="item-remove-animate item-avatar">
+                          <img ng-src="img/user3.png">
+                               <h2 style="color:white;"> Oscar Gelvez</h2>
+                               <p style="color:#222;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque iste accusantium veritatis asperiores.</p>
+                    
+                           
+                          </ion-item>
+                       
+                       
 
                   </ion-list>
 

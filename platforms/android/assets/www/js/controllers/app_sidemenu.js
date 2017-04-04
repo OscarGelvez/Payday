@@ -2,7 +2,7 @@
   var kubeApp = angular.module('kubeApp');
 
 
-  kubeApp.controller('SideMenuController', function ($scope, $state, $rootScope, $ionicModal, $ionicSlideBoxDelegate, $translate, $ionicLoading, $cordovaNetwork ) {
+  kubeApp.controller('SideMenuController', function ($scope, $state, $rootScope, $ionicModal, $ionicSlideBoxDelegate, $translate, $ionicLoading, $cordovaNetwork, SaveData, SessionService ) {
 
 
 
@@ -118,12 +118,16 @@ $ionicModal.fromTemplateUrl('templates/modals/change_language.html', {
 }
 
 
+//############################################## CODIGO CERRAR SESION ############################################
 
 
 
-
-
-
+ $scope.logoutHome = function(){
+        console.log(SaveData.removeFolder("config",true));
+        SessionService.destroy();
+        $state.go("login");
+    };
+//############################################## FIN CODIGO CERRAR SESION ############################################
 
 
 

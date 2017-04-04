@@ -11,7 +11,7 @@
     	        	 
                   
                    <label class="item item-input item-stacked-label labelsFormInicioRegistro">
-                          <span class="input-label" style="color:white; text-align:center" translate-cloak>{{'Clients.ModalDocument' | translate}}</span>
+                          <span class="input-label" style="color:white; text-align:center" translate-cloak>{{'Clients.ModalDocument' | translate}}*</span>
                           <br>
                         
                          <input type="number"  ng-required="true" ng-model="newClient.document" ng-pattern="/^(?=[0-9]*$)(?:.{8}|.{10})$/"> 
@@ -20,10 +20,10 @@
 
 
                   <label class="item item-input item-stacked-label labelsFormInicioRegistro">
-                          <span class="input-label" style="color:white; text-align:center" translate-cloak>{{'Clients.ModalName' | translate}}</span>
+                          <span class="input-label" style="color:white; text-align:center" translate-cloak>{{'Clients.ModalName' | translate}}*</span>
                           <br>
                         
-                         <input type="text"  ng-required="true" ng-model="newClient.name" ng-pattern="/^[a-zA-Z ][.a-z A-Z_-]{2,20}$/" autocomplete="off">
+                         <input type="text"  ng-required="true" ng-model="newClient.name" ng-pattern="/^[a-zA-Z0-9 ][.a-z 0-9 A-Z_-]{2,20}$/" autocomplete="off">
                           
                  </label> 
 

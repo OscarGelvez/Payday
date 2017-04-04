@@ -7,7 +7,7 @@
  */
 var kubeApp = angular.module('kubeApp');
 
-kubeApp.controller("HomeController", function($scope,$state, ngTableParams, queries, $modal, APP, localDatabase, FacadeServer, SaveData, MovesDao, $ionicSlideBoxDelegate, $translate, isOpenBox, $ionicPopup, valorCaja, $filter, loadingService, Box_Movement) {
+kubeApp.controller("HomeController", function($scope,$state, ngTableParams, queries, $modal, APP, localDatabase, FacadeServer, SaveData, MovesDao, $ionicSlideBoxDelegate, $translate, isOpenBox, $ionicPopup, valorCaja, $filter, loadingService, Box_Movement, isVerificatedAccount) {
 
     console.log("llego aHome");
 
@@ -16,10 +16,12 @@ kubeApp.controller("HomeController", function($scope,$state, ngTableParams, quer
     $scope.home = {};
 
 //##############################INICIO PARTE MIA ######################
+        var info = {};
+        info.value = localStorage['kubesoft.kubeApp.user_id'];
+       console.log(info);
 
-
-     var folderConfig = SaveData.get("config");
-      var info = folderConfig.get("idCollector");
+     // var folderConfig = SaveData.get("config");
+     //  var info = folderConfig.get("idCollector");
    
      //var info=60;
      $scope.CurrentDate = new Date();
@@ -120,6 +122,73 @@ $scope.total=0;
 
 
 
+$scope.windowsVerificationAccount=function(){
+
+            var a = localStorage.getItem("kubesoft.kubeApp.authenticated");
+           var codeUser = localStorage.getItem("kubesoft.kubeApp.code");
+
+           
+
+var title =  $translate.instant('Alerts.VerificationCodeTitle');
+var msg = $translate.instant('Alerts.VerificationCodeMsg');
+var yes = $translate.instant('Alerts.VerificationCodeYes');
+var no = $translate.instant('Alerts.VerificationCodeNo');
+            if(a==0){
+                $ionicPopup.prompt({
+                       title: ''+title,
+                       template: ''+msg,
+                    
+                      
+                       cancelText: ''+no,
+                       okText: ''+yes
+                 }).then(function(res) {
+                    console.log(res);
+                                               
+                         $scope.activarUser(res);
+
+                            
+                     }); 
+                }
+
+                
+}
+
+    $scope.windowsVerificationAccount();
+
+$scope.activarUser=function(res){
+          var valor = {};
+        valor.code=res;
+        valor.collector_id=info.value;
+       
+         isVerificatedAccount.check(valor)
+                      .success(function(response){
+                         
+                              loadingService.hide();
+                                if(response.status){
+                                   var alertPopup = $ionicPopup.alert({
+                                     title: 'OK',
+                                     template: '{{"Alerts.AlertVerificationSuccess" | translate}}'
+                                   });
+                                 
+                                }else{
+                                     var alertPopup = $ionicPopup.alert({
+                                     title: 'Error',
+                                     template: '{{"Alerts.AlertVerificationError1" | translate}}'
+                                   });
+                                }
+                                                
+                          }).error(function(err){
+                          loadingService.hide();
+                           var alertPopup = $ionicPopup.alert({
+                                     title: 'Error',
+                                     template: '{{"Alerts.AlertVerificationError1" | translate}}'
+                                   });
+                                  alertPopup.then(function(res) {                            
+                                       console.log(err);
+                                   });
+                         });
+
+}
 
 
 

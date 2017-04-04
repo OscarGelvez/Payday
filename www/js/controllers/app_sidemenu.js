@@ -2,7 +2,7 @@
   var kubeApp = angular.module('kubeApp');
 
 
-  kubeApp.controller('SideMenuController', function ($scope, $state, $rootScope, $ionicModal, $ionicSlideBoxDelegate, $translate, $ionicLoading, $cordovaNetwork ) {
+  kubeApp.controller('SideMenuController', function ($scope, $state, $rootScope, $ionicModal, $ionicSlideBoxDelegate, $translate, $ionicLoading, $cordovaNetwork, SaveData, SessionService ) {
 
 
 
@@ -118,12 +118,40 @@ $ionicModal.fromTemplateUrl('templates/modals/change_language.html', {
 }
 
 
+//############################################## CODIGO CERRAR SESION ############################################
 
 
 
+ $scope.logoutHome = function(){
+
+    var title = $translate.instant('Logout.Title');
+    var msg = $translate.instant('Logout.Msg');
+    var yes = $translate.instant('Logout.Yes');
+    var no = $translate.instant('Logout.No');
+
+
+            var confirmPopup = $ionicPopup.confirm({
+                   title: ''+title,
+                   template: ''+msg,
+                   cancelText: ''+no,
+                   okText: ''+yes
+                 });
+
+                 confirmPopup.then(function(res) {
+                   if(res) {
+                     console.log(SaveData.removeFolder("config",true));
+                      SessionService.destroy();
+                      $state.go("login");
+                   } else {
+                     console.log('You are not sure');
+                   }
+                 });
 
 
 
+        
+    };
+//############################################## FIN CODIGO CERRAR SESION ############################################
 
 
 

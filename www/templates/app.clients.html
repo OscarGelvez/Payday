@@ -1,33 +1,87 @@
 
-<ion-view view-title="{{'Settings.AdminRubros.Title' | translate}}">
-      <ion-floating-button click="addCategory()" has-footer="false" button-color="#8BC34A" icon="ion-plus" icon-color="#fff">
+<ion-view view-title="{{'Clients.Title' | translate}}">
+
+         <ion-floating-button click="openFormNewClient()" has-footer="false" button-color="#8BC34A" icon="ion-plus" icon-color="#fff">
       </ion-floating-button>
+
+    
       <ion-content class="bg-home" scroll="true" overflow-scroll="false">
                  
        
-      <h1 class="title">Ionic Delete/Option Buttons</h1>
-        <div class="buttons">
-          <button class="button button-icon icon ion-ios-minus-outline"
-            ng-click="data.showDelete = !data.showDelete; data.showReorder = false"></button>
-        </div>
-
+     
       <!-- The list directive is great, but be sure to also checkout the collection repeat directive when scrolling through large lists -->
-      
-              <ion-list show-delete="data.showDelete" show-reorder="data.showReorder">
-
-                      <ion-item ng-repeat="item in items" item="item" href="#/item/{{item.id}}" class="item-remove-animate">
-                        Item {{ item.id }}
-                        <ion-delete-button class="ion-minus-circled" ng-click="onItemDelete(item)">      </ion-delete-button>
+              <div class="listClientes">                  
 
 
-                        <ion-option-button class="button-assertive" ng-click="edit(item)">Edit    </ion-option-button>
+                  <ion-list show-delete="data.showDelete" scroll="true" overflow-scroll="false" >
 
+                    
 
-                        <ion-option-button class="button-calm" ng-click="share(item)">Share       </ion-option-button>
+                        <ion-item ng-repeat="item in listClients" item="item" ng-click="openModalDetail(item.id)" class="item-remove-animate item-avatar">
+                          <img ng-src="img/user3.png">
+                           <h2 style="color:white;"> {{item.name}}</h2>
+                               <p style="color:#222; height:60px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque iste accusantium veritatis asperiores.</p>
+
+                      
+                           
+                          </ion-item>
+
+                           <ion-item  item="item" href="#/item/{{item.id}}" class="item-remove-animate item-avatar">
+                          <img ng-src="img/user3.png">
+                               <h2 style="color:white;"> Oscar Gelvez</h2>
+                               <p style="color:#222;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque iste accusantium veritatis asperiores.</p>
+                    
+                           
+                          </ion-item>
+                          <ion-item  item="item" href="#/item/{{item.id}}" class="item-remove-animate item-avatar">
+                          <img ng-src="img/user3.png">
+                               <h2 style="color:white;"> Oscar Gelvez</h2>
+                               <p style="color:#222;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque iste accusantium veritatis asperiores.</p>
+                    
+                           
+                          </ion-item>
+                          <ion-item  item="item" href="#/item/{{item.id}}" class="item-remove-animate item-avatar">
+                          <img ng-src="img/user3.png">
+                               <h2 style="color:white;"> Oscar Gelvez</h2>
+                               <p style="color:#222;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque iste accusantium veritatis asperiores.</p>
+                    
+                           
+                          </ion-item>
+                          <ion-item  item="item" href="#/item/{{item.id}}" class="item-remove-animate item-avatar">
+                          <img ng-src="img/user3.png">
+                               <h2 style="color:white;"> Oscar Gelvez</h2>
+                               <p style="color:#222;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque iste accusantium veritatis asperiores.</p>
+                    
+                           
+                          </ion-item>
+                          <ion-item  item="item" href="#/item/{{item.id}}" class="item-remove-animate item-avatar">
+                          <img ng-src="img/user3.png">
+                               <h2 style="color:white;"> Oscar Gelvez</h2>
+                               <p style="color:#222;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque iste accusantium veritatis asperiores.</p>
+                    
+                           
+                          </ion-item>
+                          <ion-item  item="item" href="#/item/{{item.id}}" class="item-remove-animate item-avatar">
+                          <img ng-src="img/user3.png">
+                               <h2 style="color:white;"> Oscar Gelvez</h2>
+                               <p style="color:#222;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque iste accusantium veritatis asperiores.</p>
+                    
+                           
+                          </ion-item>
+                          <ion-item  item="item" href="#/item/{{item.id}}" class="item-remove-animate item-avatar">
+                          <img ng-src="img/user3.png">
+                               <h2 style="color:white;"> Oscar Gelvez</h2>
+                               <p style="color:#222;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque iste accusantium veritatis asperiores.</p>
+                    
+                           
+                          </ion-item>
                        
-                      </ion-item>
+                       
 
-              </ion-list>
+                  </ion-list>
+
+              </div> 
+
 
     
       </ion-content>

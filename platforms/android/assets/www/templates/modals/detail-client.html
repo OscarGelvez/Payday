@@ -1,0 +1,161 @@
+<ion-modal-view class="modal-new-client">
+  
+
+
+  <div class="ion-modal-content-custom">
+    <ion-content class="padding">
+				<center>
+					<h2 style="color:white">{{'Clients.ModalDetailTitle' | translate}}</h2>
+				
+    	        <div class="modalNewClient">
+    	        	 
+                  
+                   <label class="item item-input item-stacked-label labelsFormInicioRegistro">
+                          <span class="input-label" style="color:white; text-align:center" translate-cloak>{{'Clients.ModalDocument' | translate}}</span>
+                          <br>
+                        
+                         <input type="number"  ng-required="true" ng-model="datosEditados.document" ng-pattern="/^(?=[0-9]*$)(?:.{8}|.{10})$/" ng-disabled="!boolEditar"> 
+                          
+                 </label> 
+
+
+                  <label class="item item-input item-stacked-label labelsFormInicioRegistro">
+                          <span class="input-label" style="color:white; text-align:center" translate-cloak>{{'Clients.ModalName' | translate}}</span>
+                          <br>
+                        
+                         <input type="text"  ng-required="true" ng-model="datosEditados.name" ng-pattern="/^[a-zA-Z0-9 ][.a-z 0-9 A-Z_-]{2,20}$/" ng-disabled="!boolEditar">
+                          
+                 </label> 
+
+
+
+
+                     
+                    <div class="item item-input item-select item-stacked-label labelsFormRegistroSelect">
+                      <label class="labelSelectEditar" ng-disabled="desabilitarCampos" >{{'Clients.MsgCountry' | translate}}</label>
+
+                         <select class="selectElement"  ng-model="datosEditadosSelect.country" id="selectCountry" ng-disabled="!boolEditar">
+                                   <option value="">--{{'SingUp.TextSelectCountryDepartment' | translate}}--</option> 
+                                   <option value="{{c.id}}" ng-repeat="c in countries2">{{c.name}}</option>                          
+                          </select>
+                    </div>
+
+
+
+
+
+                    <div class="item item-input item-select item-stacked-label labelsFormRegistroSelect" ng-show="isColombiaM" >
+                      <label class="labelSelectEditar" ng-disabled="desabilitarCampos" >{{'Clients.MsgDepartment' | translate}}</label>
+
+                   
+                        <select class="selectElement" ng-model="datosEditadosSelect.department" id="selectDepartment" ng-disabled="!boolEditar">
+                          <option value="">--{{'SingUp.TextSelectCountryDepartment' | translate}}--</option> 
+                          <option value="{{d.id}}" ng-repeat="d in departments2">{{d.name}}</option>                          
+                        </select>
+
+                    </div>
+                     
+
+
+
+
+                      <div class="item item-input item-select item-stacked-label labelsFormRegistroSelect"   ng-show="isDepartmentDefinedM">
+                         <label class="labelSelectEditar" ng-disabled="desabilitarCampos" >{{'Clients.MsgCity' | translate}}</label>
+
+                        <select class="selectElement" ng-model="datosEditadosSelect.city" id="selectCity" ng-disabled="!boolEditar">
+                          <option value="">--{{'SingUp.TextSelectCountryDepartment' | translate}}--</option> 
+                          <option value="{{c.id}}" ng-repeat="c in cities2">{{c.name}}</option>
+                          
+                        </select>
+                      </div>
+
+
+                    
+
+
+                    <label class="item item-input item-stacked-label labelsFormInicioRegistro">
+                          <span class="input-label" style="color:white; text-align:center" translate-cloak>{{'Clients.ModalAddress' | translate}}</span>
+                          <br>
+                        
+                          <input type="text" style="width:100%; float:left;  text-align:center;"  ng-model="datosEditados.address" ng-disabled="!boolEditar">
+                          
+                     </label> 
+
+
+
+                        
+                    <label class="item item-input item-stacked-label labelsFormInicioRegistro">
+                          <span class="input-label" style="color:white; text-align:center" translate-cloak>{{'Clients.ModalPhone' | translate}}</span>
+                          <br>
+                        
+                          <input type="number" style="width:100%; float:left;  text-align:center;"  ng-model="datosEditados.phone_numbers"  ng-disabled="!boolEditar">
+                          
+                     </label> 
+
+                        
+
+                       <label class="item item-input item-stacked-label labelsFormInicioRegistro">
+                          <span class="input-label" style="color:white; text-align:center">{{'SingUp.Email' | translate}}</span><input type="email"   name="correo"  ng-model="datosEditados.email" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" ng-disabled="!boolEditar">
+                          
+                      </label>
+
+
+
+
+
+ 					            <label class="item item-input item-stacked-label labelsFormInicioRegistro" >
+                           <span class="input-label" style="color:white" translate-cloak>{{'Clients.ModalObservations' | translate}}</span>
+                            <textarea ng-model="datosEditados.observation" translate-cloak placeholder="{{'Settings.AdminRubros.NewRubroDescripcionPH' | translate}}" style=" background-color:transparent; padding:5px; color:white; padding-left:10%;" ng-disabled="!boolEditar"></textarea>
+                      </label>
+               
+    	        </div>
+
+
+<!-- ###################### Botones ##########################-->
+
+             
+               <button style="float:right"  type="button" class="button button-balanced btnInicio " ng-click="submitEditClient(datosEditados)" ng-hide="!boolEditar">
+                      {{'Clients.ModalSave' | translate}}
+              </button>
+
+
+              <button  style="float:left" type="button" class="button button-energized btnInicio" ng-click="hacerVisible()"  ng-hide="!boolEditar">
+                      
+                      {{textBtnEditar}}   
+               </button>
+
+
+
+</center>
+              <div class="row" ng-hide="boolEditar">
+                            
+
+                            <div class="col">
+                                  <button   type="button" class="button button-calm  btnInicio2 icon ion-edit " ng-click="hacerVisible()">
+                                  {{textBtnEditar}}
+                                  </button>
+                            </div>
+
+                            <div class="col">
+                                  <button   type="button" class="button button-assertive  btnInicio2 icon ion-trash-b " ng-click="submitDeleteRubro()">
+                                   {{'Clients.ModalDelete' | translate}} 
+                                  </button>                          
+                            </div>
+
+                            <div class="col">                              
+                                <button   type="button" class="button button-energized  btnInicio2" ng-click="closeDetailClient()">
+
+                                    {{'Clients.ModalBack' | translate}} 
+                                </button>
+                            </div>
+
+              </div>
+
+            
+
+
+                  
+     
+    </ion-content>
+  </div>
+</ion-modal-view>

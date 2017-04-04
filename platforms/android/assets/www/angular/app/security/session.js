@@ -9,6 +9,10 @@ var kubeApp = angular.module('kubeApp');
 
 kubeApp.controller('SesionController', function($scope, AuthService, SessionService, SaveData, $state, RatesHelper, $translate, $ionicPopup) {
 console.log("llego aqui a SesionController")
+
+if(localStorage['kubesoft.kubeApp.user_id']){
+    $state.go('app.home');
+}
     $scope.credentials = {};
   
    /* function init(){
@@ -90,7 +94,8 @@ console.log("llego aqui a SesionController")
                         
                         var alertPopup = $ionicPopup.alert({
                              title: 'Error',
-                             template: '{{"Login.MsgErrorLoginNoExist" | translate}}'
+
+                             template: '{{"Login.MsgErrorLoginBadPass" | translate}}'
                            });
                       
                     }else if(data.status==1){
@@ -107,7 +112,7 @@ console.log("llego aqui a SesionController")
                            });
                         
                     }else{ 
-                        //SessionService.create(data.data);
+                        SessionService.create(data);
                     if(data.error != true){
                         var hello = $translate.instant('Login.LoginSuccess');
                         toastr.success(data.name, hello);

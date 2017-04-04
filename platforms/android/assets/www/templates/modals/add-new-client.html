@@ -9,12 +9,21 @@
 				
     	        <div class="modalNewClient">
     	        	 
-
-                  <label class="item item-input item-stacked-label labelsFormInicioRegistro">
-                          <span class="input-label" style="color:white; text-align:center" translate-cloak>{{'Clients.ModalName' | translate}}</span>
+                  
+                   <label class="item item-input item-stacked-label labelsFormInicioRegistro">
+                          <span class="input-label" style="color:white; text-align:center" translate-cloak>{{'Clients.ModalDocument' | translate}}*</span>
                           <br>
                         
-                         <input type="text"  ng-required="true" ng-model="newClient.name" ng-pattern="/^[a-zA-Z][.a-zA-Z_-]{2,20}$/" autocomplete="off">
+                         <input type="number"  ng-required="true" ng-model="newClient.document" ng-pattern="/^(?=[0-9]*$)(?:.{8}|.{10})$/"> 
+                          
+                 </label> 
+
+
+                  <label class="item item-input item-stacked-label labelsFormInicioRegistro">
+                          <span class="input-label" style="color:white; text-align:center" translate-cloak>{{'Clients.ModalName' | translate}}*</span>
+                          <br>
+                        
+                         <input type="text"  ng-required="true" ng-model="newClient.name" ng-pattern="/^[a-zA-Z0-9 ][.a-z 0-9 A-Z_-]{2,20}$/" autocomplete="off">
                           
                  </label> 
 
@@ -73,7 +82,7 @@
                         
 
                        <label class="item item-input item-stacked-label labelsFormInicioRegistro">
-                          <span class="input-label" style="color:white; text-align:center">{{'SingUp.Email' | translate}}</span><input type="email"   name="correo"  ng-model="formData.correo" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" autocomplete="off">
+                          <span class="input-label" style="color:white; text-align:center">{{'SingUp.Email' | translate}}</span><input type="email"   name="correo"  ng-model="newClient.email" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" autocomplete="off">
                           
                       </label>
 
@@ -83,7 +92,7 @@
 
  					            <label class="item item-input item-stacked-label labelsFormInicioRegistro" >
                            <span class="input-label" style="color:white" translate-cloak>{{'Clients.ModalObservations' | translate}}</span>
-                            <textarea ng-model="newClient.descripcion" translate-cloak placeholder="{{'Settings.AdminRubros.NewRubroDescripcionPH' | translate}}" style=" background-color:transparent; padding:5px; color:white; padding-left:10%;"></textarea>
+                            <textarea ng-model="newClient.description" translate-cloak placeholder="{{'Settings.AdminRubros.NewRubroDescripcionPH' | translate}}" style=" background-color:transparent; padding:5px; color:white; padding-left:10%;"></textarea>
                       </label>
                
     	        </div>

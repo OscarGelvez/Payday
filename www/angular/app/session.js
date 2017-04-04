@@ -11,14 +11,14 @@ var kubeApp = angular.module('kubeApp');
 
 kubeApp.service('SessionService', function ($http, $state) {
 
-    this.isAuthenticated = false;
+    this.isAuthenticated = 0;
 
     /**
      * Checks if current user is authenticated
      */
     this.isLoged = function () {
 
-        if (localStorage['kubesoft.kubeApp.authenticated']) {
+        if (localStorage['kubesoft.kubeApp.authenticated'] == 1) {
             return true;
         }
         return false;
@@ -28,15 +28,20 @@ kubeApp.service('SessionService', function ($http, $state) {
      * Creates a new session
      */
     this.create = function (info) {
-        this.isAuthenticated = true;
-        this.user_id = info.user.id;
-        this.token = info.token;
-        this.username = info.user.username;
-        this.name = info.user.name;
-        this.permissions = info.permissions;
-        this.roles = info.user.roles;
+        this.isAuthenticated = info.is_authenticated;
+        this.user_id = info.id;
+        this.username = info.username;
+        this.name = info.name;
+        this.email = info.email;
+        this.code = info.code_activation;
+        // this.permissions = info.permissions;
+        // this.roles = info.user.roles;
         this.save();
     };
+
+
+
+
 
     /**
      * Destroys current session
@@ -44,14 +49,16 @@ kubeApp.service('SessionService', function ($http, $state) {
     this.destroy = function () {
         this.id = null;
         this.user_id = null;
-        this.isAuthenticated = false;
+        this.isAuthenticated = 0;
         delete localStorage['kubesoft.kubeApp.authenticated'];
         delete localStorage['kubesoft.kubeApp.user_id'];
-        delete localStorage['kubesoft.kubeApp.token'];
+        
         delete localStorage['kubesoft.kubeApp.username'];
         delete localStorage['kubesoft.kubeApp.name'];
-        delete localStorage['kubesoft.kubeApp.permissions'];
-        delete localStorage['kubesoft.kubeApp.roles'];
+         delete localStorage['kubesoft.kubeApp.email'];
+         delete localStorage['kubesoft.kubeApp.code'];
+        // delete localStorage['kubesoft.kubeApp.permissions'];
+        // delete localStorage['kubesoft.kubeApp.roles'];
         sessionStorage.clear();
     };
 
@@ -60,16 +67,18 @@ kubeApp.service('SessionService', function ($http, $state) {
      */
     this.save = function () {
 
-        localStorage['kubesoft.kubeApp.authenticated'] = true;
+        localStorage['kubesoft.kubeApp.authenticated'] = this.isAuthenticated;
         localStorage['kubesoft.kubeApp.user_id'] = this.user_id;
-        localStorage['kubesoft.kubeApp.token'] = this.token;
+      
         localStorage['kubesoft.kubeApp.username'] = this.username;
         localStorage['kubesoft.kubeApp.name'] = this.name;
-        localStorage['kubesoft.kubeApp.permissions'] = JSON.stringify(this.permissions);
-        localStorage['kubesoft.kubeApp.roles'] = JSON.stringify(this.roles);
+        localStorage['kubesoft.kubeApp.email'] = this.email;
+        localStorage['kubesoft.kubeApp.code'] = this.code;
+        // localStorage['kubesoft.kubeApp.permissions'] = JSON.stringify(this.permissions);
+        // localStorage['kubesoft.kubeApp.roles'] = JSON.stringify(this.roles);
 
-        $http.defaults.headers.common['user'] = this.user_id;
-        $http.defaults.headers.common['token'] = this.token;
+        // $http.defaults.headers.common['user'] = this.user_id;
+        // $http.defaults.headers.common['token'] = this.token;
 
     };
 
@@ -81,13 +90,16 @@ kubeApp.service('SessionService', function ($http, $state) {
         if (this.isLoged()) {
             console.log("refresh fue true")
             info = {};
-            info.user = {};
-            info.user.id = localStorage['kubesoft.kubeApp.user_id'];
-            info.token = localStorage['kubesoft.kubeApp.token'];
-            info.user.username = localStorage['kubesoft.kubeApp.username'];
-            info.user.name = localStorage['kubesoft.kubeApp.name'];
-            info.permissions = JSON.parse(localStorage['kubesoft.kubeApp.permissions']);
-            info.user.roles = JSON.parse(localStorage['kubesoft.kubeApp.roles']);
+           
+            info.id = localStorage['kubesoft.kubeApp.user_id'];      
+            info.username = localStorage['kubesoft.kubeApp.username'];
+            info.name = localStorage['kubesoft.kubeApp.name'];
+            info.email = localStorage['kubesoft.kubeApp.email'];
+            info.is_authenticated = localStorage['kubesoft.kubeApp.authenticated']; 
+            info.code_activation = localStorage['kubesoft.kubeApp.code']; 
+
+            // info.permissions = JSON.parse(localStorage['kubesoft.kubeApp.permissions']);
+            // info.user.roles = JSON.parse(localStorage['kubesoft.kubeApp.roles']);
             this.create(info);
             $state.go('app.home');
         } else {
@@ -100,6 +112,7 @@ kubeApp.service('SessionService', function ($http, $state) {
      * Redirect user to login state
      */
     this.redirectToLogin = function () {
+      
         $state.go('login');
     };
 
@@ -107,12 +120,16 @@ kubeApp.service('SessionService', function ($http, $state) {
      * Redirect user to error state
      */
     this.unauthorized = function () {
+    
         $state.go('login');
     };
 
     this.notFound = function () {
-        $state.go('login');
+        console.log("paso por aqui") // quien llama a esta funcionn ???           
+       // $state.go('login');
     };
+
+
 
     return this;
 

@@ -3,7 +3,16 @@
 		 "Alerts": {
 			    "Succefully": "Exito",
 			    "Error": "Error",
-			    "AlertNoConection": "Debes tener conexión a internet para interactuar en la aplicación. Revisa tu conexión"
+			    "AlertNoConection": "Debes tener conexión a internet para interactuar en la aplicación. Revisa tu conexión",
+
+			    "AlertVerificationSuccess": "Código verificado correctamente",
+			    "AlertVerificationError1": "Error al verificar el codigo, intentalo mas tarde",
+			    "VerificationCodeTitle" :"Verificación de cuenta",
+			    "VerificationCodeMsg" : "Ingrese el código enviado a su correo",
+			    "VerificationCodeYes" :"Verificar...",
+			    "VerificationCodeNo" : "Saltar"
+
+
 		  	}, 
 
 		  "Login": {
@@ -84,7 +93,6 @@
 				"ChangeLanguageEnglish": "Ingles",
 				"ModalChangeLanguageSave": "Guardar Idioma",
 
-
 				"LatLogout": "Cerrar Sesión",
 				"TextInfoIncomes": "Ingresos:",
 				"TextInfoExpenses": "Egresos:",
@@ -114,9 +122,9 @@
 				"ErrorDate": "Fecha del movimiento vacia o no definida",
 				"ErrorTypeMovement": "Tipo de movimiento vacio o no definido",
 				"ErrorCategory": "Categoría del movimiento vacia o no definida",
-				"CancelFormTitle": "Cancelar Movimiento",
-				"CancelFormText": "¿Seguro de cancelar el movimiento?",
-				"CancelFormOk": "Si, cancelar",
+				"CancelFormTitle": "Limpiar campos",
+				"CancelFormText": "¿Limpiar campos?",
+				"CancelFormOk": "Si, Limpiar",
 				"CancelFormNot": "No",
 				"SuccessReg": "El movimiento se registro de forma satisfactoria",
 				"ErrorReg": "No se pudo guardar el movimiento",
@@ -189,9 +197,59 @@
 					"MoveCategoryTitle": "Mover Categorías",
 					"MoveBalanceReg": "Total Registros",
 					"MoveBalanceValue": "Valor Total",
-					"MoveDestinationCategory": " Categoría destino"
-
+					"MoveDestinationCategory": " Categoría destino",
+					"ErrorCategoryDestinity": "Categoría destino vacia o no definida",
+					"ErrorLoadMovesRubro": " Los movimientos para este rubro no se cargaron",
+					"SuccessRegTrasmit": "Transpaso de movimientos exitoso",
+					"ErrorTransmit1": "Error, no se pudieron transpasar los movimientos",
+					"ErrorTransmit2": "Error, no se pudieron transpasar los movimientos, verifica tu conexión",
+					"ModalMoveIncomes" : "Ingresos: ",
+					"ModalMoveExpenses" : "Egresos"
 				}
+
+			},
+
+			"Clients":{	
+					"Title": "Clientes",
+					"ModalNewTitle": "Nuevo Cliente",
+					"ModalDocument": "Documento",
+					"ModalName": "Nombre",
+					"ModalAddress": "Dirección",
+					"ModalPhone": "Teléfono",
+					"ModalObservations": "Observaciones",
+					"ModalSave": "Guardar",
+					"ModalDelete": "Borrar",
+					"ModalHistorial": "Historial de Pagos",
+					"ModalEdit": "Editar",
+					"ModalBack": "Atras",
+					"ErrorFieldName": "Nombre vacio o no definido",
+					"ErrorFieldDocument": "Documento vacio o no definido",
+					
+					"SuccessRegClient": "Registro de cliente exitoso",
+					"ErrorReg1": "Error, Fallo el registro de cliente",
+					"ErrorReg2": "Error, Fallo el registro de cliente, verifica tu conexión",
+					"ErrorLoadClients2": "Fallo al cargar los clientes",
+					"ErrorLoadClients1": "No se encontraron clientes registrados",
+
+					"MsgCountry": "Pais", 
+					"MsgDepartment": "Departamento",
+					"MsgCity": "Ciudad",					
+					"ModalDetailTitle": "Detalles de cliente",
+
+					"SuccessUpdateClient": "Cliente actualizado correctamente",
+					"ErrorUpdate1": "Fallo la actualización de cliente",
+					"ErrorUpdate2": "Fallo la actualización de cliente, verifica tu conexión",
+
+					"SuccessDeleteClient": "Cliente eliminado correctamente",
+					"ErrorDelete1": "Fallo la eliminación del cliente",
+					"ErrorDelete2": "Fallo la eliminación del cliente, verifica tu conexión",
+					"DeleteTitle": "Eliminar cliente",
+					"DeleteYes": "Sí, eliminar",
+					"DeleteNo": "No",
+					"DeleteMsg": "¿Está seguro de eliminar este cliente?"
+				
+
+			
 
 			},
 

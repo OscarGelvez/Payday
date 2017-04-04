@@ -501,6 +501,110 @@ Home pantalla principal
  height: 65px;
 }
 
+
+/*################## Estilos Para Modulo de clientes #######################*/
+
+
+
+ @media screen and (orientation: portrait) {
+  .listClientes{
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 15%;
+  }
+  
+  }
+  
+@media screen and (orientation: landscape) {
+  .listClientes{
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+   
+  }
+
+  /*Ajustes generales para la lista*/
+.listClientes .list .item{
+ background-color: rgba(66, 165, 245,0.7);
+height: 100px;
+  color:white !important; 
+
+}
+
+.listClientes .list .item-complex .item-content{
+ background-color: rgba(66, 165, 245,0.7);
+height: 100px;
+  color:white !important; 
+}
+
+.modalNewClient input[type="text"], input[type="number"]{
+    color: white !important;  /* change [input cursor color] by this*/
+      font-weight:500 !important;
+      text-shadow: 0px 0px 0px #fff; /* change [input font] by this*/
+      -webkit-text-fill-color: transparent;
+      border-color: #009688 !important;
+      font-size: 16px !important;
+      text-align: center;
+      padding: 0px;
+      background-color: transparent;
+      border-color: 
+
+    
+}
+.modalNewClient select{
+background-color: #285f9b;
+color: white;
+}
+
+
+.labelSelectEditar{
+   color:white;
+  float: left;
+  margin-left: 3%;
+  padding-top: 10%;
+  height: 62px;
+  font-size: 16px;
+}
+
+.selectElement{
+  float: right;
+  padding-top: 5px !important;
+  width: 60% !important;
+  height: 70px !important;
+  margin-right: 15px;
+
+  font-size: 16px !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*Fin css */
 .bg-intro {
   background: url(../img/Splash.jpg) no-repeat center center fixed;

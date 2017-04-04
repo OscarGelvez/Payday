@@ -91,6 +91,7 @@
 				"TextInfoStartDay": "Start Day",
 				"WarningStatusBox": "Error retrieving the status of the money box. Retrying..."
 				
+				
 			},
 
 
@@ -113,14 +114,14 @@
 				"ErrorTypeMovement": "Type of movement, empty or undefined",
 				"ErrorCategory": "Empty or undefined movement category",
 				"CancelFormTitle": "Cancel Movement",
-				"CancelFormText": "Are you sure to cancel the movement?",
-				"CancelFormOk": "Yes, cancel",
+				"CancelFormText": "clean fields?",
+				"CancelFormOk": "Yes, Clean",
 				"CancelFormNot": "No",
 				"SuccessReg": "The movement was recorded successfully",
 				"ErrorReg": "Could not save movement",
 				"CloseBoxObservations": "Opening Day Box",
-				"ErrorLoadCategory1": "Las categorías no se pudieron cargar",
-				"ErrorLoadCategory2": "Las categorías no se pudieron cargar, verifica tu conexión"
+				"ErrorLoadCategory1": "Categories could not be loaded",
+				"ErrorLoadCategory2": "Categories could not be loaded, Check your connection"
 
 
 
@@ -182,17 +183,52 @@
 					"DeleteSi": "Yes, delete",
 					"ErrorDelete1": "The category could not be deleted",
 					"ErrorDelete2": "The category could not be deleted, Check your connection",
-					"SuccessDelete": "El Rubro se eliminó correctamente",
+					"SuccessDelete": "Category deleted successfully",
 
 					"MoveCategoryTitle": "Move Categories",
 					"MoveBalanceReg": "Total Records",
 					"MoveBalanceValue": "Total Value",
-					"MoveDestinationCategory": " Destination category"
-
+					"MoveDestinationCategory": " Destination category",					
+					"ErrorCategoryDestinity": "Target category empty or not defined",
+					"ErrorLoadMovesRubro": "Movements for this item were not charged",
+					"SuccessRegTrasmit": "Successful transfer of movements",
+					"ErrorTransmit1": "Error, could not transfer the movements",
+					"ErrorTransmit2": "Error, could not transfer the movements, Check your connection",
+					"ModalMoveIncomes" : "Incomes: ",
+					"ModalMoveExpenses" : "Expenses"
 				}
 
 			},
-				
+
+			"Clients":{	
+					"Title": "Clients",
+					"ModalNewTitle": "New Client",
+					"ModalDocument": "Document",
+					"ModalName": "Name",
+					"ModalAddress": "Address",
+					"ModalPhone": "Phone",
+					"ModalObservations": "Observations",
+					"ModalSave": "Save",
+					"ModalDelete": "Delete",
+					"ModalHistorial": "History Payments",
+					"ModalEdit": "Edit",
+					"ModalBack": "Back",					
+					"ErrorFieldName": "Empty or undefined name",
+					"ErrorFieldDocument": "Empty or undefined document",
+
+					"SuccessRegClient": "Successful customer registration",
+					"ErrorReg1": "Error, Client Log Failed",
+					"ErrorReg2": "Error, Client Log Failed, Check your connection",
+					"ErrorLoadClients2": "Error loading clients",
+					"ErrorLoadClients1": "No registered clients found",
+
+					"MsgCountry": "Country", 
+					"MsgDepartment": "Department",
+					"MsgCity": "City",					
+					"ModalDetailTitle": "Client detail"
+					
+
+			},	
 
 			"Simulator":{		
 					"Title": "Loan Simulator",

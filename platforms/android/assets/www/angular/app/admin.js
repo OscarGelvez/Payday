@@ -108,6 +108,7 @@ kubeApp.config(['$stateProvider', '$urlRouterProvider', '$translateProvider',
                 })
 
                  .state('app.moves_box', {
+                  cache: false,
                   url: '/moves_box',
                   views: {
                     'menuContent': {
@@ -136,6 +137,18 @@ kubeApp.config(['$stateProvider', '$urlRouterProvider', '$translateProvider',
                     'menuContent': {
                       templateUrl: 'templates/app.detail_category.html',
                       controller: 'DetailCategoryController'
+
+                    }
+                  }
+                })
+
+                 .state('app.clients', {
+                   cache: false,
+                  url: '/clients',
+                  views: {
+                    'menuContent': {
+                      templateUrl: 'templates/app.clients.html',
+                      controller: 'ClientsController'
 
                     }
                   }
@@ -203,107 +216,107 @@ kubeApp.config(['$stateProvider', '$urlRouterProvider', '$translateProvider',
 
 
 
-             .state('home',{
-                    url : '/home',
+             // .state('home',{
+             //        url : '/home',
 					
-                    templateUrl: 'home.html',
-                    controller: 'HomeController2'
-                })
-                .state('home.newLoan',{
-                    url : '/loan/new',
-                    templateUrl : 'html/loans/new.html',
-                    controller : 'LoanController'
-                }).
-                state('home.paymentPlan',{
-                    url : '/loan/payment/plan',
-                    templateUrl : 'html/loans/paymentPlan.html',
-                    controller : 'LoanController'
-                }).
-                state('home.collectionDay',{
-                    url : '/loan/list/day',
-                    templateUrl : 'html/loans/collectionDay.html',
-                    controller : 'LoanController'
-                }).
-                state('home.asignRoutePosition',{
-                    url : '/loan/new/asignPosition',
-                    templateUrl : 'html/loans/asignRoutePosition.html',
-                    controller : 'LoanController'
-                }).
-                state('home.addPayment',{
-                    url : '/loan/add/payment',
-                    templateUrl : 'html/loans/addPayment.html',
-                    controller : 'LoanController'
-                }).
-                state('home.listPaymentsLoan',{
-                    url : '/loan/view/payments',
-                    templateUrl : 'html/loans/paymentsHistory.html',
-                    controller : 'LoanController'
-                }).
-                state('home.detailLoan',{
-                    url : '/loan/detail/',
-                    templateUrl : 'html/loans/detail.html',
-                    controller : 'LoanController'
-                }).
-                state('home.stateFeesLoan',{
-                    url : '/loan/:loan_id/state/fees',
-                    templateUrl : 'html/loans/stateFees.html',
-                    controller : 'LoanController'
-                }).
-                state('home.simulate',{
-                    url : '/loan/demo',
-                    templateUrl : 'html/demo/index.html',
-                    controller : 'LoanController'
-                }).
-                state('home.movesAdd',{
-                    url : '/moves/add',
-                    templateUrl :   'html/moves/add.html',
-                    controller : 'MoveController'
-                }).
-                state('home.movesList',{
-                    url : '/moves/list',
-                    templateUrl :   'html/moves/list.html',
-                    controller : 'MoveController'
-                }).
-                state('home.reports',{
-                    url : '/reports/',
-                    templateUrl : 'html/reports/index.html',
-                    controller : 'ReportController'                            
-                }).
-                state('home.movesOfDay',{
-                    url : '/reports/movesOfDay',
-                    templateUrl : 'html/reports/movesOfDay.html',
-                    controller : 'MoveController'
-                }).
-                state('home.LoansOfDay',{
-                    url :   '/reports/loans/day',
-                    templateUrl : 'html/reports/loansOfDay.html',
-                    controller : 'ReportController'
-                }).
-                state('home.nextFewToEnd',{
-                    url : '/reports/loans/nextFewToEnd',
-                    templateUrl : 'html/reports/nextFewToEnd.html',
-                    controller : 'ReportController'
-                }).
-                state('home.creditHistoryClient',{
-                    url : '/reports/client/history',
-                    templateUrl : 'html/reports/creditHistoryClient.html',
-                    controller :  'ReportControlller'
-                }).
-                state('home.test',{
-                    url : '/db',
-                    templateUrl : 'html/test/testDB.html',
-                    controller : 'TestController'
-                }).
-                state('home.userTest',{
-                    url : '/test',
-                    templateUrl : 'html/test/userTest.html',
-                    controller : 'TestController'
-                }).
-                state('home.testServer',{
-                    url : '/server',
-                    templateUrl : 'html/test/server.html',
-                    controller : 'TestController'
-                });
+             //        templateUrl: 'home.html',
+             //        controller: 'HomeController2'
+             //    })
+                // .state('home.newLoan',{
+                //     url : '/loan/new',
+                //     templateUrl : 'html/loans/new.html',
+                //     controller : 'LoanController'
+                // }).
+                // state('home.paymentPlan',{
+                //     url : '/loan/payment/plan',
+                //     templateUrl : 'html/loans/paymentPlan.html',
+                //     controller : 'LoanController'
+                // }).
+                // state('home.collectionDay',{
+                //     url : '/loan/list/day',
+                //     templateUrl : 'html/loans/collectionDay.html',
+                //     controller : 'LoanController'
+                // }).
+                // state('home.asignRoutePosition',{
+                //     url : '/loan/new/asignPosition',
+                //     templateUrl : 'html/loans/asignRoutePosition.html',
+                //     controller : 'LoanController'
+                // }).
+                // state('home.addPayment',{
+                //     url : '/loan/add/payment',
+                //     templateUrl : 'html/loans/addPayment.html',
+                //     controller : 'LoanController'
+                // }).
+                // state('home.listPaymentsLoan',{
+                //     url : '/loan/view/payments',
+                //     templateUrl : 'html/loans/paymentsHistory.html',
+                //     controller : 'LoanController'
+                // }).
+                // state('home.detailLoan',{
+                //     url : '/loan/detail/',
+                //     templateUrl : 'html/loans/detail.html',
+                //     controller : 'LoanController'
+                // }).
+                // state('home.stateFeesLoan',{
+                //     url : '/loan/:loan_id/state/fees',
+                //     templateUrl : 'html/loans/stateFees.html',
+                //     controller : 'LoanController'
+                // }).
+                // state('home.simulate',{
+                //     url : '/loan/demo',
+                //     templateUrl : 'html/demo/index.html',
+                //     controller : 'LoanController'
+                // }).
+                // state('home.movesAdd',{
+                //     url : '/moves/add',
+                //     templateUrl :   'html/moves/add.html',
+                //     controller : 'MoveController'
+                // }).
+                // state('home.movesList',{
+                //     url : '/moves/list',
+                //     templateUrl :   'html/moves/list.html',
+                //     controller : 'MoveController'
+                // }).
+                // state('home.reports',{
+                //     url : '/reports/',
+                //     templateUrl : 'html/reports/index.html',
+                //     controller : 'ReportController'                            
+                // }).
+                // state('home.movesOfDay',{
+                //     url : '/reports/movesOfDay',
+                //     templateUrl : 'html/reports/movesOfDay.html',
+                //     controller : 'MoveController'
+                // }).
+                // state('home.LoansOfDay',{
+                //     url :   '/reports/loans/day',
+                //     templateUrl : 'html/reports/loansOfDay.html',
+                //     controller : 'ReportController'
+                // }).
+                // state('home.nextFewToEnd',{
+                //     url : '/reports/loans/nextFewToEnd',
+                //     templateUrl : 'html/reports/nextFewToEnd.html',
+                //     controller : 'ReportController'
+                // }).
+                // state('home.creditHistoryClient',{
+                //     url : '/reports/client/history',
+                //     templateUrl : 'html/reports/creditHistoryClient.html',
+                //     controller :  'ReportControlller'
+                // }).
+                // state('home.test',{
+                //     url : '/db',
+                //     templateUrl : 'html/test/testDB.html',
+                //     controller : 'TestController'
+                // }).
+                // state('home.userTest',{
+                //     url : '/test',
+                //     templateUrl : 'html/test/userTest.html',
+                //     controller : 'TestController'
+                // }).
+                // state('home.testServer',{
+                //     url : '/server',
+                //     templateUrl : 'html/test/server.html',
+                //     controller : 'TestController'
+                // });
 
         $urlRouterProvider.otherwise("/login");
     }])

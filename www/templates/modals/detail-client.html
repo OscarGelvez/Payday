@@ -34,7 +34,7 @@
                     <div class="item item-input item-select item-stacked-label labelsFormRegistroSelect">
                       <label class="labelSelectEditar" ng-disabled="desabilitarCampos" >{{'Clients.MsgCountry' | translate}}</label>
 
-                         <select class="selectElement"   id="selectCountry" ng-disabled="!boolEditar">
+                         <select class="selectElement"  ng-model="datosEditadosSelect.country" id="selectCountry" ng-disabled="!boolEditar">
                                    <option value="">--{{'SingUp.TextSelectCountryDepartment' | translate}}--</option> 
                                    <option value="{{c.id}}" ng-repeat="c in countries2">{{c.name}}</option>                          
                           </select>
@@ -48,7 +48,7 @@
                       <label class="labelSelectEditar" ng-disabled="desabilitarCampos" >{{'Clients.MsgDepartment' | translate}}</label>
 
                    
-                        <select class="selectElement" id="selectDepartment" ng-disabled="!boolEditar">
+                        <select class="selectElement" ng-model="datosEditadosSelect.department" id="selectDepartment" ng-disabled="!boolEditar">
                           <option value="">--{{'SingUp.TextSelectCountryDepartment' | translate}}--</option> 
                           <option value="{{d.id}}" ng-repeat="d in departments2">{{d.name}}</option>                          
                         </select>
@@ -62,7 +62,7 @@
                       <div class="item item-input item-select item-stacked-label labelsFormRegistroSelect"   ng-show="isDepartmentDefinedM">
                          <label class="labelSelectEditar" ng-disabled="desabilitarCampos" >{{'Clients.MsgCity' | translate}}</label>
 
-                        <select class="selectElement" id="selectCity" ng-disabled="!boolEditar">
+                        <select class="selectElement" ng-model="datosEditadosSelect.city" id="selectCity" ng-disabled="!boolEditar">
                           <option value="">--{{'SingUp.TextSelectCountryDepartment' | translate}}--</option> 
                           <option value="{{c.id}}" ng-repeat="c in cities2">{{c.name}}</option>
                           

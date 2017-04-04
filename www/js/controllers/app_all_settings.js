@@ -15,10 +15,13 @@ angular.module('kubeApp')
   	   //   var folderConfig = SaveData.get("config");
 		    //  var info = folderConfig.get("idCollector");
 		    // console.log(info);
-		   
-      var info=60;
+		   var info = {};
+        info.value = localStorage['kubesoft.kubeApp.user_id'];
+       console.log(info);
+
+      
  	    $scope.load_categories=function(){
-          Box_Movement.loadCategories(info)
+          Box_Movement.loadCategories(info.value)
               .success(function(response){
 
                     if(response.status){
@@ -139,7 +142,7 @@ $scope.valToggle = $translate.instant('MoveBox.TypeMovementExpenses');
           }else{
             datos.tipo="Egreso";
           }
-          datos.idCollector=info;
+          datos.idCollector=info.value;
 
           var datosListos= {};
           datosListos.name=datos.name;
