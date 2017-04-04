@@ -7,8 +7,37 @@
  */
 var kubeApp = angular.module('kubeApp');
 
-kubeApp.controller('SesionController', function($scope, AuthService, SessionService, SaveData, $state, RatesHelper, $translate, $ionicPopup) {
+kubeApp.controller('SesionController', function($scope, AuthService, SessionService, SaveData, $state, RatesHelper, $translate, $ionicPopup, $ionicPlatform) {
 console.log("llego aqui a SesionController")
+
+
+  var deregisterFirst = $ionicPlatform.registerBackButtonAction(
+
+      function() {
+       var title = $translate.instant('Alerts.CloseAppTitle');
+       var msg = $translate.instant('Alerts.CloseAppMsg');
+       var yes = $translate.instant('Alerts.CloseAppYes');
+       var no = $translate.instant('Alerts.CloseAppNo');
+        $ionicPopup.confirm({
+        title: ''+title,
+        template: ''+msg,
+        cancelText: ""+yes,
+         okText:""+no,
+         okType:"button-positive"
+      }).then(function(res) {
+        if (res) {
+
+          ionic.Platform.exitApp();
+        }
+      })
+      }, 100
+    );
+    $scope.$on('$destroy', deregisterFirst); 
+
+
+
+
+
 
 if(localStorage['kubesoft.kubeApp.user_id']){
     $state.go('app.home');

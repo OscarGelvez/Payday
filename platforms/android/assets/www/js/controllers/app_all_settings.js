@@ -10,11 +10,19 @@ angular.module('kubeApp')
       })
 
 
-  .controller('AdminCategoriesController', ['$scope', '$state', '$ionicPopup', '$http', 'APP', 'loadingService', 'Admin_Rubro', 'SaveData', '$ionicModal', '$translate', 'Box_Movement', 'RubrosFactory', function ($scope, $state, $ionicPopup, $http, APP, loadingService, Admin_Rubro, SaveData, $ionicModal, $translate, Box_Movement, RubrosFactory) {
+  .controller('AdminCategoriesController', ['$scope', '$state', '$ionicPopup', '$http', 'APP', 'loadingService', 'Admin_Rubro', 'SaveData', '$ionicModal', '$translate', 'Box_Movement', 'RubrosFactory', '$ionicPlatform', function ($scope, $state, $ionicPopup, $http, APP, loadingService, Admin_Rubro, SaveData, $ionicModal, $translate, Box_Movement, RubrosFactory, $ionicPlatform) {
  
   	   //   var folderConfig = SaveData.get("config");
 		    //  var info = folderConfig.get("idCollector");
 		    // console.log(info);
+
+
+     var deregisterFirst = $ionicPlatform.registerBackButtonAction(
+            function() {
+               $state.go("app.home");
+            }, 100
+          );
+    $scope.$on('$destroy', deregisterFirst);
 		   var info = {};
         info.value = localStorage['kubesoft.kubeApp.user_id'];
        console.log(info);
@@ -189,7 +197,19 @@ $scope.valToggle = $translate.instant('MoveBox.TypeMovementExpenses');
     }
 }])
 
-.controller('DetailCategoryController', ['$scope', '$state', '$ionicPopup', '$http', 'APP', 'loadingService', 'Admin_Rubro', 'SaveData', '$ionicModal', '$translate', 'Box_Movement', 'RubrosFactory', '$stateParams', function ($scope, $state, $ionicPopup, $http, APP, loadingService, Admin_Rubro, SaveData, $ionicModal, $translate, Box_Movement, RubrosFactory, $stateParams) {
+.controller('DetailCategoryController', ['$scope', '$state', '$ionicPopup', '$http', 'APP', 'loadingService', 'Admin_Rubro', 'SaveData', '$ionicModal', '$translate', 'Box_Movement', 'RubrosFactory', '$stateParams', '$ionicPlatform', function ($scope, $state, $ionicPopup, $http, APP, loadingService, Admin_Rubro, SaveData, $ionicModal, $translate, Box_Movement, RubrosFactory, $stateParams, $ionicPlatform) {
+
+
+
+var deregisterFirst = $ionicPlatform.registerBackButtonAction(
+      function() {
+         navigator.app.backHistory();
+      }, 100
+    );
+    $scope.$on('$destroy', deregisterFirst);
+
+
+
 
    $scope.datosParametros= $stateParams.category_id;
    console.log($scope.datosParametros);

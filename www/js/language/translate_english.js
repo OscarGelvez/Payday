@@ -10,7 +10,12 @@
 			    "VerificationCodeTitle" :"Account Verification",
 			    "VerificationCodeMsg" : "Enter the code sent to your email",
 			    "VerificationCodeYes" :"Check...",
-			    "VerificationCodeNo" : "Skip"
+			    "VerificationCodeNo" : "Skip",
+
+			    "CloseAppTitle": "Close Payday?",
+			    "CloseAppMsg": "When closing the app your session will remain active",
+			    "CloseAppYes": "Close",
+			    "CloseAppNo": "No"
 		  	}, 
 
 		  "Login": {
@@ -229,6 +234,7 @@
 					"SuccessRegClient": "Successful customer registration",
 					"ErrorReg1": "Error, Client Log Failed",
 					"ErrorReg2": "Error, Client Log Failed, Check your connection",
+					"ErrorReg3": "Error, Someone with the same document already exists among your clients",
 					"ErrorLoadClients2": "Error loading clients",
 					"ErrorLoadClients1": "No registered clients found",
 

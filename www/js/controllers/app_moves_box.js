@@ -1,7 +1,19 @@
 angular.module('kubeApp')
 
-  .controller('MovesBoxController', ['$scope', '$state', '$ionicPopup', '$http', 'APP', 'loadingService', '$translate', 'Box_Movement', 'valorCaja', '$filter', 'SaveData',  function ($scope, $state, $ionicPopup, $http, APP, loadingService, $translate, Box_Movement, valorCaja, $filter, SaveData) {
+  .controller('MovesBoxController', ['$scope', '$state', '$ionicPopup', '$http', 'APP', 'loadingService', '$translate', 'Box_Movement', 'valorCaja', '$filter', 'SaveData', '$ionicPlatform', function ($scope, $state, $ionicPopup, $http, APP, loadingService, $translate, Box_Movement, valorCaja, $filter, SaveData, $ionicPlatform) {
  
+
+var deregisterFirst = $ionicPlatform.registerBackButtonAction(
+      function() {
+         $state.go("app.home");
+      }, 100
+    );
+    $scope.$on('$destroy', deregisterFirst);
+
+
+
+
+
 
 
     $scope.CurrentDate = new Date();
@@ -38,9 +50,10 @@ angular.module('kubeApp')
           $scope.desabilitarCampos=true;
            $scope.contentMove.fecha=$filter('date')($scope.CurrentDate, "yyyy-MM-dd");
           console.log($scope.contentMove.fecha);
+          $scope.disabledButtonCancel=true;
          
       }else{
-          
+          $scope.disabledButtonCancel=false;
           $scope.contentMove.baseCaja = 0; // Por defecto cero (Falso)
          
           $scope.desabilitarCampos=false;
@@ -154,7 +167,7 @@ $scope.load_categories();
                            alertPopup.then(function(res) {
                             if(valorCaja.estado==false){ // --> quiere decir q la caja estaba cerrada y este movimiento fue el primero de apertura
                               valorCaja.estado=true;
-                               
+                             $state.go('app.home')
                             }
                           $scope.contentMove = {};
                          });               

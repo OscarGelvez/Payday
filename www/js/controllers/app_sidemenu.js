@@ -2,7 +2,7 @@
   var kubeApp = angular.module('kubeApp');
 
 
-  kubeApp.controller('SideMenuController', function ($scope, $state, $rootScope, $ionicModal, $ionicSlideBoxDelegate, $translate, $ionicLoading, $cordovaNetwork, SaveData, SessionService ) {
+  kubeApp.controller('SideMenuController', function ($scope, $state, $rootScope, $ionicModal, $ionicSlideBoxDelegate, $translate, $ionicLoading, $cordovaNetwork, SaveData, SessionService, $ionicPopup ) {
 
 
 

@@ -1,7 +1,37 @@
 angular.module('kubeApp')
 
-  .controller('ClientsController', ['$scope', '$state', '$ionicPopup', '$http', 'APP', 'loadingService', '$translate', '$filter', 'SaveData', '$ionicModal', 'clientsService', function ($scope, $state, $ionicPopup, $http, APP, loadingService, $translate, $filter, SaveData, $ionicModal, clientsService) {
+
+ // Creacion de fabrica de Categorias o Rubros
+
+    .factory('citiesFactory', function(){
+    return{
+           datos:[] 
+          };
+        
+      })
+
+
+    .factory('countriesFactory', function(){
+    return{
+           datos:[] 
+          };
+        
+      })
+
+
+  .controller('ClientsController', ['$scope', '$state', '$ionicPopup', '$http', 'APP', 'loadingService', '$translate', '$filter', 'SaveData', '$ionicModal', 'clientsService', '$ionicPlatform', 'citiesFactory', 'countriesFactory', function ($scope, $state, $ionicPopup, $http, APP, loadingService, $translate, $filter, SaveData, $ionicModal, clientsService, $ionicPlatform, citiesFactory, countriesFactory) {
  
+
+var deregisterFirst = $ionicPlatform.registerBackButtonAction(
+      function() {
+         $state.go("app.home");
+      }, 100
+    );
+    $scope.$on('$destroy', deregisterFirst);
+
+
+
+
 
 
     $scope.CurrentDate = new Date();
@@ -31,8 +61,9 @@ angular.module('kubeApp')
                     if(response.status){
                       console.log(response);                     
 
-                      loadingService.hide(); 
+                     // loadingService.hide(); 
                       $scope.listClients=response.data;  
+                      $scope.loadCities2();
                     }else{
                           var alertPopup = $ionicPopup.alert({
                              title: 'Error',
@@ -95,6 +126,8 @@ $scope.load_clients();
                 
                 loadingService.hide();
                 $scope.countries=response.data;
+                $scope.countries2=response.data;
+                countriesFactory.datos=clone(response.data);
                 console.log(response);
                             
               }, function errorCallback(response) {
@@ -271,7 +304,7 @@ $scope.load_clients();
         clientsService.saveClient(datosListos)
               .success(function(response){
                       loadingService.hide();
-                        if(response.status){
+                        if(response.status==true){
                            var alertPopup = $ionicPopup.alert({
                              title: 'OK',
                              template: '{{"Clients.SuccessRegClient" | translate}}'
@@ -284,25 +317,38 @@ $scope.load_clients();
 
                            }); 
                         }else{
+
+                            if(response.val==5){
+                                 var alertPopup = $ionicPopup.alert({
+                                       title: 'Error',
+                                       template: '{{"Clients.ErrorReg3" | translate}}'
+                                     });
+                            }else{
+                               var alertPopup = $ionicPopup.alert({
+                                 title: 'Error',
+                                 template: '{{"Clients.ErrorReg1" | translate}}'
+                               });
+                            }
+
                              $scope.select.pais=$scope.select.pais+"";
                              $scope.select.dpto=$scope.select.dpto+""; // => con el fin de que al abrir el modal para meter los datos los selects se llenen.
                               $scope.select.ciudad= $scope.select.ciudad+"";
 
-                             var alertPopup = $ionicPopup.alert({
-                             title: 'Error',
-                             template: '{{"Clients.ErrorReg1" | translate}}'
-                           });
+                            
                         }
                                         
                   }).error(function(err){
                   loadingService.hide();
-                   var alertPopup = $ionicPopup.alert({
+               
+                      var alertPopup = $ionicPopup.alert({
                              title: 'Error',
                              template: '{{"Clients.ErrorReg2" | translate}}'
                            });
                           alertPopup.then(function(res) {                            
                                console.log(err);
                            });
+                  
+                   
               });        
       }
 
@@ -391,11 +437,34 @@ $scope.openModalDetail=function(id_client){
 console.log($scope.datosOriginal.department);
              if(($scope.datosOriginal.city==0 || $scope.datosOriginal.city==null) && ($scope.datosOriginal.department != 0 || $scope.datosOriginal.department!=null)){
               $scope.auxCity = '?department_id='+$scope.datosOriginal.department;
-              $scope.loadCities2();
+              //$scope.loadCities2();
+
+               console.log(citiesFactory.datos);
+               $scope.cities2=[];
+               for (var i = 0; i < citiesFactory.datos.length; i++) {
+                     if(citiesFactory.datos[i].department_id == $scope.datosOriginal.department){
+                      $scope.cities2.push(citiesFactory.datos[i]);
+                     
+                      
+                 }
+
+               }
+                  console.log($scope.cities2);
               console.log("entro");
-             }else{
+             }else if(($scope.datosOriginal.city!=0 || $scope.datosOriginal.city!=null) && ($scope.datosOriginal.department != 0 || $scope.datosOriginal.department!=null) ){
+              $scope.cities2=[];
               $scope.auxCity = "";
-              $scope.loadCities2()
+              //$scope.loadCities2()
+              for (var i = 0; i < citiesFactory.datos.length; i++) {
+                     if(citiesFactory.datos[i].department_id == $scope.datosOriginal.department){
+                      $scope.cities2.push(citiesFactory.datos[i]);
+                     
+                      
+                 }
+
+               }
+               console.log("llegoo aqui")
+              $scope.datosEditadosSelect.city = document.getElementById('selectCity').value;
               
                 
              
@@ -573,7 +642,7 @@ $scope.loadDepartments2=function(){
 
    $scope.auxCity=""
 $scope.loadCities2=function(){
-    loadingService.show();
+   // loadingService.show();
       $http({
               method: 'GET',
               url: APP.BASE_URL + 'cities'+$scope.auxCity
@@ -591,7 +660,7 @@ $scope.loadCities2=function(){
 
                             }
                 }
-             
+             citiesFactory.datos=clone(response.data);
                 console.log(response);
                             
               }, function errorCallback(response) {
@@ -601,9 +670,12 @@ $scope.loadCities2=function(){
    }
 
    
-  $scope.loadCountries2();
+  //$scope.loadCountries2();
+
+  $scope.countries2=clone(countriesFactory.datos);
+
   $scope.loadDepartments2();
-  $scope.loadCities2();
+  //$scope.loadCities2();
   $scope.datosEditadosSelect= {};
   
 
@@ -638,7 +710,15 @@ $scope.loadCities2=function(){
           
          $scope.isDepartmentDefinedM=true; //Habilita Select de Ciudad
          $scope.auxCity = '?department_id='+newValue;
-         $scope.loadCities2();
+         //$scope.loadCities2();
+         console.log(citiesFactory.datos);
+         $scope.cities2=[];
+         for (var i = 0; i < citiesFactory.datos.length; i++) {
+           if(citiesFactory.datos[i].department_id == newValue){
+            $scope.cities2.push(citiesFactory.datos[i]);
+           
+           }
+         };
 
         }
       });

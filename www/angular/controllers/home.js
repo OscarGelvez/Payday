@@ -7,10 +7,52 @@
  */
 var kubeApp = angular.module('kubeApp');
 
-kubeApp.controller("HomeController", function($scope,$state, ngTableParams, queries, $modal, APP, localDatabase, FacadeServer, SaveData, MovesDao, $ionicSlideBoxDelegate, $translate, isOpenBox, $ionicPopup, valorCaja, $filter, loadingService, Box_Movement, isVerificatedAccount) {
+kubeApp.controller("HomeController", function($scope,$state, ngTableParams, queries, $modal, APP, localDatabase, FacadeServer, SaveData, MovesDao, $ionicSlideBoxDelegate, $translate, isOpenBox, $ionicPopup, valorCaja, $filter, loadingService, Box_Movement, isVerificatedAccount, $ionicPlatform) {
 
     console.log("llego aHome");
 
+
+    var deregisterFirst = $ionicPlatform.registerBackButtonAction(
+
+      function() {
+       var title = $translate.instant('Alerts.CloseAppTitle');
+       var msg = $translate.instant('Alerts.CloseAppMsg');
+       var yes = $translate.instant('Alerts.CloseAppYes');
+       var no = $translate.instant('Alerts.CloseAppNo');
+        $ionicPopup.confirm({
+        title: ''+title,
+        template: ''+msg,
+        cancelText: ""+yes,
+         okText:""+no,
+         okType:"button-positive"
+      }).then(function(res) {
+        if (res) {
+
+          ionic.Platform.exitApp();
+        }
+      })
+      }, 100
+    );
+    $scope.$on('$destroy', deregisterFirst); 
+
+
+
+// var deregisterFirst = $ionicPlatform.registerBackButtonAction(
+//       function() {
+//          $state.go("app.home");
+//       }, 100
+//     );
+//     $scope.$on('$destroy', deregisterFirst);
+
+
+
+
+// var deregisterFirst = $ionicPlatform.registerBackButtonAction(
+//       function() {
+//          navigator.app.backHistory();
+//       }, 100
+//     );
+//     $scope.$on('$destroy', deregisterFirst);
 
 
     $scope.home = {};

@@ -3,7 +3,14 @@
 		 "Alerts": {
 			    "Succefully": "Succefully",
 			    "Error": "Error",
-			    "AlertNoConection": "You must have internet connection to interact in the application. Check your connection"
+			    "AlertNoConection": "You must have internet connection to interact in the application. Check your connection",
+
+			    "AlertVerificationSuccess": "Code verified correctly",
+			    "AlertVerificationError1": "Error verifying the code, try later",
+			    "VerificationCodeTitle" :"Account Verification",
+			    "VerificationCodeMsg" : "Enter the code sent to your email",
+			    "VerificationCodeYes" :"Check...",
+			    "VerificationCodeNo" : "Skip"
 		  	}, 
 
 		  "Login": {
@@ -26,6 +33,9 @@
 
 		  	"Logout": {
 			    "Title": "Log out",
+			    "Msg": "Sign out of the application?",
+			    "Yes": "Yes, go out",
+			    "No": "No"
 			    
 		  	}, 
 
@@ -225,7 +235,19 @@
 					"MsgCountry": "Country", 
 					"MsgDepartment": "Department",
 					"MsgCity": "City",					
-					"ModalDetailTitle": "Client detail"
+					"ModalDetailTitle": "Client detail",
+
+					"SuccessUpdateClient": "Customer successfully updated",
+					"ErrorUpdate1": "Client update failed",
+					"ErrorUpdate2": "Client update failed, Check your connection",
+
+					"SuccessDeleteClient": "Client successfully deleted",
+					"ErrorDelete1": "Customer Deletion Failed",
+					"ErrorDelete2": "Customer Deletion Failed, Check your connection",
+					"DeleteTitle": "Delete customer",
+					"DeleteYes": "Yes, delete",
+					"DeleteNo": "No",
+					"DeleteMsg": "Are you sure to delete this client?"
 					
 
 			},	

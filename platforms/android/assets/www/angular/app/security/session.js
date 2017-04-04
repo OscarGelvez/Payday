@@ -7,8 +7,34 @@
  */
 var kubeApp = angular.module('kubeApp');
 
-kubeApp.controller('SesionController', function($scope, AuthService, SessionService, SaveData, $state, RatesHelper, $translate, $ionicPopup) {
+kubeApp.controller('SesionController', function($scope, AuthService, SessionService, SaveData, $state, RatesHelper, $translate, $ionicPopup, $ionicPlatform) {
 console.log("llego aqui a SesionController")
+
+
+    var deregisterFirst = $ionicPlatform.registerBackButtonAction(
+
+      function() {
+       
+        $ionicPopup.confirm({
+        title: 'Cerrar Food Trucks',
+        template: '¿Está seguro de cerrar la aplicación?',
+        cancelText: "Volver",
+         okText:"Salir",
+         okType:"button-assertive"
+      }).then(function(res) {
+        if (res) {
+
+          ionic.Platform.exitApp();
+        }
+      })
+      }, 100
+    );
+    $scope.$on('$destroy', deregisterFirst); 
+
+
+
+
+
 
 if(localStorage['kubesoft.kubeApp.user_id']){
     $state.go('app.home');

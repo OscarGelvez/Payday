@@ -1,7 +1,18 @@
 angular.module('kubeApp')
 
-  .controller('ClientsController', ['$scope', '$state', '$ionicPopup', '$http', 'APP', 'loadingService', '$translate', '$filter', 'SaveData', '$ionicModal', 'clientsService', function ($scope, $state, $ionicPopup, $http, APP, loadingService, $translate, $filter, SaveData, $ionicModal, clientsService) {
+  .controller('ClientsController', ['$scope', '$state', '$ionicPopup', '$http', 'APP', 'loadingService', '$translate', '$filter', 'SaveData', '$ionicModal', 'clientsService', '$ionicPlatform', function ($scope, $state, $ionicPopup, $http, APP, loadingService, $translate, $filter, SaveData, $ionicModal, clientsService, $ionicPlatform) {
  
+
+var deregisterFirst = $ionicPlatform.registerBackButtonAction(
+      function() {
+         $state.go("app.home");
+      }, 100
+    );
+    $scope.$on('$destroy', deregisterFirst);
+
+
+
+
 
 
     $scope.CurrentDate = new Date();

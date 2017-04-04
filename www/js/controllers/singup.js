@@ -1,7 +1,32 @@
 angular.module('kubeApp')
 
-  .controller('SingupController', ['$scope', '$state', '$ionicPopup', '$http', 'APP', 'loadingService', 'AuthService', function ($scope, $state, $ionicPopup, $http, APP, loadingService, AuthService) {
+  .controller('SingupController', ['$scope', '$state', '$ionicPopup', '$http', 'APP', 'loadingService', 'AuthService', '$ionicPlatform', function ($scope, $state, $ionicPopup, $http, APP, loadingService, AuthService, $ionicPlatform) {
  
+
+   var deregisterFirst = $ionicPlatform.registerBackButtonAction(
+
+      function() {
+       
+        $ionicPopup.confirm({
+        title: 'Cerrar Food Trucks',
+        template: '¿Está seguro de cerrar la aplicación?',
+        cancelText: "Volver",
+         okText:"Salir",
+         okType:"button-assertive"
+      }).then(function(res) {
+        if (res) {
+
+          ionic.Platform.exitApp();
+        }
+      })
+      }, 100
+    );
+    $scope.$on('$destroy', deregisterFirst); 
+
+
+
+
+
 
     
     $scope.formData           ={};

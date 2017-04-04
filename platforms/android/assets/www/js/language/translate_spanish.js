@@ -11,8 +11,6 @@
 			    "VerificationCodeMsg" : "Ingrese el código enviado a su correo",
 			    "VerificationCodeYes" :"Verificar...",
 			    "VerificationCodeNo" : "Saltar"
-
-
 		  	}, 
 
 		  "Login": {
@@ -35,6 +33,9 @@
 
 		  	"Logout": {
 			    "Title": "Cerrar Sesión",
+			    "Msg": "¿Cerrar sesión en la aplicación?",
+			    "Yes": "Sí, salir",
+			    "No": "No"
 			    
 		  	}, 
 
@@ -248,8 +249,6 @@
 					"DeleteNo": "No",
 					"DeleteMsg": "¿Está seguro de eliminar este cliente?"
 				
-
-			
 
 			},
 
