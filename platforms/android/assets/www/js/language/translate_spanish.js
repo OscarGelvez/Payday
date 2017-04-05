@@ -10,7 +10,12 @@
 			    "VerificationCodeTitle" :"Verificación de cuenta",
 			    "VerificationCodeMsg" : "Ingrese el código enviado a su correo",
 			    "VerificationCodeYes" :"Verificar...",
-			    "VerificationCodeNo" : "Saltar"
+			    "VerificationCodeNo" : "Saltar",
+
+			    "CloseAppTitle": "Salir de Payday",
+			    "CloseAppMsg": "Al cerrar la aplicación, tu sesión permanecerá activa",
+			    "CloseAppYes": "Salir",
+			    "CloseAppNo": "No"
 		  	}, 
 
 		  "Login": {
@@ -229,6 +234,7 @@
 					"SuccessRegClient": "Registro de cliente exitoso",
 					"ErrorReg1": "Error, Fallo el registro de cliente",
 					"ErrorReg2": "Error, Fallo el registro de cliente, verifica tu conexión",
+					"ErrorReg3": "Error, ya existe entre tus clientes alguien con el mismo documento",
 					"ErrorLoadClients2": "Fallo al cargar los clientes",
 					"ErrorLoadClients1": "No se encontraron clientes registrados",
 

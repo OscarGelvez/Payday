@@ -1,36 +1,43 @@
 var kubeAdmin = angular.module('kubeApp');
 
-kubeAdmin.factory('CalculatorDate', function(){
+kubeAdmin.factory('CalculatorDate', function($translate){
     var operators = ['+','*'];
+    var dia1 = $translate.instant('Simulator.Days.Sunday');
+    var dia2 = $translate.instant('Simulator.Days.Monday');
+    var dia3 = $translate.instant('Simulator.Days.Tuesday');
+    var dia4 = $translate.instant('Simulator.Days.Wednesday');
+    var dia5 = $translate.instant('Simulator.Days.Thursday');
+    var dia6 = $translate.instant('Simulator.Days.Friday');
+    var dia7 = $translate.instant('Simulator.Days.Saturday');
 
     this.daysWeek = [
         {
             id : 0,
-            name : "Domingo"
+            name : ""+dia1
         },
         {
             id : 1,
-            name : "Lunes"
+            name : ""+dia2
         },
         {
             id : 2,
-            name : 'Martes'
+            name : ''+dia3
         },
         {
             id : 3,
-            name : 'Miercoles'
+            name : ''+dia4
         },
         {
             id : 4,
-            name : 'Jueves'
+            name : ''+dia5
         },
         {
             id : 5,
-            name : 'Viernes'
+            name : ''+dia6
         },
         {
             id: 6,
-            name : 'Sabado'
+            name : ''+dia7
         }
     ];
 

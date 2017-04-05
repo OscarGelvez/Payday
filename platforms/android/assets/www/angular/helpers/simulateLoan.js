@@ -3,26 +3,18 @@ var kubeAdmin = angular.module('kubeApp');
 kubeAdmin.factory('SimulateLoan', function(localDatabase,CalculatorDate,$q){
 
     this.on = function(value,interest,arrayDates,type_paid){
+        console.log("llego")
         var defered = $q.defer();
         promise = defered.promise;
-
-        localDatabase.query('select * from type_paids where id = ?',[type_paid]).then(
-            function(result){
-                if(result.rows.length > 0){
-                    if(type_paid == 1 || result.rows.item(0).name.toLowerCase() == "con abono a capital"){
+        console.log(type_paid);
+            
+                    if(type_paid == 1){
                         defered.resolve(simulateType1(arrayDates,value,interest));
-                    }else if(type_paid == 2 || result.rows.item(0).name.toLowerCase() == "sin abono a capital"){
+                    }else if(type_paid == 2){
                         defered.resolve(simulateType2(arrayDates,value,interest));
                     }
-                }else{
-                    defered.resolve(null);
-                }
-            }
-        ).catch(
-            function(error){
-                defered.reject(error);
-            }
-        );
+                
+            
         return promise;
     };
 

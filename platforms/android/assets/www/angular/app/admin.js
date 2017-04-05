@@ -22,7 +22,10 @@ kubeApp.run(function($ionicPlatform) {
         
       }
       if (window.StatusBar) {
-        StatusBar.styleDefault();
+        //StatusBar.styleDefault();
+        StatusBar.backgroundColorByHexString("#0D47A1");
+        showStatusBar(true);
+        fullScreen([false], [true]);
        
       }
     });
@@ -143,7 +146,7 @@ kubeApp.config(['$stateProvider', '$urlRouterProvider', '$translateProvider',
                 })
 
                  .state('app.clients', {
-                   cache: false,
+                 
                   url: '/clients',
                   views: {
                     'menuContent': {
@@ -153,6 +156,50 @@ kubeApp.config(['$stateProvider', '$urlRouterProvider', '$translateProvider',
                     }
                   }
                 })
+
+                 .state('app.simulate',{
+                    url : '/demo',
+                      views: {
+                        'menuContent': {
+                                templateUrl : 'html/demo/index.html',
+                                controller : 'LoanController'
+                        }
+                      }
+                  
+                })
+                 .state('app.paymentPlan2',{
+                    url : '/payment_plan',
+                        views: {
+                           'menuContent': {
+                                  templateUrl : 'templates/app.paymentPlan.html',
+                                  controller : 'LoanController'
+                           }
+                        }
+                
+                })
+
+                 .state('app.paymentPlan',{
+                    url : '/payment_plan',
+                        views: {
+                           'menuContent': {
+                                  templateUrl : 'html/loans/paymentPlan.html',
+                                  controller : 'LoanController'
+                           }
+                        }
+                
+                })
+
+                    .state('app.newLoan',{
+                    url : '/loan_new',
+                        views: {
+                            'menuContent': {
+                                  templateUrl : 'html/loans/new.html',
+                                  controller : 'LoanController'
+                            }
+                        }
+                    
+                })
+
 
 
 
@@ -164,52 +211,52 @@ kubeApp.config(['$stateProvider', '$urlRouterProvider', '$translateProvider',
 
                    /////////################# STATES de la plantilla comprada####################////////////////////////
 
-                // setup an abstract state for the tabs directive
-                .state('tab', {
-                  url: '/tab',
-                  abstract: true,
-                  templateUrl: 'templates/tabs.html',
-                  controller: 'AppCtrl'
-                })
+                // // setup an abstract state for the tabs directive
+                // .state('tab', {
+                //   url: '/tab',
+                //   abstract: true,
+                //   templateUrl: 'templates/tabs.html',
+                //   controller: 'AppCtrl'
+                // })
 
-                // Each tab has its own nav history stack:
+                // // Each tab has its own nav history stack:
 
-                .state('tab.calendar', {
-                  url: '/calendar',
-                  views: {
-                    'tabContent': {
-                      templateUrl: 'templates/tab-calendar.html',
-                      controller: 'CalendarCtrl'
-                    }
-                  }
-                })
-                .state('tab.budget', {
-                  url: '/budget',
-                  views: {
-                    'tabContent': {
-                      templateUrl: 'templates/tab-budget.html',
-                      controller: 'BudgetCtrl'
-                    }
-                  }
-                })
-                .state('tab.chart', {
-                  url: '/chart',
-                  views: {
-                    'tabContent': {
-                      templateUrl: 'templates/tab-chart.html',
-                      controller: 'ChartCtrl'
-                    }
-                  }
-                })
-                .state('tab.account', {
-                  url: '/account',
-                  views: {
-                    'tabContent': {
-                      templateUrl: 'templates/tab-account.html',
-                      controller: 'AccountCtrl'
-                    }
-                  }
-                })
+                // .state('tab.calendar', {
+                //   url: '/calendar',
+                //   views: {
+                //     'tabContent': {
+                //       templateUrl: 'templates/tab-calendar.html',
+                //       controller: 'CalendarCtrl'
+                //     }
+                //   }
+                // })
+                // .state('tab.budget', {
+                //   url: '/budget',
+                //   views: {
+                //     'tabContent': {
+                //       templateUrl: 'templates/tab-budget.html',
+                //       controller: 'BudgetCtrl'
+                //     }
+                //   }
+                // })
+                // .state('tab.chart', {
+                //   url: '/chart',
+                //   views: {
+                //     'tabContent': {
+                //       templateUrl: 'templates/tab-chart.html',
+                //       controller: 'ChartCtrl'
+                //     }
+                //   }
+                // })
+                // .state('tab.account', {
+                //   url: '/account',
+                //   views: {
+                //     'tabContent': {
+                //       templateUrl: 'templates/tab-account.html',
+                //       controller: 'AccountCtrl'
+                //     }
+                //   }
+                // })
 
 
                 /////////################# STATES ya definidos en la APP PAYDAY####################////////////////////////
@@ -227,11 +274,11 @@ kubeApp.config(['$stateProvider', '$urlRouterProvider', '$translateProvider',
                 //     templateUrl : 'html/loans/new.html',
                 //     controller : 'LoanController'
                 // }).
-                // state('home.paymentPlan',{
-                //     url : '/loan/payment/plan',
-                //     templateUrl : 'html/loans/paymentPlan.html',
-                //     controller : 'LoanController'
-                // }).
+                                                                          // state('home.paymentPlan',{
+                                                                          //     url : '/loan/payment/plan',
+                                                                          //     templateUrl : 'html/loans/paymentPlan.html',
+                                                                          //     controller : 'LoanController'
+                                                                          // }).
                 // state('home.collectionDay',{
                 //     url : '/loan/list/day',
                 //     templateUrl : 'html/loans/collectionDay.html',
@@ -262,11 +309,11 @@ kubeApp.config(['$stateProvider', '$urlRouterProvider', '$translateProvider',
                 //     templateUrl : 'html/loans/stateFees.html',
                 //     controller : 'LoanController'
                 // }).
-                // state('home.simulate',{
-                //     url : '/loan/demo',
-                //     templateUrl : 'html/demo/index.html',
-                //     controller : 'LoanController'
-                // }).
+                                                                            // state('home.simulate',{
+                                                                            //     url : '/loan/demo',
+                                                                            //     templateUrl : 'html/demo/index.html',
+                                                                            //     controller : 'LoanController'
+                                                                            // }).
                 // state('home.movesAdd',{
                 //     url : '/moves/add',
                 //     templateUrl :   'html/moves/add.html',

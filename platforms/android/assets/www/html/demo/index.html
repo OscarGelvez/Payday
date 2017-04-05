@@ -2,18 +2,18 @@
 	Simulador
 </h1>
 
-<div class="container-fluid">
+<div class="container-fluid" style="background-color:blue !important;">
 	<div class="row">
 		<form>
 
 			<div class="form-inline" >
 
-				<div class="form-group col-xs-6">
+				<div class="form-group col-xs-6" style="background-color:blue;">
 					<label for="views.new.loan.value" ng-show="views.new.loan.value > 0">Valor Prestamo</label>
 					<input id="views.new.loan.value" type="number" class="form-control" required ng-model="views.new.loan.value" placeholder="Monto">
 				</div>
 
-				<div class="form-group col-xs-6" style="margin-bottom: 1rem">
+				<div class="form-group col-xs-6" style="margin-bottom: 1rem" >
 					<label for="views.new.loan.rate_interest" ng-show="views.new.loan.interest_rate.length > 0">Intereses %</label>
 					<input id="views.new.loan.rate_interest" type="number" class="form-control" required ng-model="views.new.loan.interest_rate" placeholder="Intereses">
 				</div>
@@ -155,8 +155,13 @@
 
 			<div class="form-group col-xs-12" style="margin-top: 1rem" >
 				<label for="type_paid" ng-show="views.new.loan.type_paid_id > 0">Tipo de Abono</label>
-				<select id="type_paid" class="form-control " required ng-model="views.new.loan.type_paid_id" ng-options="value.id as value.name for value in typesPaid">
+				<select id="type_paid" class="form-control " required ng-model="views.new.loan.type_paid_id" ng-options="value.id as value.name for value in typesPaid" >
+					<!-- ng-options="value.id as value.name for value in typesPaid" -->
 					<option value="">Tipo De Abono</option>
+					<!-- <option value="1">Con Abono a capital</option>
+					<option value="2">Sin abono a capital</option> -->
+
+
 				</select>
 			</div>
 

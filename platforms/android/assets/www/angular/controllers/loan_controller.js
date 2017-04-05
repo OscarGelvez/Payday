@@ -37,29 +37,30 @@ kubeApp.controller('LoanController', function ($scope,$filter ,$state,$statePara
 
     function init(){
 
-        try {
-            $scope.$parent.init();
-        }catch(error){
-            return ;
-        }
+        // try {
+        //     $scope.$parent.init();
+        // }catch(error){
 
-        localDatabase.showSchema().then(function(arrayNames){
-            if(arrayNames.length <= 2){
-                $state.go("home");
-                toastr.error("Debe abrir la caja antes de realizar cualquier actividad","ERROR");
-                return;
+        //     return ;
+        // }
 
-            }
-        }).catch(function(error){
-            toastr.error("No se pudo cargar la base de datos");
-        });
+        // localDatabase.showSchema().then(function(arrayNames){
+        //     if(arrayNames.length <= 2){
+        //         $state.go("home");
+        //         toastr.error("Debe abrir la caja antes de realizar cualquier actividad","ERROR");
+        //         return;
 
-        $scope.new = { showDetail : false, showDetailGuarantor: false,showDetailClassIcon: {
-            false : 'fa fa-chevron-down',
-            true : 'fa fa-chevron-up'
-        }};
+        //     }
+        // }).catch(function(error){
+        //     toastr.error("No se pudo cargar la base de datos");
+        // });
 
-        $scope.new.showDetailCurrentClass = 'fa fa-chevron-down';
+        // $scope.new = { showDetail : false, showDetailGuarantor: false,showDetailClassIcon: {
+        //     false : 'fa fa-chevron-down',
+        //     true : 'fa fa-chevron-up'
+        // }};
+
+        // $scope.new.showDetailCurrentClass = 'fa fa-chevron-down';
         var state = $state.current.name;
         switch(state){
             case 'home.newLoan':{
@@ -71,13 +72,19 @@ kubeApp.controller('LoanController', function ($scope,$filter ,$state,$statePara
                 $scope.lists.days =CalculatorDate.daysWeek;
                 loadItemsHomeNewLoan();
             }break;
-            case 'home.simulate':{
+            case 'app.simulate':{
                 $scope.views.new = {
                     loan:{} 
                 };
                 loadItemSimulateView();
             }break;
-            case 'home.paymentPlan':{
+            case 'app.simulator':{
+                $scope.views.new = {
+                    loan:{} 
+                };
+                loadItemSimulateView();
+            }break;
+            case 'app.paymentPlan':{
                 loadItemsHomeSimulate();
             }break;
             case 'home.asignRoutePosition':{
@@ -162,7 +169,7 @@ kubeApp.controller('LoanController', function ($scope,$filter ,$state,$statePara
     /**
      * función que permite crear un prestamo
      */
-    $scope.createLoan =  function(){
+$scope.createLoan =  function(){
         if($scope.views.new.loan.start_date == $scope.views.new.loan.date_end){
             alert("No se puede definir el rango de fechas para el prestamo");
             return;
@@ -291,6 +298,15 @@ kubeApp.controller('LoanController', function ($scope,$filter ,$state,$statePara
         var navigationFolder = SaveData.getOrCreate("navigation");
         navigationFolder.addInfoOrUpdate("back",$state.current.name);
 
+        console.log($scope.views.new.loan.selectPayPeriod)
+        console.log($scope.views.new.loan.value)
+        console.log($scope.views.new.loan.interest_rate)
+        console.log($scope.views.new.loan.start_date)
+        console.log($scope.views.new.loan.date_end)
+        console.log($scope.views.new.loan.type_paid_id)
+        console.log($scope.views.new.loan.retention)
+       
+
         if(typeof $scope.views.new.loan.selectPayPeriod != "undefined" && $scope.views.new.loan.value > 0 &&
             $scope.views.new.loan.interest_rate && $scope.views.new.loan.start_date && $scope.views.new.loan.date_end &&
             $scope.views.new.loan.type_paid_id && $scope.views.new.loan.retention >= 0){
@@ -331,6 +347,8 @@ kubeApp.controller('LoanController', function ($scope,$filter ,$state,$statePara
 
         $scope.views.new.loan.stringPeriodPaid = catchPeriodPay();
         newFolder.addInfo("objView", $scope.views.new );
+
+        console.log($scope.views.new.loan.stringPeriodPaid );
         /*
         if(typeof $scope.views.new.client != "undefined"){
             newFolder.addInfo("objClient",$scope.views.new.client);
@@ -344,7 +362,7 @@ kubeApp.controller('LoanController', function ($scope,$filter ,$state,$statePara
 
         newFolder.addInfo("objLoan",$scope.views.new.loan);
         */
-        $state.go("home.paymentPlan");
+        $state.go("app.paymentPlan");
     };
 
     /**
@@ -505,26 +523,37 @@ kubeApp.controller('LoanController', function ($scope,$filter ,$state,$statePara
             var endD = CalculatorDate.parseStringToDate(loan.date_end,'/','mm/dd/yyyy');
             var typePaid = loan.type_paid_id;
 
+            console.log(loan)
+            console.log(value)
+            console.log(interest)
+            console.log(payPeriod)
+            console.log(startD)
+            console.log(endD)
+            console.log(typePaid)
+
+            console.log(view)
+            console.log(loan.stringPeriodPaid);
             var arrayDates = [];
 
             arrayDates = CalculatorDate.getDatesBetween(
                         startD,endD,
                         loan.stringPeriodPaid
             );
-           
+           console.log(arrayDates);
             $scope.tablePaymentPlan = [];
             var x = SimulateLoan.on(value,interest , arrayDates, typePaid).then(
                 function(arrayTable){
                     $scope.tablePaymentPlan = arrayTable;
                     console.log(arrayTable);
                 }
+
             ).catch(
                 function(error){
                     alert("Error al Mostrar el plan de pago");
                     console.log(error);
                 }
             );
-
+                console.log(x);
             $scope.tablePaymentPlan = x;
         }
     };
@@ -538,8 +567,33 @@ kubeApp.controller('LoanController', function ($scope,$filter ,$state,$statePara
                 loadPreviousDataSimulate();
             }else{
 
-            }
+                   } 
+                    
+
+            
         }).catch(function(error){
+            console.log("entro")
+        var rows= [
+
+                           {
+                            "id" : "1",
+                            "name":"con abono a capitalcito",
+                            "description":"con abono"
+                            },
+                            
+                        
+                         {
+                          "id": "2",
+                            "name":"sin abono a capitalcito",
+                            "description":"sin abono"  
+                         }
+
+                    ]
+                     
+                        
+                    
+                    $scope.typesPaid = rows
+                    console.log($scope.typesPaid); 
             console.log(error);
         });
 

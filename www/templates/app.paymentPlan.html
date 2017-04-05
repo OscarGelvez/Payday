@@ -1,0 +1,40 @@
+<ion-view view-title="{{'Simulator.ButtonPaymentPlan.Title' | translate}}">
+
+         
+      <ion-content class="bg-home" scroll="true" overflow-scroll="false">
+            
+		<ion-scroll zooming="true" direction="y" style="height: 500px">
+
+            <div class="row headTable">
+				  <div class="col colHead">{{'Simulator.ButtonPaymentPlan.Date' | translate}} <br/>dd-mm-aaaa</div>
+				  <div class="col colHead">{{'Simulator.ButtonPaymentPlan.Capital' | translate}}</div>
+				  <div class="col colHead">{{'Simulator.ButtonPaymentPlan.Interest' | translate}}</div>
+				  <div class="col colHead">{{'Simulator.ButtonPaymentPlan.TotalPaid' | translate}}</div>
+			</div>
+
+			
+		
+
+		   <div class="row bodyTable" ng-repeat="paid in tablePaymentPlan">
+
+				  <div class="col colBody">{{ calcDate.parseDateToString(paid.date,'dd-mm-yyyy','-') }}</div>
+				  <div class="col colBody">{{ paid.balance | currency : "$":0 }}</td></div>
+				  <div class="col colBody">{{ paid.interest | currency : "$":0 }}</div>
+				  <div class="col colBody">{{ paid.paid | currency : "$":0 }}</div>
+			</div>
+			 </ion-scroll>
+
+			<button class="button button-block button-assertive" ng-click="goBackSimulate()">
+			{{'Simulator.ButtonPaymentPlan.ButtonBack' | translate}}
+			</button>
+
+
+    
+      </ion-content>
+
+</ion-view>
+</div>
+ 
+
+
+

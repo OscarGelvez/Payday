@@ -578,14 +578,126 @@ color: white;
 
 
 
+/*ESTILOS PARA MODULO DE SIMULADOR*/
+
+ @media screen and (orientation: portrait) {
+  .formSimulator{
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 10%;
+    width: 70%;
+    height: 50%;
+  }
+  
+  }
+  
+@media screen and (orientation: landscape) {
+  .formSimulator{
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 5%;
+    width: 70%;
+    height: 50%;
+  }
+   
+  }
 
 
 
+.formSimulator input[type="text"], input[type="number"], input[type="date"]{
+    color: white !important;  /* change [input cursor color] by this*/
+      font-weight:500 !important;
+      text-shadow: 0px 0px 0px #fff; /* change [input font] by this*/
+      -webkit-text-fill-color: transparent;
+      border-color: #009688 !important;
+      font-size: 16px !important;
+      text-align: center;
+      padding: 0px;
+      background-color: transparent;
+      border-color: 
 
+    
+}
 
+.formSimulator .selectElement{
+    background-color: #285f9b !important;
+    color: white;
+    width: 100% !important;
+    margin-left: 0px;
+    height: 60px !important;
+}
 
+.formSimulator .labelSelect{
+  color:white;
+  float: left;
+  margin-left: 3%;
+  padding-top: 5px;
+  height: 35px;
+  font-size: 16px;
+  width: 100%;
 
+}
 
+.formSimulator .labelsFormInicioRegistro{
+ 
+}
+/*Estilos de tabla que genera el simulador con las cuotas*/
+.headTable{
+
+    
+    color: white;
+    font-weight: 700;
+    font-size: 14px;
+    border: 1px;
+    border-color: #262626;
+    
+   
+   
+
+    margin-top: 5%;
+    width: 95%;
+    padding-left: 2%;
+    margin-left: 2%;
+
+}
+
+.bodyTable{
+   margin-top: 10%;
+    
+    color: white;
+    font-weight: 500;
+    font-size: 14px;
+    border: 1px;
+    border-color: #262626;
+   
+  
+  
+    border-width: 1px;
+
+    padding-left: 2%;
+    margin-left: 2%;
+    width: 95%;
+    margin-right: 2%!important;
+}
+
+.colBody{
+  background-color: rgba(21, 125, 191,0.4);
+    border-right-style:outset;
+    border-width: 1px;
+    border-top-style:outset;
+       border-right-style:outset;
+    border-left-style:outset;
+}
+
+.colHead{
+    border-right-style:outset;
+    border-width: 1px;
+    border-top-style:outset;
+    border-right-style:outset;
+    border-left-style:outset;
+    background-color: rgba(13, 95, 147,0.5);
+    border-width: 1px;
+}
 
 
 

@@ -128,13 +128,14 @@
 
 </center>
               <div class="row" ng-hide="boolEditar">
-                            
-
-                            <div class="col">
-                                  <button   type="button" class="button button-calm  btnInicio2 icon ion-edit " ng-click="hacerVisible()">
-                                  {{textBtnEditar}}
-                                  </button>
+                            <div class="col">                              
+                                <button   type="button" class="button button-energized  btnInicio2" ng-click="closeDetailClient()">
+                                  <i class="fa fa-arrow-left fa-1x" aria-hidden="true"></i>
+                                    {{'Clients.ModalBack' | translate}} 
+                                </button>
                             </div>
+
+                           
 
                             <div class="col">
                                   <button   type="button" class="button button-assertive  btnInicio2 icon ion-trash-b " ng-click="submitDeleteRubro()">
@@ -142,11 +143,10 @@
                                   </button>                          
                             </div>
 
-                            <div class="col">                              
-                                <button   type="button" class="button button-energized  btnInicio2" ng-click="closeDetailClient()">
-
-                                    {{'Clients.ModalBack' | translate}} 
-                                </button>
+                             <div class="col">
+                                  <button   type="button" class="button button-calm  btnInicio2 icon ion-edit " ng-click="hacerVisible()">
+                                  {{textBtnEditar}}
+                                  </button>
                             </div>
 
               </div>

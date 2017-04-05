@@ -50,9 +50,10 @@ var deregisterFirst = $ionicPlatform.registerBackButtonAction(
           $scope.desabilitarCampos=true;
            $scope.contentMove.fecha=$filter('date')($scope.CurrentDate, "yyyy-MM-dd");
           console.log($scope.contentMove.fecha);
+          $scope.disabledButtonCancel=true;
          
       }else{
-          
+          $scope.disabledButtonCancel=false;
           $scope.contentMove.baseCaja = 0; // Por defecto cero (Falso)
          
           $scope.desabilitarCampos=false;
@@ -166,7 +167,7 @@ $scope.load_categories();
                            alertPopup.then(function(res) {
                             if(valorCaja.estado==false){ // --> quiere decir q la caja estaba cerrada y este movimiento fue el primero de apertura
                               valorCaja.estado=true;
-                               
+                             $state.go('app.home')
                             }
                           $scope.contentMove = {};
                          });               

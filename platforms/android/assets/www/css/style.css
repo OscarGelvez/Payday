@@ -578,11 +578,69 @@ color: white;
 
 
 
+/*ESTILOS PARA MODULO DE SIMULADOR*/
+
+ @media screen and (orientation: portrait) {
+  .formSimulator{
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 10%;
+    width: 70%;
+    height: 50%;
+  }
+  
+  }
+  
+@media screen and (orientation: landscape) {
+  .formSimulator{
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 5%;
+    width: 70%;
+    height: 50%;
+  }
+   
+  }
 
 
 
+.formSimulator input[type="text"], input[type="number"], input[type="date"]{
+    color: white !important;  /* change [input cursor color] by this*/
+      font-weight:500 !important;
+      text-shadow: 0px 0px 0px #fff; /* change [input font] by this*/
+      -webkit-text-fill-color: transparent;
+      border-color: #009688 !important;
+      font-size: 16px !important;
+      text-align: center;
+      padding: 0px;
+      background-color: transparent;
+      border-color: 
 
+    
+}
 
+.formSimulator .selectElement{
+    background-color: #285f9b !important;
+    color: white;
+    width: 100% !important;
+    margin-left: 0px;
+    height: 60px !important;
+}
+
+.formSimulator .labelSelect{
+  color:white;
+  float: left;
+  margin-left: 3%;
+  padding-top: 5px;
+  height: 35px;
+  font-size: 16px;
+  width: 100%;
+
+}
+
+.formSimulator .labelsFormInicioRegistro{
+ 
+}
 
 
 

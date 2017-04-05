@@ -61,9 +61,14 @@ var deregisterFirst = $ionicPlatform.registerBackButtonAction(
                     if(response.status){
                       console.log(response);                     
 
-                     // loadingService.hide(); 
+                     // 
                       $scope.listClients=response.data;  
-                      $scope.loadCities2();
+                      if(citiesFactory.datos.length == 0){
+                        $scope.loadCities2();
+                      }else{
+                        loadingService.hide(); 
+                      }
+                      
                     }else{
                           var alertPopup = $ionicPopup.alert({
                              title: 'Error',
@@ -439,7 +444,7 @@ console.log($scope.datosOriginal.department);
               $scope.auxCity = '?department_id='+$scope.datosOriginal.department;
               //$scope.loadCities2();
 
-               console.log(citiesFactory.datos);
+               
                $scope.cities2=[];
                for (var i = 0; i < citiesFactory.datos.length; i++) {
                      if(citiesFactory.datos[i].department_id == $scope.datosOriginal.department){
@@ -463,8 +468,11 @@ console.log($scope.datosOriginal.department);
                  }
 
                }
+               
                console.log("llegoo aqui")
               $scope.datosEditadosSelect.city = document.getElementById('selectCity').value;
+              // $scope.datosEditadosSelect.country = document.getElementById('selectCountry').value;
+              // $scope.datosEditadosSelect.department = document.getElementById('selectDepartment').value;
               
                 
              

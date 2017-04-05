@@ -260,23 +260,68 @@
 
 			"Simulator":{		
 					"Title": "Simulador de Préstamos",
-					"Value": "Monto/valor",
-					"Interest": "Intereses",
+					"Value": "Valor Prestamo",
+					"Interest": "Intereses %",
 					"CollectionFrequency": "Frecuencia de cobro",
-					"StartDate": "Fecha Inicio",
-					"EndDate": "Fecha Finalización",
+						"OptionEveryDay": "Cada día",
+						"OptionEveryWeek": "Cada semana",
+						"OptionEveryMonth": "Cada mes",
+						"OptionCustomDay": "Personalizar día",
+						"OptionCustomMonth": "Personalizar mes",
+
+					"TextCobrarLos"	: "Cobrar los:",
+					"TextSelectDay": "Seleccione día",
+					"TextCobrarDia"	: "Cobrar el día:",
+					"TextEvery": "Cada",
+					"TextDays": "Días",
+					"TextMonths": "Meses",
+
+					"TextSelectMonth": "Seleccione mes",
+					"DateStartCobro": "Fecha Inicio Cobros",
+					"DateEndLoan": "Fecha Finalización Préstamo",
+
 					"PaymentType": "Tipo de abono",
-					"PaymentA": "Con abono a capital",
-					"PaymentB": "Sin abono a capital",
+					"SelectTypePayment" : "Seleccione tipo de abono",
+									
 					"Insurance": "Seguro/rifa",
 					"ButtonSeePaymentPlan": "Ver Plan de Pago",	
-					"ButtonContent":{
+
+					"ButtonPaymentPlan":{
+							"Title": "Plan de cobro simulado",
 							"Date": "Fecha",
 							"Capital": "Capital",
 							"Interest": "Intereses",
 							"TotalPaid": "Total Pagado",
-							"ButtonBack": "Volver"
-					}
+							"ButtonBack": "Volver a simulador"
+					},
+
+					"Days": {
+						"Sunday": "Domingo",
+						"Monday": "Lunes",
+						"Tuesday": "Martes",
+						"Wednesday": "Miércoles",
+						"Thursday": "Jueves",
+						"Friday": "Viernes",
+						"Saturday": "Sábado"
+					},
+
+					"OptionTypePayment": {
+						"PaymentA": "Con abono a capital",
+						"DescriptionA": "La descripción del prestamo con abono a capital",
+						"PaymentB": "Sin abono a capital",
+						"DescriptionB" : "La descripción del prestamo sin abono a capital"	
+					},
+
+					"ErrorShowPlan": "Error al Mostrar el plan de pago",
+					"ErrorSelectPayPeriod": "Debe incluir la selección de pago",
+					"ErrorValue":  "Error, valor de préstamo no definido",
+					"ErrorInterest": "Error, tasa de interes no definida",
+					"ErrorPayPeriod": "Error, periodo de pago no definido",
+					"ErrorStartDate": "Error, fecha de inicio no definida",
+					"ErrorEndDate": "Error, fecha de finalización no definida",
+					"ErrorTypePaid": "Error, tipo de pago no definido",
+					"ErrorRetention": "Error, seguro/rifa no definida"				
+
 
 			},
 

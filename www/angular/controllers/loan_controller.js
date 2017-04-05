@@ -9,7 +9,19 @@ var kubeApp = angular.module('kubeApp');
 
 kubeApp.controller('LoanController', function ($scope,$filter ,$state,$stateParams, $q,CalculatorDate,SaveData, SimulateLoan,
                                                NeighbourhoodsDao, ClientsDao,TypePaidsDao,LoansDao,FeesDao,PaymentsDao,
-                                               MovesDao,localDatabase) {
+                                               MovesDao,localDatabase, $ionicPlatform, $translate, $ionicPopup) {
+
+    var deregisterFirst = $ionicPlatform.registerBackButtonAction(
+      function() {
+         navigator.app.backHistory();
+      }, 100
+    );
+    $scope.$on('$destroy', deregisterFirst);
+
+
+
+
+
     $scope.calcDate = CalculatorDate;
     $scope.listAllCollectionDay = "false";
 
@@ -37,29 +49,30 @@ kubeApp.controller('LoanController', function ($scope,$filter ,$state,$statePara
 
     function init(){
 
-        try {
-            $scope.$parent.init();
-        }catch(error){
-            return ;
-        }
+        // try {
+        //     $scope.$parent.init();
+        // }catch(error){
 
-        localDatabase.showSchema().then(function(arrayNames){
-            if(arrayNames.length <= 2){
-                $state.go("home");
-                toastr.error("Debe abrir la caja antes de realizar cualquier actividad","ERROR");
-                return;
+        //     return ;
+        // }
 
-            }
-        }).catch(function(error){
-            toastr.error("No se pudo cargar la base de datos");
-        });
+        // localDatabase.showSchema().then(function(arrayNames){
+        //     if(arrayNames.length <= 2){
+        //         $state.go("home");
+        //         toastr.error("Debe abrir la caja antes de realizar cualquier actividad","ERROR");
+        //         return;
 
-        $scope.new = { showDetail : false, showDetailGuarantor: false,showDetailClassIcon: {
-            false : 'fa fa-chevron-down',
-            true : 'fa fa-chevron-up'
-        }};
+        //     }
+        // }).catch(function(error){
+        //     toastr.error("No se pudo cargar la base de datos");
+        // });
 
-        $scope.new.showDetailCurrentClass = 'fa fa-chevron-down';
+        // $scope.new = { showDetail : false, showDetailGuarantor: false,showDetailClassIcon: {
+        //     false : 'fa fa-chevron-down',
+        //     true : 'fa fa-chevron-up'
+        // }};
+
+        // $scope.new.showDetailCurrentClass = 'fa fa-chevron-down';
         var state = $state.current.name;
         switch(state){
             case 'home.newLoan':{
@@ -71,13 +84,19 @@ kubeApp.controller('LoanController', function ($scope,$filter ,$state,$statePara
                 $scope.lists.days =CalculatorDate.daysWeek;
                 loadItemsHomeNewLoan();
             }break;
-            case 'home.simulate':{
+            case 'app.simulate':{
                 $scope.views.new = {
                     loan:{} 
                 };
                 loadItemSimulateView();
             }break;
-            case 'home.paymentPlan':{
+            case 'app.simulator':{
+                $scope.views.new = {
+                    loan:{} 
+                };
+                loadItemSimulateView();
+            }break;
+            case 'app.paymentPlan':{
                 loadItemsHomeSimulate();
             }break;
             case 'home.asignRoutePosition':{
@@ -162,7 +181,7 @@ kubeApp.controller('LoanController', function ($scope,$filter ,$state,$statePara
     /**
      * función que permite crear un prestamo
      */
-    $scope.createLoan =  function(){
+$scope.createLoan =  function(){
         if($scope.views.new.loan.start_date == $scope.views.new.loan.date_end){
             alert("No se puede definir el rango de fechas para el prestamo");
             return;
@@ -291,8 +310,17 @@ kubeApp.controller('LoanController', function ($scope,$filter ,$state,$statePara
         var navigationFolder = SaveData.getOrCreate("navigation");
         navigationFolder.addInfoOrUpdate("back",$state.current.name);
 
+        console.log($scope.views.new.loan.selectPayPeriod)
+        console.log($scope.views.new.loan.value)
+        console.log($scope.views.new.loan.interest_rate)
+        console.log($scope.views.new.loan.start_date)
+        console.log($scope.views.new.loan.date_end)
+        console.log($scope.views.new.loan.type_paid_id)
+        console.log($scope.views.new.loan.retention)
+       
+
         if(typeof $scope.views.new.loan.selectPayPeriod != "undefined" && $scope.views.new.loan.value > 0 &&
-            $scope.views.new.loan.interest_rate && $scope.views.new.loan.start_date && $scope.views.new.loan.date_end &&
+            $scope.views.new.loan.interest_rate > 0 && $scope.views.new.loan.start_date && $scope.views.new.loan.date_end &&
             $scope.views.new.loan.type_paid_id && $scope.views.new.loan.retention >= 0){
 
             var accept = true;
@@ -321,16 +349,82 @@ kubeApp.controller('LoanController', function ($scope,$filter ,$state,$statePara
             }
 
             if(!accept){
-                alert("debe incluir la seleccion del periodo de pago");
+                var alertPopup = $ionicPopup.alert({
+                             title: 'Error',
+                             template: '{{"Simulator.ErrorSelectPayPeriod" | translate}}'
+                           });
+                // alert("debe incluir la seleccion del periodo de pago");
                 return;
             }
         }else{
-            alert("Debe ingresar el valor del prestamo\nIntereses\nFrecuencía Cobro\nFecha Inicio Cobros\nFecha Finalización Préstamo\nTipo Abono\nRetención")
+
+            if($scope.views.new.loan.selectPayPeriod == undefined){
+
+                    var alertPopup = $ionicPopup.alert({
+                             title: 'Error',
+                             template: '{{"Simulator.ErrorShowPlan" | translate}}'
+                           });
+
+
+            }else if($scope.views.new.loan.value == 0 || $scope.views.new.loan.value==undefined){
+
+                    var alertPopup = $ionicPopup.alert({
+                             title: 'Error',
+                             template: '{{"Simulator.ErrorValue" | translate}}'
+                           });
+
+
+            }else if( $scope.views.new.loan.interest_rate == undefined){
+
+                    var alertPopup = $ionicPopup.alert({
+                             title: 'Error',
+                             template: '{{"Simulator.ErrorInterest" | translate}}'
+                           });
+
+
+            }else if($scope.views.new.loan.start_date == undefined){
+
+                    var alertPopup = $ionicPopup.alert({
+                             title: 'Error',
+                             template: '{{"Simulator.ErrorStartDate" | translate}}'
+                           });
+
+
+            }else if($scope.views.new.loan.date_end == undefined){
+
+                    var alertPopup = $ionicPopup.alert({
+                             title: 'Error',
+                             template: '{{"Simulator.ErrorEndDate" | translate}}'
+                           });
+
+
+            }else if( $scope.views.new.loan.type_paid_id == undefined){
+
+                    var alertPopup = $ionicPopup.alert({
+                             title: 'Error',
+                             template: '{{"Simulator.ErrorPayPeriod" | translate}}'
+                           });
+
+
+            }else if($scope.views.new.loan.retention == undefined || $scope.views.new.loan.retention == ""){
+
+                    var alertPopup = $ionicPopup.alert({
+                             title: 'Error',
+                             template: '{{"Simulator.ErrorRetention" | translate}}'
+                           });
+
+
+            }
+
+
+            // alert("Debe ingresar el valor del prestamo\nIntereses\nFrecuencía Cobro\nFecha Inicio Cobros\nFecha Finalización Préstamo\nTipo Abono\nRetención")
             return;
         }
 
         $scope.views.new.loan.stringPeriodPaid = catchPeriodPay();
         newFolder.addInfo("objView", $scope.views.new );
+
+        console.log($scope.views.new.loan.stringPeriodPaid );
         /*
         if(typeof $scope.views.new.client != "undefined"){
             newFolder.addInfo("objClient",$scope.views.new.client);
@@ -344,7 +438,7 @@ kubeApp.controller('LoanController', function ($scope,$filter ,$state,$statePara
 
         newFolder.addInfo("objLoan",$scope.views.new.loan);
         */
-        $state.go("home.paymentPlan");
+        $state.go("app.paymentPlan");
     };
 
     /**
@@ -501,30 +595,51 @@ kubeApp.controller('LoanController', function ($scope,$filter ,$state,$statePara
             var value = loan.value;
             var interest = loan.interest_rate;
             var payPeriod = loan.selectPayPeriod;
-            var startD = CalculatorDate.parseStringToDate(loan.start_date,'/','mm/dd/yyyy');
-            var endD = CalculatorDate.parseStringToDate(loan.date_end,'/','mm/dd/yyyy');
+            // var startD = CalculatorDate.parseStringToDate(loan.start_date,'/','mm/dd/yyyy');
+            // var endD = CalculatorDate.parseStringToDate(loan.date_end,'/','mm/dd/yyyy');
+
+            //no hubo necesidad de parsear
+            var startD = loan.start_date;
+            var endD = loan.date_end;
+
+
             var typePaid = loan.type_paid_id;
 
+            console.log(loan)
+            console.log(value)
+            console.log(interest)
+            console.log(payPeriod)
+            console.log(startD)
+            console.log(endD)
+            console.log(typePaid)
+
+            console.log(view)
+            console.log(loan.stringPeriodPaid);
             var arrayDates = [];
 
             arrayDates = CalculatorDate.getDatesBetween(
                         startD,endD,
                         loan.stringPeriodPaid
             );
-           
+           console.log(arrayDates);
             $scope.tablePaymentPlan = [];
             var x = SimulateLoan.on(value,interest , arrayDates, typePaid).then(
                 function(arrayTable){
                     $scope.tablePaymentPlan = arrayTable;
                     console.log(arrayTable);
                 }
+
             ).catch(
                 function(error){
-                    alert("Error al Mostrar el plan de pago");
+                       var alertPopup = $ionicPopup.alert({
+                             title: 'Error',
+                             template: '{{"Simulator.ErrorShowPlan" | translate}}'
+                           });
+                    // alert("Error al Mostrar el plan de pago");
                     console.log(error);
                 }
             );
-
+                console.log(x);
             $scope.tablePaymentPlan = x;
         }
     };
@@ -538,8 +653,40 @@ kubeApp.controller('LoanController', function ($scope,$filter ,$state,$statePara
                 loadPreviousDataSimulate();
             }else{
 
-            }
+                   } 
+                    
+
+            
         }).catch(function(error){
+            var name1 = $translate.instant('Simulator.OptionTypePayment.PaymentA');
+            var description1 = $translate.instant('Simulator.OptionTypePayment.DescriptionA');
+
+            var name2 = $translate.instant('Simulator.OptionTypePayment.PaymentB');
+            var description2 = $translate.instant('Simulator.OptionTypePayment.DescriptionB');
+
+
+            console.log("entro"+name1)
+        var rows= [
+
+                           {
+                            "id" : "1",
+                            "name":""+name1,
+                            "description":""+description1
+                            },
+                            
+                        
+                         {
+                          "id": "2",
+                            "name":""+name2,
+                            "description":""+description2  
+                         }
+
+                    ]
+                     
+                        
+                    
+                    $scope.typesPaid = rows
+                    console.log($scope.typesPaid); 
             console.log(error);
         });
 

@@ -260,23 +260,68 @@
 
 			"Simulator":{		
 					"Title": "Loan Simulator",
-					"Value": "Value",
-					"Interest": "Interest",
-					"CollectionFrequency": "Collection Frequency",
-					"StartDate": "Start Date",
-					"EndDate": "End Date",
-					"PaymentType": "Payment Type",
-					"PaymentA": "With Capital Payment",
-					"PaymentB": "Without Capital Payment",
+					"Value": "Loan Amount",
+					"Interest": "Interests rate %",
+					"CollectionFrequency": "Collection frequency",
+						"OptionEveryDay": "Every day",
+						"OptionEveryWeek": "Every week",
+						"OptionEveryMonth": "Every month",
+						"OptionCustomDay": "Customize day",
+						"OptionCustomMonth": "Customize Month",
+
+					"TextCobrarLos"	: "Collect the:",
+					"TextSelectDay": "Select day",
+					"TextCobrarDia"	: "Collect tha day:",
+					"TextEvery": "Every",
+					"TextDays": "Days",
+					"TextMonths": "Months",
+
+					"TextSelectMonth": "Select month",
+					"DateStartCobro": "Date start collection",
+					"DateEndLoan": "Finalization Date Loan",
+
+					"PaymentType": "Payment type",
+					"SelectTypePayment" : "Select payment type",
+									
 					"Insurance": "Insurance",
-					"ButtonSeePaymentPlan": "See Payment Plan",	
-					"ButtonContent":{
+					"ButtonSeePaymentPlan": "View Payment Plan",	
+
+					"ButtonPaymentPlan":{
+							"Title": "Simulated collection plan",
 							"Date": "Date",
 							"Capital": "Capital",
 							"Interest": "Interest",
-							"TotalPaid": "Total Paid",
-							"ButtonBack": "Back"
-					}
+							"TotalPaid": "Total paid",
+							"ButtonBack": "Back to simulator"
+					},
+
+					"Days": {
+						"Sunday": "Sunday",
+						"Monday": "Monday",
+						"Tuesday": "Tuesday",
+						"Wednesday": "Wednesday",
+						"Thursday": "Thursday",
+						"Friday": "Friday",
+						"Saturday": "Saturday"
+					},
+
+					"OptionTypePayment": {
+						"PaymentA": "With capital payment",
+						"DescriptionA": "The description of the loan with capital payment",
+						"PaymentB": "Without capital payment",
+						"DescriptionB" : "The description of the loan without capital payment"	
+					},
+
+					"ErrorShowPlan": "Show Payment Plan Error",
+					"ErrorSelectPayPeriod": "Must include payment selection",
+					"ErrorValue":  "Error, loan value undefined",
+					"ErrorInterest": "Error, Interest rate undefined",
+					"ErrorPayPeriod": "Error, payment period undefined",
+					"ErrorStartDate": "Error, date start undefined",
+					"ErrorEndDate": "Error, End date undefined",
+					"ErrorTypePaid": "Error, payment type undefined",
+					"ErrorRetention": "Error, Insurance undefined"
+
 
 			},
 
