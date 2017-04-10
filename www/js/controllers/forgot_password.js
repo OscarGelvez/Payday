@@ -3,16 +3,19 @@ angular.module('kubeApp')
   .controller('forgot_passwordController', ['$scope', '$state', '$ionicPopup', '$http', 'APP', 'loadingService', 'AuthService', '$ionicPlatform', function ($scope, $state, $ionicPopup, $http, APP, loadingService, AuthService, $ionicPlatform) {
  
 
-  var deregisterFirst = $ionicPlatform.registerBackButtonAction(
+var deregisterFirst = $ionicPlatform.registerBackButtonAction(
 
       function() {
-       
+       var title = $translate.instant('Alerts.CloseAppTitle');
+       var msg = $translate.instant('Alerts.CloseAppMsg');
+       var yes = $translate.instant('Alerts.CloseAppYes');
+       var no = $translate.instant('Alerts.CloseAppNo');
         $ionicPopup.confirm({
-        title: 'Cerrar Food Trucks',
-        template: '¿Está seguro de cerrar la aplicación?',
-        cancelText: "Volver",
-         okText:"Salir",
-         okType:"button-assertive"
+        title: ''+title,
+        template: ''+msg,
+        cancelText: ""+yes,
+         okText:""+no,
+         okType:"button-positive"
       }).then(function(res) {
         if (res) {
 

@@ -1,14 +1,14 @@
-<ion-view view-title="{{'Home.LatSimulator' | translate}}">
+<ion-view view-title="{{'Simulator.Title' | translate}}">
 <ion-content scroll="true" overflow-scroll="false" class="bg-home">
 
-		<form>
+<form>
 
 			<div class="formSimulator" >
 
 				<label class="item item-input item-stacked-label labelsFormInicioRegistro">
 					
 					<!-- ng-show="views.new.loan.value > 0" -->
-                          <span class="input-label" style="color:white; text-align:center"  translate-cloak>Valor Prestamo</span>
+                          <span class="input-label" style="color:white; text-align:center"  translate-cloak>{{'Simulator.Value' | translate}}</span>
                           <br>
                         
                          <input type="text" id="views.new.loan.value" ng-required="true"  ng-model="views.new.loan.value" min="1" max="4294967295" ui-number-mask="0"> 
@@ -18,13 +18,13 @@
                  <label class="item item-input item-stacked-label labelsFormInicioRegistro">
 					
 					<!-- ng-show="views.new.loan.value > 0" -->
-                          <span class="input-label" style="color:white; text-align:center"  translate-cloak>Intereses %</span>
+                          <span class="input-label" style="color:white; text-align:center"  translate-cloak>{{'Simulator.Interest' | translate}}</span>
                           <br>
                         
-                         <input type="text" id="views.new.loan.rate_interest" required ng-model="views.new.loan.interest_rate" min="1" max="4294967295" ui-number-mask="0"> 
+                         <input type="number" id="views.new.loan.rate_interest" required ng-model="views.new.loan.interest_rate" min="1" max="100" > 
                           
                  </label> 
-<!-- 
+  			<!-- 
 				<div class="form-group col-xs-6">
 					<label for="views.new.loan.value" ng-show="views.new.loan.value > 0">Valor Prestamo</label>
 					<input id="views.new.loan.value" type="number" class="form-control" required ng-model="views.new.loan.value" placeholder="Monto">
@@ -39,21 +39,19 @@
 			
 
 				<div class="item item-input item-select item-stacked-label labelsFormRegistroSelect">
-                         <label class="labelSelect">Frecuencía de Cobro</label>
+                         <label class="labelSelect">{{'Simulator.CollectionFrequency' | translate}}</label>
                           
                         <select class="selectElement" ng-model="views.new.loan.selectPayPeriod" ng-change="updateSelectDate()" ng-required="true">
                                    <option value="">--{{'SingUp.TextSelectCountryDepartment' | translate}}--</option> 
-                                   <option value="{{c.id}}" ng-repeat="c in countries">{{c.name}}</option> 
-
-                                  
-									<option value="+,*,*">Cada Día</option>
-									<option value=",*,*,*">Cada Semana</option>
-									<option value=",+,*">Cada Mes</option>
-									<option value="c*,*,*">Personalizar Día</option>
-									<option value="*,c*,*">Personalizar Mes</option>                         
+                                                                   
+									<option value="+,*,*">{{'Simulator.OptionEveryDay' | translate}}</option>
+									<option value=",*,*,*">{{'Simulator.OptionEveryWeek' | translate}}</option>
+									<option value=",+,*">{{'Simulator.OptionEveryMonth' | translate}}</option>
+									<option value="c*,*,*">{{'Simulator.OptionCustomDay' | translate}}</option>
+									<option value="*,c*,*">{{'Simulator.OptionCustomMonth' | translate}}</option>                         
                         </select>
                 </div>
-<!-- 
+			<!-- 
 				<label class="col-xs-12" ng-show="views.new.loan.selectPayPeriod.length > 0" >Frecuencía de Cobro</label> -->
 		
 					<!-- <select class="form-control" ng-model="views.new.loan.selectPayPeriod" ng-change="updateSelectDate()" style="width: 100%; text-align: center">
@@ -64,26 +62,34 @@
 						<option value="c*,*,*">Personalizar Día</option>
 						<option value="*,c*,*">Personalizar Mes</option>
 					</select>
- -->
+ 			-->
 			
 				<div class="item item-input item-select item-stacked-label labelsFormRegistroSelect">
 					<!-- ng-show="views.new.loan.selectPayPeriod == ',*,*,*'" -->
-						<label class="labelSelect" ng-show="views.new.loan.selectPayPeriod == ',*,*,*'">Cobrar los :</label>
+						<label class="labelSelect" ng-show="views.new.loan.selectPayPeriod == ',*,*,*'">{{'Simulator.TextCobrarLos' | translate}}</label>
 						<!-- <label for="dayOfWeek">Cobrar los :</label> -->
 						<select class="selectElement" ng-change="updateSelectDate()" name=""
 								id="dayOfWeek"
 								ng-model="views.new.loan.weeklyPayment"
-								ng-options="value.id as value.name for value in days" ng-show="views.new.loan.selectPayPeriod == ',*,*,*'">
-							<option value="">Seleccione Día</option>
+								 ng-show="views.new.loan.selectPayPeriod == ',*,*,*'">
+								 <!-- ng-options="value.id as value.name for value in days" -->
+							<option value="">{{'Simulator.TextSelectDay' | translate}}</option>
+							<option value="0">{{'Simulator.Days.Sunday' | translate}}</option>
+							<option value="1">{{'Simulator.Days.Monday' | translate}}</option>
+							<option value="2">{{'Simulator.Days.Tuesday' | translate}}</option>
+							<option value="3">{{'Simulator.Days.Wednesday' | translate}}</option>
+							<option value="4">{{'Simulator.Days.Thursday' | translate}}</option>
+							<option value="5">{{'Simulator.Days.Friday' | translate}}</option>
+							<option value="6">{{'Simulator.Days.Saturday' | translate}}</option>
 						</select>
 				
 				</div>
 					
 					
 				<div class="item item-input item-select item-stacked-label labelsFormRegistroSelect">
-						<label  class="labelSelect" for="dayOfMonth" ng-show="views.new.loan.selectPayPeriod == ',+,*' || views.new.loan.selectPayPeriod == '*,c*,*' ">Cobrar el Día:</label>
+						<label  class="labelSelect" for="dayOfMonth" ng-show="views.new.loan.selectPayPeriod == ',+,*' || views.new.loan.selectPayPeriod == '*,c*,*' ">{{'Simulator.TextCobrarDia' | translate}}</label>
 						<select class="selectElement" ng-change="updateSelectDate()" name="" id="dayOfMonth" ng-model="views.new.loan.monthlyPayment" ng-show="views.new.loan.selectPayPeriod == ',+,*' || views.new.loan.selectPayPeriod == '*,c*,*' ">
-							<option value="" ng-show="views.new.loan.monthlyPayment.length == 0">Seleccione Día</option>
+							<option value="" ng-show="views.new.loan.monthlyPayment.length == 0">{{'Simulator.TextSelectDay' | translate}}</option>
 							<option value="1">1</option>
 							<option value="2">2</option>
 							<option value="3">3</option>
@@ -120,54 +126,59 @@
 
 				
 					<div class="item item-input item-select item-stacked-label labelsFormRegistroSelect" ng-show="views.new.loan.selectPayPeriod == 'c*,*,*'" style="margin-top: 1rem">
-						<label class="labelSelect" for="personalizeDays">Cada:</label>
+						<label class="labelSelect" for="personalizeDays">{{'Simulator.TextEvery' | translate}}</label>
 						<select name="" ng-change="updateSelectDate()" class="selectElement" id="personalizeDays" ng-model="views.new.loan.dailyPayment">
-							<option value="" ng-show="views.new.loan.dailyPayment.length == 0">Seleccione Día</option>
-							<option value="+2">2 Días</option>
-							<option value="+3">3 Días</option>
-							<option value="+4">4 Días</option>
-							<option value="+5">5 Días</option>
-							<option value="+6">6 Días</option>
-							<option value="+8">8 Días</option>
-							<option value="+9">9 Días</option>
-							<option value="+10">10 Días</option>
-							<option value="+11">11 Días</option>
-							<option value="+12">12 Días</option>
-							<option value="+13">13 Días</option>
-							<option value="+14">14 Días</option>
-							<option value="+15">15 Días</option>
-							<option value="+16">16 Días</option>
-							<option value="+17">17 Días</option>
-							<option value="+18">18 Días</option>
-							<option value="+19">19 Días</option>
-							<option value="+20">20 Días</option>
-							<option value="+21">21 Días</option>
-							<option value="+22">22 Días</option>
-							<option value="+23">23 Días</option>
-							<option value="+24">24 Días</option>
-							<option value="+25">25 Días</option>
-							<option value="+26">26 Días</option>
-							<option value="+27">27 Días</option>
-							<option value="+28">28 Días</option>
-							<option value="+29">29 Días</option>
+							<option value="" ng-show="views.new.loan.dailyPayment.length == 0">{{'Simulator.TextSelectDay' | translate}}</option>
+
+							{{'Simulator.TextDays' | translate}}
+							<option value="+2">2 {{'Simulator.TextDays' | translate}}</option>
+							<option value="+3">3 {{'Simulator.TextDays' | translate}}</option>
+							<option value="+4">4 {{'Simulator.TextDays' | translate}}</option>
+							<option value="+5">5 {{'Simulator.TextDays' | translate}}</option>
+							<option value="+6">6 {{'Simulator.TextDays' | translate}}</option>
+							<option value="+8">8 {{'Simulator.TextDays' | translate}}</option>
+							<option value="+9">9 {{'Simulator.TextDays' | translate}}</option>
+							<option value="+10">10 {{'Simulator.TextDays' | translate}}</option>
+							<option value="+11">11 {{'Simulator.TextDays' | translate}}</option>
+							<option value="+12">12 {{'Simulator.TextDays' | translate}}</option>
+							<option value="+13">13 {{'Simulator.TextDays' | translate}}</option>
+							<option value="+14">14 {{'Simulator.TextDays' | translate}}</option>
+							<option value="+15">15 {{'Simulator.TextDays' | translate}}</option>
+							<option value="+16">16 {{'Simulator.TextDays' | translate}}</option>
+							<option value="+17">17 {{'Simulator.TextDays' | translate}}</option>
+							<option value="+18">18 {{'Simulator.TextDays' | translate}}</option>
+							<option value="+19">19 {{'Simulator.TextDays' | translate}}</option>
+							<option value="+20">20 {{'Simulator.TextDays' | translate}}</option>
+							<option value="+21">21 {{'Simulator.TextDays' | translate}}</option>
+							<option value="+22">22 {{'Simulator.TextDays' | translate}}</option>
+							<option value="+23">23 {{'Simulator.TextDays' | translate}}</option>
+							<option value="+24">24 {{'Simulator.TextDays' | translate}}</option>
+							<option value="+25">25 {{'Simulator.TextDays' | translate}}</option>
+							<option value="+26">26 {{'Simulator.TextDays' | translate}}</option>
+							<option value="+27">27 {{'Simulator.TextDays' | translate}}</option>
+							<option value="+28">28 {{'Simulator.TextDays' | translate}}</option>
+							<option value="+29">29 {{'Simulator.TextDays' | translate}}</option>
 						</select>
 					</div>
 
 					<div class="item item-input item-select item-stacked-label labelsFormRegistroSelect" style="margin-top: 1rem" ng-show="views.new.loan.selectPayPeriod == '*,c*,*'">
-						<label class="labelSelect" for="personalizeMounth">Cada: </label>
+						<label class="labelSelect" for="personalizeMounth">{{'Simulator.TextEvery' | translate}} </label>
 						<select  class="selectElement" ng-change="updateSelectDate()" name="" id="personalizeMounth" ng-model="views.new.loan.customMonthlyPayment">
-							<option value="" ng-show="views.new.loan.customMonthlyPayment.length == 0">Seleccione sMes</option>
-							<option value="+2">2 Meses</option>
-							<option value="+3">3 Meses</option>
-							<option value="+4">4 Meses</option>
-							<option value="+5">5 Meses</option>
-							<option value="+6">6 Meses</option>
-							<option value="+7">7 Meses</option>
-							<option value="+8">8 Meses</option>
-							<option value="+9">9 Meses</option>
-							<option value="+10">10 Meses</option>
-							<option value="+11">11 Meses</option>
-							<option value="+12">12 Meses</option>
+							<option value="" ng-show="views.new.loan.customMonthlyPayment.length == 0">{{'Simulator.TextSelectMonth' | translate}}</option>
+						
+						{{'Simulator.TextMonths' | translate}}
+
+							<option value="+2">2 {{'Simulator.TextMonths' | translate}}</option>
+							<option value="+3">3 {{'Simulator.TextMonths' | translate}}</option>
+							<option value="+4">4 {{'Simulator.TextMonths' | translate}}</option>
+							<option value="+5">5 {{'Simulator.TextMonths' | translate}}</option>
+							<option value="+6">6 {{'Simulator.TextMonths' | translate}}</option>
+							<option value="+7">7 {{'Simulator.TextMonths' | translate}}</option>
+							<option value="+8">8 {{'Simulator.TextMonths' | translate}}</option>
+							<option value="+9">9 {{'Simulator.TextMonths' | translate}}</option>
+							<option value="+10">10 {{'Simulator.TextMonths' | translate}}</option>
+							<option value="+11">11 {{'Simulator.TextMonths' | translate}}</option>
+							<option value="+12">12 {{'Simulator.TextMonths' | translate}}</option>
 						</select>
 					</div>
 
@@ -177,31 +188,28 @@
 
 			 
 
-			<!--
-            <div class="form-group col-xs-12" >
-                <input type="number" class="form-control" readonly required ng-model="views.new.loan.numbers_of_fee" placeholder="N° Cuotas">
-            </div>
-            -->
 		
 				<label class="item item-input item-stacked-label labelsFormInicioRegistro">
-                   <span class="" style="color:white; text-align:center" ng-show="views.new.loan.start_date.length > 0">Fecha Inicio Cobros</span>
-                          <input type="text"   ng-required="true" name="fecha"  ng-model="views.new.loan.start_date" date-format max="{{CurrentDate | date:'yyyy-MM-dd'}}" min="1916-01-01" id="startDate" >
+                   <span class="" style="color:white; text-align:center" >{{'Simulator.DateStartCobro' | translate}}</span>
+                          <input type="date"   ng-required="true" name="fecha"  ng-model="views.new.loan.start_date"  min="1916-01-01" id="startDate2" placeholder="Ingrese fecha">
              	</label>
 			
 			
 
 				<label class="item item-input item-stacked-label labelsFormInicioRegistro">
-             <span class="" style="color:white; text-align:center" ng-show="views.new.loan.date_end.length > 0">Fecha Finalización Prestamo</span>
-                          <input type="text"   ng-required="true" name="fecha"  ng-model="views.new.loan.date_end"  id="loan_duration" date-format max="{{CurrentDate | date:'yyyy-MM-dd'}}" min="1916-01-01"  >
+             <span class="" style="color:white; text-align:center" >{{'Simulator.DateEndLoan' | translate}}</span>
+                          <input type="date"   ng-required="true" name="fecha"  ng-model="views.new.loan.date_end"  id="loan_duration2"  min="1916-01-01"  placeholder="Ingrese fecha">
              	</label>
 
 
 
              	<div class="item item-input item-select item-stacked-label labelsFormRegistroSelect">
-						<label class="labelSelect" for="personalizeMounth" ng-show="views.new.loan.type_paid_id > 0">Tipo de Abono </label>
-						<select  class="selectElement" id="type_paid" ng-model="views.new.loan.type_paid_id" ng-options="value.id as value.name for value in typesPaid">
-							
-							<option value="">Tipo De Abono</option>
+						<label class="labelSelect" for="personalizeMounth" ng-show="views.new.loan.type_paid_id > 0">{{'Simulator.PaymentType' | translate}}</label>
+						<select  class="selectElement" id="type_paid" ng-model="views.new.loan.type_paid_id" >
+							<!-- ng-options="value.id as value.name for value in typesPaid" -->
+							<option value="">{{'Simulator.SelectTypePayment' | translate}}</option>
+							<option value="1">{{'Simulator.OptionTypePayment.PaymentA' | translate}}</option>
+							<option value="2">{{'Simulator.OptionTypePayment.PaymentB' | translate}}</option>
 							
 						</select>
 				</div>
@@ -210,43 +218,16 @@
 			
 
 				<label class="item item-input item-stacked-label labelsFormInicioRegistro">
-             <span class="" style="color:white; text-align:center" ng-show="views.new.loan.retention.length != 0">Seguro / Rifa</span>
-                          <input type="text"   ng-required="true" name="fecha"  ng-model="views.new.loan.retention"  id="loan_duration" date-format max="{{CurrentDate | date:'yyyy-MM-dd'}}" min="1916-01-01"  id="views.new.loan.retention" >
+             <span class="" style="color:white; text-align:center" >{{'Simulator.Insurance' | translate}}</span>
+                          <input type="number"   ng-model="views.new.loan.retention"   id="views.new.loan.retention" >
              	</label>
 			
 					
-					<button class=" button button-full button-positive" ng-click="showPaymentPlan()">Ver Plan de Pago </button>
+					<button class=" button button-full button-positive" ng-click="showPaymentPlan()">{{'Simulator.ButtonSeePaymentPlan' | translate}}</button>
 			</div> <!-- Fin div FormSimulator -->
 		
-<!-- 
-			<div class="form-group col-xs-12" style="margin-top: 1rem" >
-				<label for="startDate" ng-show="views.new.loan.start_date.length > 0">Fecha Inicio Cobros</label>
-				<input  type="text" class="form-control datePicker" required ng-model="views.new.loan.start_date" id="startDate" placeholder="Fecha Inicio">
-			</div> -->
-<!-- 
-			<div class="form-group col-xs-12" style="margin-top: 1rem" >
-				<label for="views.new.loan.duration" ng-show="views.new.loan.date_end.length > 0">Fecha Finalización Prestamo</label>
-				<input  type="text" class="form-control datePicker" required ng-model="views.new.loan.date_end"  id="loan_duration" placeholder="Fecha Finalización Prestamo">
-			</div> -->
 
-			<!-- <div class="form-group col-xs-12" style="margin-top: 1rem" >
-				<label for="type_paid" ng-show="views.new.loan.type_paid_id > 0">Tipo de Abono</label>
-				<select id="type_paid" class="form-control " required ng-model="views.new.loan.type_paid_id" ng-options="value.id as value.name for value in typesPaid">
-					<option value="">Tipo De Abono</option>
-				</select>
-			</div> -->
-
-			<!-- <div class="form-group col-xs-12" style="margin-top: 1rem" >
-				<label for="views.new.loan.retention" ng-show="views.new.loan.retention.length != 0">Seguro / Rifa</label>
-				<input id="views.new.loan.retention" type="text" class="form-control"  ng-model="views.new.loan.retention" placeholder="Retención"/>
-			</div>
- -->
-		<!-- 	<div class="form-group col-xs-12" style="margin-top: 1rem">
-				<div class="btn btn-success col-xs-12" ng-click="showPaymentPlan()">Ver Plan de Pago</div>
-			</div> -->
-
-
-		</form>
+</form>
 	
 
 

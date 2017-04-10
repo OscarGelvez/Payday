@@ -17,8 +17,15 @@
   $scope.isGroupShown = function(group) {
     return $scope.shownGroup === group;
   };
+
+
+
+
+
  
-  $scope.group = 'deals';
+  $scope.group1 = 'configuraciones';
+
+  $scope.group2 = 'prestamos';
 
 
 // ##########CODIGO MODAL PARA CAMBIAR IDIOMA DE LA APP ######################

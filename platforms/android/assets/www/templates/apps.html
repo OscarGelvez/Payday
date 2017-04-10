@@ -31,10 +31,23 @@
                                       <i class="ion ion-cash"></i>
                                       {{'Home.LatCashReceive' | translate}}
                                     </ion-item>
-                                    <ion-item menu-close >
-                                    <i class="ion ion-stats-bars"></i>
-                                      {{'Home.LatLoans' | translate}}
+                                      
+                                        
+                                    <ion-item  
+                                      ng-click="toggleGroup(group2)"
+                                       ng-class="{active: isGroupShown(group2)}"
+                                     >
+
+                                    <i class="ion ion-stats-bars"></i> {{'Home.LatLoans' | translate}}
                                     </ion-item>
+                                                        <ion-item class="item-accordion"
+                                                              ng-show="isGroupShown(group2)" menu-close   ui-sref="app.new_loan">
+                                                              <i class="icon ion-chevron-right"> {{'Home.LatLoansNew' | translate}}</i>
+                                                        </ion-item>
+
+
+
+
                                     <ion-item menu-close ui-sref="app.clients">
                                     <i class="ion ion-person"></i>
                                       {{'Home.LatClients' | translate}}
@@ -53,19 +66,19 @@
                                     </ion-item>
                 
                                     <ion-item           
-                                       ng-click="toggleGroup(group)"
-                                       ng-class="{active: isGroupShown(group)}"
+                                       ng-click="toggleGroup(group1)"
+                                       ng-class="{active: isGroupShown(group1)}"
                                        >
                                        <i class="icon ion-gear-b"></i> {{'Home.LatSettings' | translate}}
                                     </ion-item>
                                                         
                                                           <ion-item class="item-accordion"
-                                                                    ng-show="isGroupShown(group)" menu-close ui-sref="app.admin_categories">
+                                                                    ng-show="isGroupShown(group1)" menu-close ui-sref="app.admin_categories">
                                                               <i class="icon ion-chevron-right"> {{'Home.LatSettings_rubros' | translate}}</i>
                                                           </ion-item>
 
                                                           <ion-item class="item-accordion"
-                                                                    ng-show="isGroupShown(group)" menu-close ng-click="openModalChange()">
+                                                                    ng-show="isGroupShown(group1)" menu-close ng-click="openModalChange()">
                                                               <i class="icon ion-chevron-right"> {{'Home.LatSettings_changeLanguage' | translate}}</i>
                                                           </ion-item>
                                                          

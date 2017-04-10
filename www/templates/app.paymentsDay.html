@@ -1,0 +1,86 @@
+
+<ion-view view-title="{{'MakeCollections.Title' | translate}}">
+
+             
+      <ion-content class="bg-home" scroll="true" overflow-scroll="false">
+                 
+       
+            <div class="listPaymentsDay">
+               <center>
+                   <label class="item item-input item-stacked-label labelsFormInicioRegistro">
+                         <span class="" style="color:white; text-align:center" >{{'MakeCollections.EnterDate' | translate}}</span>
+                                <input type="date"   ng-required="true" name="fecha"  ng-model="paymentsTodayModel.fecha"  min="1916-01-01" date-format placeholder="Ingrese fecha">
+                  </label>
+               <br>
+                  <button class="button button-balanced" ng-click="buscarPagosPorFecha()">{{'MakeCollections.Search' | translate}}</button>
+               <br>
+               <br>
+
+                 <label class="item item-input item-stacked-label labelsFormInicioRegistro" >
+                      <span class="input-label" style="color:white;" translate-cloak >{{'MakeCollections.FilterPayFor' | translate}}</span>                                 
+                              <ion-toggle  ng-model="algo.checked" ng-checked="algo.checked" style="background-color:rgb(40,95,155); border-color:transparent;  color:white">
+                                 {{valToggle }}
+                              </ion-toggle>
+                  </label>
+        </div>
+        <div class="listPaymentsDay2"> 
+                    <center>
+                       <h3 style="color:white; font-weight:500;">{{'MakeCollections.ListCollections' | translate}}</h3>
+                    </center>
+
+                 
+                          <div class="row headTable">
+                            <div class="col colHead">{{'MakeCollections.Client' | translate}}</div>
+                            <div class="col colHead">{{'MakeCollections.Address' | translate}}</div>
+                            
+                          </div>
+
+      
+   
+
+                                     <div class="row bodyTable" ng-repeat="item in listPaymentsToday.cliente" item="item" ng-click="guardarFabrica($index)" >
+
+                                        <div class="col colBody">{{item.name}}</div>
+
+                                        <div class="col colBody">{{item.address}}</td></div>
+                                
+                                    </div>
+                                     
+ 
+  
+
+                      <!--  
+                        <ion-item ng-repeat="item in listPaymentsToday.cliente" item="item" ng-click="guardarFabrica($index)" class="">
+                      
+                            <h2 style="color:white;"> {{item.name}}---{{item.address}}</h2>   
+                          
+                        </ion-item>
+
+                        <ion-item  item="item" ng-click="" class="item">
+                              <h2 style="color:white;"> nombre-direccion</h2>                       
+                                          
+                        </ion-item>
+                             <ion-item  item="item" ng-click="" class="item">
+                                  <h2 style="color:white;"> nombre-direccion</h2>                       
+                                               
+                        </ion-item>
+                                                 -->
+                         
+                 
+          </div>
+      </center>
+ 
+            
+
+
+            
+
+
+    
+      </ion-content>
+
+</ion-view>
+</div>
+ 
+
+

@@ -7,7 +7,7 @@
  * @email bastosjavier@kubesoft.com
  * @version 1.1
  */
- var kubeApp = angular.module('kubeApp', ['ionic', 'scrollable-table', 'ng-currency', 'ngSanitize', 'ui.select', 'chart.js', 'ngRoute', 'angularFileUpload', 'ui.bootstrap', 'ui.router', 'ngTable', 'checklist-model', 'ngTagsInput', 'ngPasswordStrength', 'ui.utils.masks', 'pascalprecht.translate', 'ngCordova', 'ui.utils.masks', 'ion-floating-menu' ]);
+ var kubeApp = angular.module('kubeApp', ['ionic', 'scrollable-table', 'ng-currency', 'ngSanitize', 'ui.select', 'chart.js', 'ngRoute', 'angularFileUpload', 'ui.bootstrap', 'ui.router', 'ngTable', 'checklist-model', 'ngTagsInput', 'ngPasswordStrength', 'ui.utils.masks', 'pascalprecht.translate', 'ngCordova', 'ui.utils.masks', 'ion-floating-menu', 'angularMoment' ]);
 
 
 
@@ -38,6 +38,8 @@ return{
 };
   
 })
+
+
 
 
 
@@ -157,6 +159,9 @@ kubeApp.config(['$stateProvider', '$urlRouterProvider', '$translateProvider',
                   }
                 })
 
+
+
+
                 //  .state('app.simulate',{
                 //     url : '/demo',
                 //       views: {
@@ -176,6 +181,41 @@ kubeApp.config(['$stateProvider', '$urlRouterProvider', '$translateProvider',
                            }
                         }
                 
+                })
+
+                    .state('app.new_loan',{
+                    url : '/new_loan',
+                    cache:false,
+                        views: {
+                           'menuContent': {
+                                  templateUrl : 'templates/app.new_loan.html',
+                                  controller : 'NewLoanController'
+                           }
+                        }
+                
+                })
+
+                    .state('app.paymentsDay',{
+                    url : '/payment_list_day',
+                        views: {
+                            'menuContent': {
+                                  templateUrl : 'templates/app.paymentsDay.html', //html/loans/collectionDay.html
+                                  controller : 'paymentsDayController'
+                            }
+                        }
+              
+                })
+
+                   .state('app.addPayment',{
+                    url : '/add_payment',
+                          views: {
+                              'menuContent': {  
+                                  templateUrl : 'templates/app.addPayment.html', //html/loans/addPayment.html
+                                  controller : 'addPaymentController'
+                              }
+                          }
+
+
                 })
 
                 //  .state('app.paymentPlan2',{

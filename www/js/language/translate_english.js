@@ -15,7 +15,9 @@
 			    "CloseAppTitle": "Close Payday?",
 			    "CloseAppMsg": "When closing the app your session will remain active",
 			    "CloseAppYes": "Close",
-			    "CloseAppNo": "No"
+			    "CloseAppNo": "No",
+			     "AlertBoxClosed": "To enter here you must first start the day (open box)",
+			      "TitleAlertBoxClosed": "Closed Box"
 		  	}, 
 
 		  "Login": {
@@ -87,6 +89,8 @@
 				"LatInicio": "Home",
 				"LatCashReceive": "Payments",
 				"LatLoans": "Loans",
+				"LatLoansNew": "New loan",
+				"LatLoansShow": "Show loans",
 				"LatClients": "Clients",
 				"LatSimulator": "Simulator",
 				"LatMovementsMoney": "Box-Money movement",
@@ -253,7 +257,9 @@
 					"DeleteTitle": "Delete customer",
 					"DeleteYes": "Yes, delete",
 					"DeleteNo": "No",
-					"DeleteMsg": "Are you sure to delete this client?"
+					"DeleteMsg": "Are you sure to delete this client?",
+					"WarningNotChanges": "No changes in information",
+					"FilterNameClient" :"Filter by customer name"
 					
 
 			},	
@@ -292,7 +298,8 @@
 							"Capital": "Capital",
 							"Interest": "Interest",
 							"TotalPaid": "Total paid",
-							"ButtonBack": "Back to simulator"
+							"ButtonBack": "Back to simulator",
+							"state": "Status"
 					},
 
 					"Days": {
@@ -312,15 +319,16 @@
 						"DescriptionB" : "The description of the loan without capital payment"	
 					},
 
-					"ErrorShowPlan": "Show Payment Plan Error",
+					"ErrorShowPlan": "Collection frequency not defined",
 					"ErrorSelectPayPeriod": "Must include payment selection",
 					"ErrorValue":  "Error, loan value undefined",
 					"ErrorInterest": "Error, Interest rate undefined",
-					"ErrorPayPeriod": "Error, payment period undefined",
+					"ErrorTypeAbono": "Error, payment period undefined",
 					"ErrorStartDate": "Error, date start undefined",
 					"ErrorEndDate": "Error, End date undefined",
 					"ErrorTypePaid": "Error, payment type undefined",
-					"ErrorRetention": "Error, Insurance undefined"
+					"ErrorRetention": "Error, Insurance undefined",
+					"ErrorRetention2" : "Error, Insurance greater than or equal to the value of the loan"
 
 
 			},
@@ -328,6 +336,8 @@
 			"MakeLoan":{
 
 				"Title": "Make Loan",
+				"NewClient": "New customer",
+				"OldClient": "Existing customer",
 				"DniClient": "Identification Card", //or document
 				"NameClient": "Name",
 				"Value": "Value",
@@ -358,28 +368,34 @@
 				"NameGuarantor": "Name",
 				"dniGuarantor": "Identification Card", //or Document?
 				"ButtonSave": "Save",
-				"ButtonCancel": "Cancel"
+				"ButtonCancel": "Cancel",
+				"CloseModalSimulator":"Close Simulator",
+				"SuccessRegLoan" :"Loan successfully registered",
+				"ErrorRegLoan" : "Loan record failed"
 			},
 			
 			"MakeCollections":{
 				"Title": "Collections of Day", // no estoy seguro
 				"EnterDate": "Enter Date",
 				"Search": "Search",
+				"FilterPayFor": "Filter Collections by",
 				"SeeAll": "See All", // or All ? listall
 				"SeeUnpaid": "See Unpaid",
-				"Route": "Number Route",
+				"ListCollections" : "List Collections",
+				
 				"Address": "Address",
 				"Client": "Client",
 				"Title2": "Add Payments",
 				"LoanInformation": "Loan Information",
-				"DniClient": "Identification Card",
+				
 				"LoanValue": "Loan Value",
 				"InterestValue": "InterestValue",
-				"Total": "Total",
+				"ValuePaid": "Value Paid",
 				"Balance": "Balance",  // No estoy seguro
-				"MinimunValue": "Min Value", // or Min?
-				"MaximunValue": "Max Value",// or Max?
-				"MakePaymentCapital": "Realizar Abono al Capital",
+				"NumbersFee" : "Numbers of fee",
+				"EnterPay" :"Enter Pay",
+				"ValuePay":"Value Pay",
+			
 				"ButtonSave": "Save",
 				"ButtonCancel": "Cancel",
 
@@ -388,6 +404,10 @@
 						"Date": "Date",
 						"Total": "Total",
 						"ButtonBack": "Back"
+					},
+					"FeesHistory":{
+						"Title" : "Fees History",
+						"Status": "Status"
 					},
 
 				"LoansDetail":{

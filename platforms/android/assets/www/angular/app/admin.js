@@ -157,17 +157,20 @@ kubeApp.config(['$stateProvider', '$urlRouterProvider', '$translateProvider',
                   }
                 })
 
-                 .state('app.simulate',{
-                    url : '/demo',
-                      views: {
-                        'menuContent': {
-                                templateUrl : 'html/demo/index.html',
-                                controller : 'LoanController'
-                        }
-                      }
+
+
+
+                //  .state('app.simulate',{
+                //     url : '/demo',
+                //       views: {
+                //         'menuContent': {
+                //                 templateUrl : 'html/demo/index.html',
+                //                 controller : 'LoanController'
+                //         }
+                //       }
                   
-                })
-                 .state('app.paymentPlan2',{
+                // })
+                 .state('app.paymentPlan',{
                     url : '/payment_plan',
                         views: {
                            'menuContent': {
@@ -178,27 +181,38 @@ kubeApp.config(['$stateProvider', '$urlRouterProvider', '$translateProvider',
                 
                 })
 
-                 .state('app.paymentPlan',{
-                    url : '/payment_plan',
+                       .state('app.new_loan',{
+                    url : '/new_loan',
                         views: {
                            'menuContent': {
-                                  templateUrl : 'html/loans/paymentPlan.html',
-                                  controller : 'LoanController'
+                                  templateUrl : 'templates/app.new_loan.html',
+                                  controller : 'NewLoanController'
                            }
                         }
                 
                 })
 
-                    .state('app.newLoan',{
-                    url : '/loan_new',
-                        views: {
-                            'menuContent': {
-                                  templateUrl : 'html/loans/new.html',
-                                  controller : 'LoanController'
-                            }
-                        }
+                //  .state('app.paymentPlan2',{
+                //     url : '/payment_plan',
+                //         views: {
+                //            'menuContent': {
+                //                   templateUrl : 'html/loans/paymentPlan.html',
+                //                   controller : 'LoanController'
+                //            }
+                //         }
+                
+                // })
+
+                //     .state('app.newLoan',{
+                //     url : '/loan_new',
+                //         views: {
+                //             'menuContent': {
+                //                   templateUrl : 'html/loans/new.html',
+                //                   controller : 'LoanController'
+                //             }
+                //         }
                     
-                })
+                // })
 
 
 

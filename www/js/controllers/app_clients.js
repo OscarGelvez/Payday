@@ -70,6 +70,7 @@ var deregisterFirst = $ionicPlatform.registerBackButtonAction(
                       }
                       
                     }else{
+                      loadingService.hide(); 
                           var alertPopup = $ionicPopup.alert({
                              title: 'Error',
                              template: '{{"Clients.ErrorLoadClients1" | translate}}'
@@ -132,7 +133,10 @@ $scope.load_clients();
                 loadingService.hide();
                 $scope.countries=response.data;
                 $scope.countries2=response.data;
-                countriesFactory.datos=clone(response.data);
+                if(countriesFactory.datos.length==0){
+                   countriesFactory.datos=clone(response.data);
+                }
+     
                 console.log(response);
                             
               }, function errorCallback(response) {
@@ -531,12 +535,20 @@ $scope.submitEditClient=function(datosEditados){
   }
 
    if(editoAlgo){
-    $scope.actualizarUsuario(datosEditados);
-  }  
+    $scope.actualizarUsuario(datosEditados, editoAlgo);
+  }else{
+     var alertPopup = $ionicPopup.alert({
+             title: 'Error',
+             template: '{{"Clients.WarningNotChanges" | translate}}'
+           });
+    //aviso no hay cambios q guardar
+  
+  } 
 }
 
 
 $scope.actualizarUsuario=function(datos){
+
 
      var datosListos ={};
      datosListos.country= document.getElementById('selectCountry').value;
@@ -734,7 +746,7 @@ $scope.loadCities2=function(){
 
 
 
-      $scope.submitDeleteRubro=function(){
+      $scope.submitDeleteCliente=function(){
 
             $scope.modalDetailClient.hide();
              var ok=$translate.instant('Clients.DeleteYes');

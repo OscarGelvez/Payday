@@ -1,7 +1,7 @@
 <ion-view view-title="{{'Simulator.Title' | translate}}">
 <ion-content scroll="true" overflow-scroll="false" class="bg-home">
 
-		<form>
+<form>
 
 			<div class="formSimulator" >
 
@@ -24,7 +24,7 @@
                          <input type="number" id="views.new.loan.rate_interest" required ng-model="views.new.loan.interest_rate" min="1" max="100" > 
                           
                  </label> 
-<!-- 
+  			<!-- 
 				<div class="form-group col-xs-6">
 					<label for="views.new.loan.value" ng-show="views.new.loan.value > 0">Valor Prestamo</label>
 					<input id="views.new.loan.value" type="number" class="form-control" required ng-model="views.new.loan.value" placeholder="Monto">
@@ -51,7 +51,7 @@
 									<option value="*,c*,*">{{'Simulator.OptionCustomMonth' | translate}}</option>                         
                         </select>
                 </div>
-<!-- 
+			<!-- 
 				<label class="col-xs-12" ng-show="views.new.loan.selectPayPeriod.length > 0" >Frecuencía de Cobro</label> -->
 		
 					<!-- <select class="form-control" ng-model="views.new.loan.selectPayPeriod" ng-change="updateSelectDate()" style="width: 100%; text-align: center">
@@ -62,7 +62,7 @@
 						<option value="c*,*,*">Personalizar Día</option>
 						<option value="*,c*,*">Personalizar Mes</option>
 					</select>
- -->
+ 			-->
 			
 				<div class="item item-input item-select item-stacked-label labelsFormRegistroSelect">
 					<!-- ng-show="views.new.loan.selectPayPeriod == ',*,*,*'" -->
@@ -190,15 +190,15 @@
 
 		
 				<label class="item item-input item-stacked-label labelsFormInicioRegistro">
-                   <span class="" style="color:white; text-align:center" ng-show="views.new.loan.start_date.length > 0">{{'Simulator.DateStartCobro' | translate}}</span>
-                          <input type="date"   ng-required="true" name="fecha"  ng-model="views.new.loan.start_date"  min="1916-01-01" id="startDate2" >
+                   <span class="" style="color:white; text-align:center" >{{'Simulator.DateStartCobro' | translate}}</span>
+                          <input type="date"   ng-required="true" name="fecha"  ng-model="views.new.loan.start_date"  min="1916-01-01" id="startDate2" placeholder="Ingrese fecha">
              	</label>
 			
 			
 
 				<label class="item item-input item-stacked-label labelsFormInicioRegistro">
-             <span class="" style="color:white; text-align:center" ng-show="views.new.loan.date_end.length > 0">{{'Simulator.DateEndLoan' | translate}}</span>
-                          <input type="date"   ng-required="true" name="fecha"  ng-model="views.new.loan.date_end"  id="loan_duration2"  min="1916-01-01"  >
+             <span class="" style="color:white; text-align:center" >{{'Simulator.DateEndLoan' | translate}}</span>
+                          <input type="date"   ng-required="true" name="fecha"  ng-model="views.new.loan.date_end"  id="loan_duration2"  min="1916-01-01"  placeholder="Ingrese fecha">
              	</label>
 
 
@@ -227,9 +227,7 @@
 			</div> <!-- Fin div FormSimulator -->
 		
 
-
-
-		</form>
+</form>
 	
 
 

@@ -9,7 +9,19 @@ var kubeApp = angular.module('kubeApp');
 
 kubeApp.controller('LoanController', function ($scope,$filter ,$state,$stateParams, $q,CalculatorDate,SaveData, SimulateLoan,
                                                NeighbourhoodsDao, ClientsDao,TypePaidsDao,LoansDao,FeesDao,PaymentsDao,
-                                               MovesDao,localDatabase) {
+                                               MovesDao,localDatabase, $ionicPlatform, $translate, $ionicPopup) {
+
+    var deregisterFirst = $ionicPlatform.registerBackButtonAction(
+      function() {
+         navigator.app.backHistory();
+      }, 100
+    );
+    $scope.$on('$destroy', deregisterFirst);
+
+
+
+
+
     $scope.calcDate = CalculatorDate;
     $scope.listAllCollectionDay = "false";
 
@@ -308,7 +320,7 @@ $scope.createLoan =  function(){
        
 
         if(typeof $scope.views.new.loan.selectPayPeriod != "undefined" && $scope.views.new.loan.value > 0 &&
-            $scope.views.new.loan.interest_rate && $scope.views.new.loan.start_date && $scope.views.new.loan.date_end &&
+            $scope.views.new.loan.interest_rate > 0 && $scope.views.new.loan.start_date && $scope.views.new.loan.date_end &&
             $scope.views.new.loan.type_paid_id && $scope.views.new.loan.retention >= 0){
 
             var accept = true;
@@ -337,11 +349,75 @@ $scope.createLoan =  function(){
             }
 
             if(!accept){
-                alert("debe incluir la seleccion del periodo de pago");
+                var alertPopup = $ionicPopup.alert({
+                             title: 'Error',
+                             template: '{{"Simulator.ErrorSelectPayPeriod" | translate}}'
+                           });
+                // alert("debe incluir la seleccion del periodo de pago");
                 return;
             }
         }else{
-            alert("Debe ingresar el valor del prestamo\nIntereses\nFrecuencía Cobro\nFecha Inicio Cobros\nFecha Finalización Préstamo\nTipo Abono\nRetención")
+
+            if($scope.views.new.loan.selectPayPeriod == undefined){
+
+                    var alertPopup = $ionicPopup.alert({
+                             title: 'Error',
+                             template: '{{"Simulator.ErrorShowPlan" | translate}}'
+                           });
+
+
+            }else if($scope.views.new.loan.value == 0 || $scope.views.new.loan.value==undefined){
+
+                    var alertPopup = $ionicPopup.alert({
+                             title: 'Error',
+                             template: '{{"Simulator.ErrorValue" | translate}}'
+                           });
+
+
+            }else if( $scope.views.new.loan.interest_rate == undefined){
+
+                    var alertPopup = $ionicPopup.alert({
+                             title: 'Error',
+                             template: '{{"Simulator.ErrorInterest" | translate}}'
+                           });
+
+
+            }else if($scope.views.new.loan.start_date == undefined){
+
+                    var alertPopup = $ionicPopup.alert({
+                             title: 'Error',
+                             template: '{{"Simulator.ErrorStartDate" | translate}}'
+                           });
+
+
+            }else if($scope.views.new.loan.date_end == undefined){
+
+                    var alertPopup = $ionicPopup.alert({
+                             title: 'Error',
+                             template: '{{"Simulator.ErrorEndDate" | translate}}'
+                           });
+
+
+            }else if( $scope.views.new.loan.type_paid_id == undefined){
+
+                    var alertPopup = $ionicPopup.alert({
+                             title: 'Error',
+                             template: '{{"Simulator.ErrorPayPeriod" | translate}}'
+                           });
+
+
+            }else if($scope.views.new.loan.retention == undefined || $scope.views.new.loan.retention == ""){
+
+                    var alertPopup = $ionicPopup.alert({
+                             title: 'Error',
+                             template: '{{"Simulator.ErrorRetention" | translate}}'
+                           });
+
+
+            }
+
+
+            // alert("Debe ingresar el valor del prestamo\nIntereses\nFrecuencía Cobro\nFecha Inicio Cobros\nFecha Finalización Préstamo\nTipo Abono\nRetención")
             return;
         }
 
@@ -519,8 +595,14 @@ $scope.createLoan =  function(){
             var value = loan.value;
             var interest = loan.interest_rate;
             var payPeriod = loan.selectPayPeriod;
-            var startD = CalculatorDate.parseStringToDate(loan.start_date,'/','mm/dd/yyyy');
-            var endD = CalculatorDate.parseStringToDate(loan.date_end,'/','mm/dd/yyyy');
+            // var startD = CalculatorDate.parseStringToDate(loan.start_date,'/','mm/dd/yyyy');
+            // var endD = CalculatorDate.parseStringToDate(loan.date_end,'/','mm/dd/yyyy');
+
+            //no hubo necesidad de parsear
+            var startD = loan.start_date;
+            var endD = loan.date_end;
+
+
             var typePaid = loan.type_paid_id;
 
             console.log(loan)
@@ -549,7 +631,11 @@ $scope.createLoan =  function(){
 
             ).catch(
                 function(error){
-                    alert("Error al Mostrar el plan de pago");
+                       var alertPopup = $ionicPopup.alert({
+                             title: 'Error',
+                             template: '{{"Simulator.ErrorShowPlan" | translate}}'
+                           });
+                    // alert("Error al Mostrar el plan de pago");
                     console.log(error);
                 }
             );
@@ -572,20 +658,27 @@ $scope.createLoan =  function(){
 
             
         }).catch(function(error){
-            console.log("entro")
+            var name1 = $translate.instant('Simulator.OptionTypePayment.PaymentA');
+            var description1 = $translate.instant('Simulator.OptionTypePayment.DescriptionA');
+
+            var name2 = $translate.instant('Simulator.OptionTypePayment.PaymentB');
+            var description2 = $translate.instant('Simulator.OptionTypePayment.DescriptionB');
+
+
+            console.log("entro"+name1)
         var rows= [
 
                            {
                             "id" : "1",
-                            "name":"con abono a capitalcito",
-                            "description":"con abono"
+                            "name":""+name1,
+                            "description":""+description1
                             },
                             
                         
                          {
                           "id": "2",
-                            "name":"sin abono a capitalcito",
-                            "description":"sin abono"  
+                            "name":""+name2,
+                            "description":""+description2  
                          }
 
                     ]

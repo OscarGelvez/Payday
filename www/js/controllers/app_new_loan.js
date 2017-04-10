@@ -3,9 +3,24 @@ angular.module('kubeApp')
 
 
 
-  .controller('NewLoanController', ['$scope', '$state', '$ionicPopup', '$http', 'APP', 'loadingService', 'Admin_Rubro', 'SaveData', '$ionicModal', '$translate', 'Box_Movement', '$ionicPlatform', 'countriesFactory', 'clientsService', 'CalculatorDate', 'SimulateLoan', 'LoansService', '$filter', function ($scope, $state, $ionicPopup, $http, APP, loadingService, Admin_Rubro, SaveData, $ionicModal, $translate, Box_Movement, $ionicPlatform, countriesFactory, clientsService, CalculatorDate, SimulateLoan, LoansService, $filter) {
+  .controller('NewLoanController', ['$scope', '$state', '$ionicPopup', '$http', 'APP', 'loadingService', 'Admin_Rubro', 'SaveData', '$ionicModal', '$translate', 'Box_Movement', '$ionicPlatform', 'countriesFactory', 'clientsService', 'CalculatorDate', 'SimulateLoan', 'LoansService', '$filter', 'valorCaja', function ($scope, $state, $ionicPopup, $http, APP, loadingService, Admin_Rubro, SaveData, $ionicModal, $translate, Box_Movement, $ionicPlatform, countriesFactory, clientsService, CalculatorDate, SimulateLoan, LoansService, $filter, valorCaja) {
  
 
+
+
+
+// if(!valorCaja.estado){
+  
+// var title = $translate.instant('Alerts.TitleAlertBoxClosed');
+//     var alertPopup = $ionicPopup.alert({
+//                              title: ''+title,
+//                              template: '{{"Alerts.AlertBoxClosed" | translate}}'
+//                            });
+
+//                            alertPopup.then(function(res) {
+//                         $state.go('app.moves_box');
+//                          }); 
+// }
 
 
 $scope.valToggle = $translate.instant('MakeLoan.OldClient');
@@ -223,11 +238,12 @@ console.log("Llego")
 
      }
 
-
+ $scope.CurrentDate = new Date();
 $scope.SubmitNewLoan=function(){
 
     var prepareLoan = {};
     prepareLoan.loan = {};
+    prepareLoan.fees = {};
 
     if($scope.hacerVisible){
 
@@ -250,6 +266,8 @@ $scope.SubmitNewLoan=function(){
 
  console.log($scope.newLoan.start_date);
 
+
+    prepareLoan.loan.date=$filter('date')($scope.CurrentDate, "yyyy-MM-dd");
     prepareLoan.loan.start_date = start_date;
     prepareLoan.loan.end_date = end_date;
     prepareLoan.loan.interest_produced = $scope.newLoan.interest_produced;
@@ -257,32 +275,45 @@ $scope.SubmitNewLoan=function(){
     prepareLoan.loan.balance = $scope.newLoan.value;
     prepareLoan.loan.interest_rate = $scope.newLoan.interest_rate;
     prepareLoan.loan.numbers_of_fee = $scope.newLoan.numbers_of_fee;
-    prepareLoan.loan.value_loaned = 0;
+    prepareLoan.loan.value_paid = 0;
     prepareLoan.loan.type_paid_id= $scope.newLoan.type_paid_id;
     prepareLoan.loan.collector_creater_id = info.value;
     prepareLoan.loan.retention = $scope.newLoan.retention;
 
+    $scope.tablePaymentPlanAux = clone($scope.tablePaymentPlan);
+    for (var i = 0; i < $scope.tablePaymentPlan.length; i++) {
+      
+
+        $scope.tablePaymentPlanAux[i]["date"] = $filter('date')($scope.tablePaymentPlan[i]["date"], "yyyy-MM-dd");
+
+        prepareLoan.fees[i] = $scope.tablePaymentPlanAux[i];
+    };
+    
     prepareLoan.collector_id=info.value;
 
     console.log(prepareLoan);
-    return;
-
-      LoansService.doLoan(prepareLoan)
+LoansService
+      .doLoan(prepareLoan)
               .success(function(response){
                       loadingService.hide();
-                        if(response.status==true){
+                      if(!response.error){
+                         if(response.loans.movimiento.status && response.loans.prestamo.status){
                            var alertPopup = $ionicPopup.alert({
                              title: 'OK',
-                             template: '{{"Clients.SuccessRegClient" | translate}}'
+                             template: '{{"MakeLoan.SuccessRegLoan" | translate}}'
                            });
                           alertPopup.then(function(res) {
                             
                        $scope.newClient = {};
                      $scope.load_clients();
+                     prepareLoan={};
+                    $scope.newLoan = {} 
 
 
                            }); 
-                        }else{
+                        }
+                      }
+                       else{
                             // en caso de que el documento ya exista para otro cliente
                             if(response.val==5){
                                  var alertPopup = $ionicPopup.alert({
@@ -292,13 +323,13 @@ $scope.SubmitNewLoan=function(){
                             }else{
                                var alertPopup = $ionicPopup.alert({
                                  title: 'Error',
-                                 template: '{{"Clients.ErrorReg1" | translate}}'
+                                 template: '{{"MakeLoan.ErrorRegLoan" | translate}}'
                                });
                             }
 
-                             $scope.select.pais=$scope.select.pais+"";
-                             $scope.select.dpto=$scope.select.dpto+""; // => con el fin de que al abrir el modal para meter los datos los selects se llenen.
-                              $scope.select.ciudad= $scope.select.ciudad+"";
+                             // $scope.select.pais=$scope.select.pais+"";
+                             // $scope.select.dpto=$scope.select.dpto+""; // => con el fin de que al abrir el modal para meter los datos los selects se llenen.
+                             //  $scope.select.ciudad= $scope.select.ciudad+"";
 
                             
                         }
@@ -308,7 +339,7 @@ $scope.SubmitNewLoan=function(){
                
                       var alertPopup = $ionicPopup.alert({
                              title: 'Error',
-                             template: '{{"Clients.ErrorReg2" | translate}}'
+                             template: '{{"MakeLoan.ErrorRegLoan" | translate}}'
                            });
                           alertPopup.then(function(res) {                            
                                console.log(err);
@@ -377,7 +408,7 @@ $scope.submitNewClient=function(){
             //$scope.registrarNuevoCliente($scope.newClient);
             
 
-            $scope.showPaymentPlan(1); // Verifica si todo esta bien en el prestamo
+            $scope.showPaymentPlan(1); 
             
           }
 
@@ -385,79 +416,79 @@ $scope.submitNewClient=function(){
 
 
 
-$scope.registrarNuevoCliente=function(newClient){
+// $scope.registrarNuevoCliente=function(newClient){
 
-        console.log(newClient);
-          var datosListos= {};  
+//         console.log(newClient);
+//           var datosListos= {};  
          
      
-          datosListos.address=newClient.address;
-          datosListos.name=newClient.name;
-          datosListos.phone_numbers=newClient.phone_numbers;
-          datosListos.email=newClient.email;
+//           datosListos.address=newClient.address;
+//           datosListos.name=newClient.name;
+//           datosListos.phone_numbers=newClient.phone_numbers;
+//           datosListos.email=newClient.email;
 
-          datosListos.country=$scope.select.pais;
-          datosListos.department=$scope.select.dpto;
-          datosListos.city=$scope.select.ciudad;
+//           datosListos.country=$scope.select.pais;
+//           datosListos.department=$scope.select.dpto;
+//           datosListos.city=$scope.select.ciudad;
 
-          datosListos.observation=newClient.description;
-          datosListos.document=newClient.document;
-          datosListos.collector_id=info.value;
+//           datosListos.observation=newClient.description;
+//           datosListos.document=newClient.document;
+//           datosListos.collector_id=info.value;
 
 
-          console.log(datosListos);
+//           console.log(datosListos);
         
 
-        clientsService.saveClient(datosListos)
-              .success(function(response){
-                      loadingService.hide();
-                        if(response.status==true){
-                           var alertPopup = $ionicPopup.alert({
-                             title: 'OK',
-                             template: '{{"Clients.SuccessRegClient" | translate}}'
-                           });
-                          alertPopup.then(function(res) {
+//         clientsService.saveClient(datosListos)
+//               .success(function(response){
+//                       loadingService.hide();
+//                         if(response.status==true){
+//                            var alertPopup = $ionicPopup.alert({
+//                              title: 'OK',
+//                              template: '{{"Clients.SuccessRegClient" | translate}}'
+//                            });
+//                           alertPopup.then(function(res) {
                             
-                       $scope.newClient = {};
-                     $scope.load_clients();
+//                        $scope.newClient = {};
+//                      $scope.load_clients();
 
 
-                           }); 
-                        }else{
-                            // en caso de que el documento ya exista para otro cliente
-                            if(response.val==5){
-                                 var alertPopup = $ionicPopup.alert({
-                                       title: 'Error',
-                                       template: '{{"Clients.ErrorReg3" | translate}}'
-                                     });
-                            }else{
-                               var alertPopup = $ionicPopup.alert({
-                                 title: 'Error',
-                                 template: '{{"Clients.ErrorReg1" | translate}}'
-                               });
-                            }
+//                            }); 
+//                         }else{
+//                             // en caso de que el documento ya exista para otro cliente
+//                             if(response.val==5){
+//                                  var alertPopup = $ionicPopup.alert({
+//                                        title: 'Error',
+//                                        template: '{{"Clients.ErrorReg3" | translate}}'
+//                                      });
+//                             }else{
+//                                var alertPopup = $ionicPopup.alert({
+//                                  title: 'Error',
+//                                  template: '{{"Clients.ErrorReg1" | translate}}'
+//                                });
+//                             }
 
-                             $scope.select.pais=$scope.select.pais+"";
-                             $scope.select.dpto=$scope.select.dpto+""; // => con el fin de que al abrir el modal para meter los datos los selects se llenen.
-                              $scope.select.ciudad= $scope.select.ciudad+"";
+//                              $scope.select.pais=$scope.select.pais+"";
+//                              $scope.select.dpto=$scope.select.dpto+""; // => con el fin de que al abrir el modal para meter los datos los selects se llenen.
+//                               $scope.select.ciudad= $scope.select.ciudad+"";
 
                             
-                        }
+//                         }
                                         
-                  }).error(function(err){
-                  loadingService.hide();
+//                   }).error(function(err){
+//                   loadingService.hide();
                
-                      var alertPopup = $ionicPopup.alert({
-                             title: 'Error',
-                             template: '{{"Clients.ErrorReg2" | translate}}'
-                           });
-                          alertPopup.then(function(res) {                            
-                               console.log(err);
-                           });
+//                       var alertPopup = $ionicPopup.alert({
+//                              title: 'Error',
+//                              template: '{{"Clients.ErrorReg2" | translate}}'
+//                            });
+//                           alertPopup.then(function(res) {                            
+//                                console.log(err);
+//                            });
                   
                    
-              });        
-      }
+//               });        
+//       }
 
 
 
@@ -487,18 +518,14 @@ function loadItemsHomeSimulate(val){
             //no hubo necesidad de parsear
             var startD = loan.start_date;
             var endD = loan.date_end;
-
-
             var typePaid = loan.type_paid_id;
 
-            console.log(loan)
             console.log(value)
             console.log(interest)
             console.log(payPeriod)
             console.log(startD)
             console.log(endD)
             console.log(typePaid)
-
       
             console.log(loan.stringPeriodPaid);
             var arrayDates = [];
@@ -513,10 +540,17 @@ function loadItemsHomeSimulate(val){
                 function(arrayTable){
                     $scope.tablePaymentPlan = arrayTable;
                     console.log(arrayTable);
-                    $scope.newLoan.numbers_of_fee=arrayTable.length;
+                    $scope.newLoan.numbers_of_fee=arrayTable.length-1;
 
                     $scope.newLoan.interest_produced= arrayTable[0].interest;
-                    console.log($scope.newLoan.number_fees);
+                    console.log($scope.newLoan.numbers_of_fee);
+                     console.log( $scope.newLoan.interest_produced);
+
+                       if(val == 2){
+                        $scope.openSimulatorAux();
+                          }else{
+                            $scope.SubmitNewLoan();
+                          }
                 }
 
             ).catch(
@@ -532,11 +566,7 @@ function loadItemsHomeSimulate(val){
                 console.log(x);
             $scope.tablePaymentPlan = x;
 
-            if(val == 2){
-          $scope.openSimulatorAux();
-            }else{
-              $scope.SubmitNewLoan();
-            }
+          
            
         
     };   
@@ -621,6 +651,14 @@ console.log("llego a showPaymentPlan")
                            });
 
 
+            }else if( $scope.newLoan.retention >= $scope.newLoan.value){
+
+                    var alertPopup = $ionicPopup.alert({
+                             title: 'Error',
+                             template: '{{"Simulator.ErrorRetention2" | translate}}'
+                           });
+
+
             }else if(  $scope.newLoan.interest_rate == undefined){
 
                     var alertPopup = $ionicPopup.alert({
@@ -672,6 +710,7 @@ console.log("llego a showPaymentPlan")
 
 
             }
+            
 
 
             // alert("Debe ingresar el valor del prestamo\nIntereses\nFrecuencía Cobro\nFecha Inicio Cobros\nFecha Finalización Préstamo\nTipo Abono\nRetención")
@@ -723,5 +762,4 @@ console.log("llego a showPaymentPlan")
            
 
  }])
-
 

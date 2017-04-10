@@ -1,0 +1,94 @@
+
+<ion-view view-title="{{'MakeCollections.Title2' | translate}}">
+
+             
+      <ion-content class="bg-home" scroll="true" overflow-scroll="false">
+                 
+       
+            <div class="listPaymentsDay">
+      <center>
+
+          <div class="card">
+
+
+                    
+                 
+                     <div class="item">
+                        
+                        <div style="text-align:left">
+                           
+                          <b style="font-size:1.2em;">{{'MakeCollections.LoanInformation' | translate}}</b>
+                        
+                            <div class="item">
+                          <i>{{'MakeCollections.Client' | translate}}: {{auxClient.name}}</i>
+                          <br>
+                          <i>{{'MakeCollections.LoanValue' | translate}}: {{auxLoan.balance}}</i>
+                          <br>
+                          <i>{{'MakeCollections.InterestValue' | translate}}: {{auxLoan.interest_produced}}</i>
+                           <br>
+                           <i>{{'MakeCollections.ValuePaid' | translate}}: {{auxLoan.value_paid}}</i>
+                           <br>
+                           <i>{{'MakeCollections.Balance' | translate}}: {{auxLoan.value_paid}}</i>
+                           <br>
+                           <i>{{'MakeCollections.NumbersFee' | translate}}: {{saldo}}</i>                                                              
+
+                             
+                             </div>
+
+
+                              <div class="item">
+                                        <b style="font-size:1.2em;">{{'MakeCollections.EnterPay' | translate}}</b>
+                                        <br>
+
+                                <label class="item item-input item-stacked-label labelsFormInicioRegistro">
+          
+                                        <span class="input-label" style="color:white; text-align:center"  translate-cloak>{{'MakeCollections.ValuePay' | translate}}</span>
+                                  <br>
+                        
+                                      <input type="text"  ng-required="true" style="background-color: transparent" ng-model="views.new.loan.value" min="1" max="4294967295" ui-number-mask="0"> 
+                          
+                                </label> 
+                                <br>  
+                                      <center>
+                                         <button class="button button-balanced" ng-click="buscarPagosPorFecha()">{{'MakeCollections.ButtonSave' | translate}}</button>
+                                      </center>
+
+              <!--                <input type="date"   ng-required="true" name="fecha"  ng-model="prueba.inicio"  min="1916-01-01" placeholder="Ingrese fecha">  
+
+
+                              <input type="date"   ng-required="true" name="fecha"  ng-model="prueba.fin"  min="1916-01-01"  placeholder="Ingrese fecha"> -->
+                             
+                             </div>
+                          
+                          
+                        </div>
+                        
+                        
+                               
+                     </div>
+                 </div>
+
+                 <button style="float:right"  type="button" class="button button-stable btnInicio icon ion-save " ng-click="openHistorialCuotas()">
+                      {{'MakeCollections.FeesHistory.Title' | translate}}
+                  </button>
+                  <button  style="float:left" type="button" class="button button-stable btnInicio icon ion-save " ng-click="">
+                      {{'MakeCollections.PaymentHistory.Title' | translate}}
+                  </button>
+
+      
+    </center>
+            </div>
+            
+
+
+            
+
+
+    
+      </ion-content>
+
+</ion-view>
+</div>
+ 
+
+

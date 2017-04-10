@@ -168,6 +168,7 @@ kubeAdmin.factory('CalculatorDate', function($translate){
     };
 
     this.nextDate = function(date,stringFormat){
+        console.log(stringFormat);
         var increments = getIncreases(stringFormat);
         var dateResponse;
 

@@ -212,8 +212,39 @@ var kubeApp = angular.module('kubeApp');
 
     })
 
+//#######################################################################################################
+//#######################################################################################################
+// Servicio que permite registrar prestamos
 
- 
+   kubeApp.service('LoansService', function($http, APP, loadingService){
+      this.doLoan = function (data) {
+         loadingService.show();
+            return $http({
+                method: 'POST',
+                url: APP.BASE_URL + 'loans',
+                data: data
+            })
+        };
+
+   })
+   //#######################################################################################################
+// Servicio que permite registrar recaudos
+
+   kubeApp.service('PaymentsService', function($http, APP, loadingService){
+      this.paymentsToday = function (data) {
+         loadingService.show();
+            return $http({
+                method: 'GET',
+                url: APP.BASE_URL + 'fees_date',
+                params: data
+            })
+        };
+
+   })
+
+
+ //######################################################################################################
+//#######################################################################################################
 
 
 kubeApp.directive('dateFormat', function() {

@@ -22,12 +22,28 @@
 
        <!-- Elegir cliente del select -->
     <div ng-show ="!hacerVisible">
-             <div class="item item-input item-select item-stacked-label labelsFormRegistroSelect">
-           <label class="labelSelect"> Lista de clientes</label>
+
+
+          <label class="item item-input item-stacked-label labelsFormInicioRegistro">
+                          <span class="input-label" style="color:white; text-align:center" translate-cloak>{{'Clients.FilterNameClient' | translate}}</span>
+                          <br>
+                        
+                          <input type="text" ng-model="filterSearch">
+
+          </label> 
+          <br>
+
+   
+       
+       
+         <div class="item item-input item-select item-stacked-label labelsFormRegistroSelect">
+
+
+           <label > Lista de clientes</label>
             <select class="selectElement" ng-model="select.idClienteExistente" style="background-color:rgb(40,95,155); color:white">
             
               <option value="">seleccione cliente</option>
-              <option value="{{c.id}}" ng-repeat="c in listClients" >{{c.name}}</option>
+              <option value="{{c.id}}" ng-repeat="c in listClients | filter:{name:filterSearch}" >{{c.name}}</option>
           
             </select>
         
@@ -126,7 +142,7 @@
 
                       <label class="item item-input item-stacked-label labelsFormInicioRegistro" >
                            <span class="input-label" style="color:white" translate-cloak>{{'Clients.ModalObservations' | translate}}</span>
-                            <textarea ng-model="newClient.description" translate-cloak placeholder="{{'Settings.AdminRubros.NewRubroDescripcionPH' | translate}}" style=" background-color:transparent; padding:5px; color:white; padding-left:10%;"></textarea>
+                            <textarea ng-model="newClient.observation" translate-cloak placeholder="{{'Settings.AdminRubros.NewRubroDescripcionPH' | translate}}" style=" background-color:transparent; padding:5px; color:white; padding-left:10%;"></textarea>
                       </label>
                
               </div>

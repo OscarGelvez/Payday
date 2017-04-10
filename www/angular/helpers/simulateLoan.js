@@ -44,7 +44,7 @@ kubeAdmin.factory('SimulateLoan', function(localDatabase,CalculatorDate,$q){
         var arrayResponse = new Array();
         var interestTotal = value * (interest/100);
         var total = value + interestTotal;
-        console.log(total);
+       
         var feeInterest = interestTotal/arrayDates.length;
         feeInterest = removeTenths(feeInterest);
 
