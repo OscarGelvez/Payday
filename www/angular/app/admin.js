@@ -197,6 +197,7 @@ kubeApp.config(['$stateProvider', '$urlRouterProvider', '$translateProvider',
 
                     .state('app.paymentsDay',{
                     url : '/payment_list_day',
+                    cache:false,
                         views: {
                             'menuContent': {
                                   templateUrl : 'templates/app.paymentsDay.html', //html/loans/collectionDay.html

@@ -395,8 +395,7 @@
 				"NumbersFee" : "Número de cuotas",
 				"EnterPay": "Ingresar Recaudo",
 				"ValuePay":"Valor Recaudo",
-				
-			
+							
 				"ButtonSave": "Guardar Recaudo",
 				"ButtonCancel": "Cancelar",
 
@@ -410,7 +409,11 @@
 						"Title" : "Historial de Cuotas",
 						"Status": "Estado"
 						
-					},	
+					},
+				"ErrorFieldValuePay" : "Valor Recaudo vacio o no definido",
+				"SuccessRegPayment" : "Recaudo registrado exitosamente",
+				"ErrorRegRecaudo" : "Error, fallo el registro del recaudo",
+				"AlertFinishLoan" : "The last fee of this loan was paid. Loan Finished",
 
 				"LoansDetail":{
 						"Title": "Detalle de Préstamos",

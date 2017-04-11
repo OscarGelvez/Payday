@@ -36,9 +36,9 @@
                           </div>
 
       
-   
+ 
 
-                                     <div class="row bodyTable" ng-repeat="item in listPaymentsToday.cliente" item="item" ng-click="guardarFabrica($index)" >
+                                     <div class="row bodyTable" ng-repeat="item in listPaymentsToday.cliente" item="item" ng-click="guardarFabrica($index)" ng-if="item.stateLoan!=0">
 
                                         <div class="col colBody">{{item.name}}</div>
 

@@ -408,7 +408,12 @@
 					"FeesHistory":{
 						"Title" : "Fees History",
 						"Status": "Status"
+
 					},
+					"ErrorFieldValuePay" : "Empty or undefined value",
+					"SuccessRegPayment" : "Payment successfully registered",
+					"ErrorRegRecaudo" : "Error, Payment registration failed",
+					"AlertFinishLoan" : "La ultima cuota de este préstamo fue pagada. Préstamo concluido",	
 
 				"LoansDetail":{
 						"Title": "Loans Detail",

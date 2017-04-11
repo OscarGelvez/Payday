@@ -84,7 +84,8 @@ $scope.load_payments_today=function(customFecha){
                      // 
                       $scope.listPaymentsToday=response.contenido;      
                       console.log($scope.listPaymentsToday);                 
-                        loadingService.hide();                       
+                        loadingService.hide();      
+                        $scope.verificarLista();                 
                       
                     }else{
                           var alertPopup = $ionicPopup.alert({
@@ -103,6 +104,23 @@ $scope.load_payments_today=function(customFecha){
                            });                
               });
 }
+
+// funcion que valida los clientes (cuyos prestamos) se muestran en la lista
+// con el fin de no mostrar cuotas para pagar en caso de q el cliente de un momento a otro pague todo
+//y las cuotas queden por planificacion en el sistema
+$scope.verificarLista=function(){
+  for (var i = 0; i < $scope.listPaymentsToday.cliente.length; i++) {
+
+        $scope.listPaymentsToday.cliente[i].stateLoan = 1; // Indica que el prestamo esta vigente
+
+        if($scope.listPaymentsToday.prestamo[i].state == 0){
+          $scope.listPaymentsToday.cliente[i].stateLoan = 0;
+        }
+
+  };
+  
+}
+
 
 
 $scope.load_payments_today($scope.fechaHoy);
@@ -133,15 +151,25 @@ $scope.guardarFabrica=function(index){
 
  .controller('addPaymentController', ['$scope', '$state', '$ionicPopup', '$http', 'APP', 'loadingService', '$ionicModal', '$translate', 'Box_Movement', '$ionicPlatform', '$filter', 'valorCaja', 'PaymentsService', 'recaudoSeleccionado', 'CalculatorDate', 'SimulateLoan', function ($scope, $state, $ionicPopup, $http, APP, loadingService, $ionicModal, $translate, Box_Movement, $ionicPlatform, $filter, valorCaja, PaymentsService, recaudoSeleccionado, CalculatorDate, SimulateLoan) {
 
-
+var info = {};
+info.value = localStorage['kubesoft.kubeApp.user_id'];
+console.log(info);
 //Asigno datos de fabrica a variables locales
 
 $scope.auxLoan = recaudoSeleccionado.datos.prestamo;
 $scope.auxClient = recaudoSeleccionado.datos.cliente;
 $scope.auxFee = recaudoSeleccionado.datos.cuota;
 
+if($scope.auxLoan.state == 0){
+  $scope.buttonSendPay = true;
+}else{
+  $scope.buttonSendPay = false;
+}
+
 //Saldo calculado
 $scope.saldo = ($scope.auxLoan.balance - $scope.auxLoan.value_paid);
+
+$scope.payment = {};
 
 
 
@@ -200,84 +228,74 @@ function loadItemsHomeSimulate(){
             // var startD = CalculatorDate.parseStringToDate(loan.start_date,'/','mm/dd/yyyy');
             // var endD = CalculatorDate.parseStringToDate(loan.date_end,'/','mm/dd/yyyy');
 
-            //no hubo necesidad de parsear
-				// var b = new Date(Date.UTC(2005, 8, 12))
-					var c = Date.parse($scope.auxLoan.start_date)
-					var d = Date.parse($scope.auxLoan.end_date)
-             
+                  //no hubo necesidad de parsear
+      				// var b = new Date(Date.UTC(2005, 8, 12))
+      					var c = Date.parse($scope.auxLoan.start_date)
+      					var d = Date.parse($scope.auxLoan.end_date)                   
 
-            var startD = c;
-            var endD = d;
-            var typePaid = $scope.auxLoan.type_paid_id;
-         
-            console.log(value)
-            console.log(interest)
-            console.log(payPeriod)
-            console.log(startD)
-            console.log(endD)
-            console.log(typePaid)
-    
-            var arrayDates = [];
+                  var startD = c;
+                  var endD = d;
+                  var typePaid = $scope.auxLoan.type_paid_id;               
+                  console.log(value)
+                  console.log(interest)
+                  console.log(payPeriod)
+                  console.log(startD)
+                  console.log(endD)
+                  console.log(typePaid)
+          
+                  var arrayDates = [];
 
-            arrayDates = CalculatorDate.getDatesBetween(
-                        startD,endD,
-                        payPeriod
-            );
-           console.log(arrayDates);
-            $scope.tablePaymentPlan = [];
-            var x = SimulateLoan.on(value,interest , arrayDates, typePaid).then(
-                function(arrayTable){
-                    $scope.tablePaymentPlan = arrayTable;
-                    console.log(arrayTable);   
+                  arrayDates = CalculatorDate.getDatesBetween(
+                              startD,endD,
+                              payPeriod
+                  );
+                 // console.log(arrayDates);
+                  $scope.tablePaymentPlan = [];
+                  var x = SimulateLoan.on(value,interest , arrayDates, typePaid).then(
+                      function(arrayTable){
+                          $scope.tablePaymentPlan = arrayTable;
+                          console.log(arrayTable);   
 
-                    for (var i = 1; i < $scope.tablePaymentPlan.length; i++) {
-                    	
-                    	$scope.tablePaymentPlan[i].estado = "P";
-                                         	
-                    };
-                     var dateHoy = new Date();
-                     console.log(dateHoy);
-                       for (var k = 1; k < $scope.tablePaymentPlan.length; k++) {
-                      
-                      if($scope.tablePaymentPlan[k].date<dateHoy){
-                         $scope.tablePaymentPlan[k].estado = "Atrasó";
-                        console.log("entro")
-                         console.log(dateHoy);
-                          console.log($scope.tablePaymentPlan[k].date);
-                      }
-                         
-                                              
-                        };
+                          for (var i = 1; i < $scope.tablePaymentPlan.length; i++) {
+                          	
+                          	$scope.tablePaymentPlan[i].estado = "P";
+                                               	
+                          };
+                           var dateHoy = new Date();
+                           console.log(dateHoy);
+                             for (var k = 1; k < $scope.tablePaymentPlan.length; k++) {
+                            
+                            if($scope.tablePaymentPlan[k].date<dateHoy){
+                               $scope.tablePaymentPlan[k].estado = "Atrasó";
+                              // console.log("entro")
+                              //  console.log(dateHoy);
+                              //   console.log($scope.tablePaymentPlan[k].date);
+                            }                         
+                              };
+                          var pagado = $scope.auxLoan.value_paid;
+                        //  var pagado = 75200; 
+                          var valCuota = $scope.auxFee.value;
+                          var cantCuotas;
 
-
-                    //var pagado = $scope.auxLoan.value_paid;
-                    var pagado = 75200; 
-                    var valCuota = $scope.auxFee.value;
-                    var cantCuotas;
-
-                    $scope.abono = 0;
-                     
-                       for (var j = 1; j < $scope.tablePaymentPlan.length; j++) {                        
-                              pagado=pagado-valCuota;
-                                if(pagado>=valCuota || pagado>=0){
-                                  console.log(pagado);
-                                  $scope.tablePaymentPlan[j].estado = "OK";
-                                }
-                                else{                            
-                                var a = pagado+valCuota;
-                                      if(a>0){
-                                         $scope.tablePaymentPlan[j].estado = "Abonó";
-                                           $scope.abono = pagado+valCuota;
-                                            console.log($scope.abono);
-                                      }                            
-                                  break;
-                                }           
-                      };
-
-                     
-
-                      $scope.openHistoryFees();
-                        
+                          $scope.abono = 0;
+                           
+                             for (var j = 1; j < $scope.tablePaymentPlan.length; j++) {                        
+                                    pagado=pagado-valCuota;
+                                      if(pagado>=valCuota || pagado>=0){
+                                        console.log(pagado);
+                                        $scope.tablePaymentPlan[j].estado = "OK";
+                                      }
+                                      else{                            
+                                      var a = pagado+valCuota;
+                                            if(a>0){
+                                               $scope.tablePaymentPlan[j].estado = "Abonó";
+                                                 $scope.abono = pagado+valCuota;
+                                                  console.log($scope.abono);
+                                            }                            
+                                        break;
+                                      }           
+                            }; 
+                      $scope.openHistoryFees();                        
                 }).catch(
                 function(error){
                        var alertPopup = $ionicPopup.alert({
@@ -289,13 +307,91 @@ function loadItemsHomeSimulate(){
                 }
             );
                 console.log(x);
-            //$scope.tablePaymentPlan = x;
-
-          
-           
-        
+            //$scope.tablePaymentPlan = x;   
     };   
 
+
+$scope.submitPayment=function(){
+
+    if($scope.payment.valuePay == undefined || $scope.payment.valuePay == ""){
+       var alertPopup = $ionicPopup.alert({
+                             title: 'Error',
+                             template: '{{"MakeCollections.ErrorFieldValuePay" | translate}}'
+                           });
+     }else{
+         $scope.savePayment();
+     }
+
+}
+
+ $scope.CurrentDate = new Date();
+$scope.savePayment=function(){
+        var datosListos= {};
+      
+          datosListos.collector_id = info.value;
+          datosListos.loan_id = $scope.auxLoan.id;
+          datosListos.value = $scope.payment.valuePay;
+          datosListos.date = $filter('date')($scope.CurrentDate, "yyyy-MM-dd");
+
+          console.log(datosListos);
+      
+          loadingService.show();
+        PaymentsService.doPayment(datosListos)
+              .success(function(response){
+                      loadingService.hide();
+                        console.log(response);
+                        if(response.error==false){
+                           var alertPopup = $ionicPopup.alert({
+                             title: 'OK',
+                             template: '{{"MakeCollections.SuccessRegPayment" | translate}}'
+                           });
+                          alertPopup.then(function(res) {
+                                $scope.afterPayment(response.payment);
+                                $scope.payment = {}
+
+                           }); 
+                        }else{
+                               var alertPopup = $ionicPopup.alert({
+                                 title: 'Error',
+                                 template: '{{"MakeCollections.ErrorRegRecaudo" | translate}}'
+                               });
+                        }
+                                        
+                  }).error(function(err){
+                  loadingService.hide();               
+                      var alertPopup = $ionicPopup.alert({
+                             title: 'Error',
+                             template: '{{"MakeCollections.ErrorRegRecaudo" | translate}}'
+                           });
+                          alertPopup.then(function(res) {                            
+                               console.log(err);
+                           });
+                  
+                   
+              }); 
+      }
+
+
+      $scope.afterPayment=function(response){
+
+          var tempValuePaid = response.loanUpdate.data.data.value_paid;
+          console.log(tempValuePaid);
+          $scope.auxLoan.value_paid = tempValuePaid;
+
+          if(response.checkPayComplet.data.state ==0){
+                var alertPopup = $ionicPopup.alert({
+                                 title: 'OK',
+                                 template: '{{"MakeCollections.ErrorRegRecaudo" | translate}}'
+                               });
+                $scope.buttonSendPay = true;
+          }
+          
+
+        
+    
+           $scope.saldo = ($scope.auxLoan.balance - tempValuePaid);
+
+       }
 
 			
  }])

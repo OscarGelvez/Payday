@@ -37,23 +37,6 @@ kubeApp.controller("HomeController", function($scope,$state, ngTableParams, quer
 
 
 
-// var deregisterFirst = $ionicPlatform.registerBackButtonAction(
-//       function() {
-//          $state.go("app.home");
-//       }, 100
-//     );
-//     $scope.$on('$destroy', deregisterFirst);
-
-
-
-
-// var deregisterFirst = $ionicPlatform.registerBackButtonAction(
-//       function() {
-//          navigator.app.backHistory();
-//       }, 100
-//     );
-//     $scope.$on('$destroy', deregisterFirst);
-
 
     $scope.home = {};
 

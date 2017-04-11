@@ -240,6 +240,15 @@ var kubeApp = angular.module('kubeApp');
             })
         };
 
+          this.doPayment = function (data) {
+         loadingService.show();
+            return $http({
+                method: 'POST',
+                url: APP.BASE_URL + 'payments',
+                data: data
+            })
+        };
+
    })
 
 

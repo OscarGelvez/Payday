@@ -8,10 +8,7 @@
             <div class="listPaymentsDay">
       <center>
 
-          <div class="card">
-
-
-                    
+          <div class="card">                
                  
                      <div class="item">
                         
@@ -28,9 +25,9 @@
                            <br>
                            <i>{{'MakeCollections.ValuePaid' | translate}}: {{auxLoan.value_paid}}</i>
                            <br>
-                           <i>{{'MakeCollections.Balance' | translate}}: {{auxLoan.value_paid}}</i>
+                           <i>{{'MakeCollections.Balance' | translate}}: {{saldo}}</i>
                            <br>
-                           <i>{{'MakeCollections.NumbersFee' | translate}}: {{saldo}}</i>                                                              
+                           <i>{{'MakeCollections.NumbersFee' | translate}}: {{auxLoan.numbers_of_fee}}</i>                                                              
 
                              
                              </div>
@@ -45,18 +42,15 @@
                                         <span class="input-label" style="color:white; text-align:center"  translate-cloak>{{'MakeCollections.ValuePay' | translate}}</span>
                                   <br>
                         
-                                      <input type="text"  ng-required="true" style="background-color: transparent" ng-model="views.new.loan.value" min="1" max="4294967295" ui-number-mask="0"> 
+                                      <input type="text"  ng-required="true" style="background-color: transparent" ng-model="payment.valuePay" min="1" max="4294967295" ui-number-mask="0"> 
                           
                                 </label> 
                                 <br>  
                                       <center>
-                                         <button class="button button-balanced" ng-click="buscarPagosPorFecha()">{{'MakeCollections.ButtonSave' | translate}}</button>
+                                         <button class="button button-balanced" ng-click="submitPayment()" ng-disabled="buttonSendPay">{{'MakeCollections.ButtonSave' | translate}}</button>
                                       </center>
 
-              <!--                <input type="date"   ng-required="true" name="fecha"  ng-model="prueba.inicio"  min="1916-01-01" placeholder="Ingrese fecha">  
-
-
-                              <input type="date"   ng-required="true" name="fecha"  ng-model="prueba.fin"  min="1916-01-01"  placeholder="Ingrese fecha"> -->
+   
                              
                              </div>
                           
