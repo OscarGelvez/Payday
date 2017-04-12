@@ -17,10 +17,10 @@
 
 		   <div class="row bodyTable" ng-repeat="paid in tablePaymentPlan">
 
-				  <div class="col colBody">{{ calcDate.parseDateToString(paid.date,'dd-mm-yyyy','-') }}</div>
-				  <div class="col colBody">{{ paid.balance | currency : "$":0 }}</td></div>
-				  <div class="col colBody">{{ paid.interest | currency : "$":0 }}</div>
-				  <div class="col colBody">{{ paid.paid | currency : "$":0 }}</div>
+				  <div class="col colBody" ng-class="$even?'odd':'even'">{{ calcDate.parseDateToString(paid.date,'dd-mm-yyyy','-') }}</div>
+				  <div class="col colBody" ng-class="$even?'odd':'even'">{{ paid.balance | currency : "$":0 }}</td></div>
+				  <div class="col colBody" ng-class="$even?'odd':'even'">{{ paid.interest | currency : "$":0 }}</div>
+				  <div class="col colBody" ng-class="$even?'odd':'even'">{{ paid.paid | currency : "$":0 }}</div>
 			</div>
 			 </ion-scroll>
 

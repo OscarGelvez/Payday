@@ -15,7 +15,9 @@
 			    "CloseAppTitle": "Close Payday?",
 			    "CloseAppMsg": "When closing the app your session will remain active",
 			    "CloseAppYes": "Close",
-			    "CloseAppNo": "No"
+			    "CloseAppNo": "No",
+			     "AlertBoxClosed": "To enter here you must first start the day (open box)",
+			      "TitleAlertBoxClosed": "Closed Box"
 		  	}, 
 
 		  "Login": {
@@ -88,6 +90,7 @@
 				"LatCashReceive": "Payments",
 				"LatLoans": "Loans",
 				"LatLoansNew": "New loan",
+				"LatLoansShow": "Show loans",
 				"LatClients": "Clients",
 				"LatSimulator": "Simulator",
 				"LatMovementsMoney": "Box-Money movement",
@@ -256,6 +259,7 @@
 					"DeleteNo": "No",
 					"DeleteMsg": "Are you sure to delete this client?",
 					"WarningNotChanges": "No changes in information",
+					"FilterNameClient" :"Filter by customer name"
 					
 
 			},	
@@ -294,7 +298,8 @@
 							"Capital": "Capital",
 							"Interest": "Interest",
 							"TotalPaid": "Total paid",
-							"ButtonBack": "Back to simulator"
+							"ButtonBack": "Back to simulator",
+							"state": "Status"
 					},
 
 					"Days": {
@@ -314,15 +319,16 @@
 						"DescriptionB" : "The description of the loan without capital payment"	
 					},
 
-					"ErrorShowPlan": "Show Payment Plan Error",
+					"ErrorShowPlan": "Collection frequency not defined",
 					"ErrorSelectPayPeriod": "Must include payment selection",
 					"ErrorValue":  "Error, loan value undefined",
 					"ErrorInterest": "Error, Interest rate undefined",
-					"ErrorPayPeriod": "Error, payment period undefined",
+					"ErrorTypeAbono": "Error, payment period undefined",
 					"ErrorStartDate": "Error, date start undefined",
 					"ErrorEndDate": "Error, End date undefined",
 					"ErrorTypePaid": "Error, payment type undefined",
-					"ErrorRetention": "Error, Insurance undefined"
+					"ErrorRetention": "Error, Insurance undefined",
+					"ErrorRetention2" : "Error, Insurance greater than or equal to the value of the loan"
 
 
 			},
@@ -363,28 +369,46 @@
 				"dniGuarantor": "Identification Card", //or Document?
 				"ButtonSave": "Save",
 				"ButtonCancel": "Cancel",
-				"CloseModalSimulator":"Close Simulator"
+				"CloseModalSimulator":"Close Simulator",
+				"SuccessRegLoan" :"Loan successfully registered",
+				"ErrorRegLoan" : "Loan record failed"
+			},
+			"ShowAllLoans":{
+
+				"Title": "Todos los Préstamos",
+				"ValueLoan": "Loan value",
+				"ValuePaid": "Paid Value",
+				"Saldo": "Balance",
+				"Interest": "Interest",
+				"State": "State",
+				"Start": "Start date",
+				"Finish": "End date",
+				"Client" : "Client"				
+				
 			},
 			
 			"MakeCollections":{
 				"Title": "Collections of Day", // no estoy seguro
 				"EnterDate": "Enter Date",
 				"Search": "Search",
+				"FilterPayFor": "Filter Collections by",
 				"SeeAll": "See All", // or All ? listall
 				"SeeUnpaid": "See Unpaid",
-				"Route": "Number Route",
+				"ListCollections" : "List Collections",
+				
 				"Address": "Address",
 				"Client": "Client",
 				"Title2": "Add Payments",
 				"LoanInformation": "Loan Information",
-				"DniClient": "Identification Card",
+				
 				"LoanValue": "Loan Value",
 				"InterestValue": "InterestValue",
-				"Total": "Total",
+				"ValuePaid": "Paid Value",
 				"Balance": "Balance",  // No estoy seguro
-				"MinimunValue": "Min Value", // or Min?
-				"MaximunValue": "Max Value",// or Max?
-				"MakePaymentCapital": "Realizar Abono al Capital",
+				"NumbersFee" : "Numbers of fee",
+				"EnterPay" :"Enter Pay",
+				"ValuePay":"Value Pay",
+			
 				"ButtonSave": "Save",
 				"ButtonCancel": "Cancel",
 
@@ -392,8 +416,20 @@
 						"Title": "Payment History",
 						"Date": "Date",
 						"Total": "Total",
-						"ButtonBack": "Back"
+						"ButtonBack": "Close Payment History",
+						"ValuePay" : "Value",
+						"Number": "Number"
 					},
+					"FeesHistory":{
+						"Title" : "Fees History",
+						"Status": "Status",
+						"ValueFee":"Fee Value"
+
+					},
+					"ErrorFieldValuePay" : "Empty or undefined value",
+					"SuccessRegPayment" : "Payment successfully registered",
+					"ErrorRegRecaudo" : "Error, Payment registration failed",
+					"AlertFinishLoan" : "La ultima cuota de este préstamo fue pagada. Préstamo concluido",	
 
 				"LoansDetail":{
 						"Title": "Loans Detail",

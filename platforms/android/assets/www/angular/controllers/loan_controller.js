@@ -10,14 +10,19 @@ var kubeApp = angular.module('kubeApp');
 kubeApp.controller('LoanController', function ($scope,$filter ,$state,$stateParams, $q,CalculatorDate,SaveData, SimulateLoan,
                                                NeighbourhoodsDao, ClientsDao,TypePaidsDao,LoansDao,FeesDao,PaymentsDao,
                                                MovesDao,localDatabase, $ionicPlatform, $translate, $ionicPopup) {
-
-    var deregisterFirst = $ionicPlatform.registerBackButtonAction(
+var deregisterFirst = $ionicPlatform.registerBackButtonAction(
       function() {
-         navigator.app.backHistory();
+         $state.go("app.home");
       }, 100
     );
     $scope.$on('$destroy', deregisterFirst);
 
+
+ document.addEventListener("deviceready", onDeviceReady, false);
+    function onDeviceReady()
+    {
+     screen.orientation.unlock();
+    }  
 
 
 
@@ -358,15 +363,7 @@ $scope.createLoan =  function(){
             }
         }else{
 
-            if($scope.views.new.loan.selectPayPeriod == undefined){
-
-                    var alertPopup = $ionicPopup.alert({
-                             title: 'Error',
-                             template: '{{"Simulator.ErrorShowPlan" | translate}}'
-                           });
-
-
-            }else if($scope.views.new.loan.value == 0 || $scope.views.new.loan.value==undefined){
+           if( $scope.views.new.loan.value == 0 ||  $scope.views.new.loan.value==undefined){
 
                     var alertPopup = $ionicPopup.alert({
                              title: 'Error',
@@ -374,7 +371,16 @@ $scope.createLoan =  function(){
                            });
 
 
-            }else if( $scope.views.new.loan.interest_rate == undefined){
+            }else if( $scope.views.new.loan.retention >= $scope.views.new.loan.value){
+
+                    var alertPopup = $ionicPopup.alert({
+                             title: 'Error',
+                             template: '{{"Simulator.ErrorRetention2" | translate}}'
+                           });
+
+
+            }
+            else if(  $scope.views.new.interest_rate == undefined){
 
                     var alertPopup = $ionicPopup.alert({
                              title: 'Error',
@@ -382,7 +388,17 @@ $scope.createLoan =  function(){
                            });
 
 
-            }else if($scope.views.new.loan.start_date == undefined){
+            }else if( $scope.views.new.selectPayPeriod == undefined){
+
+                    var alertPopup = $ionicPopup.alert({
+                             title: 'Error',
+                             template: '{{"Simulator.ErrorShowPlan" | translate}}'
+                           });
+
+
+            }
+
+            else if( $scope.views.new.start_date == undefined){
 
                     var alertPopup = $ionicPopup.alert({
                              title: 'Error',
@@ -390,7 +406,7 @@ $scope.createLoan =  function(){
                            });
 
 
-            }else if($scope.views.new.loan.date_end == undefined){
+            }else if( $scope.views.new.date_end == undefined){
 
                     var alertPopup = $ionicPopup.alert({
                              title: 'Error',
@@ -398,19 +414,27 @@ $scope.createLoan =  function(){
                            });
 
 
-            }else if( $scope.views.new.loan.type_paid_id == undefined){
+            }else if(  $scope.views.new.type_paid_id == undefined || $scope.views.new.type_paid_id == ""){
 
                     var alertPopup = $ionicPopup.alert({
                              title: 'Error',
-                             template: '{{"Simulator.ErrorPayPeriod" | translate}}'
+                             template: '{{"Simulator.ErrorTypeAbono" | translate}}'
                            });
 
 
-            }else if($scope.views.new.loan.retention == undefined || $scope.views.new.loan.retention == ""){
+            }else if( $scope.views.new.retention == undefined ||  $scope.views.new.retention == ""){
 
                     var alertPopup = $ionicPopup.alert({
                              title: 'Error',
                              template: '{{"Simulator.ErrorRetention" | translate}}'
+                           });
+
+
+            }else if( $scope.views.new.retention >= $scope.views.new.value){
+
+                    var alertPopup = $ionicPopup.alert({
+                             title: 'Error',
+                             template: '{{"Simulator.ErrorRetention2" | translate}}'
                            });
 
 

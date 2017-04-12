@@ -7,10 +7,22 @@
  */
 var kubeApp = angular.module('kubeApp');
 
-kubeApp.controller("HomeController", function($scope,$state, ngTableParams, queries, $modal, APP, localDatabase, FacadeServer, SaveData, MovesDao, $ionicSlideBoxDelegate, $translate, isOpenBox, $ionicPopup, valorCaja, $filter, loadingService, Box_Movement, isVerificatedAccount, $ionicPlatform) {
+kubeApp.controller("HomeController", function($scope,$state, ngTableParams, queries, $modal, APP, localDatabase, FacadeServer, SaveData, MovesDao, $ionicSlideBoxDelegate, $translate, isOpenBox, $ionicPopup, valorCaja, $filter, loadingService, Box_Movement, isVerificatedAccount, $ionicPlatform,  $ionicNavBarDelegate) {
 
     console.log("llego aHome");
+   $scope.$root.showMenuIcon = true;
 
+// $scope.$on('$ionicView.afterEnter', function (e, data) {
+//         var state = $state.current.name;
+//         if(state == 'app.home'){
+//             console.log("entro")
+//             // $scope.$root.showMenuIcon = true;
+//               $ionicNavBarDelegate.showBackButton(false);
+//               $scope.$root.showMenuIcon = true;
+//         }
+        
+    
+// });
 
     var deregisterFirst = $ionicPlatform.registerBackButtonAction(
 
@@ -22,8 +34,8 @@ kubeApp.controller("HomeController", function($scope,$state, ngTableParams, quer
         $ionicPopup.confirm({
         title: ''+title,
         template: ''+msg,
-        cancelText: ""+yes,
-         okText:""+no,
+        cancelText: ""+no,
+         okText:""+yes,
          okType:"button-positive"
       }).then(function(res) {
         if (res) {
@@ -36,7 +48,11 @@ kubeApp.controller("HomeController", function($scope,$state, ngTableParams, quer
     $scope.$on('$destroy', deregisterFirst); 
 
 
-
+ document.addEventListener("deviceready", onDeviceReady, false);
+    function onDeviceReady()
+    {
+     screen.orientation.unlock();
+    }  
 
     $scope.home = {};
 

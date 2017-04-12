@@ -15,7 +15,9 @@
 			    "CloseAppTitle": "Salir de Payday",
 			    "CloseAppMsg": "Al cerrar la aplicación, tu sesión permanecerá activa",
 			    "CloseAppYes": "Salir",
-			    "CloseAppNo": "No"
+			    "CloseAppNo": "No",
+			    "AlertBoxClosed": "Para ingresar aqui primero debes Iniciar día(abrir caja)",
+			    "TitleAlertBoxClosed": "Caja Cerrada"
 		  	}, 
 
 		  "Login": {
@@ -85,9 +87,10 @@
 			"Home":{
 				"Title": "Payday",
 				"LatInicio": "Inicio",
-				"LatCashReceive": "Cobros ",
+				"LatCashReceive": "Recaudos ",
 				"LatLoans": "Préstamos",
 				"LatLoansNew": "Hacer préstamo",
+				"LatLoansShow": "Ver préstamos",
 				"LatClients": "Clientes",
 				"LatSimulator": "Simulador",
 				"LatMovementsMoney": "Movimientos Caja",
@@ -255,7 +258,8 @@
 					"DeleteYes": "Sí, eliminar",
 					"DeleteNo": "No",
 					"DeleteMsg": "¿Está seguro de eliminar este cliente?",
-					"WarningNotChanges": "No hay cambios en la Información"
+					"WarningNotChanges": "No hay cambios en la Información",
+					"FilterNameClient" :"Filtrar por nombre de cliente"
 				
 
 			},
@@ -294,7 +298,8 @@
 							"Capital": "Capital",
 							"Interest": "Intereses",
 							"TotalPaid": "Total Pagado",
-							"ButtonBack": "Volver a simulador"
+							"ButtonBack": "Volver a simulador",
+							"state": "Estado"
 					},
 
 					"Days": {
@@ -314,15 +319,16 @@
 						"DescriptionB" : "La descripción del prestamo sin abono a capital"	
 					},
 
-					"ErrorShowPlan": "Error al Mostrar el plan de pago",
+					"ErrorShowPlan": "Frecuencia de cobro no definida",
 					"ErrorSelectPayPeriod": "Debe incluir la selección de pago",
 					"ErrorValue":  "Error, valor de préstamo no definido",
 					"ErrorInterest": "Error, tasa de interes no definida",
-					"ErrorPayPeriod": "Error, periodo de pago no definido",
+					"ErrorTypeAbono": "Error, tipo de pago no definido",
 					"ErrorStartDate": "Error, fecha de inicio no definida",
 					"ErrorEndDate": "Error, fecha de finalización no definida",
 					"ErrorTypePaid": "Error, tipo de pago no definido",
-					"ErrorRetention": "Error, seguro/rifa no definida"				
+					"ErrorRetention": "Error, seguro/rifa no definida",
+					"ErrorRetention2": "Error, seguro/rifa mayor o igual al valor del préstamo"
 
 
 			},
@@ -363,37 +369,67 @@
 				"dniGuarantor": "Cédula",
 				"ButtonSave": "Guardar",
 				"ButtonCancel": "Cancelar",
-				"CloseModalSimulator":"Cerrar Simulador"
+				"CloseModalSimulator":"Cerrar Simulador",
+				"SuccessRegLoan" :"Préstamo registrado correctamente",
+				"ErrorRegLoan" : "Registro de préstamo fallido"
+			},
+			"ShowAllLoans":{
+
+				"Title": "Todos los Préstamos",
+				"ValueLoan": "Valor prestado",
+				"ValuePaid": "Valor pagado",
+				"Saldo": "Saldo",
+				"Interest": "Interes",
+				"State": "Estado",
+				"Start": "Fecha inicio",
+				"Finish": "Fecha fin",
+				"Client" : "Cliente"				
+				
 			},
 			
 			"MakeCollections":{
-				"Title": "Cobros del dia",
+				"Title": "Recaudos del dia",
 				"EnterDate": "Ingrese Fecha",
 				"Search": "Buscar",
+				"FilterPayFor": "Filtrar Recaudos por:",
 				"SeeAll": "Ver Todo",
 				"SeeUnpaid": "Ver Faltantes",
-				"Route": "Número de Ruta",
+				"ListCollections" :"Lista de Recaudos",
+				
 				"Address": "Dirección",
 				"Client": "Cliente",
-				"Title2": "Agregar Pagos",
+				"Title2": "Agregar Recaudos",
 				"LoanInformation": "Información de Préstamos",
-				"DniClient": "Cédula",
+				
 				"LoanValue": "Valor Prestado",
 				"InterestValue": "Valor Intereses",
-				"Total": "Total",
+				"ValuePaid": "Valor Pagado",
 				"Balance": "Saldo",
-				"MinimunValue": "Valor Mínimo",
-				"MaximunValue": "Valor Máximo",
-				"MakePaymentCapital": "Realizar Abono al Capital",
-				"ButtonSave": "Registrar",
+				"NumbersFee" : "Número de cuotas",
+				"EnterPay": "Ingresar Recaudo",
+				"ValuePay":"Valor Recaudo",
+							
+				"ButtonSave": "Guardar Recaudo",
 				"ButtonCancel": "Cancelar",
 
 				"PaymentHistory":{
 						"Title": "Historial de Pagos",
 						"Date": "Fecha",
 						"Total": "Total",
-						"ButtonBack": "Regresar"
+						"ButtonBack": "Cerrar Historial de Pagos",
+						"ValuePay" : "Valor de Pago",
+						"Number": "Número"
 					},
+				"FeesHistory":{
+						"Title" : "Historial de Cuotas",
+						"Status": "Estado",
+						"ValueFee":"Valor Cuota"
+						
+					},
+				"ErrorFieldValuePay" : "Valor Recaudo vacio o no definido",
+				"SuccessRegPayment" : "Recaudo registrado exitosamente",
+				"ErrorRegRecaudo" : "Error, fallo el registro del recaudo",
+				"AlertFinishLoan" : "The last fee of this loan was paid. Loan Finished",
 
 				"LoansDetail":{
 						"Title": "Detalle de Préstamos",

@@ -212,8 +212,67 @@ var kubeApp = angular.module('kubeApp');
 
     })
 
+//#######################################################################################################
+//#######################################################################################################
+// Servicio que permite registrar prestamos
 
- 
+   kubeApp.service('LoansService', function($http, APP, loadingService){
+      this.doLoan = function (data) {
+         loadingService.show();
+            return $http({
+                method: 'POST',
+                url: APP.BASE_URL + 'loans',
+                data: data
+            })
+        };
+
+
+          this.allInfoLoans = function (data) {
+         loadingService.show();
+            return $http({
+                method: 'GET',
+                url: APP.BASE_URL + 'loans',
+                params: data
+            })
+        };
+
+   })
+   //#######################################################################################################
+// Servicio que permite registrar recaudos
+
+   kubeApp.service('PaymentsService', function($http, APP, loadingService){
+      this.paymentsToday = function (data) {
+         loadingService.show();
+            return $http({
+                method: 'GET',
+                url: APP.BASE_URL + 'fees_date',
+                params: data
+            })
+        };
+
+          this.doPayment = function (data) {
+         loadingService.show();
+            return $http({
+                method: 'POST',
+                url: APP.BASE_URL + 'payments',
+                data: data
+            })
+        };
+
+        this.checkHistoryPayment = function (data) {
+         loadingService.show();
+            return $http({
+                method: 'GET',
+                url: APP.BASE_URL + 'payments/history_payments',
+                params: data
+            })
+        };
+
+   })
+
+
+ //######################################################################################################
+//#######################################################################################################
 
 
 kubeApp.directive('dateFormat', function() {
@@ -227,3 +286,14 @@ kubeApp.directive('dateFormat', function() {
     }
   };
 });
+
+
+// //#######################################################################################################
+
+// kubeApp.service('unlockScreen', function(){
+//   this.on=function(){
+     
+//     screen.unlockOrientation();
+    
+//   }
+// })

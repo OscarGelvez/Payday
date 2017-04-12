@@ -11,7 +11,7 @@
     border:3px;  
     margin-left: 15%;
     margin-right: 15%;
-    border-color: rgba(255, 255, 1255,0.6);
+    border-color: rgba(255, 255, 125,0.6);
     box-shadow: 2px 2px 20px rgb(60, 60, 60);
     color: white;
     font-weight:400;
@@ -30,7 +30,7 @@
     border:3px;  
     margin-left: 15%;
     margin-right: 15%;
-    border-color: rgba(255, 255, 1255,0.6);
+    border-color: rgba(255, 255, 125,0.6);
     box-shadow: 2px 2px 20px rgb(60, 60, 60);
     color: white;
     font-weight:400;
@@ -693,8 +693,9 @@ color: white;
     border-top-style:outset;
     border-right-style:outset;
     border-left-style:outset;
-    background-color: rgba(13, 95, 147,0.5);
+   background-color:rgba(21, 125, 191,0.9);
     border-width: 1px;
+    font-size: 16px;
 }
 
 
@@ -750,7 +751,150 @@ color: white;
 
 
 
+.item-accordion{
+  padding-left: 10%;
+}
 
+.item-accordion2{
+  padding-left: 16%;
+}
+
+
+
+
+ @media screen and (orientation: portrait) {
+  .listPaymentsDay{
+    margin-left: 10%;
+    margin-right: 15%;
+    margin-top: 10%;
+    width: 80%;
+    height: 50%;
+  }
+   .listPaymentsDay2{
+    margin-left: 10% !important;
+    margin-right: 15%;
+    margin-top: 10%;
+    width: 80%;
+    height: 50%;
+  }
+  
+  }
+  
+@media screen and (orientation: landscape) {
+  .listPaymentsDay{
+    margin-left: 10%;
+    margin-right: 15%;
+    margin-top: 5%;
+    width: 80%;
+    height: 50%;
+  }
+  .listPaymentsDay2{
+    margin-left: 5% !important;
+    margin-right: 15%;
+    margin-top: 10%;
+    width: 90%;
+    height: 50%;
+  }
+   
+  }
+
+
+
+  /*Ajustes generales para la lista*/
+.listPaymentsDay .list .item{
+ background-color: rgba(66, 165, 245,0.7);
+height: 50px;
+  color:white !important; 
+
+
+}
+
+.card{
+  background-color: rgba(98, 189, 224,0.2); 
+  width: 100%;
+
+}
+
+.card .item{
+  background-color: rgba(98, 189, 224,0.1); 
+  width: 100%;
+  color: white;
+}
+
+
+.card input[type="text"], input[type="number"], input[type="date"]{
+    color: white !important;  /* change [input cursor color] by this*/
+      font-weight:500 !important;
+      text-shadow: 0px 0px 0px #fff; /* change [input font] by this*/
+      -webkit-text-fill-color: transparent;
+      border-color: #009688 !important;
+      font-size: 16px !important;
+      text-align: center;
+      padding: 0px;
+      background-color: transparent;
+      border-color: 
+
+    
+}
+
+
+  .colBody2{
+  background-color: rgba(21, 125, 191,0.3);
+    border-right-style:outset;
+    border-width: 1px;
+    border-top-style:outset;
+       border-right-style:outset;
+    border-left-style:outset;
+    
+    text-align: right;
+}
+
+
+
+
+
+  .even{
+
+        background-color:rgba(21, 125, 191,0.9);
+                  font-size: 16px;
+
+        }
+  
+  .odd{ 
+
+     
+     background-color:rgba(28, 85, 137,0.9); 
+            
+      font-size: 16px;
+      }
+
+
+
+  .even2{
+
+        background-color:rgba(21, 125, 191,0.9);
+                  font-size: 14px;
+
+        }
+  
+  .odd2{ 
+
+     
+     background-color:rgba(28, 85, 137,0.9); 
+            
+      font-size: 14px;
+      }
+
+.colHead2{
+    border-right-style:outset;
+    border-width: 1px;
+    border-top-style:outset;
+    border-right-style:outset;
+    border-left-style:outset;
+   background-color:rgba(21, 125, 191,0.9);
+    border-width: 1px;
+    font-size: 14px;
+}
 
 
 

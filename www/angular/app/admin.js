@@ -218,6 +218,17 @@ kubeApp.config(['$stateProvider', '$urlRouterProvider', '$translateProvider',
 
 
                 })
+                   .state('app.all_loans',{
+                    url : '/all_loan',
+                    cache:false,
+                        views: {
+                           'menuContent': {
+                                  templateUrl : 'templates/app.all_loan.html',
+                                  controller : 'AllLoanController'
+                           }
+                        }
+                
+                })
 
                 //  .state('app.paymentPlan2',{
                 //     url : '/payment_plan',

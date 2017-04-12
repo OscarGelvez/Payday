@@ -27,7 +27,14 @@
         },
         "cordova-plugin-network-information": {
             "PACKAGE_NAME": "com.ionicframework.mypayday999247"
+        },
+        "cordova-plugin-screen-orientation": {
+            "PACKAGE_NAME": "com.ionicframework.mypayday999247"
         }
     },
-    "dependent_plugins": {}
+    "dependent_plugins": {
+        "es6-promise-plugin": {
+            "PACKAGE_NAME": "com.ionicframework.mypayday999247"
+        }
+    }
 }

@@ -21,8 +21,8 @@ console.log("llego aqui a SesionController")
         $ionicPopup.confirm({
         title: ''+title,
         template: ''+msg,
-        cancelText: ""+yes,
-         okText:""+no,
+        cancelText: ""+no,
+         okText:""+yes,
          okType:"button-positive"
       }).then(function(res) {
         if (res) {
@@ -36,6 +36,11 @@ console.log("llego aqui a SesionController")
 
 
 
+ document.addEventListener("deviceready", onDeviceReady, false);
+    function onDeviceReady()
+    {
+     screen.orientation.unlock();
+    }  
 
 
 

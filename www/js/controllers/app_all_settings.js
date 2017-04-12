@@ -23,6 +23,14 @@ angular.module('kubeApp')
             }, 100
           );
     $scope.$on('$destroy', deregisterFirst);
+
+
+     document.addEventListener("deviceready", onDeviceReady, false);
+    function onDeviceReady()
+    {
+     screen.orientation.unlock();
+    }  
+
 		   var info = {};
         info.value = localStorage['kubesoft.kubeApp.user_id'];
        console.log(info);

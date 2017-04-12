@@ -31,7 +31,11 @@ var deregisterFirst = $ionicPlatform.registerBackButtonAction(
 
 
 
-
+ document.addEventListener("deviceready", onDeviceReady, false);
+    function onDeviceReady()
+    {
+     screen.orientation.unlock();
+    }  
 
 
     $scope.CurrentDate = new Date();
@@ -70,6 +74,7 @@ var deregisterFirst = $ionicPlatform.registerBackButtonAction(
                       }
                       
                     }else{
+                      loadingService.hide(); 
                           var alertPopup = $ionicPopup.alert({
                              title: 'Error',
                              template: '{{"Clients.ErrorLoadClients1" | translate}}'

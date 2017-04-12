@@ -88,8 +88,10 @@
 				"Title": "Payday",
 				"LatInicio": "Home",
 				"LatCashReceive": "Payments",
-				"LatLoans": "Loans",
+				"LatLoans1": "New Loans",
+				"LatLoans2": "See loan",
 				"LatLoansNew": "New loan",
+				"LatLoans2": "Ver préstamos",
 				"LatLoansShow": "Show loans",
 				"LatClients": "Clients",
 				"LatSimulator": "Simulator",
@@ -373,6 +375,19 @@
 				"SuccessRegLoan" :"Loan successfully registered",
 				"ErrorRegLoan" : "Loan record failed"
 			},
+			"ShowAllLoans":{
+
+				"Title": "Todos los Préstamos",
+				"ValueLoan": "Loan value",
+				"ValuePaid": "Paid Value",
+				"Saldo": "Balance",
+				"Interest": "Interest",
+				"State": "State",
+				"Start": "Start date",
+				"Finish": "End date",
+				"Client" : "Client"				
+				
+			},
 			
 			"MakeCollections":{
 				"Title": "Collections of Day", // no estoy seguro
@@ -385,16 +400,23 @@
 				
 				"Address": "Address",
 				"Client": "Client",
+				"Phone" : "Phone",
+				"Call" : "Call",
 				"Title2": "Add Payments",
 				"LoanInformation": "Loan Information",
+				"ClientInformation" :"Customer Information",
+				"BtnAction" : "Action",
+				"TextAction" : "Pay",
+				"TextAction2" : "History",
 				
 				"LoanValue": "Loan Value",
 				"InterestValue": "InterestValue",
-				"ValuePaid": "Value Paid",
+				"ValuePaid": "Paid Value",
 				"Balance": "Balance",  // No estoy seguro
 				"NumbersFee" : "Numbers of fee",
 				"EnterPay" :"Enter Pay",
 				"ValuePay":"Value Pay",
+				"ValueFee" : "Fee value",
 			
 				"ButtonSave": "Save",
 				"ButtonCancel": "Cancel",
@@ -403,11 +425,14 @@
 						"Title": "Payment History",
 						"Date": "Date",
 						"Total": "Total",
-						"ButtonBack": "Back"
+						"ButtonBack": "Close Payment History",
+						"ValuePay" : "Value",
+						"Number": "Number"
 					},
 					"FeesHistory":{
 						"Title" : "Fees History",
-						"Status": "Status"
+						"Status": "Status",
+						"ValueFee":"Fee Value"
 
 					},
 					"ErrorFieldValuePay" : "Empty or undefined value",

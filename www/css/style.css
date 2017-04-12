@@ -693,8 +693,9 @@ color: white;
     border-top-style:outset;
     border-right-style:outset;
     border-left-style:outset;
-    background-color: rgba(13, 95, 147,0.5);
+   background-color:rgba(21, 125, 191,0.9);
     border-width: 1px;
+    font-size: 16px;
 }
 
 
@@ -837,10 +838,63 @@ height: 50px;
 }
 
 
+  .colBody2{
+  background-color: rgba(21, 125, 191,0.3);
+    border-right-style:outset;
+    border-width: 1px;
+    border-top-style:outset;
+       border-right-style:outset;
+    border-left-style:outset;
+    
+    text-align: right;
+}
 
 
 
 
+
+  .even{
+
+        background-color:rgba(21, 125, 191,0.9);
+                  font-size: 16px;
+
+        }
+  
+  .odd{ 
+
+     
+     background-color:rgba(28, 85, 137,0.9); 
+            
+      font-size: 16px;
+      }
+
+
+
+  .even2{
+
+        background-color:rgba(21, 125, 191,0.9);
+                  font-size: 14px;
+
+        }
+  
+  .odd2{ 
+
+     
+     background-color:rgba(28, 85, 137,0.9); 
+            
+      font-size: 14px;
+      }
+
+.colHead2{
+    border-right-style:outset;
+    border-width: 1px;
+    border-top-style:outset;
+    border-right-style:outset;
+    border-left-style:outset;
+   background-color:rgba(21, 125, 191,0.9);
+    border-width: 1px;
+    font-size: 14px;
+}
 
 
 

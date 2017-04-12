@@ -13,8 +13,8 @@ var deregisterFirst = $ionicPlatform.registerBackButtonAction(
         $ionicPopup.confirm({
         title: ''+title,
         template: ''+msg,
-        cancelText: ""+yes,
-         okText:""+no,
+        cancelText: ""+no,
+         okText:""+yes,
          okType:"button-positive"
       }).then(function(res) {
         if (res) {
@@ -26,6 +26,11 @@ var deregisterFirst = $ionicPlatform.registerBackButtonAction(
     );
     $scope.$on('$destroy', deregisterFirst); 
 
+ document.addEventListener("deviceready", onDeviceReady, false);
+    function onDeviceReady()
+    {
+     screen.orientation.unlock();
+    }  
 
 
 

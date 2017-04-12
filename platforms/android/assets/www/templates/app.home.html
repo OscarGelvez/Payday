@@ -8,9 +8,9 @@
       <div class="row row">
        
             <div class="col col col-offset-10">
-                 <h4  class="icon ion-arrow-down-c  balanced" style="font-weight:700; font-size:18px;"> {{'Home.TextInfoIncomes' | translate}} {{incomes}}</h4>
-                  <h4  class="icon ion-arrow-up-c " style="font-weight:700; font-size:18px; color:#bc1a0d"> {{'Home.TextInfoExpenses' | translate}} {{expenses}}</h4>
-                   <h4  class="icon ion-social-usd  energized" style="font-weight:700; font-size:18px;"> {{'Home.TextInfoBalance' | translate}} {{total}}</h4>
+                 <h4  class="icon ion-arrow-down-c  balanced" style="font-weight:700; font-size:18px;"> {{'Home.TextInfoIncomes' | translate}} {{incomes | currency : "$":0}}</h4>
+                  <h4  class="icon ion-arrow-up-c " style="font-weight:700; font-size:18px; color:#bc1a0d"> {{'Home.TextInfoExpenses' | translate}} {{expenses | currency : "$":0}}</h4>
+                   <h4  class="icon ion-social-usd  energized" style="font-weight:700; font-size:18px;"> {{'Home.TextInfoBalance' | translate}} {{total | currency : "$":0}}</h4>
             </div>
                          
 

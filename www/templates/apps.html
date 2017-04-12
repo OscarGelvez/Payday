@@ -8,7 +8,7 @@
                           <ion-nav-back-button></ion-nav-back-button> 
 
                           <ion-nav-buttons side="left" >
-                            <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+                            <button class="button button-icon button-clear ion-navicon" menu-toggle="left" >
                             </button>
                           </ion-nav-buttons>
                     </ion-nav-bar>
@@ -46,7 +46,7 @@
                                                         </ion-item>
 
                                                         <ion-item class="item-accordion"
-                                                              ng-show="isGroupShown(group2)" menu-close   ui-sref="app.new_loan">
+                                                              ng-show="isGroupShown(group2)" menu-close   ui-sref="app.all_loans">
                                                               <i class="icon ion-chevron-right"> {{'Home.LatLoansShow' | translate}}</i>
                                                         </ion-item>
 
@@ -65,10 +65,10 @@
                                     <i class="ion ion-cube"></i>
                                       {{'Home.LatMovementsMoney' | translate}}
                                     </ion-item>
-                                    <ion-item menu-close >
+                                   <!--  <ion-item menu-close >
                                     <i class="ion ion-person"></i>
                                       {{'Home.LatBalance' | translate}}
-                                    </ion-item>
+                                    </ion-item> -->
                 
                                     <ion-item           
                                        ng-click="toggleGroup(group1)"

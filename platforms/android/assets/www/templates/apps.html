@@ -8,7 +8,7 @@
                           <ion-nav-back-button></ion-nav-back-button> 
 
                           <ion-nav-buttons side="left" >
-                            <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+                            <button class="button button-icon button-clear ion-navicon" menu-toggle="left" >
                             </button>
                           </ion-nav-buttons>
                     </ion-nav-bar>
@@ -27,7 +27,7 @@
                                       <i class="ion ion-home"></i>
                                       {{'Home.LatInicio' | translate}}
                                     </ion-item>
-                                    <ion-item menu-close  >
+                                    <ion-item menu-close  ui-sref="app.paymentsDay">
                                       <i class="ion ion-cash"></i>
                                       {{'Home.LatCashReceive' | translate}}
                                     </ion-item>
@@ -43,6 +43,11 @@
                                                         <ion-item class="item-accordion"
                                                               ng-show="isGroupShown(group2)" menu-close   ui-sref="app.new_loan">
                                                               <i class="icon ion-chevron-right"> {{'Home.LatLoansNew' | translate}}</i>
+                                                        </ion-item>
+
+                                                        <ion-item class="item-accordion"
+                                                              ng-show="isGroupShown(group2)" menu-close   ui-sref="app.all_loans">
+                                                              <i class="icon ion-chevron-right"> {{'Home.LatLoansShow' | translate}}</i>
                                                         </ion-item>
 
 
@@ -77,7 +82,7 @@
                                                               <i class="icon ion-chevron-right"> {{'Home.LatSettings_rubros' | translate}}</i>
                                                           </ion-item>
 
-                                                          <ion-item class="item-accordion"
+                                                          <ion-item class="item-accordion2"
                                                                     ng-show="isGroupShown(group1)" menu-close ng-click="openModalChange()">
                                                               <i class="icon ion-chevron-right"> {{'Home.LatSettings_changeLanguage' | translate}}</i>
                                                           </ion-item>

@@ -10,14 +10,19 @@ var kubeApp = angular.module('kubeApp');
 kubeApp.controller('LoanController', function ($scope,$filter ,$state,$stateParams, $q,CalculatorDate,SaveData, SimulateLoan,
                                                NeighbourhoodsDao, ClientsDao,TypePaidsDao,LoansDao,FeesDao,PaymentsDao,
                                                MovesDao,localDatabase, $ionicPlatform, $translate, $ionicPopup) {
-
-    var deregisterFirst = $ionicPlatform.registerBackButtonAction(
+var deregisterFirst = $ionicPlatform.registerBackButtonAction(
       function() {
-         navigator.app.backHistory();
+         $state.go("app.home");
       }, 100
     );
     $scope.$on('$destroy', deregisterFirst);
 
+
+ document.addEventListener("deviceready", onDeviceReady, false);
+    function onDeviceReady()
+    {
+     screen.orientation.unlock();
+    }  
 
 
 

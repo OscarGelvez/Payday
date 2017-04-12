@@ -16,8 +16,17 @@
                   <ion-list show-delete="data.showDelete" scroll="true" overflow-scroll="false" >
 
                     
+                  <center>
+                    <label class="item item-input item-stacked-label labelsFormInicioRegistro">
+                          <span class="input-label" style="color:white; float:left; margin-left:15%;" translate-cloak>{{'Clients.FilterNameClient' | translate}}</span>
+                          <br>                        
+                          <input type="text" style="color:white; text-align:center; background-color:rgba(66, 165, 245,0.3);" ng-model="filterSearch2">
 
-                        <ion-item ng-repeat="item in listClients" item="item" ng-click="openModalDetail(item.id)" class="item-remove-animate item-avatar">
+                  </label> 
+                  </center>
+                  <br>
+
+                        <ion-item ng-repeat="item in listClients | filter:{name:filterSearch2}" item="item" ng-click="openModalDetail(item.id)" class="item-remove-animate item-avatar">
                           <img ng-src="img/user3.png">
                            <h2 style="color:white;"> {{item.name}}</h2>
 

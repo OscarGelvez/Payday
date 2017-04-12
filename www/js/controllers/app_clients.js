@@ -31,7 +31,11 @@ var deregisterFirst = $ionicPlatform.registerBackButtonAction(
 
 
 
-
+ document.addEventListener("deviceready", onDeviceReady, false);
+    function onDeviceReady()
+    {
+     screen.orientation.unlock();
+    }  
 
 
     $scope.CurrentDate = new Date();

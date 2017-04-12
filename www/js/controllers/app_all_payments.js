@@ -10,15 +10,21 @@ angular.module('kubeApp')
  .controller('paymentsDayController', ['$scope', '$state', '$ionicPopup', '$http', 'APP', 'loadingService', '$ionicModal', '$translate', 'Box_Movement', '$ionicPlatform', '$filter', 'valorCaja', 'PaymentsService', 'recaudoSeleccionado', function ($scope, $state, $ionicPopup, $http, APP, loadingService, $ionicModal, $translate, Box_Movement, $ionicPlatform, $filter, valorCaja, PaymentsService, recaudoSeleccionado) {
  
 
-//  $scope.a="26-04-2016";    
-// $scope.c = moment($scope.a,"DD-MM-YYYY");
-// $scope.b="20-10-2016";
-// $scope.d = moment($scope.b,"DD-MM-YYYY");
-// if($scope.d <= $scope.c){
-//     alert($scope.d.format("YYYY-MM-DD") + ' es menor a  '+ $scope.c.format("YYYY-MM-DD"))
-// }else{
-//     alert($scope.d.format("YYYY-MM-DD") + ' es mayor a ' + $scope.c.format("YYYY-MM-DD"))
-// }
+
+var deregisterFirst = $ionicPlatform.registerBackButtonAction(
+      function() {
+         $state.go("app.home");
+      }, 100
+    );
+    $scope.$on('$destroy', deregisterFirst);
+
+ document.addEventListener("deviceready", onDeviceReady, false);
+    function onDeviceReady()
+    {
+     screen.orientation.unlock();
+    }  
+
+
 
 var info = {};
 info.value = localStorage['kubesoft.kubeApp.user_id'];
@@ -122,7 +128,7 @@ $scope.verificarLista=function(){
 }
 
 
-
+$scope.paymentsTodayModel.fecha=$scope.fechaHoy;
 $scope.load_payments_today($scope.fechaHoy);
 
 
@@ -151,6 +157,26 @@ $scope.guardarFabrica=function(index){
 
  .controller('addPaymentController', ['$scope', '$state', '$ionicPopup', '$http', 'APP', 'loadingService', '$ionicModal', '$translate', 'Box_Movement', '$ionicPlatform', '$filter', 'valorCaja', 'PaymentsService', 'recaudoSeleccionado', 'CalculatorDate', 'SimulateLoan', function ($scope, $state, $ionicPopup, $http, APP, loadingService, $ionicModal, $translate, Box_Movement, $ionicPlatform, $filter, valorCaja, PaymentsService, recaudoSeleccionado, CalculatorDate, SimulateLoan) {
 
+
+var deregisterFirst = $ionicPlatform.registerBackButtonAction(
+      function() {
+         $state.go("app.paymentsDay");
+      }, 100
+    );
+    $scope.$on('$destroy', deregisterFirst);
+
+
+    var deregister = $ionicPlatform.registerBackButtonAction(
+                function () {
+                    console.log("I did something")
+                     $scope.closeHistoryFees();
+                      $scope.closeHistoryPay();
+                }, 201
+        );
+        //Then when this scope is destroyed, remove the function
+        $scope.$on('$destroy', deregister)
+
+
 var info = {};
 info.value = localStorage['kubesoft.kubeApp.user_id'];
 console.log(info);
@@ -177,16 +203,26 @@ $scope.payment = {};
 // apertura de modal de Historial de Pagos
     $ionicModal.fromTemplateUrl('templates/modals/payments_history.html', {
         scope: $scope,
-        animation: 'fade-in-scale'
+        animation: 'fade-in-scale',
+        backdropClickToClose: false
       }).then(function(modal) {
         $scope.modalHistoryPayments = modal;
       });
       
       $scope.openHistoryPay = function() {
+        function onDeviceReady()
+                  {
+                   screen.orientation.lock('landscape');
+                  }  
         $scope.modalHistoryPayments.show();
 
       };
       $scope.closeHistoryPay = function() {
+        document.addEventListener("deviceready", onDeviceReady, false);
+                  function onDeviceReady()
+                  {
+                   screen.orientation.unlock();
+                  }  
         $scope.modalHistoryPayments.hide();
         
       };
@@ -195,26 +231,43 @@ $scope.payment = {};
       // apertura de modal de Historial de Cuotas
     $ionicModal.fromTemplateUrl('templates/modals/fees_history.html', {
         scope: $scope,
-        animation: 'fade-in-scale'
+        animation: 'fade-in-scale',
+        backdropClickToClose: false
+        // hardwareBackButtonClose: false
       }).then(function(modal) {
         $scope.modalHistoryFees = modal;
       });
       
       $scope.openHistoryFees = function() {
+        document.addEventListener("deviceready", onDeviceReady, false);
+                  function onDeviceReady()
+                  {
+                   screen.orientation.lock('landscape');
+                  }  
         $scope.modalHistoryFees.show();
 
       };
       $scope.closeHistoryFees = function() {
+        document.addEventListener("deviceready", onDeviceReady, false);
+                  function onDeviceReady()
+                  {
+                   screen.orientation.unlock();
+                  }  
         $scope.modalHistoryFees.hide();
-        $scope.newClient = {};
+        
       };
+
+
+
+
+
 
   $scope.calcDate = CalculatorDate;
   $scope.tablePaymentPlan= [];
    $scope.tablePaymentPlan2= [];
 
 $scope.openHistorialCuotas=function(){
-
+ 
 	loadItemsHomeSimulate()
 
 }
@@ -264,8 +317,11 @@ function loadItemsHomeSimulate(){
                            var dateHoy = new Date();
                            console.log(dateHoy);
                              for (var k = 1; k < $scope.tablePaymentPlan.length; k++) {
+
+                              var auxA = $filter('date')(dateHoy, "yyyy-MM-dd");
+                              var auxB = $filter('date')($scope.tablePaymentPlan[k].date, "yyyy-MM-dd");
                             
-                            if($scope.tablePaymentPlan[k].date<dateHoy){
+                            if(auxB<auxA){
                                $scope.tablePaymentPlan[k].estado = "Atrasó";
                               // console.log("entro")
                               //  console.log(dateHoy);
@@ -288,8 +344,10 @@ function loadItemsHomeSimulate(){
                                       else{                            
                                       var a = pagado+valCuota;
                                             if(a>0){
-                                               $scope.tablePaymentPlan[j].estado = "Abonó";
+                                               $scope.tablePaymentPlan[j].estado = -1;
                                                  $scope.abono = pagado+valCuota;
+                                              
+                                                 $scope.abono = $filter('currency')($scope.abono, '$', 0)
                                                   console.log($scope.abono);
                                             }                            
                                         break;
@@ -390,8 +448,60 @@ $scope.savePayment=function(){
         
     
            $scope.saldo = ($scope.auxLoan.balance - tempValuePaid);
+           $scope.loadHistoryPayments();
 
        }
+
+$scope.openHistoryAux=function(){
+
+     $scope.openHistoryPay();
+
+}
+
+$scope.loadHistoryPayments = function(){
+    var datosListos= {};
+      
+     datosListos.loan_id = $scope.auxLoan.id;          
+
+          console.log(datosListos);      
+          loadingService.show();
+        PaymentsService.checkHistoryPayment(datosListos)
+              .success(function(response){
+                      loadingService.hide();
+                        console.log(response);
+                        if(response.error==false){
+                  
+                          $scope.listHistoryPayments = response.History;
+                          console.log($scope.listHistoryPayments);
+                          $scope.totalValueHistory = 0;
+                          for (var i = 0; i < $scope.listHistoryPayments.length; i++) {
+                            $scope.totalValueHistory+=$scope.listHistoryPayments[i].value;
+                          };
+                          
+
+                        }else{
+                               var alertPopup = $ionicPopup.alert({
+                                 title: 'Error',
+                                 template: '{{"MakeCollections.ErrorRegRecaudo" | translate}}'
+                               });
+                        }
+                                        
+                  }).error(function(err){
+                  loadingService.hide();               
+                      var alertPopup = $ionicPopup.alert({
+                             title: 'Error',
+                             template: '{{"MakeCollections.ErrorRegRecaudo" | translate}}'
+                           });
+                          alertPopup.then(function(res) {                            
+                               console.log(err);
+                           });
+                  
+                   
+              }); 
+}
+
+$scope.loadHistoryPayments();
+
 
 			
  }])

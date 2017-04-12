@@ -226,6 +226,16 @@ var kubeApp = angular.module('kubeApp');
             })
         };
 
+
+          this.allInfoLoans = function (data) {
+         loadingService.show();
+            return $http({
+                method: 'GET',
+                url: APP.BASE_URL + 'loans',
+                params: data
+            })
+        };
+
    })
    //#######################################################################################################
 // Servicio que permite registrar recaudos
@@ -249,6 +259,15 @@ var kubeApp = angular.module('kubeApp');
             })
         };
 
+        this.checkHistoryPayment = function (data) {
+         loadingService.show();
+            return $http({
+                method: 'GET',
+                url: APP.BASE_URL + 'payments/history_payments',
+                params: data
+            })
+        };
+
    })
 
 
@@ -267,3 +286,14 @@ kubeApp.directive('dateFormat', function() {
     }
   };
 });
+
+
+// //#######################################################################################################
+
+// kubeApp.service('unlockScreen', function(){
+//   this.on=function(){
+     
+//     screen.unlockOrientation();
+    
+//   }
+// })

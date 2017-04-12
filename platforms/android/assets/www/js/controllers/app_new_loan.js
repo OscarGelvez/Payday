@@ -3,9 +3,37 @@ angular.module('kubeApp')
 
 
 
-  .controller('NewLoanController', ['$scope', '$state', '$ionicPopup', '$http', 'APP', 'loadingService', 'Admin_Rubro', 'SaveData', '$ionicModal', '$translate', 'Box_Movement', '$ionicPlatform', 'countriesFactory', 'clientsService', 'CalculatorDate', 'SimulateLoan', function ($scope, $state, $ionicPopup, $http, APP, loadingService, Admin_Rubro, SaveData, $ionicModal, $translate, Box_Movement, $ionicPlatform, countriesFactory, clientsService, CalculatorDate, SimulateLoan) {
+  .controller('NewLoanController', ['$scope', '$state', '$ionicPopup', '$http', 'APP', 'loadingService', 'Admin_Rubro', 'SaveData', '$ionicModal', '$translate', 'Box_Movement', '$ionicPlatform', 'countriesFactory', 'clientsService', 'CalculatorDate', 'SimulateLoan', 'LoansService', '$filter', 'valorCaja', function ($scope, $state, $ionicPopup, $http, APP, loadingService, Admin_Rubro, SaveData, $ionicModal, $translate, Box_Movement, $ionicPlatform, countriesFactory, clientsService, CalculatorDate, SimulateLoan, LoansService, $filter, valorCaja) {
  
 
+
+
+var deregisterFirst = $ionicPlatform.registerBackButtonAction(
+      function() {
+         $state.go("app.home");
+      }, 100
+    );
+    $scope.$on('$destroy', deregisterFirst);
+
+ document.addEventListener("deviceready", onDeviceReady, false);
+    function onDeviceReady()
+    {
+     screen.orientation.unlock();
+    }  
+
+
+// if(!valorCaja.estado){
+  
+// var title = $translate.instant('Alerts.TitleAlertBoxClosed');
+//     var alertPopup = $ionicPopup.alert({
+//                              title: ''+title,
+//                              template: '{{"Alerts.AlertBoxClosed" | translate}}'
+//                            });
+
+//                            alertPopup.then(function(res) {
+//                         $state.go('app.moves_box');
+//                          }); 
+// }
 
 
 $scope.valToggle = $translate.instant('MakeLoan.OldClient');
@@ -95,7 +123,8 @@ $scope.load_clients();
 
     //Funcion que clona el objeto 
 function clone( obj ) {
-            if ( obj === null || typeof obj  !== 'object' ) {
+
+      if ( obj === null || typeof obj  !== 'object' ) {
                 return obj;
             }
          
@@ -197,17 +226,21 @@ function clone( obj ) {
      // ########## submit del form de nuevos prestamos ###################
 
 
- $scope.verificationNewLoan=function(newClient,  newInfoSimulator){
-
+ $scope.verificationNewLoan=function(){
+console.log("Llego")
       //Si es true HAY Q CREAR UN NUEVO CLIENTE
           if($scope.hacerVisible){
-                $scope.submitNewClient(newClient);
+            console.log("Se fue por el If")
+                $scope.submitNewClient();
           }
           // De se false llamo solo a crear Loan
           else{
+            console.log("Se fue por el Else");
+            console.log($scope.select.idClienteExistente);
 
-              if($scope.idClienteExistente!= "" || $scope.idClienteExistente!= undefined){
-                 
+              if($scope.select.idClienteExistente!= undefined){
+                 $scope.showPaymentPlan(1); // Verifica si todo esta bien en el prestamo
+                
                }else{
                 alert("no ha elegido un cliente existente del select")
                }
@@ -218,28 +251,133 @@ function clone( obj ) {
 
      }
 
-
+ $scope.CurrentDate = new Date();
 $scope.SubmitNewLoan=function(){
 
     var prepareLoan = {};
-    prepareLoan.client =  $scope.newClient;
+    prepareLoan.loan = {};
+    prepareLoan.fees = {};
 
+    if($scope.hacerVisible){
+
+      $scope.newClient.country = $scope.select.pais;
+      $scope.newClient.department = $scope.select.dpto;
+      $scope.newClient.city = $scope.select.ciudad;
+
+      prepareLoan.client = {};
+
+
+      console.log($scope.newClient);
+
+      prepareLoan.client =  clone($scope.newClient);
+      prepareLoan.idClient = -1;
+    }else{
+      prepareLoan.idClient=$scope.select.idClienteExistente;
+    }
+    var start_date=$filter('date')($scope.newLoan.start_date, "yyyy-MM-dd");
+    var end_date=$filter('date')($scope.newLoan.date_end, "yyyy-MM-dd");
+
+ console.log($scope.newLoan.start_date);
+
+
+    prepareLoan.loan.date=$filter('date')($scope.CurrentDate, "yyyy-MM-dd");
+    prepareLoan.loan.start_date = start_date;
+    prepareLoan.loan.end_date = end_date;
+    prepareLoan.loan.interest_produced = $scope.newLoan.interest_produced;
+    prepareLoan.loan.pay_period = $scope.newLoan.selectPayPeriod;
+    prepareLoan.loan.balance = $scope.newLoan.value;
+    prepareLoan.loan.interest_rate = $scope.newLoan.interest_rate;
+    prepareLoan.loan.numbers_of_fee = $scope.newLoan.numbers_of_fee;
+    prepareLoan.loan.value_paid = 0;
+    prepareLoan.loan.type_paid_id= $scope.newLoan.type_paid_id;
+    prepareLoan.loan.collector_creater_id = info.value;
+    prepareLoan.loan.retention = $scope.newLoan.retention;
+
+    $scope.tablePaymentPlanAux = clone($scope.tablePaymentPlan);
+    for (var i = 0; i < $scope.tablePaymentPlan.length; i++) {
+      
+
+        $scope.tablePaymentPlanAux[i]["date"] = $filter('date')($scope.tablePaymentPlan[i]["date"], "yyyy-MM-dd");
+
+        prepareLoan.fees[i] = $scope.tablePaymentPlanAux[i];
+    };
+    
+    prepareLoan.collector_id=info.value;
+
+    console.log(prepareLoan);
+LoansService
+      .doLoan(prepareLoan)
+              .success(function(response){
+                      loadingService.hide();
+                      if(!response.error){
+                         if(response.loans.movimiento.status && response.loans.prestamo.status){
+                           var alertPopup = $ionicPopup.alert({
+                             title: 'OK',
+                             template: '{{"MakeLoan.SuccessRegLoan" | translate}}'
+                           });
+                          alertPopup.then(function(res) {
+                            
+                       $scope.newClient = {};
+                     $scope.load_clients();
+                     prepareLoan={};
+                    $scope.newLoan = {} 
+
+
+                           }); 
+                        }
+                      }
+                       else{
+                            // en caso de que el documento ya exista para otro cliente
+                            if(response.val==5){
+                                 var alertPopup = $ionicPopup.alert({
+                                       title: 'Error',
+                                       template: '{{"Clients.ErrorReg3" | translate}}'
+                                     });
+                            }else{
+                               var alertPopup = $ionicPopup.alert({
+                                 title: 'Error',
+                                 template: '{{"MakeLoan.ErrorRegLoan" | translate}}'
+                               });
+                            }
+
+                             // $scope.select.pais=$scope.select.pais+"";
+                             // $scope.select.dpto=$scope.select.dpto+""; // => con el fin de que al abrir el modal para meter los datos los selects se llenen.
+                             //  $scope.select.ciudad= $scope.select.ciudad+"";
+
+                            
+                        }
+                                        
+                  }).error(function(err){
+                  loadingService.hide();
+               
+                      var alertPopup = $ionicPopup.alert({
+                             title: 'Error',
+                             template: '{{"MakeLoan.ErrorRegLoan" | translate}}'
+                           });
+                          alertPopup.then(function(res) {                            
+                               console.log(err);
+                           });
+                  
+                   
+              }); 
+      
 
 }
 
 //Verifica si el formulario de clientes esta completo y correcto
-$scope.submitNewClient=function(newClient){
-        console.log(newClient);
-
+$scope.submitNewClient=function(){
+     
+        console.log("Llego submitNewClient")
+         console.log($scope.newClient);
         
-        if(newClient.document==undefined || newClient.document==""){
+        if($scope.newClient.document==undefined || $scope.newClient.document==""){
                
                 var error1 = $translate.instant('Clients.ErrorFieldDocument');
                 toastr.error(error1, "ERROR");            
                
           }
 
-          else if(newClient.name==undefined || newClient.name==""){
+          else if($scope.newClient.name==undefined || $scope.newClient.name==""){
                
                 var error2 = $translate.instant('Clients.ErrorFieldName');
                 toastr.error(error2, "ERROR");            
@@ -247,12 +385,12 @@ $scope.submitNewClient=function(newClient){
           }
        
            else{              
-                if(newClient.email==undefined){
-               newClient.email="";            
+                if($scope.newClient.email==undefined){
+               $scope.newClient.email="";            
                
                }
-                if(newClient.description==undefined){
-               newClient.description="";           
+                if($scope.newClient.description==undefined){
+               $scope.newClient.description="";           
                
                }
                 if($scope.select.pais==undefined){
@@ -280,87 +418,90 @@ $scope.submitNewClient=function(newClient){
                }
 
 
-            //$scope.registrarNuevoCliente(newClient);
-            $scope.SubmitNewLoan(newClient);
+            //$scope.registrarNuevoCliente($scope.newClient);
+            
+
+            $scope.showPaymentPlan(1); 
+            
           }
 
       }
 
 
 
-$scope.registrarNuevoCliente=function(newClient){
+// $scope.registrarNuevoCliente=function(newClient){
 
-        console.log(newClient);
-          var datosListos= {};  
+//         console.log(newClient);
+//           var datosListos= {};  
          
      
-          datosListos.address=newClient.address;
-          datosListos.name=newClient.name;
-          datosListos.phone_numbers=newClient.phone_numbers;
-          datosListos.email=newClient.email;
+//           datosListos.address=newClient.address;
+//           datosListos.name=newClient.name;
+//           datosListos.phone_numbers=newClient.phone_numbers;
+//           datosListos.email=newClient.email;
 
-          datosListos.country=$scope.select.pais;
-          datosListos.department=$scope.select.dpto;
-          datosListos.city=$scope.select.ciudad;
+//           datosListos.country=$scope.select.pais;
+//           datosListos.department=$scope.select.dpto;
+//           datosListos.city=$scope.select.ciudad;
 
-          datosListos.observation=newClient.description;
-          datosListos.document=newClient.document;
-          datosListos.collector_id=info.value;
+//           datosListos.observation=newClient.description;
+//           datosListos.document=newClient.document;
+//           datosListos.collector_id=info.value;
 
 
-          console.log(datosListos);
+//           console.log(datosListos);
         
 
-        clientsService.saveClient(datosListos)
-              .success(function(response){
-                      loadingService.hide();
-                        if(response.status==true){
-                           var alertPopup = $ionicPopup.alert({
-                             title: 'OK',
-                             template: '{{"Clients.SuccessRegClient" | translate}}'
-                           });
-                          alertPopup.then(function(res) {
+//         clientsService.saveClient(datosListos)
+//               .success(function(response){
+//                       loadingService.hide();
+//                         if(response.status==true){
+//                            var alertPopup = $ionicPopup.alert({
+//                              title: 'OK',
+//                              template: '{{"Clients.SuccessRegClient" | translate}}'
+//                            });
+//                           alertPopup.then(function(res) {
                             
-                       $scope.newClient = {};
-                     $scope.load_clients();
+//                        $scope.newClient = {};
+//                      $scope.load_clients();
 
 
-                           }); 
-                        }else{
-                            // en caso de que el documento ya exista para otro cliente
-                            if(response.val==5){
-                                 var alertPopup = $ionicPopup.alert({
-                                       title: 'Error',
-                                       template: '{{"Clients.ErrorReg3" | translate}}'
-                                     });
-                            }else{
-                               var alertPopup = $ionicPopup.alert({
-                                 title: 'Error',
-                                 template: '{{"Clients.ErrorReg1" | translate}}'
-                               });
-                            }
+//                            }); 
+//                         }else{
+//                             // en caso de que el documento ya exista para otro cliente
+//                             if(response.val==5){
+//                                  var alertPopup = $ionicPopup.alert({
+//                                        title: 'Error',
+//                                        template: '{{"Clients.ErrorReg3" | translate}}'
+//                                      });
+//                             }else{
+//                                var alertPopup = $ionicPopup.alert({
+//                                  title: 'Error',
+//                                  template: '{{"Clients.ErrorReg1" | translate}}'
+//                                });
+//                             }
 
-                             $scope.select.pais=$scope.select.pais+"";
-                             $scope.select.dpto=$scope.select.dpto+""; // => con el fin de que al abrir el modal para meter los datos los selects se llenen.
-                              $scope.select.ciudad= $scope.select.ciudad+"";
+//                              $scope.select.pais=$scope.select.pais+"";
+//                              $scope.select.dpto=$scope.select.dpto+""; // => con el fin de que al abrir el modal para meter los datos los selects se llenen.
+//                               $scope.select.ciudad= $scope.select.ciudad+"";
 
                             
-                        }
+//                         }
                                         
-                  }).error(function(err){
-                  loadingService.hide();
+//                   }).error(function(err){
+//                   loadingService.hide();
                
-                      var alertPopup = $ionicPopup.alert({
-                             title: 'Error',
-                             template: '{{"Clients.ErrorReg2" | translate}}'
-                           });
-                          alertPopup.then(function(res) {                            
-                               console.log(err);
-                           });
+//                       var alertPopup = $ionicPopup.alert({
+//                              title: 'Error',
+//                              template: '{{"Clients.ErrorReg2" | translate}}'
+//                            });
+//                           alertPopup.then(function(res) {                            
+//                                console.log(err);
+//                            });
                   
                    
-              });        
-      }
+//               });        
+//       }
 
 
 
@@ -378,7 +519,7 @@ $scope.registrarNuevoCliente=function(newClient){
 
 
 
-var loadItemsHomeSimulate =  function(){
+function loadItemsHomeSimulate(val){
 
             var loan =  $scope.newLoan;
             var value = loan.value;
@@ -390,18 +531,14 @@ var loadItemsHomeSimulate =  function(){
             //no hubo necesidad de parsear
             var startD = loan.start_date;
             var endD = loan.date_end;
-
-
             var typePaid = loan.type_paid_id;
 
-            console.log(loan)
             console.log(value)
             console.log(interest)
             console.log(payPeriod)
             console.log(startD)
             console.log(endD)
             console.log(typePaid)
-
       
             console.log(loan.stringPeriodPaid);
             var arrayDates = [];
@@ -416,6 +553,17 @@ var loadItemsHomeSimulate =  function(){
                 function(arrayTable){
                     $scope.tablePaymentPlan = arrayTable;
                     console.log(arrayTable);
+                    $scope.newLoan.numbers_of_fee=arrayTable.length-1;
+
+                    $scope.newLoan.interest_produced= arrayTable[0].interest;
+                    console.log($scope.newLoan.numbers_of_fee);
+                     console.log( $scope.newLoan.interest_produced);
+
+                       if(val == 2){
+                        $scope.openSimulatorAux();
+                          }else{
+                            $scope.SubmitNewLoan();
+                          }
                 }
 
             ).catch(
@@ -430,7 +578,9 @@ var loadItemsHomeSimulate =  function(){
             );
                 console.log(x);
             $scope.tablePaymentPlan = x;
-            $scope.openSimulatorAux();
+
+          
+           
         
     };   
 
@@ -455,9 +605,9 @@ var loadItemsHomeSimulate =  function(){
 
 
 
-$scope.showPaymentPlan = function(){
+$scope.showPaymentPlan = function(val){
       
-
+console.log("llego a showPaymentPlan")
         console.log( $scope.newLoan.selectPayPeriod)
         console.log( $scope.newLoan.value)
         console.log( $scope.newLoan.interest_rate)
@@ -504,21 +654,21 @@ $scope.showPaymentPlan = function(){
                 // alert("debe incluir la seleccion del periodo de pago");
                 return;
             }
-        }else{
+           }else{
 
-            if( $scope.newLoan.selectPayPeriod == undefined){
-
-                    var alertPopup = $ionicPopup.alert({
-                             title: 'Error',
-                             template: '{{"Simulator.ErrorShowPlan" | translate}}'
-                           });
-
-
-            }else if( $scope.newLoan.value == 0 ||  $scope.newLoan.value==undefined){
+            if( $scope.newLoan.value == 0 ||  $scope.newLoan.value==undefined){
 
                     var alertPopup = $ionicPopup.alert({
                              title: 'Error',
                              template: '{{"Simulator.ErrorValue" | translate}}'
+                           });
+
+
+            }else if( $scope.newLoan.retention >= $scope.newLoan.value){
+
+                    var alertPopup = $ionicPopup.alert({
+                             title: 'Error',
+                             template: '{{"Simulator.ErrorRetention2" | translate}}'
                            });
 
 
@@ -530,7 +680,17 @@ $scope.showPaymentPlan = function(){
                            });
 
 
-            }else if( $scope.newLoan.start_date == undefined){
+            }else if( $scope.newLoan.selectPayPeriod == undefined){
+
+                    var alertPopup = $ionicPopup.alert({
+                             title: 'Error',
+                             template: '{{"Simulator.ErrorShowPlan" | translate}}'
+                           });
+
+
+            }
+
+            else if( $scope.newLoan.start_date == undefined){
 
                     var alertPopup = $ionicPopup.alert({
                              title: 'Error',
@@ -546,15 +706,15 @@ $scope.showPaymentPlan = function(){
                            });
 
 
-            }else if(  $scope.newLoan.type_paid_id == undefined){
+            }else if(  $scope.newLoan.type_paid_id == undefined || $scope.newLoan.type_paid_id == ""){
 
                     var alertPopup = $ionicPopup.alert({
                              title: 'Error',
-                             template: '{{"Simulator.ErrorPayPeriod" | translate}}'
+                             template: '{{"Simulator.ErrorTypeAbono" | translate}}'
                            });
 
 
-            }else if( $scope.newLoan.retention == undefined ||  $scope.newLoan.retention == ""){
+            }else if( $scope.newLoan.retention == undefined ||  $scope.newLoan.retention == null){
 
                     var alertPopup = $ionicPopup.alert({
                              title: 'Error',
@@ -563,6 +723,7 @@ $scope.showPaymentPlan = function(){
 
 
             }
+            
 
 
             // alert("Debe ingresar el valor del prestamo\nIntereses\nFrecuencía Cobro\nFecha Inicio Cobros\nFecha Finalización Préstamo\nTipo Abono\nRetención")
@@ -570,12 +731,15 @@ $scope.showPaymentPlan = function(){
         }
 
          $scope.newLoan.stringPeriodPaid = catchPeriodPay();
-        // newFolder.addInfo("objView", $scope.views.new );
-
-        // console.log( $scope.newLoan.stringPeriodPaid );
-        
-     
-        loadItemsHomeSimulate();
+         if(val == 1){
+          console.log("se fue a loadItemsHomeSimulate y alla si abro SubmitNewLoan")
+          loadItemsHomeSimulate(1);
+          
+         }else{
+          console.log("se fue a mostrar el modal")
+          loadItemsHomeSimulate(2);
+         }
+          
     };
 
 
@@ -583,7 +747,7 @@ $scope.showPaymentPlan = function(){
 
 
 
-        var catchPeriodPay = function(){
+  var catchPeriodPay = function(){
         switch ($scope.newLoan.selectPayPeriod){
             case '+,*,*':{
                 return $scope.newLoan.selectPayPeriod;
@@ -613,3 +777,74 @@ $scope.showPaymentPlan = function(){
  }])
 
 
+  .controller('AllLoanController', ['$scope', '$state', '$ionicPopup', '$http', 'APP', 'loadingService', 'Admin_Rubro', '$ionicModal', '$translate', '$ionicPlatform', 'countriesFactory', 'clientsService', 'LoansService', '$filter', 'valorCaja',  function ($scope, $state, $ionicPopup, $http, APP, loadingService, Admin_Rubro, $ionicModal, $translate, $ionicPlatform, countriesFactory, clientsService, LoansService, $filter, valorCaja, unlockScreen) {
+ 
+document.addEventListener("deviceready", onDeviceReady, false);
+    function onDeviceReady()
+    {
+     screen.orientation.lock('landscape');
+    }  
+
+
+
+
+
+var deregisterFirst = $ionicPlatform.registerBackButtonAction(
+      function() {
+         $state.go("app.home");
+      }, 100
+    );
+    $scope.$on('$destroy', deregisterFirst);
+
+
+
+        var info = {};
+        info.value = localStorage['kubesoft.kubeApp.user_id'];
+       console.log(info);
+
+$scope.load_all_loans=function(customFecha){
+
+            var datosListos = {};
+             datosListos.collector_id=info.value;
+            
+
+          LoansService.allInfoLoans(datosListos)
+              .success(function(response){
+                loadingService.hide();  
+                    if(response.status){
+                      console.log(response);                     
+
+                     // 
+                      $scope.listAllLoans=response.contenido;      
+                    
+                        loadingService.hide();    
+                        $scope.infoLoans = $scope.listAllLoans.prestamos.data;
+                      $scope.infoClients = $scope.listAllLoans.clientes;  
+                                      
+                      console.log($scope.infoClients);
+                      console.log($scope.infoLoans);
+
+                      
+                    }else{
+                          var alertPopup = $ionicPopup.alert({
+                             title: 'Error',
+                             template: 'Error no se pueden cargar la información de lso prestamos'
+                           });
+                    }
+                      
+
+                  }).error(function(err){
+                  loadingService.hide();                  
+                    console.log(err);    
+                        var alertPopup = $ionicPopup.alert({
+                             title: 'Error',
+                             template: 'Error no se pueden cargar la información de lso prestamos'
+                           });                
+              });
+}
+
+
+
+$scope.load_all_loans();
+
+ }])

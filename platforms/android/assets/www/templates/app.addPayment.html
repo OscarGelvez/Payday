@@ -1,0 +1,96 @@
+
+<ion-view view-title="{{'MakeCollections.Title2' | translate}}">
+
+             
+      <ion-content class="bg-home" scroll="true" overflow-scroll="false">
+                 
+       
+            <div class="listPaymentsDay">
+      <center>
+
+          <div class="card">                
+                 
+                     <div class="item">
+                        
+                        <div style="text-align:left">
+                           
+                          <b style="font-size:1.2em;">{{'MakeCollections.LoanInformation' | translate}}</b>
+                        
+                            <div class="item">
+                          <i>{{'MakeCollections.Client' | translate}}: {{auxClient.name}}</i>
+                          <br>
+                          <i>{{'MakeCollections.LoanValue' | translate}}: {{auxLoan.balance | currency : "$":0}}</i>
+                          <br>
+                          <i>{{'MakeCollections.InterestValue' | translate}}: {{auxLoan.interest_produced | currency : "$":0}}</i>
+                           <br>
+                           <i>{{'MakeCollections.ValuePaid' | translate}}: {{auxLoan.value_paid | currency : "$":0}}</i>
+                           <br>
+                           <i>{{'MakeCollections.Balance' | translate}}: {{saldo | currency : "$":0}}</i>
+                           <br>
+                           <i>{{'MakeCollections.NumbersFee' | translate}}: {{auxLoan.numbers_of_fee}}</i>                                                              
+
+                             </div>
+
+
+                              <div class="item">
+                                        <b style="font-size:1.2em;">{{'MakeCollections.EnterPay' | translate}}</b>
+                                        <br>
+
+                                <label class="item item-input item-stacked-label labelsFormInicioRegistro">
+          
+                                        <span class="input-label" style="color:white; text-align:center"  translate-cloak>{{'MakeCollections.ValuePay' | translate}}</span>
+                                  <br>
+                        
+                                      <input type="text"  ng-required="true" style="background-color: transparent" ng-model="payment.valuePay" min="1" max="4294967295" ui-number-mask="0"> 
+                          
+                                </label> 
+                                <br>  
+                                      <center>
+                                         <button class="button button-balanced" ng-click="submitPayment()" ng-disabled="buttonSendPay">{{'MakeCollections.ButtonSave' | translate}}</button>
+                                      </center>
+
+   
+                             
+                             </div>
+                          
+                          
+                        </div>
+                        
+                        
+                               
+                     </div>
+                 </div>
+
+                 <div class="row" ng-hide="boolEditar">
+                            
+
+                            <div class="col">
+                            <button style="float:right"  type="button" class="button button-stable btnInicio icon ion-save " ng-click="openHistorialCuotas()">{{'MakeCollections.FeesHistory.Title' | translate}}  </button>
+                            </div>
+
+                            <div class="col">                                 
+                                  <button  style="float:left" type="button" class="button button-stable btnInicio icon ion-save " ng-click="openHistoryAux()">
+                                      {{'MakeCollections.PaymentHistory.Title' | translate}}
+                                  </button>
+                            </div>
+                 </div>           
+
+                
+
+      
+    </center>
+            </div>
+            
+
+
+            
+
+
+    
+      </ion-content>
+
+</ion-view>
+</div>
+ 
+
+
