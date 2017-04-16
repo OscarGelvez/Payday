@@ -119,7 +119,7 @@
               </button>
 
 
-              <button  style="float:left" type="button" class="button button-energized btnInicio" ng-click="hacerVisible()"  ng-hide="!boolEditar">
+              <button  style="float:left" type="button" class="button button-stable btnInicio" ng-click="hacerVisible()"  ng-hide="!boolEditar">
                       
                       {{textBtnEditar}}   
                </button>
@@ -129,7 +129,7 @@
 </center>
               <div class="row" ng-hide="boolEditar">
                             <div class="col">                              
-                                <button   type="button" class="button button-energized  btnInicio2" ng-click="closeDetailClient()">
+                                <button   type="button" class="button button-stable  btnInicio2" ng-click="closeDetailClient()">
                                   <i class="fa fa-arrow-left fa-1x" aria-hidden="true"></i>
                                     {{'Clients.ModalBack' | translate}} 
                                 </button>
@@ -138,13 +138,13 @@
                            
 
                             <div class="col">
-                                  <button   type="button" class="button button-assertive  btnInicio2 icon ion-trash-b " ng-click="submitDeleteCliente()">
+                                  <button   type="button" class="button button-light  btnInicio2 icon ion-trash-b " ng-click="submitDeleteCliente()">
                                    {{'Clients.ModalDelete' | translate}} 
                                   </button>                          
                             </div>
 
                              <div class="col">
-                                  <button   type="button" class="button button-calm  btnInicio2 icon ion-edit " ng-click="hacerVisible()">
+                                  <button   type="button" class="button button-positive  btnInicio2 icon ion-edit " ng-click="hacerVisible()">
                                   {{textBtnEditar}}
                                   </button>
                             </div>

@@ -1,3 +1,9 @@
+/** ############################################
+ * @author Oscar Gelvez                        #
+ * @email oscargelvez23@gmail.com              #
+ * @version 2.0 2017                           #                                          #
+################################################ 
+*/
 angular.module('kubeApp')
 
   .controller('MovesBoxController', ['$scope', '$state', '$ionicPopup', '$http', 'APP', 'loadingService', '$translate', 'Box_Movement', 'valorCaja', '$filter', 'SaveData', '$ionicPlatform', function ($scope, $state, $ionicPopup, $http, APP, loadingService, $translate, Box_Movement, valorCaja, $filter, SaveData, $ionicPlatform) {

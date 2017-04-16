@@ -1,7 +1,7 @@
 
 <ion-view view-title="{{'Clients.Title' | translate}}">
 
-         <ion-floating-button click="openFormNewClient()" has-footer="false" button-color="#8BC34A" icon="ion-plus" icon-color="#fff">
+         <ion-floating-button click="openFormNewClient()" has-footer="false" button-color="#8BCc4A" icon="ion-plus" icon-color="#fff">
       </ion-floating-button>
 
     
@@ -26,19 +26,31 @@
                   </center>
                   <br>
 
-                        <ion-item ng-repeat="item in listClients | filter:{name:filterSearch2}" item="item" ng-click="openModalDetail(item.id)" class="item-remove-animate item-avatar">
-                          <img ng-src="img/user3.png">
-                           <h2 style="color:white;"> {{item.name}}</h2>
+                        <div  ng-repeat="item in listClients | filter:{name:filterSearch2}" item="item"  class="item item-remove-animate item-avatar">
+                          <img ng-src="img/user3.png" ng-click="openModalDetail(item.id)">
+
+                            <a   style="color:black; text-decoration: none; float:right" ng-href="tel: {{item.phone_numbers}}">         
+                                <button class="button button-small button-balanced icon ion-android-call"> {{'MakeCollections.Call' | translate}}</button>                       
+                                      
+                               </a>
+                          
+                           <h2 style="color:white;" ng-click="openModalDetail(item.id)"> {{item.name}}</h2>
+
 
                        
-                           <h3 style="color:white;"> {{item.address}}</h3>
-                           <h3 style="color:white;"> {{item.phone_numbers}} -  {{item.email}}</h3>
-                          
+                           <h3 style="color:white;" ng-click="openModalDetail(item.id)"> {{item.address}}-{{item.email}}</h3>
+                        
+                           <i>{{item.phone_numbers}}</i>
+
+                                <a   style="color:black; text-decoration: none; float:right; color:white;" ng-click="openModalDetail(item.id)">         
+                                 {{'Clients.BtnSee' | translate}}                      
+                                      
+                               </a>
                            
                           
                                               
                            
-                        </ion-item>
+                        </div>
 
                      
                          

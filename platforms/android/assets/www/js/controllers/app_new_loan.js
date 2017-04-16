@@ -508,6 +508,7 @@ $scope.submitNewClient=function(){
 
 
   $scope.calcDate = CalculatorDate;
+   console.log($scope.calcDate);
   $scope.tablePaymentPlan= [];
   $scope.tablePaymentesHistory = [];
   $scope.stateFees = {}; 
@@ -515,6 +516,10 @@ $scope.submitNewClient=function(){
 
     $scope.newLoan = {} 
      $scope.newLoan.retention = 0;
+        $scope.newLoan.value = 0;
+         $scope.newLoan.interest_rate = 0;
+        
+
                 
 
 
@@ -776,75 +781,3 @@ console.log("llego a showPaymentPlan")
 
  }])
 
-
-  .controller('AllLoanController', ['$scope', '$state', '$ionicPopup', '$http', 'APP', 'loadingService', 'Admin_Rubro', '$ionicModal', '$translate', '$ionicPlatform', 'countriesFactory', 'clientsService', 'LoansService', '$filter', 'valorCaja',  function ($scope, $state, $ionicPopup, $http, APP, loadingService, Admin_Rubro, $ionicModal, $translate, $ionicPlatform, countriesFactory, clientsService, LoansService, $filter, valorCaja, unlockScreen) {
- 
-document.addEventListener("deviceready", onDeviceReady, false);
-    function onDeviceReady()
-    {
-     screen.orientation.lock('landscape');
-    }  
-
-
-
-
-
-var deregisterFirst = $ionicPlatform.registerBackButtonAction(
-      function() {
-         $state.go("app.home");
-      }, 100
-    );
-    $scope.$on('$destroy', deregisterFirst);
-
-
-
-        var info = {};
-        info.value = localStorage['kubesoft.kubeApp.user_id'];
-       console.log(info);
-
-$scope.load_all_loans=function(customFecha){
-
-            var datosListos = {};
-             datosListos.collector_id=info.value;
-            
-
-          LoansService.allInfoLoans(datosListos)
-              .success(function(response){
-                loadingService.hide();  
-                    if(response.status){
-                      console.log(response);                     
-
-                     // 
-                      $scope.listAllLoans=response.contenido;      
-                    
-                        loadingService.hide();    
-                        $scope.infoLoans = $scope.listAllLoans.prestamos.data;
-                      $scope.infoClients = $scope.listAllLoans.clientes;  
-                                      
-                      console.log($scope.infoClients);
-                      console.log($scope.infoLoans);
-
-                      
-                    }else{
-                          var alertPopup = $ionicPopup.alert({
-                             title: 'Error',
-                             template: 'Error no se pueden cargar la información de lso prestamos'
-                           });
-                    }
-                      
-
-                  }).error(function(err){
-                  loadingService.hide();                  
-                    console.log(err);    
-                        var alertPopup = $ionicPopup.alert({
-                             title: 'Error',
-                             template: 'Error no se pueden cargar la información de lso prestamos'
-                           });                
-              });
-}
-
-
-
-$scope.load_all_loans();
-
- }])

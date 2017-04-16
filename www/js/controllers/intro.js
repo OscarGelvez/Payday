@@ -1,9 +1,9 @@
-angular.module('kubeApp')
+// angular.module('kubeApp')
 
-.controller('IntroCtrl', function ($scope, $state, $timeout) {
+// .controller('IntroCtrl', function ($scope, $state, $timeout) {
 
-    $timeout(function () {
-      $state.go('login')
-    }, 3000)
+//     $timeout(function () {
+//       $state.go('login')
+//     }, 1000)
 
-  })
+//   })

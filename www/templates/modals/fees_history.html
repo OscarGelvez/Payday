@@ -36,7 +36,7 @@
           <div class="col colBody2" ng-class="$even?'odd':'even'">{{ paid.balance | currency : "$":0 }}</td></div>
           <div class="col colBody2" ng-class="$even?'odd':'even'">{{ paid.interest | currency : "$":0 }}</div>
           <div class="col colBody2" ng-class="$even?'odd':'even'">{{ $index==0? "":auxFee.value | currency : "$":0}}</div>
-          <div class="col colBody2" ng-class="$even?'odd':'even'">{{ paid.estado==-1? "Abonó: "+abono : paid.estado }}</div>
+          <div class="col colBody2" ng-class="$even?'odd':'even'">{{ paid.estado==-1? textAbono+": "+abono : paid.estado }}</div>
       </div>
           <button class="button button-block button-assertive" ng-click="closeHistoryFees()">
       {{'MakeLoan.CloseModalSimulator' | translate}}

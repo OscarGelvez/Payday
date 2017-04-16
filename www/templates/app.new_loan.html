@@ -6,7 +6,7 @@
          <div >
           <center>
             <label class="item item-input item-stacked-label labelsFormInicioRegistro" >
-              <span class="input-label" style="color:white;" translate-cloak >Seleccionar al cliente</span>                                  
+              <span class="input-label" style="color:white;" translate-cloak >{{'MakeLoan.SelectClient' | translate}}</span>                                  
                       <ion-toggle  ng-model="algo.checked" ng-checked="algo.checked" style="background-color:rgb(40,95,155); border-color:transparent;  color:white">
                          {{valToggle }}
                       </ion-toggle>
@@ -39,10 +39,10 @@
          <div class="item item-input item-select item-stacked-label labelsFormRegistroSelect">
 
 
-           <label > Lista de clientes</label>
+           <label >{{'MakeLoan.ListClient' | translate}}</label>
             <select class="selectElement" ng-model="select.idClienteExistente" style="background-color:rgb(40,95,155); color:white">
             
-              <option value="">seleccione cliente</option>
+              <option value="">{{'MakeLoan.SelectClient' | translate}}</option>
               <option value="{{c.id}}" ng-repeat="c in listClients | filter:{name:filterSearch}" >{{c.name}}</option>
           
             </select>
@@ -78,9 +78,9 @@
                  </label> 
 
                     <div class="item item-input item-select item-stacked-label labelsFormRegistroSelect">
-                         <label class="labelSelect">{{'SingUp.Country' | translate}}</label>
+                         <label class="labelSelect" style="height:0px; margin-left:0px;" >{{'SingUp.Country' | translate}}</label>
                           
-                          <select class="selectElement" ng-model="select.pais" ng-required="true">
+                          <select class="selectElement" ng-model="select.pais" ng-required="true" style="max-width:60%">
                                    <option value="">--{{'SingUp.TextSelectCountryDepartment' | translate}}--</option> 
                                    <option value="{{c.id}}" ng-repeat="c in countries">{{c.name}}</option>                          
                           </select>
@@ -88,9 +88,9 @@
 
 
                     <div class="item item-input item-select item-stacked-label labelsFormRegistroSelect" ng-show="isColombia" >
-                        <label class="labelSelect">{{'SingUp.Department' | translate}}</label>
+                        <label class="labelSelect" style="height:0px; margin-left:0px;">{{'SingUp.Department' | translate}}</label>
 
-                        <select class="selectElement" ng-model="select.dpto">
+                        <select class="selectElement" ng-model="select.dpto" style="max-width:60%">
                           <option value="">--{{'SingUp.TextSelectCountryDepartment' | translate}}--</option> 
                           <option value="{{d.id}}" ng-repeat="d in departments">{{d.name}}</option>                          
                         </select>
@@ -98,9 +98,9 @@
                     </div>
                      
                       <div class="item item-input item-select item-stacked-label labelsFormRegistroSelect"   ng-show="isDepartmentDefined">
-                        <label class="labelSelect">{{'SingUp.City' | translate}}</label>
+                        <label class="labelSelect" style="height:0px; margin-left:0px;">{{'SingUp.City' | translate}}</label>
 
-                        <select class="selectElement" ng-model="select.ciudad">
+                        <select class="selectElement" ng-model="select.ciudad" style="max-width:60%">
                           <option value="">--{{'SingUp.TextSelectCountryDepartment' | translate}}--</option> 
                           <option value="{{c.id}}" ng-repeat="c in cities">{{c.name}}</option>
                           
@@ -375,11 +375,11 @@
                      
                   </button>
             </div>
-          <!--    <div class="col col-50">
+             <div class="col col-50">
                <button style="float:right"  type="button" class="button button-stable button-full btnInicio icon ion-save "  ng-click="cancelLoan()">
-                  {{'Clients.ModalBack' | translate}} 
+                  {{'MoveBox.CancelFormTitle' | translate}} 
                   </button>
-            </div> -->
+            </div>
           </div>
 
            

@@ -1,3 +1,9 @@
+/** ############################################
+ * @author Oscar Gelvez                        #
+ * @email oscargelvez23@gmail.com              #
+ * @version 2.0 2017                           #                                          #
+################################################ 
+*/
  var sp_spanish = {
     		 
 		 "Alerts": {
@@ -88,6 +94,7 @@
 				"Title": "Payday",
 				"LatInicio": "Inicio",
 				"LatCashReceive": "Recaudos ",
+				"LatLoans": "Préstamos",
 				"LatLoans1": "Hacer préstamos",
 				"LatLoans2": "Ver préstamos",
 				"LatLoansNew": "Hacer préstamo",
@@ -235,6 +242,7 @@
 					"ModalBack": "Atras",
 					"ErrorFieldName": "Nombre vacio o no definido",
 					"ErrorFieldDocument": "Documento vacio o no definido",
+					"BtnSee" : "Ver",
 					
 					"SuccessRegClient": "Registro de cliente exitoso",
 					"ErrorReg1": "Error, Fallo el registro de cliente",
@@ -344,6 +352,8 @@
 				"Value": "Monto",
 				"Interest": "Intereses",
 				"CollectionFrequency": "Frecuencia de cobro",
+				"SelectClient" : "Seleccionar cliente",
+				"ListClient": "Lista de clientes",
 				
 				"ComboSelect": {
 
@@ -395,7 +405,7 @@
 				"FilterPayFor": "Filtrar Recaudos por:",
 				"SeeAll": "Ver Todo",
 				"SeeUnpaid": "Ver Faltantes",
-				"ListCollections" :"Lista de Recaudos",
+				"ListCollections" :"Lista de Recaudos Hoy",
 				
 				"Address": "Dirección",
 				"Client": "Cliente",
@@ -407,6 +417,10 @@
 				"BtnAction" : "Acción",
 				"TextAction" : "Pagar",
 				"TextAction2" : "Historial",
+				"TextPendient" : "Pendiente",
+				"TextAtrasado" : "Atrasado",
+				"TextOk" : "Listo",
+				"TextAbono" : "Abonó",
 				
 				"LoanValue": "Valor Prestado",
 				"InterestValue": "Valor Intereses",
@@ -421,7 +435,7 @@
 				"ButtonCancel": "Cancelar",
 
 				"PaymentHistory":{
-						"Title": "Historial de Pagos",
+						"Title": "Historial Pagos",
 						"Date": "Fecha",
 						"Total": "Total",
 						"ButtonBack": "Cerrar Historial de Pagos",
@@ -429,7 +443,7 @@
 						"Number": "Número"
 					},
 				"FeesHistory":{
-						"Title" : "Historial de Cuotas",
+						"Title" : "Historial Cuotas",
 						"Status": "Estado",
 						"ValueFee":"Valor Cuota"
 						

@@ -1,3 +1,9 @@
+/** ############################################
+ * @author Oscar Gelvez                        #
+ * @email oscargelvez23@gmail.com              #
+ * @version 2.0 2017                           #                                          #
+################################################ 
+*/
  var sp_english = {
     		 
 		 "Alerts": {
@@ -88,10 +94,10 @@
 				"Title": "Payday",
 				"LatInicio": "Home",
 				"LatCashReceive": "Payments",
+				"LatLoans": "Loans",
 				"LatLoans1": "New Loans",
 				"LatLoans2": "See loan",
-				"LatLoansNew": "New loan",
-				"LatLoans2": "Ver préstamos",
+				"LatLoansNew": "New loan",				
 				"LatLoansShow": "Show loans",
 				"LatClients": "Clients",
 				"LatSimulator": "Simulator",
@@ -236,6 +242,7 @@
 					"ModalBack": "Back",					
 					"ErrorFieldName": "Empty or undefined name",
 					"ErrorFieldDocument": "Empty or undefined document",
+					"BtnSee" : "See",
 
 					"SuccessRegClient": "Successful customer registration",
 					"ErrorReg1": "Error, Client Log Failed",
@@ -345,6 +352,8 @@
 				"Value": "Value",
 				"Interest": "Interest",
 				"CollectionFrequency": "Collection Frequency",
+				"SelectClient" : "Choose client",
+				"ListClient": "List clients",
 				
 				"ComboSelect": {
 
@@ -396,7 +405,7 @@
 				"FilterPayFor": "Filter Collections by",
 				"SeeAll": "See All", // or All ? listall
 				"SeeUnpaid": "See Unpaid",
-				"ListCollections" : "List Collections",
+				"ListCollections" : "List Collections Today",
 				
 				"Address": "Address",
 				"Client": "Client",
@@ -408,6 +417,10 @@
 				"BtnAction" : "Action",
 				"TextAction" : "Pay",
 				"TextAction2" : "History",
+				"TextPendient" : "Pending",
+				"TextAtrasado" : "Overdue",
+				"TextOk" : "Ok",
+				"TextAbono" : "Paid",				
 				
 				"LoanValue": "Loan Value",
 				"InterestValue": "InterestValue",

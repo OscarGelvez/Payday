@@ -39,11 +39,11 @@
       
  
 
-                       <div class="row bodyTable" ng-repeat="item in listPaymentsToday.cliente" item="item" ng-click="guardarFabrica($index)" ng-if="item.stateLoan!=0">
+                       <div class="row bodyTable" ng-repeat="item in listPaymentsToday.Object" item="item" ng-click="guardarFabrica($index)" ng-if="item.client.stateLoan!=0 && item.fees_sum > item.moves_sum">
 
-                          <div class="col colBody" style="height:45px; font-size:16px;">{{item.name}}</div>
+                          <div class="col colBody" style="height:45px; font-size:16px;">{{item.client.name}}</div>
 
-                          <div class="col colBody" style="height:45px; font-size:16px;">{{item.address}}</div>
+                          <div class="col colBody" style="height:45px; font-size:16px;">{{item.client.address}}</div>
 
                           <div class="col colBody" style="height:45px; font-size:16px; text-align:center"><button class="button  button-small button-balanced icon icon-left ion-cash">{{'MakeCollections.TextAction' | translate}}</button></div>
                   

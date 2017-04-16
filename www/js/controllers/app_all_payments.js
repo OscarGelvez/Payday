@@ -1,3 +1,9 @@
+/** ############################################
+ * @author Oscar Gelvez                        #
+ * @email oscargelvez23@gmail.com              #
+ * @version 2.0 2017                           #                                          #
+################################################ 
+*/
 angular.module('kubeApp')
 
  .factory('recaudoSeleccionado', function(){
@@ -115,12 +121,12 @@ $scope.load_payments_today=function(customFecha){
 // con el fin de no mostrar cuotas para pagar en caso de q el cliente de un momento a otro pague todo
 //y las cuotas queden por planificacion en el sistema
 $scope.verificarLista=function(){
-  for (var i = 0; i < $scope.listPaymentsToday.cliente.length; i++) {
+  for (var i = 0; i < $scope.listPaymentsToday.Object.length; i++) {
 
-        $scope.listPaymentsToday.cliente[i].stateLoan = 1; // Indica que el prestamo esta vigente
+        $scope.listPaymentsToday.Object[i].client.stateLoan = 1; // Indica que el prestamo esta vigente
 
-        if($scope.listPaymentsToday.prestamo[i].state == 0){
-          $scope.listPaymentsToday.cliente[i].stateLoan = 0;
+        if($scope.listPaymentsToday.Object[i].loan.state == 0){
+          $scope.listPaymentsToday.Object[i].client.stateLoan = 0;
         }
 
   };
@@ -141,9 +147,9 @@ $scope.buscarPagosPorFecha=function(){
 $scope.guardarFabrica=function(index){
 	
 
-	recaudoSeleccionado.datos["prestamo"] = clone($scope.listPaymentsToday.prestamo[index]);
-	recaudoSeleccionado.datos['cliente'] = clone($scope.listPaymentsToday.cliente[index])
-	recaudoSeleccionado.datos['cuota'] = clone($scope.listPaymentsToday.cuotas[index])
+	recaudoSeleccionado.datos["prestamo"] = clone($scope.listPaymentsToday.Object[index].loan);
+	recaudoSeleccionado.datos['cliente'] = clone($scope.listPaymentsToday.Object[index].client)
+	recaudoSeleccionado.datos['cuota'] = clone($scope.listPaymentsToday.Object[index])
 
 	console.log(recaudoSeleccionado.datos);
 
@@ -309,9 +315,14 @@ function loadItemsHomeSimulate(){
                           $scope.tablePaymentPlan = arrayTable;
                           console.log(arrayTable);   
 
+                          var textPendiente = $translate.instant('MakeCollections.TextPendient');
+                           var textAtrasado = $translate.instant('MakeCollections.TextAtrasado');
+                            var textOk = $translate.instant('MakeCollections.TextOk');
+                             $scope.textAbono = $translate.instant('MakeCollections.TextAbono');
+
                           for (var i = 1; i < $scope.tablePaymentPlan.length; i++) {
                           	
-                          	$scope.tablePaymentPlan[i].estado = "P";
+                          	$scope.tablePaymentPlan[i].estado = ""+textPendiente;
                                                	
                           };
                            var dateHoy = new Date();
@@ -322,7 +333,7 @@ function loadItemsHomeSimulate(){
                               var auxB = $filter('date')($scope.tablePaymentPlan[k].date, "yyyy-MM-dd");
                             
                             if(auxB<auxA){
-                               $scope.tablePaymentPlan[k].estado = "Atrasó";
+                               $scope.tablePaymentPlan[k].estado = ""+textAtrasado;
                               // console.log("entro")
                               //  console.log(dateHoy);
                               //   console.log($scope.tablePaymentPlan[k].date);
@@ -339,7 +350,7 @@ function loadItemsHomeSimulate(){
                                     pagado=pagado-valCuota;
                                       if(pagado>=valCuota || pagado>=0){
                                         console.log(pagado);
-                                        $scope.tablePaymentPlan[j].estado = "OK";
+                                        $scope.tablePaymentPlan[j].estado = ""+textOk;
                                       }
                                       else{                            
                                       var a = pagado+valCuota;

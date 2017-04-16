@@ -13,12 +13,25 @@
                      <div class="item">
                         
                         <div style="text-align:left">
+                           <b style="font-size:1.2em;">{{'MakeCollections.ClientInformation' | translate}}</b>
+                          <div class="item">
+                            <i>{{'MakeCollections.Client' | translate}}: {{auxClient.name}}</i>
+                           <br>
+                             <i>{{'MakeCollections.Address' | translate}}: {{auxClient.address}}</i>
+                             <br><br>
+
+                               <i>{{'MakeCollections.Phone' | translate}}: {{auxClient.phone_numbers}}</i>
+                               <a   style="color:black; text-decoration: none; float:right" ng-href="tel: {{auxClient.phone_numbers}}">         
+                                <button class="button button-small button-balanced icon ion-android-call"> {{'MakeCollections.Call' | translate}}</button>                       
+                                      
+                               </a>
+                               <br>
+                          </div>
                            
                           <b style="font-size:1.2em;">{{'MakeCollections.LoanInformation' | translate}}</b>
                         
                             <div class="item">
-                          <i>{{'MakeCollections.Client' | translate}}: {{auxClient.name}}</i>
-                          <br>
+                          
                           <i>{{'MakeCollections.LoanValue' | translate}}: {{auxLoan.balance | currency : "$":0}}</i>
                           <br>
                           <i>{{'MakeCollections.InterestValue' | translate}}: {{auxLoan.interest_produced | currency : "$":0}}</i>
@@ -27,7 +40,9 @@
                            <br>
                            <i>{{'MakeCollections.Balance' | translate}}: {{saldo | currency : "$":0}}</i>
                            <br>
-                           <i>{{'MakeCollections.NumbersFee' | translate}}: {{auxLoan.numbers_of_fee}}</i>                                                              
+                           <i>{{'MakeCollections.NumbersFee' | translate}}: {{auxLoan.numbers_of_fee}}</i>
+                            <br>
+                           <i>{{'MakeCollections.ValueFee' | translate}}: {{auxFee.value | currency : "$":0}}</i>                                                              
 
                              </div>
 

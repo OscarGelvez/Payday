@@ -89,7 +89,10 @@
 				"LatInicio": "Home",
 				"LatCashReceive": "Payments",
 				"LatLoans": "Loans",
+				"LatLoans1": "New Loans",
+				"LatLoans2": "See loan",
 				"LatLoansNew": "New loan",
+				"LatLoans2": "Ver préstamos",
 				"LatLoansShow": "Show loans",
 				"LatClients": "Clients",
 				"LatSimulator": "Simulator",
@@ -343,6 +346,8 @@
 				"Value": "Value",
 				"Interest": "Interest",
 				"CollectionFrequency": "Collection Frequency",
+				"SelectClient" : "Choose client",
+				"ListClient": "List clients",
 				
 				"ComboSelect": {
 
@@ -394,12 +399,23 @@
 				"FilterPayFor": "Filter Collections by",
 				"SeeAll": "See All", // or All ? listall
 				"SeeUnpaid": "See Unpaid",
-				"ListCollections" : "List Collections",
+				"ListCollections" : "List Collections Today",
 				
 				"Address": "Address",
 				"Client": "Client",
+				"Phone" : "Phone",
+				"Call" : "Call",
 				"Title2": "Add Payments",
 				"LoanInformation": "Loan Information",
+				"ClientInformation" :"Customer Information",
+				"BtnAction" : "Action",
+				"TextAction" : "Pay",
+				"TextAction2" : "History",
+				"TextPendient" : "Pending",
+				"TextAtrasado" : "Overdue",
+				"TextOk" : "Ok",
+				"TextAbono" : "Paid",
+				
 				
 				"LoanValue": "Loan Value",
 				"InterestValue": "InterestValue",
@@ -408,6 +424,7 @@
 				"NumbersFee" : "Numbers of fee",
 				"EnterPay" :"Enter Pay",
 				"ValuePay":"Value Pay",
+				"ValueFee" : "Fee value",
 			
 				"ButtonSave": "Save",
 				"ButtonCancel": "Cancel",

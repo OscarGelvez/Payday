@@ -1,4 +1,4 @@
-<ion-modal-view class="modal-new-client">
+<ion-modal-view class="modal-history-fees">
   
 <ion-header-bar class="bar bar-header bar-positive">
           
@@ -35,15 +35,15 @@
        <div class="row bodyTable" ng-repeat="his in listHistoryPayments">
 
           <div class="col colBody">{{$index+1}}</div>
-          <div class="col colBody">{{his.value}}</td></div>
+          <div class="col colBody">{{his.value | currency : "$":0}}</td></div>
           <div class="col colBody">{{his.date}}</div>
           
     
       </div>
   
       <div class="row headTable">
-        <div class="col colHead">{{'MakeCollections.PaymentHistory.Total' | translate}}</div>
-        <div class="col colBody">{{totalValueHistory}}</div>
+        <div class="col colHead">{{'MakeCollections.PaymentHistory.Total' | translate }}</div>
+        <div class="col colBody">{{totalValueHistory | currency : "$":0}}</div>
 
       </div>
 

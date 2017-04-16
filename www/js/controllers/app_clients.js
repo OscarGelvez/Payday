@@ -1,3 +1,9 @@
+/** ############################################
+ * @author Oscar Gelvez                        #
+ * @email oscargelvez23@gmail.com              #
+ * @version 2.0 2017                           #                                          #
+################################################ 
+*/
 angular.module('kubeApp')
 
 

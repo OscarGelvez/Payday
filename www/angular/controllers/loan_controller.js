@@ -558,6 +558,7 @@ $scope.createLoan =  function(){
             $scope.optionsNeighbourhoods = rows;
             $scope.views.new.client.neighbourhood_id = {selected : '0'};
             $scope.views.new.loan.retention = 0;
+
             TypePaidsDao.all().then(function(rows){
                 if(rows !== null){
                     $scope.typesPaid = rows;
@@ -670,6 +671,8 @@ $scope.createLoan =  function(){
 
     var loadItemSimulateView= function(){
         $scope.views.new.loan.retention = 0;
+          $scope.views.new.loan.interest_rate = 0;
+            $scope.views.new.loan.value = 0;
         TypePaidsDao.all().then(function(rows){
             if(rows !== null){
                 $scope.typesPaid = rows;

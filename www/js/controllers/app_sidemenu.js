@@ -1,5 +1,10 @@
-
-  var kubeApp = angular.module('kubeApp');
+/** ############################################
+ * @author Oscar Gelvez                        #
+ * @email oscargelvez23@gmail.com              #
+ * @version 2.0 2017                           #                                          #
+################################################ 
+*/
+var kubeApp = angular.module('kubeApp');
 
 
   kubeApp.controller('SideMenuController', function ($scope, $state, $rootScope, $ionicModal, $ionicSlideBoxDelegate, $translate, $ionicLoading, $cordovaNetwork, SaveData, SessionService, $ionicPopup ) {

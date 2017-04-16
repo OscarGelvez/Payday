@@ -89,11 +89,13 @@
 				"LatInicio": "Inicio",
 				"LatCashReceive": "Recaudos ",
 				"LatLoans": "Préstamos",
+				"LatLoans1": "Hacer préstamos",
+				"LatLoans2": "Ver préstamos",
 				"LatLoansNew": "Hacer préstamo",
 				"LatLoansShow": "Ver préstamos",
 				"LatClients": "Clientes",
 				"LatSimulator": "Simulador",
-				"LatMovementsMoney": "Movimientos Caja",
+				"LatMovementsMoney": "Movimientos",
 				"LatBalance": "Saldos",
 				"LatSettings": "Configuración",
 				"LatSettings_rubros": "Administrar Rubros",
@@ -343,6 +345,8 @@
 				"Value": "Monto",
 				"Interest": "Intereses",
 				"CollectionFrequency": "Frecuencia de cobro",
+				"SelectClient" : "Seleccionar cliente",
+				"ListClient": "Lista de clientes",
 				
 				"ComboSelect": {
 
@@ -388,18 +392,28 @@
 			},
 			
 			"MakeCollections":{
-				"Title": "Recaudos del dia",
+				"Title": "Recaudos del día",
 				"EnterDate": "Ingrese Fecha",
 				"Search": "Buscar",
 				"FilterPayFor": "Filtrar Recaudos por:",
 				"SeeAll": "Ver Todo",
 				"SeeUnpaid": "Ver Faltantes",
-				"ListCollections" :"Lista de Recaudos",
+				"ListCollections" :"Lista de Recaudos Hoy",
 				
 				"Address": "Dirección",
 				"Client": "Cliente",
+				"Phone" : "Teléfono",
+				"Call" : "Llamar",
 				"Title2": "Agregar Recaudos",
 				"LoanInformation": "Información de Préstamos",
+				"ClientInformation" :"Información de Cliente",
+				"BtnAction" : "Acción",
+				"TextAction" : "Pagar",
+				"TextAction2" : "Historial",
+				"TextPendient" : "Pendiente",
+				"TextAtrasado" : "Atrasado",
+				"TextOk" : "Listo",
+				"TextAbono" : "Abonó",
 				
 				"LoanValue": "Valor Prestado",
 				"InterestValue": "Valor Intereses",
@@ -408,6 +422,7 @@
 				"NumbersFee" : "Número de cuotas",
 				"EnterPay": "Ingresar Recaudo",
 				"ValuePay":"Valor Recaudo",
+				"ValueFee" : "Valor de cuota",
 							
 				"ButtonSave": "Guardar Recaudo",
 				"ButtonCancel": "Cancelar",

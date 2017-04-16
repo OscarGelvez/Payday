@@ -1,4 +1,4 @@
-<ion-view view-title="{{'MakeCollections.Title' | translate}}">
+<ion-view view-title="{{'ShowAllLoans.Title' | translate}}">
 
              
       <ion-content class="bg-home" scroll="true" overflow-scroll="false">
@@ -6,38 +6,35 @@
        
            
         <div class="listPaymentsDay2" style="margin-top:5%"> 
-                    <center>
-                       <h3 style="color:white; font-weight:500;">{{'ShowAllLoans.Title' | translate}}</h3>
-                    </center>
-
+                 
                  
                           <div class="row headTable">
                             <div class="col colHead2">{{'ShowAllLoans.Client' | translate}}</div>
                             <div class="col colHead2">{{'ShowAllLoans.ValueLoan' | translate}}</div>
                              <div class="col colHead2">{{'ShowAllLoans.ValuePaid' | translate}}</div>
                             <div class="col colHead2">{{'ShowAllLoans.Saldo' | translate}}</div>
-                             <div class="col colHead2">{{'ShowAllLoans.Interest' | translate}}</div>
+                             <!-- <div class="col colHead2">{{'ShowAllLoans.Interest' | translate}}</div> -->
                             <div class="col colHead2">{{'ShowAllLoans.State' | translate}}</div>
-                             <div class="col colHead2">{{'ShowAllLoans.Start' | translate}}</div>
-                             <div class="col colHead2">{{'ShowAllLoans.Finish' | translate}}</div>
+                          <!--    <div class="col colHead2">{{'ShowAllLoans.Start' | translate}}</div> -->
+                             <div class="col colHead2">{{'MakeCollections.BtnAction' | translate}}</div>
                            
                             
                           </div>
 
-      
+       
  
 
                                     <div class="row bodyTable" ng-repeat="c in infoClients" item="item" ng-click="guardarFabrica($index)" ng-if="item.stateLoan!=0">
 
               <div class="col colBody" ng-class="$even?'odd2':'even2'">{{c.name}}</div>
 
-              <div class="col colBody" ng-class="$even?'odd2':'even2'">{{infoLoans[$index].balance | currency : "$":0}}</td></div>
-              <div class="col colBody" ng-class="$even?'odd2':'even2'">{{infoLoans[$index].value_paid | currency : "$":0}}</td></div>
-              <div class="col colBody" ng-class="$even?'odd2':'even2'">{{(infoLoans[$index].balance-infoLoans[$index].value_paid | currency : "$":0)}}</td></div>
-              <div class="col colBody" ng-class="$even?'odd2':'even2'">{{infoLoans[$index].interest_produced | currency : "$":0}}</td></div>
-              <div class="col colBody" ng-class="$even?'odd2':'even2'">{{infoLoans[$index].state == 1? "Abierto":"Cerrado"}}</td></div>
-              <div class="col colBody" ng-class="$even?'odd2':'even2'">{{infoLoans[$index].start_date}}</td></div>
-              <div class="col colBody" ng-class="$even?'odd2':'even2'">{{infoLoans[$index].end_date}}</td></div>
+              <div class="col colBody" ng-class="$even?'odd2':'even2'">{{infoLoans[$index].balance | currency : "$":0}}</div>
+              <div class="col colBody" ng-class="$even?'odd2':'even2'">{{infoLoans[$index].value_paid | currency : "$":0}}</div>
+              <div class="col colBody" ng-class="$even?'odd2':'even2'">{{(infoLoans[$index].balance-infoLoans[$index].value_paid | currency : "$":0)}}</div>
+         <!--      <div class="col colBody" ng-class="$even?'odd2':'even2'">{{infoLoans[$index].interest_produced | currency : "$":0}}</td></div> -->
+              <div class="col colBody" ng-class="$even?'odd2':'even2'">{{infoLoans[$index].state == 1? "Abierto":"Cerrado"}}</div>
+             <!--  <div class="col colBody" ng-class="$even?'odd2':'even2'">{{infoLoans[$index].start_date}}</td></div>
+              --> <div class="col colBody" ng-class="$even?'odd2':'even2'"><button class="button  button-small button-balanced icon icon-left ion-plus-circled" ng-click="openHistorialCuotas($index)"> {{'MakeCollections.TextAction2' | translate}}</button></div>
                                        
                                 
                                     </div>
