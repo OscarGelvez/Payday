@@ -66,12 +66,21 @@ $ionicModal.fromTemplateUrl('templates/modals/change_language.html', {
       }
 
     $scope.change=function () {
+      if($scope.idiomaSelect.value == undefined){
+             var hello = $translate.instant('Alerts.LanguageUndefined');
+                        toastr.error("", hello);
+
+      }else{
+         console.log($scope.idiomaSelect.value);
             if($scope.idiomaSelect.value==1){
                 $translate.use('es');
             }else{
                 $translate.use('en');
             }
-              $scope.closeModal();
+            $scope.closeModal();
+      }
+     
+              
     };
 
 

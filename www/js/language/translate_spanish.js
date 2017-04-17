@@ -23,7 +23,8 @@
 			    "CloseAppYes": "Salir",
 			    "CloseAppNo": "No",
 			    "AlertBoxClosed": "Para ingresar aqui primero debes Iniciar día(abrir caja)",
-			    "TitleAlertBoxClosed": "Caja Cerrada"
+			    "TitleAlertBoxClosed": "Caja Cerrada",
+			    "LanguageUndefined" : "Seleccione un lenguaje"
 		  	}, 
 
 		  "Login": {

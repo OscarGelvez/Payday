@@ -23,7 +23,8 @@
 			    "CloseAppYes": "Close",
 			    "CloseAppNo": "No",
 			     "AlertBoxClosed": "To enter here you must first start the day (open box)",
-			      "TitleAlertBoxClosed": "Closed Box"
+			      "TitleAlertBoxClosed": "Closed Box",
+			       "LanguageUndefined" : "Choose a lenguage"
 		  	}, 
 
 		  "Login": {
